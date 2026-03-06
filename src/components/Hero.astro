@@ -7,6 +7,7 @@ interface Props {
   content: {
     headline: string;
     subHeadline: string;
+    bodyText?: string;
     brandLine?: string;
     trustBadge?: string;
     ctaBook: string;
@@ -54,6 +55,11 @@ const { content, appointmentPhone } = Astro.props;
           <h2 class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed font-normal">
             {content.subHeadline}
           </h2>
+          {content.bodyText && (
+            <p class="text-base md:text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+              {content.bodyText}
+            </p>
+          )}
           {content.brandLine && (
             <p class="text-sm md:text-base text-primary/80 dark:text-gray-400 font-medium">
               {content.brandLine}

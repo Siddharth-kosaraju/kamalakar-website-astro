@@ -7,6 +7,8 @@ import Stats from '../components/Stats';
 import About from '../components/About.astro';
 import Services from '../components/Services.astro';
 import Education from '../components/Education.astro';
+import Preventive from '../components/Preventive.astro';
+import WhyChoose from '../components/WhyChoose.astro';
 import Testimonials from '../components/Testimonials.astro';
 import Gallery from '../components/Gallery';
 import FAQ from '../components/FAQ';
@@ -59,8 +61,10 @@ const schemas = [
     <Hero content={content.hero} appointmentPhone={content.contact.appointmentPhone} />
     <Stats client:visible content={content.stats} />
     <About content={content.about} />
-    <Services content={content.services} />
+    <Services content={content.services} lang="en" />
     <Education content={content.education} />
+    {content.preventive && <Preventive content={content.preventive} />}
+    {content.whyChoose && <WhyChoose content={content.whyChoose} />}
     <Testimonials content={content.testimonials} />
     <Gallery client:visible content={content.gallery} />
     <FAQ client:visible content={content.faq} />

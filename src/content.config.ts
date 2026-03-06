@@ -60,6 +60,7 @@ const siteSchema = z.object({
   hero: z.object({
     headline: z.string(),
     subHeadline: z.string(),
+    bodyText: z.string().optional(),
     brandLine: z.string().optional(),
     trustBadge: z.string().optional(),
     ctaBook: z.string(),
@@ -146,6 +147,18 @@ const siteSchema = z.object({
     imageCounter: z.string().optional(),
     images: z.array(galleryImageSchema),
   }),
+  preventive: z.object({
+    heading: z.string(),
+    description: z.string().optional(),
+    riskFactors: z.array(z.string()),
+    closingText: z.string().optional(),
+  }).optional(),
+  whyChoose: z.object({
+    heading: z.string(),
+    subheading: z.string().optional(),
+    points: z.array(z.string()),
+    closingText: z.string().optional(),
+  }).optional(),
   appointment: z.object({
     heading: z.string(),
   }),
