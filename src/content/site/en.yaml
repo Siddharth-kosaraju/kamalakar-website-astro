@@ -14,8 +14,8 @@ nav:
 
 hero:
   headline: "Best Cardiologist in Guntur for Advanced Heart Care"
-  subHeadline: "Your heart health deserves timely attention and expert care. Kamalakar Heart Centre provides comprehensive cardiac diagnosis and treatment guided by experience and modern medical technology. Led by Dr. Kamalakar Kosaraju, an experienced interventional cardiologist in Guntur, the centre focuses on early detection, accurate diagnosis, and effective treatment of heart conditions."
-  bodyText: "Patients visit the clinic for symptoms such as chest pain, breathlessness, high blood pressure, or irregular heartbeat. Early consultation with a heart specialist in Guntur can prevent serious complications and support long-term heart health."
+  subHeadline: "Your heart health deserves timely attention and expert care. Kamalakar Heart Centre provides comprehensive cardiac diagnosis and treatment guided by experience and modern medical technology. Led by Dr. Kamalakar Kosaraju, an experienced interventional cardiologist in Guntur, the centre focuses on early detection accurate diagnosis and effective treatment of heart conditions."
+  bodyText: "Patients visit the clinic for symptoms such as chest pain breathlessness high blood pressure or irregular heartbeat. Early consultation with a heart specialist in Guntur can prevent serious complications and support long term heart health."
   brandLine: "Kamalakar Heart Centre – Cardiac Care at Life Hospital, Guntur"
   trustBadge: "Gold Medalist &bull; FESC Certified"
   ctaBook: "Book Consultation"
@@ -41,7 +41,7 @@ stats:
 about:
   heading: "Experienced Heart Specialist in Guntur"
   p1: "Dr. Kamalakar Kosaraju is a qualified cardiologist with M.D. in General Medicine and D.M. in Cardiology. With years of clinical experience he has treated many patients with heart conditions using modern cardiology practices."
-  p2: "His approach focuses on accurate diagnosis, patient education, and personalized treatment plans. Every patient receives clear guidance and appropriate care to manage heart disease, improve heart function, and reduce future risks."
+  p2: "His approach focuses on accurate diagnosis patient education and personalized treatment plans. Every patient receives clear guidance and appropriate care to manage heart disease improve heart function and reduce future risks."
   experienceBadge: "10+ Years Experience"
   servicesLinkText: "Explore our comprehensive heart care services in Guntur"
   learnMoreBtn: "Learn More About Dr. Kamalakar"
@@ -58,14 +58,14 @@ services:
   learnMore: "Learn more"
   viewAllBtn: "View All Services"
   items:
-    - title: "Angiogram & Angioplasty in Guntur"
+    - title: "Angiogram and Angioplasty"
       desc: "Angiogram helps identify blockages in coronary arteries. Angioplasty is used to restore blood flow and prevent heart complications using minimally invasive procedures."
-    - title: "Heart Disease Treatment in Guntur"
-      desc: "Patients with coronary artery disease, heart failure, or chest pain receive structured treatment and continuous monitoring for better heart health."
-    - title: "Blood Pressure & Cholesterol Management"
-      desc: "Managing high blood pressure and cholesterol plays an important role in preventing heart disease. The clinic provides regular monitoring, medical treatment, and preventive care."
-    - title: "Cardiac Diagnostic Tests in Guntur"
-      desc: "Accurate testing helps guide treatment decisions. The centre offers ECG, echocardiography, and other cardiac evaluations to assess heart function and detect abnormalities."
+    - title: "Heart Disease Treatment"
+      desc: "Patients with coronary artery disease heart failure or chest pain receive structured treatment and continuous monitoring for better heart health."
+    - title: "Blood Pressure and Cholesterol Management"
+      desc: "Managing high blood pressure and cholesterol plays an important role in preventing heart disease. The clinic provides regular monitoring medical treatment and preventive care."
+    - title: "Cardiac Diagnostic Tests"
+      desc: "Accurate testing helps guide treatment decisions. The centre offers ECG echocardiography and other cardiac evaluations to assess heart function and detect abnormalities."
     - title: "Pacemaker Implantation in Guntur"
       desc: "Advanced pacemaker surgery for patients with irregular heartbeats or arrhythmias. The procedure takes under two hours, and most patients resume normal activities within 2-4 weeks of implantation."
     - title: "Emergency Cardiac Care & Heart Attack Treatment"
@@ -229,8 +229,8 @@ testimonials:
       author: "Lakshmi Devi"
 
 gallery:
-  heading: "Our Facilities & Operations"
-  description: "State-of-the-art cardiac care facility with modern equipment and expertise"
+  heading: "Modern Cardiology Facility in Guntur"
+  description: "Modern diagnostic technology supports accurate cardiac evaluation treatment and routine heart checkups."
   close: "Close"
   imageCounter: "of"
   images:
@@ -255,7 +255,7 @@ gallery:
 
 preventive:
   heading: "Protect Your Heart with Preventive Care"
-  description: "Preventive cardiology focuses on identifying risk factors before serious heart disease develops. Patients receive guidance on lifestyle changes, medical management, and regular screenings."
+  description: "Preventive cardiology focuses on identifying risk factors before serious heart disease develops. Patients receive guidance on lifestyle changes medical management and regular screenings."
   riskFactors:
     - "High blood pressure"
     - "Diabetes"
@@ -267,14 +267,14 @@ preventive:
 
 whyChoose:
   heading: "Reliable Heart Care in Guntur"
-  subheading: "Patients trust Kamalakar Heart Centre for its patient-focused approach and professional cardiac care."
+  subheading: "Patients trust Kamalakar Heart Centre for its patient focused approach and professional cardiac care."
   points:
     - "Experienced interventional cardiologist in Guntur"
     - "Modern cardiac diagnostic facilities"
     - "Personalized treatment approach"
     - "Clear consultation and treatment guidance"
     - "Support for preventive and emergency cardiac care"
-  closingText: "The clinic focuses on providing safe, effective, and compassionate treatment for every patient."
+  closingText: "The clinic focuses on providing safe effective and compassionate treatment for every patient."
 
 appointment:
   heading: "Book a Consultation with a Heart Specialist in Guntur"
@@ -298,12 +298,12 @@ faq:
       answer: "For comprehensive heart checkup in Guntur, AP and specialized heart disease treatment, consult Dr. Kamalakar for accurate diagnosis and long-term heart care management."
 
 contact:
-  heading: "Book Your Appointment Today"
+  heading: "Book a Consultation with a Heart Specialist in Guntur"
   addressLabel: "Address"
   hoursLabel: "OPD Hours"
   contactLabel: "Phone"
   appointmentPhone: "9959423566"
-  helpText: "We are here to help you. Visit us or book an appointment online."
+  helpText: "Consult a cardiologist in Guntur for heart checkup chest pain evaluation and cardiac care. Early consultation helps detect heart problems and protect long term heart health."
   getDirections: "Get Directions"
   hoursText: "Mon-Sat: 10:00 AM - 6:00 PM"
   sundayEmergency: "Sunday: Emergency Only"
@@ -312,10 +312,10 @@ contact:
   viewLocationBtn: "View Location & Directions"
 
 seo:
-  title: "Cardiologist in Guntur | Dr Kamalakar Heart Specialist"
-  description: "Consult Dr Kamalakar Kosaraju, cardiologist in Guntur, for heart checkup angiogram angioplasty ECG echo test and cardiac care at Kamalakar Heart Centre."
-  homeTitle: "Cardiologist in Guntur | Dr Kamalakar Heart Specialist"
-  homeDescription: "Consult Dr Kamalakar Kosaraju, cardiologist in Guntur, for heart checkup angiogram angioplasty ECG echo test and cardiac care at Kamalakar Heart Centre."
+  title: "Cardiologist in Guntur | Dr Kamalakar Kosaraju Heart Specialist"
+  description: "Consult Dr Kamalakar Kosaraju experienced cardiologist in Guntur for heart checkup angiogram angioplasty ECG echo test and complete cardiac care at Kamalakar Heart Centre."
+  homeTitle: "Cardiologist in Guntur | Dr Kamalakar Kosaraju Heart Specialist"
+  homeDescription: "Consult Dr Kamalakar Kosaraju experienced cardiologist in Guntur for heart checkup angiogram angioplasty ECG echo test and complete cardiac care at Kamalakar Heart Centre."
   educationTitle: "Heart Health Education Guntur | ECG, Cholesterol & Heart Problems Guide"
   educationDescription: "Heart health education from Kamalakar Heart Centre Guntur: ECG, Angioplasty, cholesterol & cardiac symptoms. Resources by Dr. Kamalakar, top cardiologist in Guntur."
   keywords:
