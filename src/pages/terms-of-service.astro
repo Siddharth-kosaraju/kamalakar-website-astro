@@ -8,20 +8,17 @@ import { getSiteContent } from '../utils/content';
 const content = await getSiteContent('en');
 ---
 
-<BaseLayout lang="en" class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
+<BaseLayout class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
   <SEO
     slot="head"
     title="Terms of Service | Kamalakar Heart Centre"
     description="Terms of Service of Kamalakar Heart Centre. Conditions for using our website."
     canonicalUrl="https://kamalakarheartcentre.com/terms-of-service/"
-    lang="en"
-    alternateLangUrl="https://kamalakarheartcentre.com/te/terms-of-service/"
     page="terms"
   />
 
   <Header
     client:load
-    lang="en"
     content={content.nav}
     appointmentPhone={content.contact.appointmentPhone}
     currentPage="home"
@@ -158,5 +155,5 @@ const content = await getSiteContent('en');
     </div>
   </main>
 
-  <Footer content={content.footer} navContent={content.nav} lang="en" currentPage="home" />
+  <Footer content={content.footer} navContent={content.nav} currentPage="home" />
 </BaseLayout>

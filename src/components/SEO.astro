@@ -10,8 +10,6 @@ interface Props {
   keywords?: string[];
   canonicalUrl: string;
   ogImage?: string;
-  lang: 'en' | 'te';
-  alternateLangUrl: string;
   schemas?: object[];
   page?: 'home' | 'education' | 'service' | 'privacy' | 'terms';
 }
@@ -22,15 +20,9 @@ const {
   keywords = [],
   canonicalUrl,
   ogImage = 'https://kamalakarheartcentre.com/media/dr-kamalakar.jpg',
-  lang,
-  alternateLangUrl,
   schemas = [],
   page = 'home',
 } = Astro.props;
-
-const siteUrl = 'https://kamalakarheartcentre.com';
-const enUrl = lang === 'en' ? canonicalUrl : alternateLangUrl;
-const teUrl = lang === 'te' ? canonicalUrl : alternateLangUrl;
 ---
 
 <!-- Primary Meta Tags -->
@@ -38,11 +30,8 @@ const teUrl = lang === 'te' ? canonicalUrl : alternateLangUrl;
 <meta name="description" content={description} />
 {keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
 
-<!-- Canonical & Hreflang -->
+<!-- Canonical -->
 <link rel="canonical" href={canonicalUrl} />
-<link rel="alternate" hreflang="en" href={enUrl} />
-<link rel="alternate" hreflang="te" href={teUrl} />
-<link rel="alternate" hreflang="x-default" href={enUrl} />
 
 <!-- Geo Meta Tags -->
 <meta name="geo.region" content="IN-AP" />
@@ -59,8 +48,7 @@ const teUrl = lang === 'te' ? canonicalUrl : alternateLangUrl;
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Dr. Kamalakar Kosaraju - Kamalakar Heart Centre" />
-<meta property="og:locale" content={lang === 'te' ? 'te_IN' : 'en_IN'} />
-<meta property="og:locale:alternate" content={lang === 'te' ? 'en_IN' : 'te_IN'} />
+<meta property="og:locale" content="en_IN" />
 <meta property="og:site_name" content="Kamalakar Heart Centre" />
 
 <!-- Twitter -->

@@ -30,22 +30,19 @@ const schemas = [
 ];
 ---
 
-<BaseLayout lang="en" class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
+<BaseLayout class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
   <SEO
     slot="head"
     title="Heart Health Blog | Kamalakar Heart Centre Guntur"
     description="Expert cardiac health articles, prevention tips, and insights from Dr. Kamalakar Kosaraju, Interventional Cardiologist in Guntur."
     keywords={['cardiac health blog', 'heart health tips', 'cardiologist blog Guntur', 'heart disease prevention']}
     canonicalUrl="https://kamalakarheartcentre.com/blog/"
-    lang="en"
-    alternateLangUrl="https://kamalakarheartcentre.com/te/blog/"
     schemas={schemas}
     page="home"
   />
 
   <Header
     client:load
-    lang="en"
     content={content.nav}
     appointmentPhone={content.contact.appointmentPhone}
     currentPage="blog"
@@ -155,5 +152,5 @@ const schemas = [
     </section>
   </main>
 
-  <Footer content={content.footer} navContent={content.nav} lang="en" currentPage="blog" />
+  <Footer content={content.footer} navContent={content.nav} currentPage="blog" />
 </BaseLayout>

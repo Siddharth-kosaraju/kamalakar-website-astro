@@ -102,8 +102,8 @@ function generateTimestamps(count) {
   });
 }
 
-// Collect all routes from built HTML files
-const routes = collectHtmlRoutes(DIST).filter((r) => !EXCLUDE.has(r));
+// Collect all routes from built HTML files (exclude /te/ routes)
+const routes = collectHtmlRoutes(DIST).filter((r) => !EXCLUDE.has(r) && !r.startsWith('/te/') && r !== '/te/');
 
 // Sort routes by group, then alphabetically within each group
 routes.sort((a, b) => {

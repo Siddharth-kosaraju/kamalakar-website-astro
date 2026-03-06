@@ -47,22 +47,19 @@ const icons = [
 ];
 ---
 
-<BaseLayout lang="en" class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
+<BaseLayout class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
   <SEO
     slot="head"
     title="Heart Care Services in Guntur | Kamalakar Heart Centre"
     description="Comprehensive cardiac services at Kamalakar Heart Centre, Guntur: Angioplasty, Pacemaker Implantation, ECG, 2D Echo, Heart Failure Management & Emergency Cardiac Care by Dr. Kamalakar."
     keywords={['cardiac services Guntur', 'heart care services Guntur', 'angioplasty Guntur', 'pacemaker Guntur', 'ECG test Guntur', '2D Echo Guntur']}
     canonicalUrl="https://kamalakarheartcentre.com/services/"
-    lang="en"
-    alternateLangUrl="https://kamalakarheartcentre.com/te/services/"
     schemas={schemas}
     page="home"
   />
 
   <Header
     client:load
-    lang="en"
     content={content.nav}
     appointmentPhone={content.contact.appointmentPhone}
     currentPage="services"
@@ -137,5 +134,5 @@ const icons = [
     </section>
   </main>
 
-  <Footer content={content.footer} navContent={content.nav} lang="en" currentPage="services" />
+  <Footer content={content.footer} navContent={content.nav} currentPage="services" />
 </BaseLayout>

@@ -27,22 +27,19 @@ const schemas = [
 ];
 ---
 
-<BaseLayout lang="en" class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
+<BaseLayout class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
   <SEO
     slot="head"
     title="About Dr. Kamalakar Kosaraju | Best Cardiologist in Guntur"
     description="Dr. Kamalakar Kosaraju is a Gold Medalist Interventional Cardiologist in Guntur with 10+ years experience, 5,000+ cardiac procedures, and FESC certification from the European Society of Cardiology."
     keywords={['Dr. Kamalakar Kosaraju', 'cardiologist Guntur', 'interventional cardiologist Guntur', 'FESC certified cardiologist', 'gold medalist cardiologist Guntur']}
     canonicalUrl="https://kamalakarheartcentre.com/about/"
-    lang="en"
-    alternateLangUrl="https://kamalakarheartcentre.com/te/about/"
     schemas={schemas}
     page="home"
   />
 
   <Header
     client:load
-    lang="en"
     content={content.nav}
     appointmentPhone={content.contact.appointmentPhone}
     currentPage="about"
@@ -160,5 +157,5 @@ const schemas = [
     </section>
   </main>
 
-  <Footer content={content.footer} navContent={content.nav} lang="en" currentPage="about" />
+  <Footer content={content.footer} navContent={content.nav} currentPage="about" />
 </BaseLayout>

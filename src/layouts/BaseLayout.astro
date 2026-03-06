@@ -2,15 +2,14 @@
 import '../styles/global.css';
 
 interface Props {
-  lang?: 'en' | 'te';
   class?: string;
 }
 
-const { lang = 'en', class: className = '' } = Astro.props;
+const { class: className = '' } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang={lang} data-lang={lang} data-gtag-id="GT-WRGJZJKJ">
+<html lang="en" data-gtag-id="GT-WRGJZJKJ">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,29 +28,6 @@ const { lang = 'en', class: className = '' } = Astro.props;
   <!-- DNS prefetch for analytics -->
   <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
   <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-
-  <!-- Language auto-detection (English pages only) -->
-  {lang === 'en' && (
-    <script is:inline>
-      (function() {
-        try {
-          var pref = localStorage.getItem('lang-preference');
-          if (pref === 'en') return;
-          if (pref === 'te') {
-            window.location.replace('/te' + window.location.pathname + window.location.search);
-            return;
-          }
-          var langs = navigator.languages || [navigator.language || ''];
-          for (var i = 0; i < langs.length; i++) {
-            if (langs[i].substring(0, 2) === 'te') {
-              window.location.replace('/te' + window.location.pathname + window.location.search);
-              return;
-            }
-          }
-        } catch(e) {}
-      })();
-    </script>
-  )}
 
   <!-- SEO + schemas injected via slot -->
   <slot name="head" />

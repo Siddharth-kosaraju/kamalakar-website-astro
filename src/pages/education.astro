@@ -15,22 +15,19 @@ const schemas = [
 ];
 ---
 
-<BaseLayout lang="en" class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
+<BaseLayout class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
   <SEO
     slot="head"
     title={content.seo.educationTitle}
     description={content.seo.educationDescription}
     keywords={content.seo.keywords}
     canonicalUrl="https://kamalakarheartcentre.com/education/"
-    lang="en"
-    alternateLangUrl="https://kamalakarheartcentre.com/te/education/"
     schemas={schemas}
     page="education"
   />
 
   <Header
     client:load
-    lang="en"
     content={content.nav}
     appointmentPhone={content.contact.appointmentPhone}
     currentPage="education"
@@ -53,7 +50,6 @@ const schemas = [
       <VideoGallery
         client:visible
         videos={content.education.videos}
-        lang="en"
         labels={{
           featuredVideos: content.education.labels.featuredVideos,
           upNext: content.education.labels.upNext,
@@ -109,5 +105,5 @@ const schemas = [
     </div>
   </div>
 
-  <Footer content={content.footer} navContent={content.nav} lang="en" currentPage="education" />
+  <Footer content={content.footer} navContent={content.nav} currentPage="education" />
 </BaseLayout>

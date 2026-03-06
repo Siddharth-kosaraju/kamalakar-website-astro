@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, Globe, MapPin, Clock, Calendar } from 'lucide-react';
+import { Menu, X, Phone, MapPin, Clock, Calendar } from 'lucide-react';
 
 interface NavContent {
   home: string;
@@ -28,14 +28,6 @@ export default function Header({ lang, content, appointmentPhone, currentPage = 
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  const prefix = lang === 'te' ? '/te' : '';
-  const altLangLabel = lang === 'en' ? 'తెలుగు' : 'English';
-
-  // Build the alternate language URL from the current page path (passed as prop)
-  const altLangUrl = lang === 'en'
-    ? `/te${currentPath === '/' ? '/' : currentPath}`
-    : currentPath.replace(/^\/te/, '') || '/';
-
   useEffect(() => {
     let ticking = false;
     const handleScroll = () => {
@@ -52,12 +44,12 @@ export default function Header({ lang, content, appointmentPhone, currentPage = 
   }, []);
 
   const navLinks = [
-    { name: content.home, href: `${prefix}/`, page: 'home' as const },
-    { name: content.about, href: `${prefix}/about/`, page: 'about' as const },
-    { name: content.services, href: `${prefix}/services/`, page: 'services' as const },
-    { name: content.education, href: `${prefix}/education/`, page: 'education' as const },
-    { name: content.blog, href: `${prefix}/blog/`, page: 'blog' as const },
-    { name: content.contact, href: `${prefix}/contact/`, page: 'contact' as const },
+    { name: content.home, href: '/', page: 'home' as const },
+    { name: content.about, href: '/about/', page: 'about' as const },
+    { name: content.services, href: '/services/', page: 'services' as const },
+    { name: content.education, href: '/education/', page: 'education' as const },
+    { name: content.blog, href: '/blog/', page: 'blog' as const },
+    { name: content.contact, href: '/contact/', page: 'contact' as const },
   ];
 
   return (
@@ -80,16 +72,6 @@ export default function Header({ lang, content, appointmentPhone, currentPage = 
               <Clock size={14} className="text-accent" />
               <span>{content.hours}</span>
             </span>
-            <a
-              href={altLangUrl}
-              onClick={() => {
-                try { localStorage.setItem('lang-preference', lang === 'en' ? 'te' : 'en'); } catch(e) {}
-              }}
-              className="flex items-center gap-1 min-h-[44px] py-2 px-3 hover:text-accent transition-colors font-medium border-l border-white/20 pl-4"
-            >
-              <Globe size={14} aria-hidden="true" />
-              <span>{altLangLabel}</span>
-            </a>
           </div>
         </div>
       </div>
@@ -99,7 +81,7 @@ export default function Header({ lang, content, appointmentPhone, currentPage = 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             {/* Branding */}
-            <a href={`${prefix}/`} className="flex items-center gap-3 group">
+            <a href="/" className="flex items-center gap-3 group">
               <div className="relative">
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-105 transition-all duration-300 overflow-hidden bg-white">
                   <img
