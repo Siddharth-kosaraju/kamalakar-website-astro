@@ -1,0 +1,227 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* ============================================
+   Tailwind v4 Theme — Design Tokens
+   Migrated from tailwind.config.js (v3)
+   ============================================ */
+
+@theme {
+  /* Colors */
+  --color-primary: #0B2447;
+  --color-primary-light: #19376D;
+  --color-primary-dark: #021024;
+  --color-secondary: #576CBC;
+  --color-secondary-light: #A5D7E8;
+  --color-accent: #C5A059;
+  --color-accent-light: #E5C585;
+  --color-accent-dark: #8C7035;
+  --color-medical: #00509E;
+  --color-medical-light: #E0F2FE;
+  --color-medical-dark: #002855;
+  --color-heart: #D91E36;
+  --color-heart-light: #FFE5E7;
+  --color-neutral-50: #F8FAFC;
+  --color-neutral-100: #F1F5F9;
+  --color-neutral-200: #E2E8F0;
+  --color-neutral-800: #1E293B;
+  --color-neutral-900: #0F172A;
+
+  /* Fonts */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+
+  /* Animations */
+  --animate-fade-in-up: fade-in-up 0.8s ease-out forwards;
+  --animate-fade-in: fade-in 0.6s ease-out forwards;
+  --animate-slide-in-right: slide-in-right 0.8s ease-out forwards;
+  --animate-scale-up: scale-up 0.6s ease-out forwards;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  /* Shadows */
+  --shadow-soft: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  --shadow-glow: 0 0 15px rgba(197, 160, 89, 0.3);
+}
+
+@keyframes fade-in-up {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slide-in-right {
+  0% { transform: translateX(20px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes scale-up {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+/* ============================================
+   Self-hosted Fonts
+   ============================================ */
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/inter-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/inter-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('/fonts/playfair-display-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Keyboard focus ring (a11y) */
+@layer base {
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+}
+
+/* Skip to main content link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  padding: 0.75rem 1rem;
+  min-height: 44px;
+  min-width: 44px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  background: #0B2447;
+  color: white;
+  font-weight: 600;
+  z-index: 9999;
+  transition: top 0.2s;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Scroll margin for fixed header */
+#main-content {
+  scroll-margin-top: 7rem;
+}
+
+/* Custom utility: gradient backgrounds */
+.bg-mesh-gradient {
+  background-image: radial-gradient(at 0% 0%, rgba(11, 36, 71, 0.1) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(197, 160, 89, 0.1) 0px, transparent 50%);
+}
+.bg-gold-gradient {
+  background-image: linear-gradient(135deg, #C5A059 0%, #E5C585 100%);
+}
+.bg-blue-gradient {
+  background-image: linear-gradient(135deg, #0B2447 0%, #19376D 100%);
+}
+
+/* ============================================
+   Blog Prose Refinements
+   ============================================ */
+
+/* Remove hr between sections — h2 margin provides enough separation */
+.prose hr {
+  display: none;
+}
+
+/* Give h2 a clear top border instead for section breaks */
+.prose h2 {
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 3rem;
+}
+@media (prefers-color-scheme: dark) {
+  .prose h2 {
+    border-top-color: rgba(255, 255, 255, 0.08);
+  }
+}
+.dark .prose h2 {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Slightly more generous paragraph spacing */
+.prose p {
+  margin-bottom: 1.5em;
+}
+
+/* Table styling for dark backgrounds */
+.prose table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.9375em;
+}
+.prose thead th {
+  text-align: left;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid rgba(197, 160, 89, 0.4);
+}
+.prose tbody td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+.dark .prose tbody td {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+.prose tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Blockquote accent styling */
+.prose blockquote {
+  border-left-color: var(--color-accent);
+  background: rgba(197, 160, 89, 0.05);
+  border-radius: 0 0.75rem 0.75rem 0;
+  padding: 1.25rem 1.5rem;
+}
+
+/* Better spacing around not-prose blocks inside prose */
+.prose > .not-prose {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}

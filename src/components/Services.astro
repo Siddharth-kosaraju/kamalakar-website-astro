@@ -1,0 +1,115 @@
+---
+/**
+ * Services section — homepage teaser.
+ * Shows 3 featured services + "View All Services" CTA linking to /services/.
+ * Icons are inline SVGs replacing lucide-react imports.
+ */
+interface Props {
+  content: {
+    heading: string;
+    expertiseChip?: string;
+    description?: string;
+    learnMore?: string;
+    viewAllBtn?: string;
+    items: { title: string; desc: string }[];
+  };
+  lang: 'en' | 'te';
+}
+
+const { content, lang } = Astro.props;
+
+const SERVICE_SLUGS = [
+  'angioplasty',
+  'heart-failure',
+  'hypertension-cholesterol',
+];
+
+const langPrefix = lang === 'te' ? '/te' : '';
+const servicesHref = lang === 'te' ? '/te/services/' : '/services/';
+
+// Show only first 3 featured services
+const featuredItems = content.items.slice(0, 3);
+
+// Inline SVG icon strings for each featured service (Activity, HeartPulse, Droplets)
+const icons = [
+  // Activity
+  `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg>`,
+  // HeartPulse
+  `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg>`,
+  // Droplets
+  `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/><path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/></svg>`,
+];
+
+// Activity icon (small, for the chip)
+const activityIconSmall = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg>`;
+
+// ArrowRight icon
+const arrowRightIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>`;
+---
+
+<section id="services" class="relative py-24 bg-neutral-50 dark:bg-primary-dark border-t border-gray-200 dark:border-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    {/* Section header */}
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-primary/50 text-primary dark:text-white mb-6 border border-gray-100 dark:border-primary">
+        <Fragment set:html={activityIconSmall} />
+        <span class="text-sm font-bold uppercase tracking-wider">{content.expertiseChip || 'Our Expertise'}</span>
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold font-serif text-primary dark:text-white mb-6">{content.heading}</h2>
+      <p class="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+        {content.description || 'World-class cardiac care delivered with precision and compassion using state-of-the-art technology.'}
+      </p>
+    </div>
+
+    {/* Services grid — 3 featured */}
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {featuredItems.map((item, index) => (
+        <a
+          href={`${langPrefix}/services/${SERVICE_SLUGS[index] || ''}`}
+          class="group relative overflow-hidden rounded-xl p-8 bg-white dark:bg-primary-light/10 border border-gray-100 dark:border-primary-light/20 hover:border-accent hover:shadow-xl transition-all duration-300 hover:-translate-y-1 no-underline"
+          itemscope
+          itemtype="https://schema.org/MedicalProcedure"
+        >
+          {/* Icon */}
+          <div class="w-14 h-14 rounded-xl bg-primary-light/10 dark:bg-white/5 flex items-center justify-center text-primary dark:text-accent mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+            <Fragment set:html={icons[index] || icons[0]} />
+          </div>
+
+          {/* Title */}
+          <h3 class="text-xl font-bold font-serif text-primary dark:text-white mb-3 group-hover:text-primary-light dark:group-hover:text-accent-light transition-colors duration-300">
+            {item.title}
+          </h3>
+
+          {/* Description */}
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6 text-base">
+            {item.desc}
+          </p>
+
+          {/* Learn more indicator */}
+          <span
+            class="flex items-center gap-2 text-accent font-bold text-sm uppercase tracking-wide opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300"
+            aria-hidden="true"
+          >
+            <span>{content.learnMore || 'Learn more'}</span>
+            <Fragment set:html={arrowRightIcon} />
+          </span>
+          <span class="sr-only">Learn more about {item.title}</span>
+        </a>
+      ))}
+    </div>
+
+    {/* View All Services CTA */}
+    <div class="text-center mt-12">
+      <a
+        href={servicesHref}
+        class="inline-flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-primary-light transition-all hover:-translate-y-0.5"
+      >
+        {content.viewAllBtn || 'View All Services'}
+        <Fragment set:html={arrowRightIcon} />
+      </a>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mt-3">
+        {content.items.length} {lang === 'te' ? 'ప్రత్యేక సేవలు అందుబాటులో ఉన్నాయి' : 'specialized services available'}
+      </p>
+    </div>
+  </div>
+</section>

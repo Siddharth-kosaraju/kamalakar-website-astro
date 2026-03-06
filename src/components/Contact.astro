@@ -1,0 +1,97 @@
+---
+/**
+ * Contact section — homepage teaser.
+ * Shows essential contact info, links to full /contact/ page for map & directions.
+ */
+interface Props {
+  content: {
+    heading: string;
+    addressLabel: string;
+    hoursLabel: string;
+    contactLabel: string;
+    appointmentPhone: string;
+    helpText?: string;
+    getDirections?: string;
+    hoursText?: string;
+    sundayEmergency?: string;
+    address: string[];
+    viewLocationBtn?: string;
+  };
+  appointmentContent: {
+    heading: string;
+  };
+  lang?: string;
+}
+
+const { content, appointmentContent, lang = 'en' } = Astro.props;
+const contactHref = lang === 'te' ? '/te/contact/' : '/contact/';
+---
+
+<section id="contact" class="py-24 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold font-serif text-primary dark:text-white mb-4">{content.heading}</h2>
+      <p class="text-gray-600 dark:text-gray-400">{content.helpText || 'We are here to help you. Visit us or book an appointment online.'}</p>
+    </div>
+
+    <div class="max-w-3xl mx-auto bg-neutral-50 dark:bg-primary-dark rounded-3xl overflow-hidden shadow-2xl border border-gray-100 dark:border-gray-800 p-8 md:p-12">
+      <div class="grid md:grid-cols-3 gap-8">
+        {/* Address */}
+        <div class="flex flex-col items-center text-center gap-3">
+          <div class="w-12 h-12 bg-white dark:bg-white/10 rounded-xl flex items-center justify-center text-primary dark:text-accent shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <span class="text-xs font-bold text-primary dark:text-accent-light uppercase tracking-widest mb-1 block">{content.addressLabel}</span>
+            {content.address.map((line) => (
+              <p class="text-sm font-medium text-gray-700 dark:text-gray-300">{line}</p>
+            ))}
+          </div>
+        </div>
+
+        {/* Hours */}
+        <div class="flex flex-col items-center text-center gap-3">
+          <div class="w-12 h-12 bg-white dark:bg-white/10 rounded-xl flex items-center justify-center text-primary dark:text-accent shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <span class="text-xs font-bold text-primary dark:text-accent-light uppercase tracking-widest mb-1 block">{content.hoursLabel}</span>
+            <p class="text-sm font-medium text-gray-700 dark:text-gray-300">{content.hoursText || 'Mon - Sat: 10:00 AM - 6:00 PM'}</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400">{content.sundayEmergency || 'Sunday: Emergency Only'}</p>
+          </div>
+        </div>
+
+        {/* Phone */}
+        <div class="flex flex-col items-center text-center gap-3">
+          <div class="w-12 h-12 bg-white dark:bg-white/10 rounded-xl flex items-center justify-center text-primary dark:text-accent shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <span class="text-xs font-bold text-primary dark:text-accent-light uppercase tracking-widest mb-1 block">{content.contactLabel}</span>
+            <a href={`tel:${content.appointmentPhone}`} class="block text-lg font-bold text-primary dark:text-white hover:text-accent transition-colors">
+              99594 23566
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* CTAs */}
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 pt-8 border-t border-gray-200 dark:border-gray-700">
+        <a
+          href={`tel:${content.appointmentPhone}`}
+          class="flex items-center justify-center gap-3 bg-primary text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-primary-light transition-all hover:-translate-y-1"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+          {appointmentContent.heading}
+        </a>
+        <a
+          href={contactHref}
+          class="flex items-center justify-center gap-2 text-primary dark:text-white font-bold px-6 py-3 rounded-xl border-2 border-primary/20 dark:border-white/20 hover:border-primary dark:hover:border-white hover:bg-primary/5 dark:hover:bg-white/5 transition-all"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+          {content.viewLocationBtn || 'View Location & Directions'}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

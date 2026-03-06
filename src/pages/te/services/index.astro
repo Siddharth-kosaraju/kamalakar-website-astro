@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SEO from '../../../components/SEO.astro';
+import Header from '../../../components/Header';
+import Footer from '../../../components/Footer.astro';
+import { getSiteContent, SERVICE_SLUGS } from '../../../utils/content';
+import { buildBreadcrumbSchema } from '../../../utils/schemas';
+
+const content = await getSiteContent('te');
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalWebPage',
+    url: 'https://kamalakarheartcentre.com/te/services/',
+    name: 'గుంటూరులో గుండె వైద్య సేవలు - కమలాకర్ హార్ట్ సెంటర్',
+    description: 'యాంజియోప్లాస్టీ, పేస్‌మేకర్, ECG, 2D ఎకో, హార్ట్ ఫెయిల్యూర్ మేనేజ్‌మెంట్ మరియు ఎమర్జెన్సీ కార్డియాక్ కేర్ గుంటూరులో.',
+    inLanguage: 'te',
+    isPartOf: { '@type': 'WebSite', url: 'https://kamalakarheartcentre.com', name: 'Kamalakar Heart Centre' },
+    about: { '@type': 'MedicalSpecialty', name: 'Cardiology' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'కమలాకర్ హార్ట్ సెంటర్ కార్డియాక్ సేవలు',
+    itemListElement: content.services.items.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.title,
+      url: `https://kamalakarheartcentre.com/te/services/${SERVICE_SLUGS[i]}/`,
+    })),
+  },
+  buildBreadcrumbSchema([
+    { name: 'హోమ్', url: 'https://kamalakarheartcentre.com/te/' },
+    { name: 'సేవలు', url: 'https://kamalakarheartcentre.com/te/services/' },
+  ]),
+];
+
+const icons = [
+  `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg>`,
+  `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg>`,
+  `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/><path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/></svg>`,
+  `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2"/><path d="M6 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h1"/><path d="m11 7-3 5h4l-3 5"/><line x1="22" x2="22" y1="11" y2="13"/></svg>`,
+  `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 10H6"/><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.28a1 1 0 0 0-.684-.948l-1.923-.641a1 1 0 0 1-.578-.502l-1.539-3.076A1 1 0 0 0 16.382 8H14"/><path d="M8 8v4"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>`,
+  `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2v2"/><path d="M5 2v2"/><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"/><path d="M8 15a6 6 0 0 0 12 0v-3"/><circle cx="20" cy="10" r="2"/></svg>`,
+];
+---
+
+<BaseLayout lang="te" class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
+  <SEO
+    slot="head"
+    title="గుంటూరులో గుండె వైద్య సేవలు | కమలాకర్ హార్ట్ సెంటర్"
+    description="కమలాకర్ హార్ట్ సెంటర్, గుంటూరులో సమగ్ర కార్డియాక్ సేవలు: యాంజియోప్లాస్టీ, పేస్‌మేకర్, ECG, 2D ఎకో, హార్ట్ ఫెయిల్యూర్ & ఎమర్జెన్సీ కార్డియాక్ కేర్."
+    keywords={['గుంటూరు కార్డియాక్ సేవలు', 'గుంటూరు గుండె వైద్యం', 'యాంజియోప్లాస్టీ గుంటూరు', 'పేస్‌మేకర్ గుంటూరు']}
+    canonicalUrl="https://kamalakarheartcentre.com/te/services/"
+    lang="te"
+    alternateLangUrl="https://kamalakarheartcentre.com/services/"
+    schemas={schemas}
+    page="home"
+  />
+
+  <Header
+    client:load
+    lang="te"
+    content={content.nav}
+    appointmentPhone={content.contact.appointmentPhone}
+    currentPage="services"
+    currentPath={Astro.url.pathname}
+  />
+
+  <main id="main-content" aria-label="మా సేవలు">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-4">
+      <ol class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+        <li>
+          <a href="/te/" class="hover:text-primary dark:hover:text-white transition-colors">హోమ్</a>
+        </li>
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </li>
+        <li class="text-primary dark:text-white font-medium" aria-current="page">సేవలు</li>
+      </ol>
+    </nav>
+
+    <!-- Hero -->
+    <section class="bg-gradient-to-br from-primary/5 to-transparent dark:from-primary/10 py-16 md:py-20">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl md:text-5xl font-bold font-serif text-primary dark:text-white mb-6 leading-tight">
+          {content.services.heading}
+        </h1>
+        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl leading-relaxed">
+          {content.services.description}
+        </p>
+      </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {content.services.items.map((item, index) => (
+          <a
+            href={`/te/services/${SERVICE_SLUGS[index]}/`}
+            class="group relative overflow-hidden rounded-xl p-8 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 hover:border-accent hover:shadow-xl transition-all duration-300 hover:-translate-y-1 no-underline"
+          >
+            <div class="w-14 h-14 rounded-xl bg-primary/10 dark:bg-white/5 flex items-center justify-center text-primary dark:text-accent mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+              <Fragment set:html={icons[index] || icons[0]} />
+            </div>
+            <h2 class="text-xl font-bold font-serif text-primary dark:text-white mb-3 group-hover:text-accent dark:group-hover:text-accent-light transition-colors duration-300">
+              {item.title}
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6 text-base">
+              {item.desc}
+            </p>
+            <span class="flex items-center gap-2 text-accent dark:text-accent-light font-bold text-sm uppercase tracking-wide opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+              {content.services.learnMore}
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-primary dark:bg-primary-light py-16">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold font-serif text-white mb-6">నిపుణ గుండె వైద్యం కావాలా?</h2>
+        <p class="text-white/80 mb-8 max-w-2xl mx-auto">కమలాకర్ హార్ట్ సెంటర్, గుంటూరులో వ్యక్తిగత కార్డియాక్ కేర్ కోసం డాక్టర్ కమలాకర్‌తో సంప్రదింపు బుక్ చేయండి.</p>
+        <a
+          href={`tel:${content.contact.appointmentPhone}`}
+          class="inline-flex items-center gap-3 bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-gray-100 transition-all hover:-translate-y-1"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          అపాయింట్‌మెంట్ బుక్ చేయండి
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer content={content.footer} navContent={content.nav} lang="te" currentPage="services" />
+</BaseLayout>

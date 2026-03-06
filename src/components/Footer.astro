@@ -1,0 +1,174 @@
+---
+/**
+ * Footer — static Astro component.
+ * Converted from Footer.tsx. No client-side JS needed.
+ * Navigation uses standard anchor links (no onClick handlers).
+ * Icons are inline SVGs replacing lucide-react imports.
+ */
+interface Props {
+  content: {
+    brandDescription: string;
+    quickLinksTitle: string;
+    servicesTitle: string;
+    contactTitle: string;
+    address: string;
+    hours: string;
+    copyright: string;
+    privacy: string;
+    terms: string;
+    serviceLinks: string[];
+  };
+  navContent: {
+    home: string;
+    about: string;
+    services: string;
+    education: string;
+    blog: string;
+    contact: string;
+    [key: string]: string;
+  };
+  lang: 'en' | 'te';
+  currentPage?: string;
+}
+
+const { content, navContent, lang, currentPage = 'home' } = Astro.props;
+
+const SERVICE_SLUGS = [
+  'angioplasty',
+  'heart-failure',
+  'hypertension-cholesterol',
+  'pacemaker',
+  'emergency-cardiac-care',
+  'ecg-echo',
+];
+
+const langPrefix = lang === 'te' ? '/te' : '';
+
+// All quick links point to standalone pages (consistent with header nav)
+const navLinks = [
+  { name: navContent.home, href: `${langPrefix}/` },
+  { name: navContent.about, href: `${langPrefix}/about/` },
+  { name: navContent.services, href: `${langPrefix}/services/` },
+  { name: navContent.education, href: `${langPrefix}/education/` },
+  { name: navContent.blog, href: `${langPrefix}/blog/` },
+  { name: navContent.contact, href: `${langPrefix}/contact/` },
+];
+
+// Footer page links with lang prefix
+const privacyHref = `${langPrefix}/privacy-policy`;
+const termsHref = `${langPrefix}/terms-of-service`;
+---
+
+<footer class="bg-primary-dark text-white pt-20 pb-10 border-t border-primary/20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+
+      {/* Brand */}
+      <div class="space-y-6">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center bg-white/10 border border-white/20 overflow-hidden">
+            <img
+              src="/images/logo.svg"
+              alt="Kamalakar Heart Centre Logo"
+              width="48"
+              height="48"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-contain"
+            />
+          </div>
+          <div>
+            <p class="text-2xl font-serif font-bold tracking-tight text-white">Kamalakar</p>
+            <p class="text-xs text-accent-light uppercase tracking-widest font-semibold">Heart Centre</p>
+          </div>
+        </div>
+        <p class="text-gray-300 text-sm leading-relaxed">
+          {content.brandDescription}
+        </p>
+        <div class="flex gap-4">
+          <a
+            href="https://www.facebook.com/DR.Kamalakarkosaraju/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Follow Dr. Kamalakar on Facebook"
+            class="group flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#1463cc] hover:bg-[#1044A8] text-white text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 shadow-md hover:shadow-lg"
+          >
+            {/* Facebook icon */}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            <span>Facebook</span>
+          </a>
+        </div>
+      </div>
+
+      {/* Quick Links - SEO: nav landmark */}
+      <nav aria-label="Quick links">
+        <h3 class="text-lg font-bold font-serif mb-6 text-white border-b border-accent/20 pb-2 inline-block">{content.quickLinksTitle}</h3>
+        <ul class="space-y-3 text-sm text-gray-300">
+          {navLinks.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="hover:text-accent hover:pl-2 transition-all duration-300 flex items-center gap-2"
+              >
+                <span class="w-1 h-1 bg-accent rounded-full opacity-0 hover:opacity-100 transition-opacity"></span>
+                {item.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      {/* Services */}
+      <div>
+        <h3 class="text-lg font-bold font-serif mb-6 text-white border-b border-accent/20 pb-2 inline-block">{content.servicesTitle}</h3>
+        <ul class="space-y-3 text-sm text-gray-300">
+          {content.serviceLinks.map((item, idx) => (
+            <li>
+              <a
+                href={`${langPrefix}/services/${SERVICE_SLUGS[idx] || ''}`}
+                class="hover:text-accent transition-colors"
+              >
+                {item}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Contact */}
+      <div>
+        <h3 class="text-lg font-bold font-serif mb-6 text-white border-b border-accent/20 pb-2 inline-block">{content.contactTitle}</h3>
+        <ul class="space-y-4 text-sm text-gray-300">
+          <li class="flex items-start gap-3">
+            {/* MapPin icon */}
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent mt-1 flex-shrink-0"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>{content.address}</span>
+          </li>
+          <li class="flex items-center gap-3">
+            {/* Phone icon */}
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent flex-shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:9959423566" class="hover:text-white transition-colors">99594 23566</a>
+          </li>
+          <li class="flex items-center gap-3">
+            {/* Mail icon */}
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent flex-shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <a href="mailto:info@kamalakarheartcentre.com" class="hover:text-white transition-colors">info@kamalakarheartcentre.com</a>
+          </li>
+          <li class="flex items-center gap-3">
+            {/* Clock icon */}
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent flex-shrink-0"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>{content.hours}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+      <p>{content.copyright}</p>
+      <div class="flex gap-6">
+        <a href={privacyHref} class="hover:text-accent transition-colors">{content.privacy}</a>
+        <a href={termsHref} class="hover:text-accent transition-colors">{content.terms}</a>
+      </div>
+    </div>
+  </div>
+</footer>

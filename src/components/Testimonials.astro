@@ -1,0 +1,95 @@
+---
+/**
+ * Testimonials section — static Astro component.
+ * Converted from Testimonials.tsx. No client-side JS needed.
+ * Icons are inline SVGs replacing lucide-react imports.
+ */
+interface Props {
+  content: {
+    heading: string;
+    successStories?: string;
+    subtitle?: string;
+    verifiedPatient?: string;
+    joinedText?: string;
+    items: { text: string; author: string }[];
+  };
+}
+
+const { content } = Astro.props;
+
+// Star SVG (filled) for ratings
+const starIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fill-accent text-accent"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+
+// Quote SVG (large decorative)
+const quoteIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></svg>`;
+---
+
+<section id="testimonials" class="relative py-24 bg-primary-dark overflow-hidden">
+  {/* Background Effect */}
+  <div class="absolute inset-0 bg-mesh-gradient opacity-10 pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    {/* Section header */}
+    <div class="text-center mb-20">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white mb-6 backdrop-blur-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent fill-accent"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span class="text-sm font-bold uppercase tracking-wider">{content.successStories || 'Patient Success Stories'}</span>
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold font-serif text-white mb-6">{content.heading}</h2>
+      <p class="text-gray-300 text-lg max-w-2xl mx-auto font-light">
+        {content.subtitle || 'Real experiences from patients who entrusted their hearts to Dr. Kamalakar.'}
+      </p>
+    </div>
+
+    {/* Testimonials grid */}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {content.items.map((item) => (
+        <div class="group relative rounded-2xl p-8 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-accent/30 transition-all duration-500 hover:-translate-y-2">
+          {/* Content */}
+          <div class="relative z-10 h-full flex flex-col">
+            {/* Star rating */}
+            <div class="flex gap-1 mb-6">
+              <Fragment set:html={starIcon} />
+              <Fragment set:html={starIcon} />
+              <Fragment set:html={starIcon} />
+              <Fragment set:html={starIcon} />
+              <Fragment set:html={starIcon} />
+            </div>
+
+            {/* Quote icon */}
+            <div class="absolute top-4 right-4 text-white/5 group-hover:text-accent/20 transition-colors duration-500">
+              <Fragment set:html={quoteIcon} />
+            </div>
+
+            {/* Quote text */}
+            <p class="text-lg leading-relaxed text-gray-300 font-light italic mb-8 flex-grow">
+              &ldquo;{item.text}&rdquo;
+            </p>
+
+            {/* Author */}
+            <div class="flex items-center gap-4 pt-6 border-t border-white/10 mt-auto">
+              <div class="w-10 h-10 rounded-full bg-accent flex items-center justify-center font-bold text-primary-dark uppercase shadow-lg">
+                {item.author.charAt(0)}
+              </div>
+              <div>
+                <p class="font-bold text-white text-base">{item.author}</p>
+                <p class="text-accent-light text-xs uppercase tracking-wider font-semibold">{content.verifiedPatient || 'Verified Patient'}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    {/* Trust indicator */}
+    <div class="mt-20 flex flex-col items-center justify-center text-center space-y-2">
+      <div class="flex -space-x-3 mb-2">
+        {[1, 2, 3, 4].map(() => (
+          <div class="w-10 h-10 rounded-full border-2 border-primary-dark bg-gray-300"></div>
+        ))}
+        <div class="w-10 h-10 rounded-full border-2 border-primary-dark bg-accent flex items-center justify-center text-primary-dark font-bold text-xs">+1k</div>
+      </div>
+      <p class="text-white/80 font-medium">{content.joinedText || 'Joined by 1000+ happy hearts'}</p>
+    </div>
+  </div>
+</section>

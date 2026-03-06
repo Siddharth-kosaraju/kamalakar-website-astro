@@ -1,0 +1,161 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer.astro';
+import { getSiteContent } from '../../utils/content';
+
+const content = await getSiteContent('te');
+---
+
+<BaseLayout lang="te" class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
+  <SEO
+    slot="head"
+    title="సేవల నిబంధనలు | Kamalakar Heart Centre"
+    description="Kamalakar Heart Centre సేవల నిబంధనలు. వెబ్‌సైట్ వాడకం నిబంధనలు."
+    canonicalUrl="https://kamalakarheartcentre.com/te/terms-of-service/"
+    lang="te"
+    alternateLangUrl="https://kamalakarheartcentre.com/terms-of-service/"
+    page="terms"
+  />
+
+  <Header
+    client:load
+    lang="te"
+    content={content.nav}
+    appointmentPhone={content.contact.appointmentPhone}
+    currentPage="home"
+    currentPath={Astro.url.pathname}
+  />
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 pt-28">
+    <h1 class="text-4xl font-bold mb-4 border-b-2 border-gray-300 dark:border-gray-700 pb-2">సేవల నిబంధనలు</h1>
+    <p class="text-gray-600 dark:text-gray-400 mb-8"><strong>ప్రభావవంతమైన తేదీ:</strong> 25 జనవరి 2026</p>
+
+    <div class="prose prose-lg dark:prose-invert max-w-none space-y-8">
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">1. సేవా నిబంధనల పరిచయం</h2>
+        <p>
+          <strong>కమలాకర్ హార్ట్ సెంటర్</strong> ("మేము", "మా", "మా")కు స్వాగతం. ఈ సేవల నిబంధనలు ("నిబంధనలు")
+          వెబ్‌సైట్ <strong>kamalakarheartcentre.com</strong> ("వెబ్‌సైట్")కు మీ ప్రాప్తి మరియు ఉపయోగాన్ని నియంత్రిస్తాయి.
+          ఈ వెబ్‌సైట్‌ను యాక్సెస్ చేయడం లేదా ఉపయోగించడం ద్వారా, మీరు ఈ నిబంధనలకు బద్ధులవుతారు. మీరు అంగీకరించకపోతే,
+          మీరు వెబ్‌సైట్‌ను ఉపయోగించకూడదు.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">2. అర్హత</h2>
+        <p>
+          ఈ వెబ్‌సైట్ కనీసం 18 సంవత్సరాల వయస్సు గల వ్యక్తుల కోసం ఉద్దేశించబడింది.
+          మీరు మరొక వ్యక్తి తరపున (చిన్నవారు లేదా ఆధారపడిన వ్యక్తి వంటివారు) వెబ్‌సైట్‌ను యాక్సెస్ చేస్తుంటే,
+          మీరు చట్టపరమైనంగా అధికారం కలిగి ఉన్నారని మీరు నిర్ధారిస్తారు.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">3. అందించిన సమాచారం యొక్క స్వభావం</h2>
+        <p>
+          ఈ వెబ్‌సైట్‌లో అందుబాటులో ఉన్న అన్ని కంటెంట్, వచనం, చిత్రాలు, గ్రాఫిక్స్ మరియు ఇతర పదార్థాలు
+          (సమిష్టిగా, "కంటెంట్"), <strong>సాధారణ సమాచార ప్రయోజనాల కోసం మాత్రమే</strong> అందించబడుతుంది.
+        </p>
+        <p>
+          కంటెంట్ వైద్య సలహా, రోగ నిర్ధారణ లేదా చికిత్సను ఏర్పరచదు మరియు అర్హమైన వైద్య నిపుణుడితో
+          సంప్రదించడానికి ప్రత్యామ్నాయంగా ఆధారపడకూడదు.
+          ఏదైనా వైద్య స్థితి గురించి సర్వదా మీ వైద్యుడు లేదా ఇతర అర్హమైన ఆరోగ్య సంరక్షణ ప్రదాత సలహాను కోరండి.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">4. వెబ్‌సైట్ యొక్క ఉపయోగం</h2>
+        <p>మీరు ఈ వెబ్‌సైట్‌ను చట్టపరమైన ప్రయోజనాల కోసం మాత్రమే మరియు భారతదేశంలోని అన్ని వర్తించే చట్టాలకు అనుగుణంగా ఉపయోగించడానికి అంగీకరిస్తారు.</p>
+        <ul class="list-disc pl-6 space-y-2 mt-4">
+          <li>మీరు వెబ్‌సైట్‌ను దుర్వినియోగం చేయకూడదు లేదా దాని ఏ భాగానికైనా అనధికార ప్రాప్తిని పొందడానికి ప్రయత్నించకూడదు.</li>
+          <li>మీరు ఏదైనా హానికరమైన, హానికరమైన, అపవాదకరమైన లేదా చట్టవిరుద్ధమైన కంటెంట్‌ను అప్‌లోడ్ చేయకూడదు లేదా ప్రసారం చేయకూడదు.</li>
+          <li>మీరు వెబ్‌సైట్ యొక్క కార్యాచరణ లేదా భద్రతకు జోక్యం చేసుకోకూడదు.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">5. అపాయింట్‌మెంట్‌లు మరియు ప్రశ్నలు</h2>
+        <p>
+          వెబ్‌సైట్ ద్వారా సమర్పించబడిన ఏదైనా అపాయింట్‌మెంట్ అభ్యర్థనలు లేదా ప్రశ్నలు
+          కమలాకర్ హార్ట్ సెంటర్ నిర్ధారణకు లోబడి ఉంటాయి. సాంకేతిక, కార్యాచరణ లేదా వైద్య నిర్బంధాల కారణంగా
+          మేము అపాయింట్‌మెంట్ లభ్యత లేదా ప్రతిస్పందన సమయాలను హామీ ఇవ్వము.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">6. మేధాసంపత్తి హక్కులు</h2>
+        <p>
+          వెబ్‌సైట్ మరియు దాని కంటెంట్‌లోని అన్ని మేధాసంపత్తి హక్కులు
+          కమలాకర్ హార్ట్ సెంటర్ యాజమాన్యంలో లేదా లైసెన్స్ ఇవ్వబడ్డాయి.
+        </p>
+        <ul class="list-disc pl-6 space-y-2 mt-4">
+          <li>మీరు వ్యక్తిగత, వాణిజ్యేతర ఉపయోగం కోసం మాత్రమే కంటెంట్‌ను వీక్షించవచ్చు మరియు ముద్రించవచ్చు.</li>
+          <li>మీరు ముందస్తు లిఖిత సమ్మతి లేకుండా ఏదైనా కంటెంట్‌ను పునరుత్పత్తి చేయకూడదు, పంపిణీ చేయకూడదు, సవరించకూడదు లేదా తిరిగి ప్రచురించకూడదు.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">7. మూడవ పక్ష లింక్‌లు</h2>
+        <p>
+          వెబ్‌సైట్ సౌలభ్యం కోసం మూడవ పక్ష వెబ్‌సైట్‌లకు లింక్‌లను కలిగి ఉండవచ్చు.
+          మేము ఈ వెబ్‌సైట్‌లను నియంత్రించము లేదా ఆమోదించము మరియు వాటి కంటెంట్,
+          విధానాలు లేదా పద్ధతులకు బాధ్యత వహించము.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">8. నిరాకరణలు</h2>
+        <p>
+          వెబ్‌సైట్ ఏ రకమైన హామీలు లేకుండా "అలాగే" మరియు "అందుబాటులో ఉన్నట్లుగా" అందించబడుతుంది,
+          స్పష్టమైన లేదా అవ్యక్తమైన.
+        </p>
+        <p>వెబ్‌సైట్ అంతరాయం లేకుండా, లోపం లేకుండా లేదా పూర్తిగా సురక్షితంగా ఉంటుందని మేము హామీ ఇవ్వము.</p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">9. బాధ్యత పరిమితి</h2>
+        <p>
+          చట్టం ద్వారా అనుమతించబడిన గరిష్ట స్థాయికి, కమలాకర్ హార్ట్ సెంటర్ ఏదైనా ప్రత్యక్ష,
+          పరోక్ష, ప్రాసంగిక, పరిణామకరమైన లేదా ప్రత్యేక నష్టాలకు బాధ్యత వహించదు
+          వెబ్‌సైట్ యొక్క మీ ఉపయోగం లేదా దాని కంటెంట్‌పై ఆధారపడడం వల్ల ఏర్పడుతుంది.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">10. ఈ నిబంధనలలో మార్పులు</h2>
+        <p>
+          మేము ఈ నిబంధనలను ఎప్పుడైనా నవీకరించడానికి లేదా సవరించడానికి హక్కును కలిగి ఉన్నాము.
+          ఏదైనా మార్పులు వెబ్‌సైట్‌లో పోస్ట్ చేయబడిన వెంటనే ప్రభావవంతమవుతాయి.
+          వెబ్‌సైట్‌ను కొనసాగించడం సవరించిన నిబంధనలను అంగీకరించడాన్ని సూచిస్తుంది.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">11. పాలన చట్టం మరియు అధికార పరిధి</h2>
+        <p>
+          ఈ నిబంధనలు భారతదేశం యొక్క చట్టాల ప్రకారం పాలించబడతాయి మరియు నిర్మాణం చేయబడతాయి.
+          అన్ని వివాదాలు భారతదేశంలోని సమర్థ న్యాయస్థానాల ప్రత్యేక అధికార పరిధికి లోబడి ఉంటాయి.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">12. మాతో సంప్రదించండి</h2>
+        <p>ఈ నిబంధనల గురించి ఏదైనా ప్రశ్నలు లేదా ఆందోళనలు ఉంటే, దయచేసి సంప్రదించండి:</p>
+        <p class="mt-4">
+          <strong>కమలాకర్ హార్ట్ సెంటర్</strong><br />
+          ఈమెయిల్: <a href="mailto:info@kamalakarheartcentre.com" class="text-primary dark:text-accent-light hover:underline">info@kamalakarheartcentre.com</a><br />
+          ఫోన్: <a href="tel:+919959423566" class="text-primary dark:text-accent-light hover:underline">+91 99594 23566</a><br />
+          స్థానం: భారతదేశం
+        </p>
+      </section>
+
+      <footer class="mt-12 pt-6 border-t border-gray-300 dark:border-gray-700 text-sm text-gray-600 dark:text-gray-400">
+        &copy; 2026 కమలాకర్ హార్ట్ సెంటర్. అన్ని హక్కులు ప్రత్యేకించబడ్డాయి.
+      </footer>
+    </div>
+  </main>
+
+  <Footer content={content.footer} navContent={content.nav} lang="te" currentPage="home" />
+</BaseLayout>

@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer.astro';
+import { getSiteContent } from '../utils/content';
+
+const content = await getSiteContent('en');
+---
+
+<BaseLayout lang="en" class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
+  <SEO
+    slot="head"
+    title="Privacy Policy | Kamalakar Heart Centre"
+    description="Privacy Policy of Kamalakar Heart Centre. How we collect, use and protect your data."
+    canonicalUrl="https://kamalakarheartcentre.com/privacy-policy/"
+    lang="en"
+    alternateLangUrl="https://kamalakarheartcentre.com/te/privacy-policy/"
+    page="privacy"
+  />
+
+  <Header
+    client:load
+    lang="en"
+    content={content.nav}
+    appointmentPhone={content.contact.appointmentPhone}
+    currentPage="home"
+    currentPath={Astro.url.pathname}
+  />
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 pt-28">
+    <h1 class="text-4xl font-bold mb-4 border-b-2 border-gray-300 dark:border-gray-700 pb-2">Privacy Policy</h1>
+    <p class="text-gray-600 dark:text-gray-400 mb-8"><strong>Effective Date:</strong> 25 January 2026</p>
+
+    <div class="prose prose-lg dark:prose-invert max-w-none space-y-8">
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">1. Introduction to Our Privacy Policy</h2>
+        <p>
+          Kamalakar Heart Centre ("we", "us", "our") is committed to protecting your privacy.
+          This Privacy Policy explains how we collect, use, store, and protect your personal data
+          when you visit <strong>kamalakarheartcentre.com</strong> ("Website").
+        </p>
+        <p>
+          This Policy is prepared in accordance with the Information Technology Act, 2000,
+          Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011,
+          and the Digital Personal Data Protection Act, 2023.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">2. Information We Collect</h2>
+        <p>We may collect the following categories of information:</p>
+        <ul class="list-disc pl-6 space-y-2 mt-4">
+          <li><strong>Personal Information:</strong> Name, email address, phone number, and other details voluntarily submitted through forms.</li>
+          <li><strong>Health-Related Information:</strong> Information you voluntarily share in enquiries or appointment requests.</li>
+          <li><strong>Technical Information:</strong> IP address, browser type, device information, and usage data collected via cookies or analytics tools.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">3. Purpose of Collection</h2>
+        <p>Your information may be used for the following purposes:</p>
+        <ul class="list-disc pl-6 space-y-2 mt-4">
+          <li>Responding to enquiries and appointment requests</li>
+          <li>Providing healthcare-related information and services</li>
+          <li>Improving Website performance and user experience</li>
+          <li>Legal and regulatory compliance</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">4. Legal Basis for Processing</h2>
+        <p>
+          We process personal data based on your consent, our legitimate interests in operating
+          and improving our services, and compliance with applicable legal obligations.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">5. Cookies and Tracking</h2>
+        <p>
+          The Website may use cookies and similar technologies to enhance functionality
+          and analyze usage patterns. You can control cookies through your browser settings.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">6. Data Sharing and Disclosure</h2>
+        <p>We do not sell or rent your personal data. We may share information only with:</p>
+        <ul class="list-disc pl-6 space-y-2 mt-4">
+          <li>Authorized service providers assisting in Website operations</li>
+          <li>Regulatory or legal authorities when required by law</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">7. Data Security</h2>
+        <p>
+          We implement reasonable technical and organizational safeguards to protect personal data
+          against unauthorized access, disclosure, alteration, or destruction.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">8. Data Retention</h2>
+        <p>
+          Personal data is retained only for as long as necessary to fulfill the purposes stated
+          in this Policy or as required under applicable law.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">9. Your Rights</h2>
+        <p>You have the right to:</p>
+        <ul class="list-disc pl-6 space-y-2 mt-4">
+          <li>Access your personal data</li>
+          <li>Request correction of inaccurate data</li>
+          <li>Withdraw consent where applicable</li>
+          <li>Request deletion of personal data, subject to legal obligations</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">10. Children's Privacy</h2>
+        <p>
+          This Website is not intended for children under 18 years of age.
+          We do not knowingly collect personal data from minors without parental consent.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">11. Updates to This Policy</h2>
+        <p>
+          We may update this Privacy Policy periodically to reflect changes in law or practices.
+          Updates will be posted on this page with a revised effective date.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">12. Contact Information</h2>
+        <p>For any privacy-related questions or requests, please contact:</p>
+        <p class="mt-4">
+          <strong>Kamalakar Heart Centre</strong><br />
+          Email: <a href="mailto:info@kamalakarheartcentre.com" class="text-primary dark:text-accent-light hover:underline">info@kamalakarheartcentre.com</a><br />
+          Phone: <a href="tel:+919959423566" class="text-primary dark:text-accent-light hover:underline">+91 99594 23566</a><br />
+          Location: India
+        </p>
+      </section>
+
+      <footer class="mt-12 pt-6 border-t border-gray-300 dark:border-gray-700 text-sm text-gray-600 dark:text-gray-400">
+        &copy; 2026 Kamalakar Heart Centre. All rights reserved.
+      </footer>
+    </div>
+  </main>
+
+  <Footer content={content.footer} navContent={content.nav} lang="en" currentPage="home" />
+</BaseLayout>

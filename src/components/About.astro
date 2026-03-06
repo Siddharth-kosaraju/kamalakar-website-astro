@@ -1,0 +1,109 @@
+---
+/**
+ * About section — homepage teaser.
+ * Shows doctor photo + brief intro, links to full /about/ page.
+ */
+interface Props {
+  content: {
+    heading: string;
+    p1: string;
+    p2: string;
+    experienceBadge: string;
+    servicesLinkText?: string;
+    learnMoreBtn?: string;
+    sectionChip?: string;
+    subtitle?: string;
+    roleTitle?: string;
+    credentialMD?: string;
+    credentialDM?: string;
+  };
+  lang?: string;
+}
+
+const { content, lang = 'en' } = Astro.props;
+const aboutHref = lang === 'te' ? '/te/about/' : '/about/';
+---
+
+<section id="about" class="py-20 bg-gradient-to-b from-white via-red-50/30 to-white dark:from-gray-900 dark:via-gray-800/30 dark:to-gray-900 transition-colors duration-300" aria-labelledby="about-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center">
+
+      {/* Image Side */}
+      <div class="mb-12 lg:mb-0 relative">
+        <div class="absolute -top-8 -left-8 w-32 h-32 bg-cardiac/10 dark:bg-red-900/20 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-8 -right-8 w-40 h-40 bg-heartbeat/10 dark:bg-red-900/20 rounded-full blur-3xl"></div>
+
+        <div class="relative z-10">
+          <div class="relative group">
+            <div class="absolute inset-0 bg-gradient-to-br from-cardiac to-heartbeat opacity-0 group-hover:opacity-20 rounded-3xl transition-opacity duration-500 blur-xl"></div>
+            <div class="relative border-4 border-cardiac/20 dark:border-red-900/30 rounded-3xl overflow-hidden shadow-2xl">
+              <picture>
+                <source srcset="/media/dr-kamalakar.webp" type="image/webp" />
+                <img
+                  src="/media/dr-kamalakar.jpg"
+                  width="600"
+                  height="800"
+                  loading="lazy"
+                  decoding="async"
+                  alt="Dr. Kamalakar Kosaraju - Best Cardiologist in Guntur | Angioplasty & Heart Care Specialist at Kothapet, Guntur"
+                  class="w-full h-auto object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500"
+                />
+              </picture>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+          </div>
+
+          {/* Doctor name badge */}
+          <div class="absolute bottom-8 left-8 right-8 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm p-5 rounded-2xl shadow-xl border border-white/50 dark:border-gray-700/50 z-20">
+            <p class="text-sm font-bold text-primary-red dark:text-red-400 uppercase tracking-wider">{content.subtitle || 'Cardiac Specialist'}</p>
+            <p class="text-xl font-bold text-gray-900 dark:text-white font-serif">Dr. Kamalakar Kosaraju</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400">{content.roleTitle || 'Interventional Cardiologist'}</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Content Side — Teaser */}
+      <div class="space-y-8">
+        <div>
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-primary-red/10 dark:bg-primary-red/20 text-primary-red dark:text-red-400 rounded-full text-sm font-bold uppercase tracking-wider mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            {content.sectionChip || 'About The Doctor'}
+          </div>
+          <h2 id="about-heading" class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight font-serif">
+            {content.heading}
+          </h2>
+        </div>
+
+        <p class="text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+          {content.p1}
+        </p>
+
+        {/* Compact credential highlights */}
+        <div class="flex flex-wrap gap-3">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300 rounded-full text-sm font-semibold border border-blue-200 dark:border-blue-800/50">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
+            {content.credentialMD || 'M.D. Gold Medalist'}
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-300 rounded-full text-sm font-semibold border border-blue-200 dark:border-blue-800/50">
+            {content.credentialDM || 'D.M. Cardiology'}
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-300 rounded-full text-sm font-semibold border border-red-200 dark:border-red-800/50">
+            FESC
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-amber-50 dark:bg-amber-900/20 text-amber-800 dark:text-amber-300 rounded-full text-sm font-semibold border border-amber-200 dark:border-amber-800/50">
+            {content.experienceBadge}
+          </span>
+        </div>
+
+        {/* Learn More CTA */}
+        <a
+          href={aboutHref}
+          class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-xl font-bold text-base shadow-lg hover:bg-primary-light transition-all hover:-translate-y-0.5"
+        >
+          {content.learnMoreBtn || 'Learn More About Dr. Kamalakar'}
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

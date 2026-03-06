@@ -1,0 +1,84 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  lang?: 'en' | 'te';
+  class?: string;
+}
+
+const { lang = 'en', class: className = '' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang={lang} data-lang={lang} data-gtag-id="GT-WRGJZJKJ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/svg+xml" href="/images/logo.svg" />
+  <link rel="llms" href="/llms.txt" />
+
+  <!-- Preload self-hosted fonts -->
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/playfair-display-latin.woff2" as="font" type="font/woff2" crossorigin />
+
+  <!-- DNS prefetch for analytics -->
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+  <!-- Language auto-detection (English pages only) -->
+  {lang === 'en' && (
+    <script is:inline>
+      (function() {
+        try {
+          var pref = localStorage.getItem('lang-preference');
+          if (pref === 'en') return;
+          if (pref === 'te') {
+            window.location.replace('/te' + window.location.pathname + window.location.search);
+            return;
+          }
+          var langs = navigator.languages || [navigator.language || ''];
+          for (var i = 0; i < langs.length; i++) {
+            if (langs[i].substring(0, 2) === 'te') {
+              window.location.replace('/te' + window.location.pathname + window.location.search);
+              return;
+            }
+          }
+        } catch(e) {}
+      })();
+    </script>
+  )}
+
+  <!-- SEO + schemas injected via slot -->
+  <slot name="head" />
+
+  <!-- Google tag (gtag.js) — lazy loaded -->
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    function loadGtag() {
+      var id = document.documentElement.dataset.gtagId;
+      if (!id) return;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+      s.onload = function() {
+        gtag('js', new Date());
+        gtag('config', id);
+      };
+      document.head.appendChild(s);
+    }
+    if (typeof requestIdleCallback !== 'undefined') requestIdleCallback(loadGtag, { timeout: 2500 });
+    else window.addEventListener('load', function() { setTimeout(loadGtag, 500); });
+  </script>
+</head>
+
+<body class={className}>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <slot />
+</body>
+</html>

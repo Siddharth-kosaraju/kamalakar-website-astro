@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SEO from '../components/SEO.astro';
+import Header from '../components/Header';
+import Footer from '../components/Footer.astro';
+import { getSiteContent } from '../utils/content';
+
+const content = await getSiteContent('en');
+---
+
+<BaseLayout lang="en" class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
+  <SEO
+    slot="head"
+    title="Terms of Service | Kamalakar Heart Centre"
+    description="Terms of Service of Kamalakar Heart Centre. Conditions for using our website."
+    canonicalUrl="https://kamalakarheartcentre.com/terms-of-service/"
+    lang="en"
+    alternateLangUrl="https://kamalakarheartcentre.com/te/terms-of-service/"
+    page="terms"
+  />
+
+  <Header
+    client:load
+    lang="en"
+    content={content.nav}
+    appointmentPhone={content.contact.appointmentPhone}
+    currentPage="home"
+    currentPath={Astro.url.pathname}
+  />
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 pt-28">
+    <h1 class="text-4xl font-bold mb-4 border-b-2 border-gray-300 dark:border-gray-700 pb-2">Terms of Service</h1>
+    <p class="text-gray-600 dark:text-gray-400 mb-8"><strong>Effective Date:</strong> 25 January 2026</p>
+
+    <div class="prose prose-lg dark:prose-invert max-w-none space-y-8">
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">1. Introduction to These Terms of Service</h2>
+        <p>
+          Welcome to <strong>Kamalakar Heart Centre</strong> ("we", "us", "our"). These Terms of Service ("Terms") govern
+          your access to and use of the website <strong>kamalakarheartcentre.com</strong> ("Website").
+          By accessing or using this Website, you agree to be bound by these Terms. If you do not agree,
+          you must not use the Website.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">2. Eligibility</h2>
+        <p>
+          This Website is intended for individuals who are at least 18 years of age.
+          If you are accessing the Website on behalf of another individual (such as a minor or dependent),
+          you confirm that you are legally authorized to do so.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">3. Nature of Information Provided</h2>
+        <p>
+          All content available on this Website, including text, images, graphics, and other material
+          (collectively, "Content"), is provided for <strong>general informational purposes only</strong>.
+        </p>
+        <p>
+          The Content does <strong>not</strong> constitute medical advice, diagnosis, or treatment and must not be relied upon
+          as a substitute for consultation with a qualified medical professional.
+          Always seek the advice of your physician or other qualified healthcare provider regarding
+          any medical condition.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">4. Use of the Website</h2>
+        <p>You agree to use this Website only for lawful purposes and in compliance with all applicable laws of India.</p>
+        <ul class="list-disc pl-6 space-y-2 mt-4">
+          <li>You shall not misuse the Website or attempt to gain unauthorized access to any part of it.</li>
+          <li>You shall not upload or transmit any malicious, harmful, defamatory, or unlawful content.</li>
+          <li>You shall not interfere with the operation or security of the Website.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">5. Appointments and Enquiries</h2>
+        <p>
+          Any appointment requests or enquiries submitted through the Website are subject to confirmation
+          by Kamalakar Heart Centre. We do not guarantee appointment availability or response times due to
+          technical, operational, or medical constraints.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">6. Intellectual Property</h2>
+        <p>
+          All intellectual property rights in the Website and its Content are owned by or licensed to
+          Kamalakar Heart Centre.
+        </p>
+        <ul class="list-disc pl-6 space-y-2 mt-4">
+          <li>You may view and print Content for personal, non-commercial use only.</li>
+          <li>You may not reproduce, distribute, modify, or republish any Content without prior written consent.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">7. Third-Party Links</h2>
+        <p>
+          The Website may contain links to third-party websites for convenience.
+          We do not control or endorse these websites and are not responsible for their content,
+          policies, or practices.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">8. Disclaimers</h2>
+        <p>
+          The Website is provided on an "as-is" and "as-available" basis without warranties of any kind,
+          express or implied.
+        </p>
+        <p>We do not warrant that the Website will be uninterrupted, error-free, or completely secure.</p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">9. Limitation of Liability</h2>
+        <p>
+          To the maximum extent permitted by law, Kamalakar Heart Centre shall not be liable for any direct,
+          indirect, incidental, consequential, or special damages arising out of or in connection with
+          your use of the Website or reliance on its Content.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">10. Changes to These Terms</h2>
+        <p>
+          We reserve the right to update or modify these Terms at any time.
+          Any changes will be effective immediately upon posting on the Website.
+          Continued use of the Website constitutes acceptance of the revised Terms.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">11. Governing Law and Jurisdiction</h2>
+        <p>
+          These Terms shall be governed by and construed in accordance with the laws of India.
+          All disputes shall be subject to the exclusive jurisdiction of the competent courts in India.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold mt-8 mb-4">12. How to Contact Us</h2>
+        <p>For any questions or concerns regarding these Terms, please contact:</p>
+        <p class="mt-4">
+          <strong>Kamalakar Heart Centre</strong><br />
+          Email: <a href="mailto:info@kamalakarheartcentre.com" class="text-primary dark:text-accent-light hover:underline">info@kamalakarheartcentre.com</a><br />
+          Phone: <a href="tel:+919959423566" class="text-primary dark:text-accent-light hover:underline">+91 99594 23566</a><br />
+          Location: India
+        </p>
+      </section>
+
+      <footer class="mt-12 pt-6 border-t border-gray-300 dark:border-gray-700 text-sm text-gray-600 dark:text-gray-400">
+        &copy; 2026 Kamalakar Heart Centre. All rights reserved.
+      </footer>
+    </div>
+  </main>
+
+  <Footer content={content.footer} navContent={content.nav} lang="en" currentPage="home" />
+</BaseLayout>

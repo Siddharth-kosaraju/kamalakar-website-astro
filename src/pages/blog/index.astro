@@ -1,0 +1,159 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer.astro';
+import { getSiteContent } from '../../utils/content';
+import { getCollection } from 'astro:content';
+
+const content = await getSiteContent('en');
+
+// Get all published blog posts, sorted by date (newest first)
+const posts = (await getCollection('blog'))
+  .filter((post) => post.data.published)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    url: 'https://kamalakarheartcentre.com/blog/',
+    name: 'Heart Health Blog - Kamalakar Heart Centre',
+    description: 'Expert cardiac health articles and insights from Dr. Kamalakar Kosaraju, Interventional Cardiologist in Guntur.',
+    inLanguage: 'en',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Kamalakar Heart Centre',
+      url: 'https://kamalakarheartcentre.com',
+    },
+  },
+];
+---
+
+<BaseLayout lang="en" class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
+  <SEO
+    slot="head"
+    title="Heart Health Blog | Kamalakar Heart Centre Guntur"
+    description="Expert cardiac health articles, prevention tips, and insights from Dr. Kamalakar Kosaraju, Interventional Cardiologist in Guntur."
+    keywords={['cardiac health blog', 'heart health tips', 'cardiologist blog Guntur', 'heart disease prevention']}
+    canonicalUrl="https://kamalakarheartcentre.com/blog/"
+    lang="en"
+    alternateLangUrl="https://kamalakarheartcentre.com/te/blog/"
+    schemas={schemas}
+    page="home"
+  />
+
+  <Header
+    client:load
+    lang="en"
+    content={content.nav}
+    appointmentPhone={content.contact.appointmentPhone}
+    currentPage="blog"
+    currentPath={Astro.url.pathname}
+  />
+
+  <main id="main-content" aria-label="Blog">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-4">
+      <ol class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+        <li>
+          <a href="/" class="hover:text-primary dark:hover:text-white transition-colors">Home</a>
+        </li>
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </li>
+        <li class="text-primary dark:text-white font-medium" aria-current="page">Blog</li>
+      </ol>
+    </nav>
+
+    <!-- Hero -->
+    <section class="bg-gradient-to-br from-primary/5 to-transparent dark:from-primary/10 py-16 md:py-20">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-primary/50 text-primary dark:text-white mb-6 border border-gray-100 dark:border-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/></svg>
+          <span class="text-sm font-bold uppercase tracking-wider">From Dr. Kamalakar</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold font-serif text-primary dark:text-white mb-6 leading-tight">
+          Heart Health Blog
+        </h1>
+        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl leading-relaxed">
+          Expert insights on cardiac health, prevention strategies, and the latest advances in heart care — written by Dr. Kamalakar Kosaraju.
+        </p>
+      </div>
+    </section>
+
+    <!-- Blog Posts Grid -->
+    <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      {posts.length === 0 ? (
+        <div class="text-center py-20">
+          <p class="text-gray-500 dark:text-gray-400 text-lg">Blog posts coming soon. Stay tuned!</p>
+        </div>
+      ) : (
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {posts.map((post) => (
+            <a
+              href={`/blog/${post.id}/`}
+              class="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-primary/20 transition-all duration-300 hover:-translate-y-1"
+            >
+              <div class="p-8">
+                <div class="flex items-center gap-3 mb-4">
+                  <time
+                    datetime={post.data.date.toISOString()}
+                    class="text-xs font-bold text-gray-400 uppercase tracking-wider"
+                  >
+                    {post.data.date.toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </time>
+                </div>
+
+                <h2 class="text-xl font-bold font-serif text-primary dark:text-white mb-3 group-hover:text-accent dark:group-hover:text-accent-light transition-colors leading-tight">
+                  {post.data.title}
+                </h2>
+
+                <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6 line-clamp-3">
+                  {post.data.summary}
+                </p>
+
+                {post.data.tags && (
+                  <div class="flex flex-wrap gap-2 mb-6">
+                    {post.data.tags.slice(0, 3).map((tag) => (
+                      <span class="px-2.5 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs font-medium rounded-full">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-gray-500 dark:text-gray-400 font-medium">
+                    {post.data.author}
+                  </span>
+                  <span class="inline-flex items-center gap-1 text-sm font-bold text-primary dark:text-white group-hover:translate-x-1 transition-transform">
+                    Read Article
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-primary dark:bg-primary-light py-16">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold font-serif text-white mb-6">Have Questions About Your Heart Health?</h2>
+        <p class="text-white/80 mb-8 max-w-2xl mx-auto">Book a consultation with Dr. Kamalakar Kosaraju for personalized cardiac care at Kamalakar Heart Centre, Guntur.</p>
+        <a
+          href={`tel:${content.contact.appointmentPhone}`}
+          class="inline-flex items-center gap-3 bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-gray-100 transition-all hover:-translate-y-1"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Book Appointment
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <Footer content={content.footer} navContent={content.nav} lang="en" currentPage="blog" />
+</BaseLayout>

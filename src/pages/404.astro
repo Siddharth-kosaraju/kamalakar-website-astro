@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout lang="en" class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans">
+  <head>
+    <title>Page Not Found | Kamalakar Heart Centre</title>
+    <meta name="robots" content="noindex" />
+  </head>
+
+  <main id="main-content" class="flex items-center justify-center min-h-screen px-4">
+    <div class="text-center max-w-lg">
+      <div class="w-20 h-20 mx-auto mb-8 rounded-full bg-primary/10 dark:bg-white/10 flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary dark:text-accent">
+          <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+        </svg>
+      </div>
+      <h1 id="404-title" class="text-4xl font-bold font-serif text-primary dark:text-white mb-4">Page Not Found</h1>
+      <p id="404-desc" class="text-gray-600 dark:text-gray-300 text-lg mb-8">
+        The page you're looking for doesn't exist or has been moved. Let us help you find what you need.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          id="404-home"
+          href="/"
+          class="inline-flex items-center gap-2 bg-primary dark:bg-accent text-white dark:text-primary-dark px-6 py-3 rounded-lg font-bold hover:bg-primary-light dark:hover:bg-accent-light transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span id="404-home-text">Go to Homepage</span>
+        </a>
+        <a
+          href="tel:9959423566"
+          class="inline-flex items-center gap-2 text-primary dark:text-accent font-bold hover:text-accent dark:hover:text-white transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span id="404-call-text">Call: 99594 23566</span>
+        </a>
+      </div>
+      <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+        <p id="404-quick" class="text-gray-500 dark:text-gray-400 text-sm mb-4">Quick links:</p>
+        <div class="flex flex-wrap justify-center gap-4 text-sm">
+          <a id="404-link-services" href="/services/" class="text-primary dark:text-gray-300 hover:text-accent dark:hover:text-accent transition-colors">Our Services</a>
+          <a id="404-link-about" href="/about/" class="text-primary dark:text-gray-300 hover:text-accent dark:hover:text-accent transition-colors">About Dr. Kamalakar</a>
+          <a id="404-link-education" href="/education/" class="text-primary dark:text-gray-300 hover:text-accent dark:hover:text-accent transition-colors">Education</a>
+          <a id="404-link-contact" href="/contact/" class="text-primary dark:text-gray-300 hover:text-accent dark:hover:text-accent transition-colors">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Bilingual: swap content if Telugu path -->
+  <script is:inline>
+    (function() {
+      if (window.location.pathname.indexOf('/te/') !== 0) return;
+      document.documentElement.setAttribute('lang', 'te');
+      var t = document.getElementById('404-title');
+      var d = document.getElementById('404-desc');
+      var h = document.getElementById('404-home');
+      var ht = document.getElementById('404-home-text');
+      var ct = document.getElementById('404-call-text');
+      var q = document.getElementById('404-quick');
+      var ls = document.getElementById('404-link-services');
+      var la = document.getElementById('404-link-about');
+      var le = document.getElementById('404-link-education');
+      var lc = document.getElementById('404-link-contact');
+      if (t) t.textContent = '\u0C2A\u0C47\u0C1C\u0C40 \u0C15\u0C28\u0C41\u0C17\u0C4A\u0C28\u0C2C\u0C21\u0C32\u0C47\u0C26\u0C41';
+      if (d) d.textContent = '\u0C2E\u0C40\u0C30\u0C41 \u0C35\u0C46\u0C24\u0C41\u0C15\u0C41\u0C24\u0C41\u0C28\u0C4D\u0C28 \u0C2A\u0C47\u0C1C\u0C40 \u0C05\u0C02\u0C26\u0C41\u0C2C\u0C3E\u0C1F\u0C41\u0C32\u0C4B \u0C32\u0C47\u0C26\u0C41 \u0C32\u0C47\u0C26\u0C3E \u0C24\u0C30\u0C32\u0C3F\u0C02\u0C1A\u0C2C\u0C21\u0C3F\u0C02\u0C26\u0C3F. \u0C2E\u0C40\u0C15\u0C41 \u0C15\u0C3E\u0C35\u0C32\u0C38\u0C3F\u0C28\u0C26\u0C3F \u0C15\u0C28\u0C41\u0C17\u0C4A\u0C28\u0C21\u0C02\u0C32\u0C4B \u0C2E\u0C47\u0C2E\u0C41 \u0C38\u0C39\u0C3E\u0C2F\u0C02 \u0C1A\u0C47\u0C38\u0C4D\u0C24\u0C3E\u0C2E\u0C41.';
+      if (h) h.setAttribute('href', '/te/');
+      if (ht) ht.textContent = '\u0C39\u0C4B\u0C2E\u0C4D \u0C2A\u0C47\u0C1C\u0C40\u0C15\u0C3F \u0C35\u0C46\u0C33\u0C4D\u0C33\u0C02\u0C21\u0C3F';
+      if (ct) ct.textContent = '\u0C15\u0C3E\u0C32\u0C4D \u0C1A\u0C47\u0C2F\u0C02\u0C21\u0C3F: 99594 23566';
+      if (q) q.textContent = '\u0C24\u0C4D\u0C35\u0C30\u0C3F\u0C24 \u0C32\u0C3F\u0C02\u0C15\u0C4D\u200C\u0C32\u0C41:';
+      if (ls) { ls.setAttribute('href', '/te/services/'); ls.textContent = '\u0C2E\u0C3E \u0C38\u0C47\u0C35\u0C32\u0C41'; }
+      if (la) { la.setAttribute('href', '/te/about/'); la.textContent = '\u0C21\u0C3E\u0C15\u0C4D\u0C1F\u0C30\u0C4D \u0C17\u0C41\u0C30\u0C3F\u0C02\u0C1A\u0C3F'; }
+      if (le) { le.setAttribute('href', '/te/education/'); le.textContent = '\u0C35\u0C3F\u0C26\u0C4D\u0C2F'; }
+      if (lc) { lc.setAttribute('href', '/te/contact/'); lc.textContent = '\u0C38\u0C02\u0C2A\u0C4D\u0C30\u0C26\u0C3F\u0C02\u0C1A\u0C02\u0C21\u0C3F'; }
+    })();
+  </script>
+</BaseLayout>

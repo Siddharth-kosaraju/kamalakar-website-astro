@@ -1,0 +1,196 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SEO from '../../../components/SEO.astro';
+import Header from '../../../components/Header';
+import Footer from '../../../components/Footer.astro';
+import { getSiteContent } from '../../../utils/content';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const tePosts = await getCollection('blog-te');
+  const enPosts = await getCollection('blog');
+
+  // Build a map of TE posts by slug for quick lookup
+  const tePostMap = new Map(tePosts.filter(p => p.data.published).map(p => [p.id, p]));
+
+  // Merge: TE post takes priority over EN post for same slug
+  const allSlugs = new Set([
+    ...tePosts.filter(p => p.data.published).map(p => p.id),
+    ...enPosts.filter(p => p.data.published).map(p => p.id),
+  ]);
+
+  return [...allSlugs].map((slug) => {
+    const tePost = tePostMap.get(slug);
+    const enPost = enPosts.find(p => p.id === slug && p.data.published);
+    const post = tePost || enPost!;
+    return { params: { slug }, props: { post } };
+  });
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const content = await getSiteContent('te');
+
+const schemas = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.data.titleTe || post.data.title,
+    description: post.data.summaryTe || post.data.summary,
+    datePublished: post.data.date.toISOString(),
+    dateModified: post.data.date.toISOString(),
+    author: {
+      '@type': 'Person',
+      name: post.data.author,
+      url: 'https://kamalakarheartcentre.com/about/',
+      jobTitle: 'Interventional Cardiologist',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Kamalakar Heart Centre',
+      url: 'https://kamalakarheartcentre.com',
+      logo: { '@type': 'ImageObject', url: 'https://kamalakarheartcentre.com/images/logo.svg' },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://kamalakarheartcentre.com/te/blog/${post.id}/`,
+    },
+    image: 'https://kamalakarheartcentre.com/media/dr-kamalakar.jpg',
+    keywords: (post.data.tagsTe || post.data.tags)?.join(', '),
+    articleSection: 'Heart Health Education',
+    inLanguage: 'te',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'హోమ్', item: 'https://kamalakarheartcentre.com/te/' },
+      { '@type': 'ListItem', position: 2, name: 'బ్లాగ్', item: 'https://kamalakarheartcentre.com/te/blog/' },
+      { '@type': 'ListItem', position: 3, name: post.data.titleTe || post.data.title },
+    ],
+  },
+];
+---
+
+<BaseLayout lang="te" class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
+  <SEO
+    slot="head"
+    title={`${post.data.titleTe || post.data.title} | కమలాకర్ హార్ట్ సెంటర్ బ్లాగ్`}
+    description={post.data.summaryTe || post.data.summary}
+    keywords={post.data.tags || []}
+    canonicalUrl={`https://kamalakarheartcentre.com/te/blog/${post.id}/`}
+    lang="te"
+    alternateLangUrl={`https://kamalakarheartcentre.com/blog/${post.id}/`}
+    schemas={schemas}
+    page="home"
+  />
+
+  <Header
+    client:load
+    lang="te"
+    content={content.nav}
+    appointmentPhone={content.contact.appointmentPhone}
+    currentPage="blog"
+    currentPath={Astro.url.pathname}
+  />
+
+  <main id="main-content" aria-label="బ్లాగ్ పోస్ట్">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-4">
+      <ol class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+        <li>
+          <a href="/te/" class="hover:text-primary dark:hover:text-white transition-colors">హోమ్</a>
+        </li>
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </li>
+        <li>
+          <a href="/te/blog/" class="hover:text-primary dark:hover:text-white transition-colors">బ్లాగ్</a>
+        </li>
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </li>
+        <li class="text-primary dark:text-white font-medium truncate max-w-[200px]" aria-current="page">{post.data.titleTe || post.data.title}</li>
+      </ol>
+    </nav>
+
+    <!-- Article -->
+    <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <!-- Header -->
+      <header class="mb-12">
+        {(post.data.tagsTe || post.data.tags) && (
+          <div class="flex flex-wrap gap-2 mb-6">
+            {(post.data.tagsTe || post.data.tags)!.map((tag) => (
+              <span class="px-3 py-1 bg-primary/10 dark:bg-primary/20 text-primary dark:text-accent-light text-xs font-bold uppercase tracking-wider rounded-full">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold font-serif text-primary dark:text-white mb-6 leading-tight">
+          {post.data.titleTe || post.data.title}
+        </h1>
+
+        <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 pb-8">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs">
+              {post.data.author.charAt(0)}
+            </div>
+            <span class="font-medium text-gray-700 dark:text-gray-300">{post.data.author}</span>
+          </div>
+          <span class="text-gray-300 dark:text-gray-600">|</span>
+          <time datetime={post.data.date.toISOString()}>
+            {post.data.date.toLocaleDateString('te-IN', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </time>
+          {post.data.readingTime && (
+            <>
+              <span class="text-gray-300 dark:text-gray-600">|</span>
+              <span class="flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                {post.data.readingTime}
+              </span>
+            </>
+          )}
+        </div>
+      </header>
+
+      <!-- Content -->
+      <div class="prose prose-lg dark:prose-invert max-w-none prose-headings:font-serif prose-headings:text-primary dark:prose-headings:text-white prose-a:text-accent dark:prose-a:text-accent-light hover:prose-a:text-primary dark:hover:prose-a:text-white prose-strong:text-primary dark:prose-strong:text-white prose-li:marker:text-accent">
+        <Content />
+      </div>
+
+      <!-- Author CTA -->
+      <div class="mt-16 p-8 bg-neutral-50 dark:bg-primary-dark rounded-2xl border border-gray-100 dark:border-gray-800">
+        <div class="flex flex-col sm:flex-row items-center gap-6">
+          <div class="w-20 h-20 rounded-full overflow-hidden border-4 border-primary/20 flex-shrink-0">
+            <picture>
+              <source srcset="/media/dr-kamalakar.webp" type="image/webp" />
+              <img
+                src="/media/dr-kamalakar.jpg"
+                width="80"
+                height="80"
+                loading="lazy"
+                alt="డాక్టర్ కమలాకర్ కోసరాజు"
+                class="w-full h-full object-cover"
+              />
+            </picture>
+          </div>
+          <div class="text-center sm:text-left">
+            <p class="font-bold text-primary dark:text-white text-lg font-serif">డాక్టర్ కమలాకర్ కోసరాజు</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">M.D. (గోల్డ్ మెడలిస్ట్), D.M. కార్డియాలజీ, FESC — ఇంటర్వెన్షనల్ కార్డియాలజిస్ట్, గుంటూరు</p>
+            <a
+              href={`tel:${content.contact.appointmentPhone}`}
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-2.5 rounded-lg font-bold text-sm shadow-md hover:bg-primary-light transition-all"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              సంప్రదింపు బుక్ చేయండి
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <Footer content={content.footer} navContent={content.nav} lang="te" currentPage="blog" />
+</BaseLayout>

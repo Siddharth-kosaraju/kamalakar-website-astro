@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import Header from '../../components/Header';
+import Hero from '../../components/Hero.astro';
+import Stats from '../../components/Stats';
+import About from '../../components/About.astro';
+import Services from '../../components/Services.astro';
+import Education from '../../components/Education.astro';
+import Testimonials from '../../components/Testimonials.astro';
+import Gallery from '../../components/Gallery';
+import FAQ from '../../components/FAQ';
+import Contact from '../../components/Contact.astro';
+import Footer from '../../components/Footer.astro';
+import { getSiteContent } from '../../utils/content';
+import {
+  buildBusinessSchema,
+  buildPhysicianSchema,
+  buildProceduresSchema,
+  buildTestsSchema,
+  buildConditionsSchema,
+  buildFAQSchema,
+  buildWebPageSchema,
+} from '../../utils/schemas';
+
+const content = await getSiteContent('te');
+
+const schemas = [
+  buildBusinessSchema(content.testimonials.items),
+  buildPhysicianSchema(),
+  ...buildProceduresSchema(),
+  ...buildTestsSchema(),
+  ...buildConditionsSchema(),
+  buildFAQSchema(content.faq.items),
+  buildWebPageSchema('home', 'te'),
+];
+---
+
+<BaseLayout lang="te" class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans selection:bg-primary selection:text-white transition-colors duration-300">
+  <SEO
+    slot="head"
+    title={content.seo.homeTitle}
+    description={content.seo.homeDescription}
+    keywords={content.seo.keywords}
+    canonicalUrl="https://kamalakarheartcentre.com/te/"
+    lang="te"
+    alternateLangUrl="https://kamalakarheartcentre.com/"
+    schemas={schemas}
+    page="home"
+  />
+
+  <Header
+    client:load
+    lang="te"
+    content={content.nav}
+    appointmentPhone={content.contact.appointmentPhone}
+    currentPage="home"
+    currentPath={Astro.url.pathname}
+  />
+
+  <main id="main-content" aria-label="Main content">
+    <Hero content={content.hero} appointmentPhone={content.contact.appointmentPhone} />
+    <Stats client:visible content={content.stats} />
+    <About content={content.about} lang="te" />
+    <Services content={content.services} lang="te" />
+    <Education content={content.education} />
+    <Testimonials content={content.testimonials} />
+    <Gallery client:visible content={content.gallery} />
+    <FAQ client:visible content={content.faq} />
+    <Contact content={content.contact} appointmentContent={content.appointment} lang="te" />
+  </main>
+
+  <Footer content={content.footer} navContent={content.nav} lang="te" currentPage="home" />
+</BaseLayout>
