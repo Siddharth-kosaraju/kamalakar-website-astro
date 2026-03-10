@@ -14,8 +14,8 @@ const schemas = [
     '@context': 'https://schema.org',
     '@type': 'MedicalWebPage',
     url: 'https://kamalakarheartcentre.com/about/',
-    name: 'About Dr. Kamalakar Kosaraju - Best Cardiologist in Guntur',
-    description: 'Dr. Kamalakar Kosaraju is a Gold Medalist Interventional Cardiologist in Guntur with 10+ years experience and 5,000+ cardiac procedures. FESC certified.',
+    name: 'About Dr Kamalakar Kosaraju | Cardiologist in Guntur',
+    description: 'About Dr Kamalakar Kosaraju top cardiologist in Guntur specializing in interventional cardiology heart checkups angioplasty and advanced cardiac care.',
     inLanguage: 'en',
     isPartOf: { '@type': 'WebSite', url: 'https://kamalakarheartcentre.com', name: 'Kamalakar Heart Centre' },
     about: { '@type': 'Physician', '@id': 'https://kamalakarheartcentre.com/#physician' },
@@ -30,9 +30,9 @@ const schemas = [
 <BaseLayout class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
   <SEO
     slot="head"
-    title="About Dr. Kamalakar Kosaraju | Best Cardiologist in Guntur"
-    description="Dr. Kamalakar Kosaraju is a Gold Medalist Interventional Cardiologist in Guntur with 10+ years experience, 5,000+ cardiac procedures, and FESC certification from the European Society of Cardiology."
-    keywords={['Dr. Kamalakar Kosaraju', 'cardiologist Guntur', 'interventional cardiologist Guntur', 'FESC certified cardiologist', 'gold medalist cardiologist Guntur']}
+    title="About Dr Kamalakar Kosaraju | Cardiologist in Guntur"
+    description="About Dr Kamalakar Kosaraju top cardiologist in Guntur specializing in interventional cardiology heart checkups angioplasty and advanced cardiac care."
+    keywords={['about dr kamalakar kosaraju', 'cardiologist in guntur', 'heart specialist in guntur', 'interventional cardiologist guntur', 'best cardiologist in guntur', 'heart doctor guntur', 'cardiac specialist guntur', 'angioplasty doctor guntur']}
     canonicalUrl="https://kamalakarheartcentre.com/about/"
     schemas={schemas}
     page="home"
@@ -64,17 +64,17 @@ const schemas = [
     <section class="bg-gradient-to-br from-primary/5 to-transparent dark:from-primary/10 py-16 md:py-20">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 id="about-heading" class="text-4xl md:text-5xl font-bold font-serif text-primary dark:text-white mb-6 leading-tight">
-          About Dr. Kamalakar Kosaraju
+          About Dr Kamalakar Kosaraju – Cardiologist
         </h1>
         <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl leading-relaxed">
-          Gold Medalist Interventional Cardiologist with over a decade of experience in treating complex cardiac conditions at Life Hospital, Guntur.
+          Experienced interventional cardiologist in Guntur providing advanced cardiac diagnosis and treatment at Kamalakar Heart Centre.
         </p>
       </div>
     </section>
 
-    <!-- Doctor Profile -->
+    <!-- Doctor Profile — Photo + Bio intro -->
     <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div class="lg:grid lg:grid-cols-5 lg:gap-12 lg:items-start">
+      <div id="about-bio" class="lg:grid lg:grid-cols-5 lg:gap-12 lg:items-start">
         <!-- Image -->
         <div class="lg:col-span-2 mb-10 lg:mb-0">
           <div class="relative border-4 border-primary/10 dark:border-gray-700 rounded-3xl overflow-hidden shadow-xl">
@@ -93,50 +93,109 @@ const schemas = [
           </div>
         </div>
 
-        <!-- Bio -->
-        <div id="about-bio" class="lg:col-span-3 space-y-6">
-          <div class="space-y-5 text-gray-700 dark:text-gray-300 leading-relaxed">
-            <p class="text-base md:text-lg">{content.about.p1}</p>
-            <p class="text-base md:text-lg">{content.about.p2}</p>
-          </div>
+        <!-- Bio intro -->
+        <div class="lg:col-span-3 space-y-5 text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p class="text-base md:text-lg">Dr. Kamalakar Kosaraju is a highly experienced <strong>cardiologist in Guntur, Andhra Pradesh</strong> specializing in interventional cardiology and advanced cardiac treatment. With more than a decade of clinical experience, he has helped thousands of patients manage heart disease and improve long-term cardiovascular health.</p>
+          <p class="text-base md:text-lg">Known for his accurate diagnosis and patient-focused care, Dr. Kamalakar treats a wide range of heart conditions including coronary artery disease, chest pain, hypertension, heart failure, and other cardiovascular disorders.</p>
+          <p class="text-base md:text-lg">Patients visit from across Guntur and nearby regions seeking consultation for heart checkups, cardiac evaluation, and advanced heart treatment.</p>
+        </div>
+      </div>
+    </section>
 
-          <!-- Credentials -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6">
-            <div class="p-5 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/50">
-              <p class="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">Education</p>
-              <p class="font-bold text-gray-900 dark:text-white">M.D. General Medicine</p>
-              <p class="text-xs text-amber-600 font-bold">Gold Medalist</p>
-            </div>
-            <div class="p-5 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800/50">
-              <p class="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">Specialization</p>
-              <p class="font-bold text-gray-900 dark:text-white">D.M. Cardiology</p>
-              <p class="text-xs text-gray-500 dark:text-gray-400">Osmania Medical College</p>
-            </div>
-            <div class="p-5 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/50">
-              <p class="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">Fellowship</p>
-              <p class="font-bold text-gray-900 dark:text-white">FESC</p>
-              <p class="text-xs text-gray-500 dark:text-gray-400">European Society of Cardiology</p>
-            </div>
-            <div class="p-5 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/50">
-              <p class="text-sm font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">Experience</p>
-              <p class="font-bold text-gray-900 dark:text-white">{content.about.experienceBadge}</p>
-              <p class="text-xs text-gray-500 dark:text-gray-400">5,000+ Cardiac Procedures</p>
-            </div>
+    <!-- Credentials — full-width highlight strip -->
+    <section class="bg-neutral-50 dark:bg-gray-800/50 border-y border-gray-200 dark:border-gray-700">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="p-5 rounded-xl bg-white dark:bg-gray-800 border border-blue-200 dark:border-blue-800/50 shadow-sm">
+            <p class="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wide mb-1">Education</p>
+            <p class="font-bold text-gray-900 dark:text-white">M.D. General Medicine</p>
+            <p class="text-xs text-amber-600 font-bold mt-0.5">Gold Medalist</p>
           </div>
+          <div class="p-5 rounded-xl bg-white dark:bg-gray-800 border border-blue-200 dark:border-blue-800/50 shadow-sm">
+            <p class="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wide mb-1">Specialization</p>
+            <p class="font-bold text-gray-900 dark:text-white">D.M. Cardiology</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Osmania Medical College</p>
+          </div>
+          <div class="p-5 rounded-xl bg-white dark:bg-gray-800 border border-red-200 dark:border-red-800/50 shadow-sm">
+            <p class="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wide mb-1">Fellowship</p>
+            <p class="font-bold text-gray-900 dark:text-white">FESC</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">European Society of Cardiology</p>
+          </div>
+          <div class="p-5 rounded-xl bg-white dark:bg-gray-800 border border-amber-200 dark:border-amber-800/50 shadow-sm">
+            <p class="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wide mb-1">Experience</p>
+            <p class="font-bold text-gray-900 dark:text-white">{content.about.experienceBadge}</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">5,000+ Cardiac Procedures</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <!-- Expertise -->
-          <div class="pt-6">
-            <h2 class="text-2xl font-bold font-serif text-primary dark:text-white mb-4">Areas of Expertise</h2>
-            <ul class="grid grid-cols-2 gap-2 text-gray-700 dark:text-gray-300">
-              <li class="flex items-center gap-2 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>Interventional Cardiology</li>
-              <li class="flex items-center gap-2 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>Angioplasty & Stenting</li>
-              <li class="flex items-center gap-2 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>Angiogram (Coronary)</li>
-              <li class="flex items-center gap-2 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>Pacemaker Implantation</li>
-              <li class="flex items-center gap-2 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>Heart Failure Management</li>
-              <li class="flex items-center gap-2 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>ECG & 2D Echocardiography</li>
-              <li class="flex items-center gap-2 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>Hypertension Management</li>
-              <li class="flex items-center gap-2 text-sm"><span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>Emergency Cardiac Care</li>
-            </ul>
+    <!-- Education & Training — full-width two-column section -->
+    <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="lg:grid lg:grid-cols-5 lg:gap-12 lg:items-start">
+        <div class="lg:col-span-2 mb-8 lg:mb-0">
+          <h2 class="text-3xl md:text-4xl font-bold font-serif text-primary dark:text-white leading-tight">Experienced Heart Specialist in Guntur</h2>
+        </div>
+        <div class="lg:col-span-3 space-y-5 text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p class="text-base md:text-lg">Dr. Kamalakar completed his <strong>M.D. in General Medicine as a Gold Medalist</strong> and later pursued <strong>D.M. in Cardiology from Osmania Medical College</strong>, one of the leading medical institutions in India.</p>
+          <p class="text-base md:text-lg">His medical training and clinical expertise allow him to provide comprehensive cardiac care including preventive cardiac care, diagnosis, and interventional procedures.</p>
+          <p class="text-base md:text-lg">He also holds <strong>FESC Fellowship from the European Society of Cardiology</strong>, reflecting his commitment to international cardiology standards and evidence-based treatment.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Areas of Expertise — full-width grid -->
+    <section class="bg-neutral-50 dark:bg-gray-800/50 border-y border-gray-200 dark:border-gray-700 py-16">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold font-serif text-primary dark:text-white mb-8 text-center">Areas of Expertise</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="flex items-center gap-3 bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-accent flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            <span class="text-sm font-medium text-gray-700 dark:text-gray-200">Interventional Cardiology</span>
+          </div>
+          <div class="flex items-center gap-3 bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-accent flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            <span class="text-sm font-medium text-gray-700 dark:text-gray-200">Angioplasty & Stenting</span>
+          </div>
+          <div class="flex items-center gap-3 bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-accent flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            <span class="text-sm font-medium text-gray-700 dark:text-gray-200">Angiogram (Coronary)</span>
+          </div>
+          <div class="flex items-center gap-3 bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-accent flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            <span class="text-sm font-medium text-gray-700 dark:text-gray-200">Pacemaker Implantation</span>
+          </div>
+          <div class="flex items-center gap-3 bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-accent flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            <span class="text-sm font-medium text-gray-700 dark:text-gray-200">Heart Failure Management</span>
+          </div>
+          <div class="flex items-center gap-3 bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-accent flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            <span class="text-sm font-medium text-gray-700 dark:text-gray-200">ECG & 2D Echocardiography</span>
+          </div>
+          <div class="flex items-center gap-3 bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-accent flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            <span class="text-sm font-medium text-gray-700 dark:text-gray-200">Hypertension Management</span>
+          </div>
+          <div class="flex items-center gap-3 bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
+            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 dark:bg-primary/20 text-primary dark:text-accent flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            <span class="text-sm font-medium text-gray-700 dark:text-gray-200">Emergency Cardiac Care</span>
           </div>
         </div>
       </div>

@@ -35,54 +35,53 @@ const { content, appointmentPhone } = Astro.props;
   <div aria-hidden="true" class="absolute bottom-10 right-10 w-96 h-96 bg-primary/5 rounded-full filter blur-3xl animate-float pointer-events-none" style="animation-delay: 2s"></div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-    <div class="max-w-4xl mx-auto text-center">
+    <div class="max-w-5xl mx-auto">
 
       {/* Content Column */}
       <div class="space-y-8 animate-fade-in-up">
 
         {/* Trust Badge */}
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-primary border border-accent/30 shadow-sm mx-auto">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
-          <span class="text-xs font-bold tracking-widest uppercase text-primary dark:text-gray-200" set:html={content.trustBadge || 'Gold Medalist &bull; FESC Certified'}>
-          </span>
+        <div class="text-center">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-primary border border-accent/30 shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+            <span class="text-xs font-bold tracking-widest uppercase text-primary dark:text-gray-200" set:html={content.trustBadge || 'Gold Medalist &bull; FESC Certified'}>
+            </span>
+          </div>
         </div>
 
-        {/* Headlines */}
-        <div class="space-y-4">
-          <h1 id="hero-headline" class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary dark:text-white leading-[1.1]">
-            {content.headline}
-          </h1>
-          <h2 class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed font-normal">
+        {/* Headline — centered */}
+        <h1 id="hero-headline" class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary dark:text-white leading-[1.1] text-center">
+          {content.headline}
+        </h1>
+
+        {/* Body text — left-aligned for readability */}
+        <div class="max-w-3xl mx-auto space-y-4">
+          <p class="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
             {content.subHeadline}
-          </h2>
+          </p>
           {content.bodyText && (
-            <p class="text-base md:text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            <p class="text-base md:text-lg text-gray-500 dark:text-gray-400 leading-relaxed">
               {content.bodyText}
             </p>
           )}
-          {content.brandLine && (
-            <p class="text-sm md:text-base text-primary/80 dark:text-gray-400 font-medium">
-              {content.brandLine}
-            </p>
-          )}
+        </div>
 
-          {/* Address Link */}
-          <div class="flex flex-col items-center gap-3 pt-2">
-            <a
-              href={content.addressLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 px-6 py-2.5 rounded-2xl bg-white dark:bg-white/5 border border-primary/10 dark:border-white/10 shadow-sm hover:shadow-md hover:border-accent/40 transition-all duration-300 group"
-            >
-              <div class="p-1.5 rounded-lg bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
-              </div>
-              <span class="text-sm md:text-base font-medium text-primary dark:text-gray-200">
-                {content.address}
-              </span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </a>
-          </div>
+        {/* Address — centered */}
+        <div class="text-center">
+          <a
+            href={content.addressLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-6 py-2.5 rounded-2xl bg-white dark:bg-white/5 border border-primary/10 dark:border-white/10 shadow-sm hover:shadow-md hover:border-accent/40 transition-all duration-300 group"
+          >
+            <div class="p-1.5 rounded-lg bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <span class="text-sm md:text-base font-medium text-primary dark:text-gray-200">
+              {content.address}
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
         </div>
 
         {/* CTAs */}

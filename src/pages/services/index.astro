@@ -13,8 +13,8 @@ const schemas = [
     '@context': 'https://schema.org',
     '@type': 'MedicalWebPage',
     url: 'https://kamalakarheartcentre.com/services/',
-    name: 'Heart Care Services in Guntur - Kamalakar Heart Centre',
-    description: 'Comprehensive cardiac services including Angioplasty, Pacemaker, ECG, 2D Echo, Heart Failure Management, and Emergency Cardiac Care in Guntur.',
+    name: 'Heart Care Services | Angioplasty Pacemaker ECG Echo',
+    description: 'Comprehensive heart care services including angiogram angioplasty pacemaker implantation ECG echo tests heart failure treatment and cardiac consultation.',
     inLanguage: 'en',
     isPartOf: { '@type': 'WebSite', url: 'https://kamalakarheartcentre.com', name: 'Kamalakar Heart Centre' },
     about: { '@type': 'MedicalSpecialty', name: 'Cardiology' },
@@ -50,9 +50,9 @@ const icons = [
 <BaseLayout class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
   <SEO
     slot="head"
-    title="Heart Care Services in Guntur | Kamalakar Heart Centre"
-    description="Comprehensive cardiac services at Kamalakar Heart Centre, Guntur: Angioplasty, Pacemaker Implantation, ECG, 2D Echo, Heart Failure Management & Emergency Cardiac Care by Dr. Kamalakar."
-    keywords={['cardiac services Guntur', 'heart care services Guntur', 'angioplasty Guntur', 'pacemaker Guntur', 'ECG test Guntur', '2D Echo Guntur']}
+    title="Heart Care Services | Angioplasty Pacemaker ECG Echo"
+    description="Comprehensive heart care services including angiogram angioplasty pacemaker implantation ECG echo tests heart failure treatment and cardiac consultation."
+    keywords={['heart care services', 'angioplasty treatment', 'angiogram procedure', 'pacemaker implantation', 'ECG test', 'echo test', 'heart failure treatment', 'cardiologist in guntur']}
     canonicalUrl="https://kamalakarheartcentre.com/services/"
     schemas={schemas}
     page="home"
@@ -118,11 +118,12 @@ const icons = [
       </div>
     </section>
 
-    <!-- CTA -->
+    <!-- Need Expert Cardiac Care -->
     <section class="bg-primary dark:bg-primary-light py-16">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl font-bold font-serif text-white mb-6">Need Expert Cardiac Care?</h2>
-        <p class="text-white/80 mb-8 max-w-2xl mx-auto">Book a consultation with Dr. Kamalakar Kosaraju for personalized cardiac care at Kamalakar Heart Centre, Guntur.</p>
+        <h2 class="text-3xl font-bold font-serif text-white mb-6">Need Expert Cardiac Care</h2>
+        <p class="text-white/80 mb-4 max-w-2xl mx-auto text-lg leading-relaxed">If you are searching for a <strong class="text-white">cardiologist in Guntur</strong> for heart checkup, chest pain evaluation, or cardiac treatment, expert consultation is available to help diagnose and manage heart conditions effectively.</p>
+        <p class="text-white/80 mb-8 max-w-2xl mx-auto text-lg leading-relaxed">Early consultation helps detect heart problems and protect long-term heart health.</p>
         <a
           href={`tel:${content.contact.appointmentPhone}`}
           class="inline-flex items-center gap-3 bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-gray-100 transition-all hover:-translate-y-1"

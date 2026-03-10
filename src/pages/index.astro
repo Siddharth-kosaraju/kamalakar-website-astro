@@ -15,27 +15,96 @@ import FAQ from '../components/FAQ';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 import { getSiteContent } from '../utils/content';
-import {
-  buildBusinessSchema,
-  buildPhysicianSchema,
-  buildProceduresSchema,
-  buildTestsSchema,
-  buildConditionsSchema,
-  buildFAQSchema,
-  buildWebPageSchema,
-} from '../utils/schemas';
-
 const content = await getSiteContent('en');
 
-const schemas = [
-  buildBusinessSchema(content.testimonials.items),
-  buildPhysicianSchema(),
-  ...buildProceduresSchema(),
-  ...buildTestsSchema(),
-  ...buildConditionsSchema(),
-  buildFAQSchema(content.faq.items),
-  buildWebPageSchema('home', 'en'),
-];
+const homepageSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': 'https://kamalakarheartcentre.com/#website',
+      url: 'https://kamalakarheartcentre.com/',
+      name: 'Kamalakar Heart Centre',
+      inLanguage: 'en-IN',
+    },
+    {
+      '@type': 'MedicalClinic',
+      '@id': 'https://kamalakarheartcentre.com/#clinic',
+      name: 'Kamalakar Heart Centre',
+      url: 'https://kamalakarheartcentre.com/',
+      telephone: '+91-9959423566',
+      medicalSpecialty: 'Cardiology',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Life Hospital, Old Club Road, Kothapet',
+        addressLocality: 'Guntur',
+        addressRegion: 'Andhra Pradesh',
+        postalCode: '522001',
+        addressCountry: 'IN',
+      },
+      openingHoursSpecification: [
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+          opens: '10:00',
+          closes: '18:00',
+        },
+      ],
+      areaServed: { '@type': 'City', name: 'Guntur' },
+      founder: { '@id': 'https://kamalakarheartcentre.com/#doctor' },
+    },
+    {
+      '@type': 'Physician',
+      '@id': 'https://kamalakarheartcentre.com/#doctor',
+      name: 'Dr. Kamalakar Kosaraju',
+      jobTitle: 'Interventional Cardiologist',
+      medicalSpecialty: 'Cardiology',
+      worksFor: { '@id': 'https://kamalakarheartcentre.com/#clinic' },
+      description: 'Dr. Kamalakar Kosaraju is an Interventional Cardiologist providing diagnosis and treatment for heart diseases including angioplasty, angiogram, pacemaker implantation, hypertension and heart failure management.',
+    },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Who is Dr. Kamalakar Kosaraju?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Dr. Kamalakar Kosaraju is an Interventional Cardiologist at Kamalakar Heart Centre providing diagnosis and treatment for heart diseases including angioplasty, angiogram, pacemaker implantation, hypertension and heart failure management.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Where is Kamalakar Heart Centre located?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Kamalakar Heart Centre is located at Life Hospital, Old Club Road, Kothapet, Guntur, Andhra Pradesh, 522001.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What heart treatments are available at Kamalakar Heart Centre?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The centre provides cardiology services including ECG, 2D Echo, angiogram, angioplasty, pacemaker implantation, heart failure treatment, hypertension and cholesterol management.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'When should I consult a cardiologist?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'You should consult a cardiologist if you experience symptoms like chest pain, shortness of breath, irregular heartbeat, high blood pressure, dizziness, or a family history of heart disease.',
+      },
+    },
+  ],
+};
+
+const schemas = [homepageSchema, faqSchema];
 ---
 
 <BaseLayout class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans selection:bg-primary selection:text-white transition-colors duration-300">
