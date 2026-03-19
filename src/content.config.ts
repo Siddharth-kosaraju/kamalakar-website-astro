@@ -216,13 +216,24 @@ const servicePageSchema = z.object({
   metaDescription: z.string(),
   heroHeading: z.string(),
   heroSubheading: z.string(),
-  content: z.array(z.string()),
+  content: z.array(z.string()).optional(),
+  sections: z.array(z.object({
+    heading: z.string().optional(),
+    paragraphs: z.array(z.string()).optional(),
+    bullets: z.array(z.string()).optional(),
+    closingText: z.string().optional(),
+  })).optional(),
   steps: z.array(z.object({
     title: z.string(),
     description: z.string(),
   })).optional(),
   faq: z.array(faqItemSchema),
   keywords: z.array(z.string()).optional(),
+  images: z.array(z.object({
+    src: z.string(),
+    alt: z.string(),
+    caption: z.string(),
+  })).optional(),
   ctaText: z.string(),
 });
 

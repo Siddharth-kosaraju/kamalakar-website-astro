@@ -44,9 +44,9 @@ const COLORS = ['#3B82F6', '#C5A059', '#8B5CF6', '#576CBC', '#A5D7E8'];
 const alertTriangleIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>`;
 ---
 
-<section class="py-24 bg-neutral-50 dark:bg-primary-dark border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+<section class="py-14 md:py-24 bg-neutral-50 dark:bg-primary-dark border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
+    <div class="grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
 
       {/* Symptoms List */}
       <div>
@@ -55,34 +55,34 @@ const alertTriangleIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="20" he
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg>
           {content.healthAlert || 'Health Alert'}
         </div>
-        <h2 class="text-4xl font-bold font-serif text-primary dark:text-white mb-6 leading-tight">
+        <h2 class="text-3xl md:text-4xl font-bold font-serif text-primary dark:text-white mb-6 leading-tight">
           {content.heading}
         </h2>
-        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+        <p class="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
           {content.symptomsDescription || 'Recognizing these symptoms early can be the difference between life and death. If you experience any of these, seek medical attention immediately.'}
         </p>
 
-        <ul class="grid gap-4">
+        <ul class="grid gap-3 md:gap-4">
           {content.symptoms.map((symptom) => (
-            <li class="flex items-center gap-4 bg-white dark:bg-white/5 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-white/10 hover:border-heart/50 dark:hover:border-heart transition-all duration-300 group">
-              <div class="w-10 h-10 rounded-full bg-red-50 dark:bg-heart/20 flex items-center justify-center text-heart group-hover:scale-110 transition-transform">
+            <li class="flex items-center gap-4 bg-white dark:bg-white/5 p-3 md:p-4 rounded-xl shadow-sm border border-gray-100 dark:border-white/10 hover:border-heart/50 dark:hover:border-heart transition-all duration-300 group">
+              <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-red-50 dark:bg-heart/20 flex items-center justify-center text-heart group-hover:scale-110 transition-transform">
                 <Fragment set:html={alertTriangleIcon} />
               </div>
-              <span class="text-lg font-medium text-primary dark:text-gray-200">{symptom}</span>
+              <span class="text-base md:text-lg font-medium text-primary dark:text-gray-200">{symptom}</span>
             </li>
           ))}
         </ul>
       </div>
 
       {/* Chart Section */}
-      <div class="bg-white dark:bg-primary-light/10 rounded-3xl p-8 border border-gray-100 dark:border-white/10 shadow-xl relative overflow-hidden">
+      <div class="bg-white dark:bg-primary-light/10 rounded-3xl p-5 md:p-8 border border-gray-100 dark:border-white/10 shadow-xl relative overflow-hidden">
         {/* Chart Header */}
-        <div class="text-center mb-8 relative z-10">
+        <div class="text-center mb-6 md:mb-8 relative z-10">
           <h3 class="text-xl font-bold font-serif text-primary dark:text-white">{content.riskFactorsTitle || 'Heart Disease Risk Factors'}</h3>
           <p class="text-sm text-gray-600 dark:text-gray-300 mt-1">{content.riskFactorsSubtitle || 'Understanding what puts you at risk'}</p>
         </div>
 
-        <div class="h-[350px] w-full relative z-10 flex items-center justify-center">
+        <div class="h-[260px] md:h-[350px] w-full relative z-10 flex items-center justify-center">
           <DonutChart client:visible centerLabel={content.riskFactorsCenter || 'Risk Factors'} riskNames={RISK_DATA.map(d => d.name)} />
         </div>
 

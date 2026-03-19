@@ -68,7 +68,7 @@ const icons = [
 
   <main id="main-content" aria-label="Our Services">
     <!-- Breadcrumb -->
-    <nav aria-label="Breadcrumb" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-4">
+    <nav aria-label="Breadcrumb" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-1">
       <ol class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
         <li>
           <a href="/" class="hover:text-primary dark:hover:text-white transition-colors">Home</a>
@@ -81,35 +81,35 @@ const icons = [
     </nav>
 
     <!-- Hero -->
-    <section class="bg-gradient-to-br from-primary/5 to-transparent dark:from-primary/10 py-16 md:py-20">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 class="text-4xl md:text-5xl font-bold font-serif text-primary dark:text-white mb-6 leading-tight">
+    <section class="bg-gradient-to-br from-primary/5 to-transparent dark:from-primary/10 py-6 md:py-8">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-[28px] md:text-5xl font-bold font-serif text-primary dark:text-white mb-6 leading-tight">
           {content.services.heading}
         </h1>
-        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl leading-relaxed">
+        <p class="text-base md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-medium">
           {content.services.description}
         </p>
       </div>
     </section>
 
     <!-- Services Grid -->
-    <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8">
         {content.services.items.map((item, index) => (
           <a
             href={`/services/${SERVICE_SLUGS[index]}/`}
-            class="group relative overflow-hidden rounded-xl p-8 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 hover:border-accent hover:shadow-xl transition-all duration-300 hover:-translate-y-1 no-underline"
+            class="group relative overflow-hidden rounded-xl p-5 md:p-8 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 hover:border-accent hover:shadow-xl transition-all duration-300 hover:-translate-y-1 no-underline"
           >
-            <div class="w-14 h-14 rounded-xl bg-primary/10 dark:bg-white/5 flex items-center justify-center text-primary dark:text-accent mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+            <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl bg-primary/10 dark:bg-white/5 flex items-center justify-center text-primary dark:text-accent mb-3 md:mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
               <Fragment set:html={icons[index] || icons[0]} />
             </div>
             <h2 class="text-xl font-bold font-serif text-primary dark:text-white mb-3 group-hover:text-accent dark:group-hover:text-accent-light transition-colors duration-300">
               {item.title}
             </h2>
-            <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6 text-base">
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-4 md:mb-6 text-sm md:text-base">
               {item.desc}
             </p>
-            <span class="flex items-center gap-2 text-accent dark:text-accent-light font-bold text-sm uppercase tracking-wide opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+            <span class="hidden md:flex items-center gap-2 text-accent dark:text-accent-light font-bold text-sm uppercase tracking-wide md:opacity-0 md:group-hover:opacity-100 md:translate-y-2 md:group-hover:translate-y-0 transition-all duration-300">
               Learn more
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </span>
@@ -119,14 +119,14 @@ const icons = [
     </section>
 
     <!-- Need Expert Cardiac Care -->
-    <section class="bg-primary dark:bg-primary-light py-16">
+    <section class="bg-primary dark:bg-primary-light py-6 md:py-10">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl font-bold font-serif text-white mb-6">Need Expert Cardiac Care</h2>
-        <p class="text-white/80 mb-4 max-w-2xl mx-auto text-lg leading-relaxed">If you are searching for a <strong class="text-white">cardiologist in Guntur</strong> for heart checkup, chest pain evaluation, or cardiac treatment, expert consultation is available to help diagnose and manage heart conditions effectively.</p>
-        <p class="text-white/80 mb-8 max-w-2xl mx-auto text-lg leading-relaxed">Early consultation helps detect heart problems and protect long-term heart health.</p>
+        <h2 class="text-2xl md:text-3xl font-bold font-serif text-white mb-6">Need Expert Cardiac Care</h2>
+        <p class="text-white/80 mb-4 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">If you are searching for a <strong class="text-white">cardiologist in Guntur</strong> for heart checkup, chest pain evaluation, or cardiac treatment, expert consultation is available to help diagnose and manage heart conditions effectively.</p>
+        <p class="text-white/80 mb-8 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">Early consultation helps detect heart problems and protect long-term heart health.</p>
         <a
           href={`tel:${content.contact.appointmentPhone}`}
-          class="inline-flex items-center gap-3 bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-gray-100 transition-all hover:-translate-y-1"
+          class="inline-flex items-center gap-3 bg-white text-primary px-6 py-3 md:px-8 md:py-4 rounded-xl font-bold text-base md:text-lg shadow-lg hover:bg-gray-100 transition-all hover:-translate-y-1"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           Book Appointment

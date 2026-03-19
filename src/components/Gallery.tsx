@@ -22,14 +22,14 @@ export default function Gallery({ content }: { content: GalleryContent }) {
   const getAspectClass = (ar?: string) => ar === 'portrait' ? 'aspect-[3/4]' : ar === 'landscape' ? 'aspect-[16/9]' : 'aspect-square';
 
   return (
-    <section id="gallery" className="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <section id="gallery" className="py-14 md:py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold font-serif text-primary dark:text-white mb-4">{content.heading}</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">{content.description}</p>
+        <div className="text-center mb-10 md:mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold font-serif text-primary dark:text-white mb-4">{content.heading}</h2>
+          <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">{content.description}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-max">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6 auto-rows-max">
           {content.images.map((image, index) => (
             <div key={index} className={`group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer ${getGridColSpan(image.aspectRatio)}`} onClick={() => setSelectedImage(index)}>
               <div className={`relative w-full h-full overflow-hidden bg-gray-100 ${getAspectClass(image.aspectRatio)}`}>

@@ -24,18 +24,18 @@ const starIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 const quoteIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></svg>`;
 ---
 
-<section id="testimonials" class="relative py-24 bg-primary-dark overflow-hidden">
+<section id="testimonials" class="relative py-14 md:py-24 bg-primary-dark overflow-hidden">
   {/* Background Effect */}
   <div class="absolute inset-0 bg-mesh-gradient opacity-10 pointer-events-none"></div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     {/* Section header */}
-    <div class="text-center mb-20">
+    <div class="text-center mb-10 md:mb-20">
       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white mb-6 backdrop-blur-sm">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent fill-accent"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         <span class="text-sm font-bold uppercase tracking-wider">{content.successStories || 'Patient Success Stories'}</span>
       </div>
-      <h2 class="text-4xl md:text-5xl font-bold font-serif text-white mb-6">{content.heading}</h2>
+      <h2 class="text-3xl md:text-5xl font-bold font-serif text-white mb-6">{content.heading}</h2>
       <p class="text-gray-300 text-lg max-w-2xl mx-auto font-light">
         {content.subtitle || 'Real experiences from patients who entrusted their hearts to Dr. Kamalakar.'}
       </p>
@@ -44,11 +44,11 @@ const quoteIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64
     {/* Testimonials grid */}
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {content.items.map((item) => (
-        <div class="group relative rounded-2xl p-8 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-accent/30 transition-all duration-500 hover:-translate-y-2">
+        <div class="group relative rounded-2xl p-5 md:p-8 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-accent/30 transition-all duration-500 hover:-translate-y-2">
           {/* Content */}
           <div class="relative z-10 h-full flex flex-col">
             {/* Star rating */}
-            <div class="flex gap-1 mb-6">
+            <div class="flex gap-1 mb-4 md:mb-6">
               <Fragment set:html={starIcon} />
               <Fragment set:html={starIcon} />
               <Fragment set:html={starIcon} />
@@ -62,7 +62,7 @@ const quoteIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64
             </div>
 
             {/* Quote text */}
-            <p class="text-lg leading-relaxed text-gray-300 font-light italic mb-8 flex-grow">
+            <p class="text-base md:text-lg leading-relaxed text-gray-300 font-light italic mb-5 md:mb-8 flex-grow">
               &ldquo;{item.text}&rdquo;
             </p>
 
@@ -82,7 +82,7 @@ const quoteIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64
     </div>
 
     {/* Trust indicator */}
-    <div class="mt-20 flex flex-col items-center justify-center text-center space-y-2">
+    <div class="mt-10 md:mt-20 flex flex-col items-center justify-center text-center space-y-2">
       <div class="flex -space-x-3 mb-2">
         {[1, 2, 3, 4].map(() => (
           <div class="w-10 h-10 rounded-full border-2 border-primary-dark bg-gray-300"></div>

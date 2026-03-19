@@ -14,8 +14,8 @@ export default function ServiceFAQ({ items, heading }: ServiceFAQProps) {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   return (
-    <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <h2 className="text-3xl font-bold font-serif text-primary dark:text-white mb-10">
+    <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10">
+      <h2 className="text-2xl md:text-3xl font-bold font-serif text-primary dark:text-white mb-5 md:mb-8">
         {heading}
       </h2>
       <div className="space-y-4">
@@ -26,7 +26,7 @@ export default function ServiceFAQ({ items, heading }: ServiceFAQProps) {
           >
             <button
               onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
-              className="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
+              className="w-full flex items-center justify-between p-4 md:p-6 text-left hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
               aria-expanded={openIdx === idx}
             >
               <span className="font-bold text-primary dark:text-white pr-4">{item.question}</span>
@@ -50,7 +50,7 @@ export default function ServiceFAQ({ items, heading }: ServiceFAQProps) {
                 openIdx === idx ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
               }`}
             >
-              <p className="px-6 pb-6 text-gray-600 dark:text-gray-300 leading-relaxed">
+              <p className="px-4 pb-4 md:px-6 md:pb-6 text-gray-600 dark:text-gray-300 leading-relaxed">
                 {item.answer}
               </p>
             </div>

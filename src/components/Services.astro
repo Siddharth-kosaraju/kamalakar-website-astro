@@ -50,31 +50,31 @@ const activityIconSmall = `<svg xmlns="http://www.w3.org/2000/svg" width="16" he
 const arrowRightIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>`;
 ---
 
-<section id="services" class="relative py-24 bg-neutral-50 dark:bg-primary-dark border-t border-gray-200 dark:border-gray-800">
+<section id="services" class="relative py-14 md:py-24 bg-neutral-50 dark:bg-primary-dark border-t border-gray-200 dark:border-gray-800">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     {/* Section header */}
-    <div class="text-center mb-16">
+    <div class="text-center mb-10 md:mb-16">
       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-primary/50 text-primary dark:text-white mb-6 border border-gray-100 dark:border-primary">
         <Fragment set:html={activityIconSmall} />
         <span class="text-sm font-bold uppercase tracking-wider">{content.expertiseChip || 'Our Expertise'}</span>
       </div>
-      <h2 class="text-4xl md:text-5xl font-bold font-serif text-primary dark:text-white mb-6">{content.heading}</h2>
-      <p class="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+      <h2 class="text-3xl md:text-5xl font-bold font-serif text-primary dark:text-white mb-6">{content.heading}</h2>
+      <p class="text-gray-600 dark:text-gray-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
         {content.description || 'World-class cardiac care delivered with precision and compassion using state-of-the-art technology.'}
       </p>
     </div>
 
     {/* Services grid — 4 featured */}
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
       {featuredItems.map((item, index) => (
         <a
           href={`${langPrefix}/services/${SERVICE_SLUGS[index] || ''}`}
-          class="group relative overflow-hidden rounded-xl p-8 bg-white dark:bg-primary-light/10 border border-gray-100 dark:border-primary-light/20 hover:border-accent hover:shadow-xl transition-all duration-300 hover:-translate-y-1 no-underline"
+          class="group relative overflow-hidden rounded-xl p-5 md:p-8 bg-white dark:bg-primary-light/10 border border-gray-100 dark:border-primary-light/20 hover:border-accent hover:shadow-xl transition-all duration-300 hover:-translate-y-1 no-underline"
           itemscope
           itemtype="https://schema.org/MedicalProcedure"
         >
           {/* Icon */}
-          <div class="w-14 h-14 rounded-xl bg-primary-light/10 dark:bg-white/5 flex items-center justify-center text-primary dark:text-accent mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+          <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl bg-primary-light/10 dark:bg-white/5 flex items-center justify-center text-primary dark:text-accent mb-3 md:mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
             <Fragment set:html={icons[index] || icons[0]} />
           </div>
 
@@ -84,13 +84,13 @@ const arrowRightIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" heigh
           </h3>
 
           {/* Description */}
-          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6 text-base">
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-4 md:mb-6 text-sm md:text-base">
             {item.desc}
           </p>
 
           {/* Learn more indicator */}
           <span
-            class="flex items-center gap-2 text-accent font-bold text-sm uppercase tracking-wide opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300"
+            class="hidden md:flex items-center gap-2 text-accent font-bold text-sm uppercase tracking-wide md:opacity-0 md:group-hover:opacity-100 md:translate-y-2 md:group-hover:translate-y-0 transition-all duration-300"
             aria-hidden="true"
           >
             <span>{content.learnMore || 'Learn more'}</span>
@@ -102,10 +102,10 @@ const arrowRightIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" heigh
     </div>
 
     {/* View All Services CTA */}
-    <div class="text-center mt-12">
+    <div class="text-center mt-8 md:mt-12">
       <a
         href={servicesHref}
-        class="inline-flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-primary-light transition-all hover:-translate-y-0.5"
+        class="inline-flex items-center gap-3 bg-primary text-white px-6 py-3 md:px-8 md:py-4 rounded-xl font-bold text-base md:text-lg shadow-lg hover:bg-primary-light transition-all hover:-translate-y-0.5"
       >
         {content.viewAllBtn || 'View All Services'}
         <Fragment set:html={arrowRightIcon} />
