@@ -1,12 +1,9 @@
 ---
 title: "Understanding Heart Attack Warning Signs: What Every Indian Should Know"
-titleTe: "గుండెపోటు హెచ్చరిక సంకేతాలను అర్థం చేసుకోవడం: ప్రతి భారతీయుడికి తెలియవలసినవి"
 summary: "Heart attacks don't always look like what you see in movies. Learn to recognise the subtle and obvious warning signs, understand why Indians are at higher risk, and know when to seek emergency care."
-summaryTe: "గుండెపోటు ఎల్లప్పుడూ సినిమాల్లో చూపించినట్లు ఉండదు. సూక్ష్మ మరియు స్పష్టమైన హెచ్చరిక సంకేతాలను గుర్తించడం, భారతీయులు ఎక్కువ ప్రమాదంలో ఎందుకు ఉన్నారో అర్థం చేసుకోవడం మరియు అత్యవసర చికిత్స ఎప్పుడు తీసుకోవాలో తెలుసుకోండి."
 date: 2026-03-01
 author: "Dr. Kamalakar Kosaraju"
 tags: ["heart attack", "warning signs", "cardiac health", "prevention", "chest pain", "heart disease India", "emergency cardiology"]
-tagsTe: ["గుండెపోటు", "హెచ్చరిక సంకేతాలు", "గుండె ఆరోగ్యం", "నివారణ"]
 readingTime: "6 min read"
 published: true
 ---
@@ -132,16 +129,16 @@ Regular cardiac check-ups can catch problems **before** they become emergencies.
 - **Lifestyle changes** — 30 minutes of brisk walking daily, reduced salt and oil intake
 
 <div class="not-prose bg-green-50 dark:bg-green-900/10 border-l-4 border-green-500 rounded-r-xl p-5 my-8">
-<p class="text-sm font-bold uppercase tracking-wider text-green-700 dark:text-green-400 mb-2">Affordable Care</p>
-<p class="text-base text-gray-700 dark:text-gray-300">An initial consultation at Kamalakar Heart Centre costs just <strong>&#8377;500</strong> and includes an ECG — a small investment that could save your life. <a href="/contact/" class="text-accent dark:text-accent-light font-bold underline">Book your appointment today.</a></p>
+<p class="text-sm font-bold uppercase tracking-wider text-green-700 dark:text-green-400 mb-2">Take the First Step</p>
+<p class="text-base text-gray-700 dark:text-gray-300">Your initial consultation at Kamalakar Heart Centre includes an ECG — a simple step that could save your life. <a href="/contact/" class="text-accent dark:text-accent-light font-bold underline">Book your appointment today.</a></p>
 </div>
 
-<div class="not-prose bg-red-600 dark:bg-red-700 text-white rounded-2xl p-6 sm:p-8 my-8 text-center">
-<p class="text-lg sm:text-xl font-bold mb-2">Experiencing Warning Signs? Don't Wait.</p>
-<p class="text-sm sm:text-base opacity-90 mb-4">Every minute matters during a heart attack. Call now for immediate assistance.</p>
-<a href="tel:9959423566" class="inline-flex items-center gap-2 bg-white text-red-600 px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all">
+<div class="not-prose bg-primary/10 dark:bg-primary/20 border border-primary/20 rounded-2xl p-6 sm:p-8 my-8 text-center">
+<p class="text-lg sm:text-xl font-bold mb-2 text-gray-900 dark:text-white">Experiencing Warning Signs? Don't Wait.</p>
+<p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">Every minute matters during a heart attack. Call now for immediate assistance.</p>
+<a href="tel:9959423566" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:shadow-xl hover:bg-primary-dark transition-all">
 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
 99594 23566
 </a>
-<p class="text-xs opacity-75 mt-3">Kamalakar Heart Centre, Kothapet, Guntur &mdash; 24/7 Emergency Cardiac Care</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">Kamalakar Heart Centre, Kothapet, Guntur &mdash; 24/7 Emergency Cardiac Care</p>
 </div>

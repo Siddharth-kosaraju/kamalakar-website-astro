@@ -11,7 +11,13 @@ interface Props {
   canonicalUrl: string;
   ogImage?: string;
   schemas?: object[];
-  page?: 'home' | 'education' | 'service' | 'privacy' | 'terms';
+  page?: 'home' | 'education' | 'service' | 'privacy' | 'terms' | 'blog' | 'blog-post';
+  /** For blog posts: set to 'article' for proper OG tagging */
+  ogType?: 'website' | 'article';
+  /** ISO date string for article:published_time */
+  articlePublishedTime?: string;
+  /** Author name for article:author */
+  articleAuthor?: string;
 }
 
 const {
@@ -22,6 +28,9 @@ const {
   ogImage = 'https://kamalakarheartcentre.com/media/dr-kamalakar.jpg',
   schemas = [],
   page = 'home',
+  ogType = 'website',
+  articlePublishedTime,
+  articleAuthor,
 } = Astro.props;
 ---
 
@@ -42,7 +51,7 @@ const {
 <!-- Open Graph -->
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:type" content="website" />
+<meta property="og:type" content={ogType} />
 <meta property="og:url" content={canonicalUrl} />
 <meta property="og:image" content={ogImage} />
 <meta property="og:image:width" content="1200" />
@@ -50,6 +59,17 @@ const {
 <meta property="og:image:alt" content="Dr. Kamalakar Kosaraju - Kamalakar Heart Centre" />
 <meta property="og:locale" content="en_IN" />
 <meta property="og:site_name" content="Kamalakar Heart Centre" />
+
+<!-- Article-specific OG tags (blog posts only) -->
+{ogType === 'article' && articlePublishedTime && (
+  <meta property="article:published_time" content={articlePublishedTime} />
+)}
+{ogType === 'article' && articleAuthor && (
+  <meta property="article:author" content={articleAuthor} />
+)}
+{ogType === 'article' && (
+  <meta property="article:section" content="Heart Health Education" />
+)}
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />

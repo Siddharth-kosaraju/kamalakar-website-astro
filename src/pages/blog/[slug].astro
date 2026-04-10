@@ -7,9 +7,10 @@ import { getSiteContent } from '../../utils/content';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
+  const now = new Date();
   const posts = await getCollection('blog');
   return posts
-    .filter((post) => post.data.published)
+    .filter((post) => post.data.published && post.data.date <= now)
     .map((post) => ({
       params: { slug: post.id },
       props: { post },
@@ -18,9 +19,13 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
-const content = await getSiteContent('en');
+const content = await getSiteContent();
 
-const schemas = [
+// --- Schema generation ---
+const postUrl = `https://kamalakarheartcentre.com/blog/${post.id}/`;
+
+const schemas: object[] = [
+  // BlogPosting schema (enhanced with E-E-A-T signals)
   {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -33,6 +38,13 @@ const schemas = [
       name: post.data.author,
       url: 'https://kamalakarheartcentre.com/about/',
       jobTitle: 'Interventional Cardiologist',
+      honorificPrefix: 'Dr.',
+      alumniOf: 'D.M. Cardiology',
+      hasCredential: [
+        { '@type': 'EducationalOccupationalCredential', credentialCategory: 'M.D. General Medicine (Gold Medalist)' },
+        { '@type': 'EducationalOccupationalCredential', credentialCategory: 'D.M. Cardiology' },
+        { '@type': 'EducationalOccupationalCredential', credentialCategory: 'FESC (Fellow of the European Society of Cardiology)' },
+      ],
     },
     publisher: {
       '@type': 'Organization',
@@ -42,13 +54,39 @@ const schemas = [
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://kamalakarheartcentre.com/blog/${post.id}/`,
+      '@id': postUrl,
     },
     image: 'https://kamalakarheartcentre.com/media/dr-kamalakar.jpg',
     keywords: post.data.tags?.join(', '),
     articleSection: 'Heart Health Education',
     inLanguage: 'en',
   },
+  // MedicalWebPage schema (critical for YMYL medical content E-E-A-T)
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalWebPage',
+    url: postUrl,
+    name: post.data.title,
+    description: post.data.summary,
+    lastReviewed: post.data.date.toISOString(),
+    reviewedBy: {
+      '@type': 'Person',
+      name: 'Dr. Kamalakar Kosaraju',
+      jobTitle: 'Interventional Cardiologist',
+      url: 'https://kamalakarheartcentre.com/about/',
+    },
+    specialty: {
+      '@type': 'MedicalSpecialty',
+      name: 'Cardiology',
+    },
+    audience: {
+      '@type': 'PeopleAudience',
+      suggestedMinAge: 18,
+      audienceType: 'patients and caregivers',
+    },
+    inLanguage: 'en',
+  },
+  // BreadcrumbList schema
   {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -59,6 +97,39 @@ const schemas = [
     ],
   },
 ];
+
+// Dynamically generate FAQPage schema from post content if FAQ section exists
+// This reads the rendered HTML to extract FAQ Q&A pairs from H3 headings under the FAQ H2
+// Build FAQPage schema from raw markdown if FAQ section exists
+const rawBody = post.body || '';
+const faqSection = rawBody.includes('## Frequently Asked Questions');
+if (faqSection) {
+  const faqContent = rawBody.split('## Frequently Asked Questions')[1]?.split(/\n## /)[0] || '';
+  const faqs: { question: string; answer: string }[] = [];
+  let match;
+  const faqBodyRegex = /###\s+(.+?)\n\n([\s\S]*?)(?=\n###|$)/g;
+  while ((match = faqBodyRegex.exec(faqContent)) !== null) {
+    const question = match[1].trim();
+    const answer = match[2].trim().replace(/<[^>]+>/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/\n+/g, ' ').trim();
+    if (question && answer) {
+      faqs.push({ question, answer });
+    }
+  }
+  if (faqs.length > 0) {
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map(faq => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    });
+  }
+}
 ---
 
 <BaseLayout class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
@@ -67,10 +138,12 @@ const schemas = [
     title={`${post.data.title} | Kamalakar Heart Centre Blog`}
     description={post.data.summary}
     keywords={post.data.tags || []}
-    canonicalUrl={`https://kamalakarheartcentre.com/blog/${post.id}/`}
-    alternateLangUrl={`https://kamalakarheartcentre.com/te/blog/${post.id}/`}
+    canonicalUrl={postUrl}
     schemas={schemas}
-    page="home"
+    page="blog-post"
+    ogType="article"
+    articlePublishedTime={post.data.date.toISOString()}
+    articleAuthor={post.data.author}
   />
 
   <Header

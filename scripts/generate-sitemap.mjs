@@ -4,34 +4,125 @@
  * Scans dist/ for all HTML pages and generates sitemap-0.xml.
  * Run automatically after every `astro build` via the build script.
  *
- * Grouping order (matches the structure from the sitemap tool):
- *   1. English homepage
- *   2. Telugu homepage
- *   3. English top-level sections (about, services, education, blog, contact)
- *   4. English service detail pages
- *   5. English legal pages
- *   6. Telugu top-level sections
- *   7. Telugu service detail pages
- *   8. Telugu blog post pages
- *   9. Telugu legal pages
- *   10. English blog post pages
+ * Timestamps use the last git commit date of the source file(s) that
+ * generate each route, so `lastmod` reflects real content changes — not
+ * build time. This avoids burning Google's crawl budget on unchanged pages.
+ *
+ * Grouping order:
+ *   1. Homepage
+ *   2. Top-level sections (about, services, education, blog, contact)
+ *   3. Service detail pages
+ *   4. Legal pages
+ *   5. Blog post pages
  *
  * Priority rules:
- *   1.00 — English homepage (/)
- *   0.80 — Telugu homepage, English top-level sections, English service/legal pages
- *   0.60 — Telugu top-level sections, Telugu service/blog/legal pages
- *   0.60 — English blog post pages
+ *   1.00 — Homepage (/)
+ *   0.80 — Top-level sections, service detail pages, legal pages
+ *   0.60 — Blog post pages
  */
 
 import { readdirSync, statSync, writeFileSync, readFileSync } from 'node:fs';
 import { join, relative } from 'node:path';
+import { execSync } from 'node:child_process';
 
 const DIST = new URL('../dist/', import.meta.url).pathname;
+const ROOT = new URL('../', import.meta.url).pathname;
 const SITE = 'https://kamalakarheartcentre.com';
 const OUT_FILE = join(DIST, 'sitemap-0.xml');
 
 // Paths to exclude from the sitemap
 const EXCLUDE = new Set(['/404/', '/404']);
+
+/**
+ * Map a route to the source file(s) that generate it.
+ * Returns an array of paths relative to the repo root.
+ */
+function getSourceFiles(route) {
+  // Blog posts
+  const blogMatch = route.match(/^\/blog\/([^/]+)\/$/);
+  if (blogMatch) {
+    return [
+      `src/content/blog/${blogMatch[1]}.md`,
+      'src/pages/blog/[slug].astro',
+    ];
+  }
+
+  // Service detail pages
+  const serviceMatch = route.match(/^\/services\/([^/]+)\/$/);
+  if (serviceMatch) {
+    return [
+      `src/content/services/${serviceMatch[1]}.yaml`,
+      'src/pages/services/[slug].astro',
+    ];
+  }
+
+  // Static routes mapped to their page files
+  const staticMap = {
+    '/': 'src/pages/index.astro',
+    '/about/': 'src/pages/about.astro',
+    '/blog/': 'src/pages/blog/index.astro',
+    '/contact/': 'src/pages/contact.astro',
+    '/education/': 'src/pages/education.astro',
+    '/services/': 'src/pages/services/index.astro',
+    '/privacy-policy/': 'src/pages/privacy-policy.astro',
+    '/terms-of-service/': 'src/pages/terms-of-service.astro',
+  };
+
+  if (staticMap[route]) {
+    return [staticMap[route]];
+  }
+
+  // Fallback — use the built HTML file's mtime
+  return [];
+}
+
+/**
+ * Get the last git commit date for a file (ISO format).
+ * Falls back to the file's mtime if not tracked by git.
+ */
+function getLastModified(route) {
+  const sources = getSourceFiles(route);
+
+  let latestDate = null;
+
+  for (const src of sources) {
+    const fullPath = join(ROOT, src);
+    try {
+      // Get the author date of the last commit that touched this file
+      const gitDate = execSync(
+        `git log -1 --format=%aI -- "${src}"`,
+        { cwd: ROOT, encoding: 'utf-8', stdio: ['pipe', 'pipe', 'pipe'] }
+      ).trim();
+
+      if (gitDate) {
+        const d = new Date(gitDate);
+        if (!latestDate || d > latestDate) latestDate = d;
+      }
+    } catch {
+      // Not in git — try file mtime
+      try {
+        const mtime = statSync(fullPath).mtime;
+        if (!latestDate || mtime > latestDate) latestDate = mtime;
+      } catch {
+        // File doesn't exist at expected path — skip
+      }
+    }
+  }
+
+  // Fallback: use the built HTML file's mtime
+  if (!latestDate) {
+    const routeDir = route === '/' ? '' : route.replace(/^\//, '').replace(/\/$/, '');
+    const htmlPath = join(DIST, routeDir, 'index.html');
+    try {
+      latestDate = statSync(htmlPath).mtime;
+    } catch {
+      latestDate = new Date();
+    }
+  }
+
+  // Format as YYYY-MM-DD (Google's preferred format for lastmod)
+  return latestDate.toISOString().split('T')[0];
+}
 
 function collectHtmlRoutes(dir, routes = []) {
   for (const entry of readdirSync(dir)) {
@@ -47,63 +138,27 @@ function collectHtmlRoutes(dir, routes = []) {
   return routes;
 }
 
-// Assign a sort group and priority to each route for the desired ordering
+// Assign a sort group and priority to each route
 function getGroupAndPriority(route) {
-  const isTe = route.startsWith('/te/');
-
-  // Homepages
   if (route === '/') return { group: 0, priority: '1.00' };
-  if (route === '/te/') return { group: 1, priority: '0.80' };
 
-  // English top-level sections
-  if (!isTe && /^\/(about|services|education|blog|contact)\/$/.test(route))
+  if (/^\/(about|services|education|blog|contact)\/$/.test(route))
+    return { group: 1, priority: '0.80' };
+
+  if (/^\/services\/.+\/$/.test(route))
     return { group: 2, priority: '0.80' };
 
-  // English service detail pages
-  if (!isTe && /^\/services\/.+\/$/.test(route))
+  if (/^\/(privacy-policy|terms-of-service)\/$/.test(route))
     return { group: 3, priority: '0.80' };
 
-  // English legal pages
-  if (!isTe && /^\/(privacy-policy|terms-of-service)\/$/.test(route))
-    return { group: 4, priority: '0.80' };
+  if (/^\/blog\/.+\/$/.test(route))
+    return { group: 4, priority: '0.60' };
 
-  // Telugu top-level sections
-  if (isTe && /^\/te\/(about|services|education|blog|contact)\/$/.test(route))
-    return { group: 5, priority: '0.60' };
-
-  // Telugu service detail pages
-  if (isTe && /^\/te\/services\/.+\/$/.test(route))
-    return { group: 6, priority: '0.60' };
-
-  // Telugu blog post pages
-  if (isTe && /^\/te\/blog\/.+\/$/.test(route))
-    return { group: 7, priority: '0.60' };
-
-  // Telugu legal pages
-  if (isTe && /^\/te\/(privacy-policy|terms-of-service)\/$/.test(route))
-    return { group: 8, priority: '0.60' };
-
-  // English blog post pages
-  if (!isTe && /^\/blog\/.+\/$/.test(route))
-    return { group: 9, priority: '0.60' };
-
-  // Fallback
-  return { group: 10, priority: '0.50' };
+  return { group: 5, priority: '0.50' };
 }
 
-// Generate a per-URL timestamp offset from the base build time
-// so each URL gets a unique lastmod (seconds apart)
-function generateTimestamps(count) {
-  const base = new Date();
-  return Array.from({ length: count }, (_, i) => {
-    const d = new Date(base.getTime() + i * 1000);
-    // Format as ISO 8601 with timezone offset: 2026-03-02T17:36:45+00:00
-    return d.toISOString().replace(/\.\d{3}Z$/, '+00:00');
-  });
-}
-
-// Collect all routes from built HTML files (exclude /te/ routes)
-const routes = collectHtmlRoutes(DIST).filter((r) => !EXCLUDE.has(r) && !r.startsWith('/te/') && r !== '/te/');
+// Collect all routes from built HTML files
+const routes = collectHtmlRoutes(DIST).filter((r) => !EXCLUDE.has(r));
 
 // Sort routes by group, then alphabetically within each group
 routes.sort((a, b) => {
@@ -138,17 +193,17 @@ if (extra.length > 0) {
   extra.forEach((r) => console.log(`  - ${r}`));
 }
 
-// Generate sitemap XML
-const timestamps = generateTimestamps(routes.length);
-
+// Generate sitemap XML with real lastmod dates
 const urls = routes
-  .map(
-    (route, i) => `<url>
+  .map((route) => {
+    const lastmod = getLastModified(route);
+    const { priority } = getGroupAndPriority(route);
+    return `<url>
   <loc>${SITE}${route}</loc>
-  <lastmod>${timestamps[i]}</lastmod>
-  <priority>${getGroupAndPriority(route).priority}</priority>
-</url>`
-  )
+  <lastmod>${lastmod}</lastmod>
+  <priority>${priority}</priority>
+</url>`;
+  })
   .join('\n');
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
