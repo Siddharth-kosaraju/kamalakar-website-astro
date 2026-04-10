@@ -15,7 +15,7 @@ import FAQ from '../components/FAQ';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 import { getSiteContent } from '../utils/content';
-const content = await getSiteContent('en');
+const content = await getSiteContent();
 
 const homepageSchema = {
   '@context': 'https://schema.org',
@@ -130,7 +130,7 @@ const schemas = [homepageSchema, faqSchema];
     <Hero content={content.hero} appointmentPhone={content.contact.appointmentPhone} />
     <Stats client:visible content={content.stats} />
     <About content={content.about} />
-    <Services content={content.services} lang="en" />
+    <Services content={content.services} />
     <Education content={content.education} />
     {content.preventive && <Preventive content={content.preventive} />}
     {content.whyChoose && <WhyChoose content={content.whyChoose} />}

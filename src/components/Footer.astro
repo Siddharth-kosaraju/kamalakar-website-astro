@@ -27,11 +27,10 @@ interface Props {
     contact: string;
     [key: string]: string;
   };
-  lang: 'en' | 'te';
   currentPage?: string;
 }
 
-const { content, navContent, lang, currentPage = 'home' } = Astro.props;
+const { content, navContent, currentPage = 'home' } = Astro.props;
 
 const SERVICE_SLUGS = [
   'angioplasty',
@@ -42,21 +41,18 @@ const SERVICE_SLUGS = [
   'ecg-echo',
 ];
 
-const langPrefix = lang === 'te' ? '/te' : '';
-
 // All quick links point to standalone pages (consistent with header nav)
 const navLinks = [
-  { name: navContent.home, href: `${langPrefix}/` },
-  { name: navContent.about, href: `${langPrefix}/about/` },
-  { name: navContent.services, href: `${langPrefix}/services/` },
-  { name: navContent.education, href: `${langPrefix}/education/` },
-  { name: navContent.blog, href: `${langPrefix}/blog/` },
-  { name: navContent.contact, href: `${langPrefix}/contact/` },
+  { name: navContent.home, href: '/' },
+  { name: navContent.about, href: '/about/' },
+  { name: navContent.services, href: '/services/' },
+  { name: navContent.education, href: '/education/' },
+  { name: navContent.blog, href: '/blog/' },
+  { name: navContent.contact, href: '/contact/' },
 ];
 
-// Footer page links with lang prefix
-const privacyHref = `${langPrefix}/privacy-policy`;
-const termsHref = `${langPrefix}/terms-of-service`;
+const privacyHref = '/privacy-policy';
+const termsHref = '/terms-of-service';
 ---
 
 <footer class="bg-primary-dark text-white pt-10 md:pt-20 pb-6 md:pb-10 border-t border-primary/20">
@@ -125,7 +121,7 @@ const termsHref = `${langPrefix}/terms-of-service`;
           {content.serviceLinks.map((item, idx) => (
             <li>
               <a
-                href={`${langPrefix}/services/${SERVICE_SLUGS[idx] || ''}`}
+                href={`/services/${SERVICE_SLUGS[idx] || ''}`}
                 class="hover:text-accent transition-colors"
               >
                 {item}

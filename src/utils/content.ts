@@ -1,7 +1,5 @@
 import { getCollection, getEntry } from 'astro:content';
 
-export type Lang = 'en' | 'te';
-
 const START_YEAR = 2015;
 
 function getExperienceYears(): string {
@@ -9,12 +7,12 @@ function getExperienceYears(): string {
 }
 
 /**
- * Load site content for a given language.
+ * Load site content (English).
  * Injects dynamic experience text into stats, hero, and about.
  */
-export async function getSiteContent(lang: Lang) {
-  const entry = await getEntry('site', lang);
-  if (!entry) throw new Error(`Site content not found for language: ${lang}`);
+export async function getSiteContent() {
+  const entry = await getEntry('site', 'en');
+  if (!entry) throw new Error('Site content not found');
   const data = entry.data;
 
   // Inject dynamic experience calculation
@@ -27,27 +25,23 @@ export async function getSiteContent(lang: Lang) {
 }
 
 /**
- * Load a service page by slug and language.
+ * Load a service page by slug.
  */
-export async function getServicePage(slug: string, lang: Lang) {
-  const id = lang === 'en' ? slug : `${slug}-te`;
-  const entry = await getEntry('services', id);
+export async function getServicePage(slug: string) {
+  const entry = await getEntry('services', slug);
   return entry?.data ?? null;
 }
 
 /**
- * Get all service pages for a language.
+ * Get all service pages.
  */
-export async function getAllServicePages(lang: Lang) {
+export async function getAllServicePages() {
   const all = await getCollection('services');
-  const suffix = lang === 'en' ? '' : '-te';
-  return all
-    .filter(e => lang === 'en' ? !e.id.endsWith('-te') : e.id.endsWith('-te'))
-    .map(e => e.data);
+  return all.map(e => e.data);
 }
 
 /**
- * Service slugs (shared between en and te).
+ * Service slugs.
  */
 export const SERVICE_SLUGS = [
   'angioplasty',

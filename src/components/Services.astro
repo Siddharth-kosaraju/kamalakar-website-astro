@@ -13,10 +13,9 @@ interface Props {
     viewAllBtn?: string;
     items: { title: string; desc: string }[];
   };
-  lang: 'en' | 'te';
 }
 
-const { content, lang } = Astro.props;
+const { content } = Astro.props;
 
 const SERVICE_SLUGS = [
   'angioplasty',
@@ -25,8 +24,7 @@ const SERVICE_SLUGS = [
   'pacemaker',
 ];
 
-const langPrefix = lang === 'te' ? '/te' : '';
-const servicesHref = lang === 'te' ? '/te/services/' : '/services/';
+const servicesHref = '/services/';
 
 // Show first 4 featured services
 const featuredItems = content.items.slice(0, 4);
@@ -68,7 +66,7 @@ const arrowRightIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" heigh
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
       {featuredItems.map((item, index) => (
         <a
-          href={`${langPrefix}/services/${SERVICE_SLUGS[index] || ''}`}
+          href={`/services/${SERVICE_SLUGS[index] || ''}`}
           class="group relative overflow-hidden rounded-xl p-5 md:p-8 bg-white dark:bg-primary-light/10 border border-gray-100 dark:border-primary-light/20 hover:border-accent hover:shadow-xl transition-all duration-300 hover:-translate-y-1 no-underline"
           itemscope
           itemtype="https://schema.org/MedicalProcedure"
@@ -111,7 +109,7 @@ const arrowRightIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" heigh
         <Fragment set:html={arrowRightIcon} />
       </a>
       <p class="text-sm text-gray-500 dark:text-gray-400 mt-3">
-        {content.items.length} {lang === 'te' ? 'ప్రత్యేక సేవలు అందుబాటులో ఉన్నాయి' : 'specialized services available'}
+        {content.items.length} specialized services available
       </p>
     </div>
   </div>

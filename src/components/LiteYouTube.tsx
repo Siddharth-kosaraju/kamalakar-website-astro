@@ -3,18 +3,17 @@ import React, { useState } from 'react';
 interface LiteYouTubeProps {
   youtubeId: string;
   title: string;
-  lang?: 'en' | 'te';
   className?: string;
 }
 
-export default function LiteYouTube({ youtubeId, title, lang = 'en', className }: LiteYouTubeProps) {
+export default function LiteYouTube({ youtubeId, title, className }: LiteYouTubeProps) {
   const [activated, setActivated] = useState(false);
 
   if (activated) {
     return (
       <iframe
         className={className || 'w-full h-full'}
-        src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&enablejsapi=1&rel=0&hl=${lang === 'te' ? 'te' : 'en'}`}
+        src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&enablejsapi=1&rel=0&hl=en`}
         title={title}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen

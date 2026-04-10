@@ -6,7 +6,7 @@ import Footer from '../../components/Footer.astro';
 import { getSiteContent, SERVICE_SLUGS } from '../../utils/content';
 import { buildBreadcrumbSchema } from '../../utils/schemas';
 
-const content = await getSiteContent('en');
+const content = await getSiteContent();
 
 const schemas = [
   {

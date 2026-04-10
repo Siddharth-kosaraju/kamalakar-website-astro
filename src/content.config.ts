@@ -239,13 +239,10 @@ const servicePageSchema = z.object({
 
 const blogPostSchema = z.object({
   title: z.string(),
-  titleTe: z.string().optional(),
   summary: z.string(),
-  summaryTe: z.string().optional(),
   date: z.coerce.date(),
   author: z.string().default('Dr. Kamalakar Kosaraju'),
   tags: z.array(z.string()).optional(),
-  tagsTe: z.array(z.string()).optional(),
   readingTime: z.string().optional(),
   published: z.boolean().default(true),
 });
@@ -271,9 +268,4 @@ const blog = defineCollection({
   schema: blogPostSchema,
 });
 
-const blogTe = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/blog-te' }),
-  schema: blogPostSchema,
-});
-
-export const collections = { site, services, blog, 'blog-te': blogTe };
+export const collections = { site, services, blog };

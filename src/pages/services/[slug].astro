@@ -12,8 +12,8 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
-const content = await getSiteContent('en');
-const service = await getServicePage(slug!, 'en');
+const content = await getSiteContent();
+const service = await getServicePage(slug!);
 
 if (!service) {
   return Astro.redirect('/404');
@@ -35,7 +35,6 @@ const schemas = buildServicePageSchema({
     description={service.metaDescription}
     keywords={service.keywords || []}
     canonicalUrl={`https://kamalakarheartcentre.com/services/${slug}/`}
-    alternateLangUrl={`https://kamalakarheartcentre.com/te/services/${slug}/`}
     schemas={schemas}
     page="service"
   />

@@ -48,31 +48,4 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </main>
 
-  <!-- Bilingual: swap content if Telugu path -->
-  <script is:inline>
-    (function() {
-      if (window.location.pathname.indexOf('/te/') !== 0) return;
-      document.documentElement.setAttribute('lang', 'te');
-      var t = document.getElementById('404-title');
-      var d = document.getElementById('404-desc');
-      var h = document.getElementById('404-home');
-      var ht = document.getElementById('404-home-text');
-      var ct = document.getElementById('404-call-text');
-      var q = document.getElementById('404-quick');
-      var ls = document.getElementById('404-link-services');
-      var la = document.getElementById('404-link-about');
-      var le = document.getElementById('404-link-education');
-      var lc = document.getElementById('404-link-contact');
-      if (t) t.textContent = '\u0C2A\u0C47\u0C1C\u0C40 \u0C15\u0C28\u0C41\u0C17\u0C4A\u0C28\u0C2C\u0C21\u0C32\u0C47\u0C26\u0C41';
-      if (d) d.textContent = '\u0C2E\u0C40\u0C30\u0C41 \u0C35\u0C46\u0C24\u0C41\u0C15\u0C41\u0C24\u0C41\u0C28\u0C4D\u0C28 \u0C2A\u0C47\u0C1C\u0C40 \u0C05\u0C02\u0C26\u0C41\u0C2C\u0C3E\u0C1F\u0C41\u0C32\u0C4B \u0C32\u0C47\u0C26\u0C41 \u0C32\u0C47\u0C26\u0C3E \u0C24\u0C30\u0C32\u0C3F\u0C02\u0C1A\u0C2C\u0C21\u0C3F\u0C02\u0C26\u0C3F. \u0C2E\u0C40\u0C15\u0C41 \u0C15\u0C3E\u0C35\u0C32\u0C38\u0C3F\u0C28\u0C26\u0C3F \u0C15\u0C28\u0C41\u0C17\u0C4A\u0C28\u0C21\u0C02\u0C32\u0C4B \u0C2E\u0C47\u0C2E\u0C41 \u0C38\u0C39\u0C3E\u0C2F\u0C02 \u0C1A\u0C47\u0C38\u0C4D\u0C24\u0C3E\u0C2E\u0C41.';
-      if (h) h.setAttribute('href', '/te/');
-      if (ht) ht.textContent = '\u0C39\u0C4B\u0C2E\u0C4D \u0C2A\u0C47\u0C1C\u0C40\u0C15\u0C3F \u0C35\u0C46\u0C33\u0C4D\u0C33\u0C02\u0C21\u0C3F';
-      if (ct) ct.textContent = '\u0C15\u0C3E\u0C32\u0C4D \u0C1A\u0C47\u0C2F\u0C02\u0C21\u0C3F: 99594 23566';
-      if (q) q.textContent = '\u0C24\u0C4D\u0C35\u0C30\u0C3F\u0C24 \u0C32\u0C3F\u0C02\u0C15\u0C4D\u200C\u0C32\u0C41:';
-      if (ls) { ls.setAttribute('href', '/te/services/'); ls.textContent = '\u0C2E\u0C3E \u0C38\u0C47\u0C35\u0C32\u0C41'; }
-      if (la) { la.setAttribute('href', '/te/about/'); la.textContent = '\u0C21\u0C3E\u0C15\u0C4D\u0C1F\u0C30\u0C4D \u0C17\u0C41\u0C30\u0C3F\u0C02\u0C1A\u0C3F'; }
-      if (le) { le.setAttribute('href', '/te/education/'); le.textContent = '\u0C35\u0C3F\u0C26\u0C4D\u0C2F'; }
-      if (lc) { lc.setAttribute('href', '/te/contact/'); lc.textContent = '\u0C38\u0C02\u0C2A\u0C4D\u0C30\u0C26\u0C3F\u0C02\u0C1A\u0C02\u0C21\u0C3F'; }
-    })();
-  </script>
 </BaseLayout>

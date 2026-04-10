@@ -6,7 +6,7 @@ import Footer from '../components/Footer.astro';
 import { getSiteContent } from '../utils/content';
 import { buildBusinessSchema, buildBreadcrumbSchema } from '../utils/schemas';
 
-const content = await getSiteContent('en');
+const content = await getSiteContent();
 
 const locationCoords = {
   lat: 16.298329484414772,

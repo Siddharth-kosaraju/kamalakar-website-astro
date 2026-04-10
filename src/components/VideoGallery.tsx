@@ -13,7 +13,6 @@ interface Video {
 
 interface VideoGalleryProps {
   videos: Video[];
-  lang: 'en' | 'te';
   labels: {
     featuredVideos: string;
     upNext: string;
@@ -22,7 +21,7 @@ interface VideoGalleryProps {
   };
 }
 
-export default function VideoGallery({ videos, lang, labels }: VideoGalleryProps) {
+export default function VideoGallery({ videos, labels }: VideoGalleryProps) {
   const [activeVideo, setActiveVideo] = useState(videos[0]);
 
   return (
@@ -44,7 +43,6 @@ export default function VideoGallery({ videos, lang, labels }: VideoGalleryProps
               key={activeVideo.youtubeId}
               youtubeId={activeVideo.youtubeId}
               title={activeVideo.title}
-              lang={lang}
             />
           </div>
           <div>

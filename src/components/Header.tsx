@@ -17,14 +17,13 @@ interface NavContent {
 }
 
 interface HeaderProps {
-  lang: 'en' | 'te';
   content: NavContent;
   appointmentPhone: string;
   currentPage?: 'home' | 'about' | 'services' | 'education' | 'blog' | 'contact';
   currentPath?: string;
 }
 
-export default function Header({ lang, content, appointmentPhone, currentPage = 'home', currentPath = '/' }: HeaderProps) {
+export default function Header({ content, appointmentPhone, currentPage = 'home', currentPath = '/' }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 

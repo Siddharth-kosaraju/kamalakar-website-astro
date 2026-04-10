@@ -17,11 +17,10 @@ interface Props {
     credentialMD?: string;
     credentialDM?: string;
   };
-  lang?: string;
 }
 
-const { content, lang = 'en' } = Astro.props;
-const aboutHref = lang === 'te' ? '/te/about/' : '/about/';
+const { content } = Astro.props;
+const aboutHref = '/about/';
 ---
 
 <section id="about" class="py-12 md:py-20 bg-gradient-to-b from-white via-red-50/30 to-white dark:from-gray-900 dark:via-gray-800/30 dark:to-gray-900 transition-colors duration-300" aria-labelledby="about-heading">

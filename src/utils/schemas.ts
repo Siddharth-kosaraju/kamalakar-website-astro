@@ -187,11 +187,9 @@ export function buildBreadcrumbSchema(items: { name: string; url: string }[]) {
   };
 }
 
-export function buildWebPageSchema(page: 'home' | 'education', lang: string) {
+export function buildWebPageSchema(page: 'home' | 'education') {
   const isHome = page === 'home';
-  const url = isHome
-    ? (lang === 'te' ? `${CANONICAL_BASE}/te/` : `${CANONICAL_BASE}/`)
-    : (lang === 'te' ? `${CANONICAL_BASE}/te/education` : `${CANONICAL_BASE}/education`);
+  const url = isHome ? `${CANONICAL_BASE}/` : `${CANONICAL_BASE}/education`;
 
   return {
     '@context': 'https://schema.org',
@@ -201,7 +199,7 @@ export function buildWebPageSchema(page: 'home' | 'education', lang: string) {
     description: isHome
       ? 'Expert cardiac care in Guntur by Dr. Kamalakar Kosaraju.'
       : 'Heart health education resources from Kamalakar Heart Centre.',
-    inLanguage: lang === 'te' ? 'te' : 'en',
+    inLanguage: 'en',
     isPartOf: { '@type': 'WebSite', url: CANONICAL_BASE, name: 'Kamalakar Heart Centre' },
     about: { '@type': 'MedicalSpecialty', name: 'Cardiology' },
     speakable: {

@@ -7,10 +7,10 @@ import VideoGallery from '../components/VideoGallery';
 import { getSiteContent } from '../utils/content';
 import { buildWebPageSchema, buildVideoListSchema } from '../utils/schemas';
 
-const content = await getSiteContent('en');
+const content = await getSiteContent();
 
 const schemas = [
-  buildWebPageSchema('education', 'en'),
+  buildWebPageSchema('education'),
   buildVideoListSchema(content.education.videos),
 ];
 ---
