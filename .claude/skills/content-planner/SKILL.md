@@ -198,3 +198,11 @@ Before presenting the plan, verify:
 - [ ] 1 week marked as flex
 - [ ] Quarterly theme stated
 - [ ] Content refresh recommendations for old posts included
+
+## Post-Deploy Verification
+
+After deploying new content, invoke the **deploy-verify** skill to confirm:
+- [ ] `/sitemap.xml` is valid and includes all live blog post URLs
+- [ ] `/robots.txt` points to `https://kamalakarheartcentre.com/sitemap.xml`
+- [ ] Only published posts with `date <= today` appear on the blog listing and in the sitemap
+- [ ] Future-dated posts in the content plan are NOT visible until their publish date

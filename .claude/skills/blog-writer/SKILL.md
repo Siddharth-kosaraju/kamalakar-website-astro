@@ -383,3 +383,13 @@ Queries:
 - [ ] **NO pricing, costs, fees, or rupee amounts anywhere in the post**
 - [ ] Short paragraphs (2-3 sentences) for mobile readability
 - [ ] H2s structured as questions where appropriate
+
+## Post-Deploy Verification
+
+After any blog post is deployed, invoke the **deploy-verify** skill (or manually check):
+- [ ] `/sitemap.xml` returns valid XML and includes the new blog post URL
+- [ ] `/robots.txt` contains `Sitemap: https://kamalakarheartcentre.com/sitemap.xml`
+- [ ] The new blog post page loads at its URL (not a 404)
+- [ ] JSON-LD schemas render in the page head (BlogPosting, MedicalWebPage, BreadcrumbList)
+- [ ] If the post has an FAQ section, FAQPage schema is present
+- [ ] Future-dated posts are NOT visible on `/blog/`
