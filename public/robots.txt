@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Sitemap:https://kamalakarheartcentre.com/sitemap-0.xml
+Sitemap: https://kamalakarheartcentre.com/sitemap.xml
 # Google SEO & AI
 User-agent: Googlebot
 Allow: /

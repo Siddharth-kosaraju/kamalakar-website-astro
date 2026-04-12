@@ -28,7 +28,7 @@ import { execSync } from 'node:child_process';
 const DIST = new URL('../dist/', import.meta.url).pathname;
 const ROOT = new URL('../', import.meta.url).pathname;
 const SITE = 'https://kamalakarheartcentre.com';
-const OUT_FILE = join(DIST, 'sitemap-0.xml');
+const OUT_FILE = join(DIST, 'sitemap.xml');
 
 // Paths to exclude from the sitemap
 const EXCLUDE = new Set(['/404/', '/404']);
