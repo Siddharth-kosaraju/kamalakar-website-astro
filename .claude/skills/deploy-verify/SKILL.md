@@ -13,12 +13,35 @@ You are the deployment and verification agent for the Kamalakar Heart Centre web
 - **Site:** https://kamalakarheartcentre.com
 - **Repo:** https://github.com/AlbusisDead/kamalakar-website-astro
 - **Build command:** `npm run build` (runs `astro build && node scripts/generate-sitemap.mjs`)
+- **Deploy command:** `npm run deploy` (builds + S3 sync + CloudFront invalidation — all-in-one)
 - **Output directory:** `dist/`
 - **Branch:** `main`
 
+### AWS Infrastructure
+
+- **Hosting:** AWS S3 + CloudFront (static site)
+- **S3 Bucket:** `kamalakar-heart-centre-prod`
+- **CloudFront Distribution:** `E3STOTV0PG9BZU`
+- **AWS CLI Profile:** `sid-personal`
+- **Deploy commands (manual):**
+  ```bash
+  aws s3 sync dist/ s3://kamalakar-heart-centre-prod --delete --profile sid-personal
+  aws cloudfront create-invalidation --distribution-id E3STOTV0PG9BZU --paths "/*" --profile sid-personal
+  ```
+
 ## Deploy Workflow
 
-### Step 1: Pre-deploy build
+### Quick Deploy (Recommended)
+
+```bash
+npm run deploy
+```
+
+This single command runs: build → S3 sync → CloudFront invalidation. After it completes, proceed directly to Step 3 (post-deployment verification).
+
+### Manual Deploy Steps
+
+#### Step 1: Pre-deploy build
 
 ```bash
 npm run build
@@ -28,15 +51,32 @@ Verify:
 - Build completes without errors
 - `dist/sitemap.xml` exists (NOT `sitemap-0.xml`)
 - `dist/robots.txt` exists and contains `Sitemap: https://kamalakarheartcentre.com/sitemap.xml`
-- Page count matches expectations (currently 17 pages)
+- Page count matches expectations (currently 16 pages)
 - Only published posts with `date <= now` are built (future-dated posts must NOT appear)
 
-### Step 2: Commit and push
+#### Step 2a: Commit and push
 
 ```bash
 git add <files>
 git commit -m "descriptive message"
 git push origin main
+```
+
+#### Step 2b: Deploy to AWS
+
+```bash
+aws s3 sync dist/ s3://kamalakar-heart-centre-prod --delete --profile sid-personal
+aws cloudfront create-invalidation --distribution-id E3STOTV0PG9BZU --paths "/*" --profile sid-personal
+```
+
+**IMPORTANT:** Always invalidate CloudFront after S3 sync. Without invalidation, CloudFront serves stale cached content (TTL can be up to 24 hours). The `--delete` flag on S3 sync removes files from the bucket that no longer exist in `dist/` (e.g., old `sitemap-0.xml`).
+
+#### Step 2c: Wait for invalidation
+
+CloudFront invalidation typically completes in 1-2 minutes. Check status:
+
+```bash
+aws cloudfront get-invalidation --distribution-id E3STOTV0PG9BZU --id <INVALIDATION_ID> --profile sid-personal
 ```
 
 ### Step 3: Post-deployment verification
@@ -135,8 +175,10 @@ Present results as a table:
 - **Fix:** All 4 blog page files must filter: `src/pages/blog/index.astro`, `src/pages/blog/[slug].astro`
 
 ### Sitemap lastmod dates all identical
-- **Cause:** Using build time instead of git commit dates
+- **Cause 1:** Using build time instead of git commit dates
 - **Fix:** `scripts/generate-sitemap.mjs` must use `git log -1 --format=%aI -- <file>`
+- **Cause 2:** Tracking shared template files (e.g., `[slug].astro`) alongside content files — any template refactor resets ALL pages' lastmod
+- **Fix:** For content-driven routes (blog posts, services), only track the content file (`.md` / `.yaml`), NOT the shared template. Template changes are infrastructure, not content updates.
 
 ### FAQ schema not generating
 - **Cause:** FAQ section doesn't follow exact format
@@ -152,3 +194,22 @@ Present results as a table:
 - **Sitemap generator:** `scripts/generate-sitemap.mjs` — runs post-build, uses git dates for lastmod
 - **SEO schemas:** Auto-generated in `src/pages/blog/[slug].astro` from frontmatter (BlogPosting, MedicalWebPage, BreadcrumbList, FAQPage)
 - **robots.txt:** Static file in `public/robots.txt` — copied to `dist/` at build time
+- **Deploy script:** `npm run deploy` — builds, syncs to S3 with `--delete`, invalidates CloudFront
+
+## Workflow Learnings (Avoid Repeating These Mistakes)
+
+1. **Sitemap filename:** The sitemap generator MUST output `sitemap.xml` (not `sitemap-0.xml`). Google and all crawlers expect `/sitemap.xml`. The `OUT_FILE` in `scripts/generate-sitemap.mjs` must always be `join(DIST, 'sitemap.xml')`.
+
+2. **robots.txt format:** The `Sitemap:` directive MUST have a space after the colon: `Sitemap: https://...` (not `Sitemap:https://...`). Some crawlers fail to parse without the space.
+
+3. **CloudFront invalidation is mandatory:** After every S3 sync, ALWAYS run CloudFront invalidation. Without it, users see stale cached content for up to 24 hours. The `npm run deploy` script handles this automatically.
+
+4. **S3 `--delete` flag:** Always use `--delete` with `aws s3 sync` to remove orphaned files (e.g., old `sitemap-0.xml`). Without it, stale files persist in the bucket.
+
+5. **Git auth for pushes:** If HTTPS push fails, run `gh auth setup-git` to configure git credentials via GitHub CLI.
+
+6. **Quoting glob characters in git:** Paths with brackets like `src/pages/blog/[slug].astro` must be quoted in git commands to prevent shell glob expansion.
+
+7. **Sitemap timestamps:** Never use build-time for `lastmod`. Always use `git log -1 --format=%aI -- <file>` for real content-change dates. Fake timestamps burn Google's crawl budget.
+
+8. **Sitemap source file mapping:** For content-driven routes (blog posts → `.md`, services → `.yaml`), only track the content file in `getSourceFiles()`. Do NOT include shared templates like `[slug].astro` — a template refactor would incorrectly reset `lastmod` for every page using that template, telling Google everything changed when only infrastructure did.
