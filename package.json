@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build && node scripts/generate-sitemap.mjs",
+    "deploy": "npm run build && aws s3 sync dist/ s3://kamalakar-heart-centre-prod --delete --profile sid-personal && aws cloudfront create-invalidation --distribution-id E3STOTV0PG9BZU --paths \"/*\" --profile sid-personal",
     "preview": "astro preview",
     "astro": "astro"
   },
