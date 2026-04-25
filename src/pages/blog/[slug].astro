@@ -104,7 +104,13 @@ const schemas: object[] = [
 const rawBody = post.body || '';
 const faqSection = rawBody.includes('## Frequently Asked Questions');
 if (faqSection) {
-  const faqContent = rawBody.split('## Frequently Asked Questions')[1]?.split(/\n## /)[0] || '';
+  // Cut off FAQ content at the next ## heading OR the first root-level HTML block
+  // (e.g. medical disclaimer / CTA <div>s that typically follow the FAQ section).
+  // Without this, the last FAQ answer's regex lookahead (`$` at EOF) slurps the disclaimer + CTA text.
+  const faqContent = rawBody
+    .split('## Frequently Asked Questions')[1]
+    ?.split(/\n## /)[0]
+    ?.split(/\n<div\b/)[0] || '';
   const faqs: { question: string; answer: string }[] = [];
   let match;
   const faqBodyRegex = /###\s+(.+?)\n\n([\s\S]*?)(?=\n###|$)/g;
