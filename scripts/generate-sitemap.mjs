@@ -38,22 +38,18 @@ const EXCLUDE = new Set(['/404/', '/404']);
  * Returns an array of paths relative to the repo root.
  */
 function getSourceFiles(route) {
-  // Blog posts
+  // Blog posts — only track the content file (.md), NOT the shared template.
+  // Template changes (e.g., layout refactors) don't represent content updates
+  // and shouldn't reset lastmod for every blog post.
   const blogMatch = route.match(/^\/blog\/([^/]+)\/$/);
   if (blogMatch) {
-    return [
-      `src/content/blog/${blogMatch[1]}.md`,
-      'src/pages/blog/[slug].astro',
-    ];
+    return [`src/content/blog/${blogMatch[1]}.md`];
   }
 
-  // Service detail pages
+  // Service detail pages — only track the content file (.yaml), not the template.
   const serviceMatch = route.match(/^\/services\/([^/]+)\/$/);
   if (serviceMatch) {
-    return [
-      `src/content/services/${serviceMatch[1]}.yaml`,
-      'src/pages/services/[slug].astro',
-    ];
+    return [`src/content/services/${serviceMatch[1]}.yaml`];
   }
 
   // Static routes mapped to their page files
