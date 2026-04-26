@@ -86,9 +86,8 @@ These are encoded in `src/utils/schemas.ts` `buildPhysicianSchema()` and the con
 
 - **Specialisation:** Cardiologist (Interventional Cardiology)
 - **MBBS:** Dr. NTR University of Health Sciences, Vijayawada — 2007
-- **MD General Medicine:** Dr. NTR University of Health Sciences, Vijayawada — 2012
-- **DM Cardiology:** Dr. NTR University of Health Sciences, Vijayawada — 2015
-- **DM residency:** Osmania Medical College, Hyderabad (2012–2015)
+- **MD General Medicine** (Gold Medalist): Dr. NTR University of Health Sciences, Vijayawada — 2012
+- **DM Cardiology:** **Osmania Medical College, Hyderabad — 2012–2015** (in Indian medical education, the DM is itself a 3-year super-specialty residency program; Osmania is both the college and the residency institution. Earlier framing of "DM from NTR Univ with residency at Osmania" was incorrect.)
 - **Fellowship:** FESC — Fellow of the European Society of Cardiology
 - **AP Medical Council registration:** **#57814** (2007)
 - **Years as cardiologist:** dynamically computed from `START_YEAR = 2015` in `src/utils/content.ts`

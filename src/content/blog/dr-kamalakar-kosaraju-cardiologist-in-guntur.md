@@ -24,17 +24,17 @@ This article covers Dr. Kamalakar's qualifications, the advanced cardiac infrast
 
 Dr. Kamalakar Kosaraju is one of the most trusted heart specialists in Guntur, specialising in interventional cardiology and advanced cardiac care. His academic journey reflects a deep commitment to medical excellence.
 
-He completed his MBBS, M.D. (General Medicine), and D.M. (Cardiology) all under **Dr. NTR University of Health Sciences, Vijayawada**, with his D.M. Cardiology training (2012–2015) carried out at the prestigious **Osmania Medical College, Hyderabad** — one of India's leading centres for advanced cardiac residency. He was awarded a **Gold Medal** during his M.D. for academic distinction. He is registered with the Andhra Pradesh Medical Council (#57814) and is a Fellow of the European Society of Cardiology (FESC).
+He completed his MBBS and **M.D. in General Medicine** under **Dr. NTR University of Health Sciences, Vijayawada** — earning a **Gold Medal** during his M.D. for academic distinction. He then pursued his **D.M. in Cardiology** at the prestigious **Osmania Medical College, Hyderabad** (2012–2015) — a three-year super-specialty doctoral residency that is itself India's highest formal training in cardiology. He is registered with the Andhra Pradesh Medical Council (#57814) and is a Fellow of the European Society of Cardiology (FESC).
 
 With over **11 years of dedicated experience** as an Interventional Cardiologist, Dr. Kamalakar has performed **3,000+ coronary angiograms** and **1,000+ angioplasty procedures**, building a practice grounded in accurate diagnosis, ethical treatment, and a patient-centred approach.
 
-| Qualification | Granting Institution | Year |
+| Qualification | Institution | Year |
 |---|---|---|
-| **MBBS** | Dr. NTR University of Health Sciences, Vijayawada (studied at Rangaraya Medical College) | 2007 |
-| **M.D. General Medicine** (Gold Medal) | Dr. NTR University of Health Sciences, Vijayawada (studied at Katuri Medical College) | 2012 |
-| **D.M. Cardiology** | Dr. NTR University of Health Sciences, Vijayawada (residency at Osmania Medical College, Hyderabad) | 2015 |
+| **MBBS** | Rangaraya Medical College — Dr. NTR University of Health Sciences | 2007 |
+| **M.D. General Medicine** (Gold Medal) | Katuri Medical College — Dr. NTR University of Health Sciences | 2012 |
+| **D.M. Cardiology** (super-specialty residency) | Osmania Medical College, Hyderabad | 2012–2015 |
 | **FESC** | Fellow of the European Society of Cardiology | — |
-| **AP Medical Council Registration** | Andhra Pradesh Medical Council, #57814 | 2007 |
+| **Medical Council Registration** | Andhra Pradesh Medical Council #57814 | 2007 |
 
 His specialties include interventional cardiology, coronary artery disease treatment, complex angioplasty, [heart failure management](/services/heart-failure/), and preventive cardiology.
 
