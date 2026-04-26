@@ -7,6 +7,17 @@ import AuthorByline from '../../components/AuthorByline.astro';
 import { getSiteContent } from '../../utils/content';
 import { getCollection, render } from 'astro:content';
 import { execSync } from 'node:child_process';
+import { buildPhysicianSchema } from '../../utils/schemas';
+
+// Posts that are fundamentally about Dr Kamalakar himself (not a clinical
+// topic) get the full Physician schema inlined. The thin author @id reference
+// on the BlogPosting alone doesn't carry the credentials and procedure counts
+// to Google's Rich Results parser — and those pages ARE where Google should
+// attribute the doctor's knowledge panel.
+const DOCTOR_PROFILE_POSTS = new Set([
+  'dr-kamalakar-kosaraju-cardiologist-in-guntur',
+  'best-heart-specialist-in-guntur',
+]);
 
 export async function getStaticPaths() {
   const now = new Date();
@@ -110,6 +121,16 @@ const schemas: object[] = [
     ],
   },
 ];
+
+// Inline the full Physician schema on doctor-profile blog posts.
+// Without this, Google's Rich Results parser only sees a thin
+// `author: {@type: Physician, @id: …#physician}` reference and never
+// dereferences it to the homepage — so credentials, registration #57814,
+// and the 3,000+/1,000+ procedure counts never show up in the SERP/test for
+// these pages.
+if (DOCTOR_PROFILE_POSTS.has(post.id)) {
+  schemas.push(buildPhysicianSchema());
+}
 
 // Dynamically generate FAQPage schema from post content if FAQ section exists
 // This reads the rendered HTML to extract FAQ Q&A pairs from H3 headings under the FAQ H2
