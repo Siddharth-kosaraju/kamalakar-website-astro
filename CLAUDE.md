@@ -72,6 +72,7 @@ Any of these triggers the full canonical/sitemap/robots review cycle above:
 | Deploy + verify skill | `.claude/skills/deploy-verify/SKILL.md` |
 | Blog writer skill | `.claude/skills/blog-writer/SKILL.md` |
 | Content planner skill | `.claude/skills/content-planner/SKILL.md` |
+| GTM/SEO skills (imported) — see `.claude/skills/NOTICE.md` for the full set | `.claude/skills/{audit-content, build-backlinks, build-resource-pages, create-geo-charts, geo-content-planning, geo-content-research, improve-aeo-geo, reddit-opportunity-research, research-brand, research-keywords, write-seo-geo-content}` |
 
 ## Operating notes
 
