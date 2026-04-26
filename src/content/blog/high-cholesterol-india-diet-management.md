@@ -10,23 +10,15 @@ published: true
 
 <div class="not-prose bg-primary/5 dark:bg-primary/10 border-l-4 border-primary rounded-r-xl p-5 mb-10">
 <p class="text-sm font-bold uppercase tracking-wider text-primary dark:text-accent-light mb-2">Key Takeaway</p>
-<p class="text-base leading-relaxed text-gray-700 dark:text-gray-300">The ICMR-INDIAB study found that <strong>81.2% of Indians have some form of dyslipidemia</strong> (abnormal cholesterol). High cholesterol has no symptoms until it causes a heart attack or stroke. A simple lipid profile test can detect it early, and <strong>dietary changes combined with medical guidance</strong> can significantly reduce your risk.</p>
+<p class="text-base leading-relaxed text-gray-700 dark:text-gray-300">The <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0096808" target="_blank" rel="noopener">ICMR-INDIAB study (PLOS One, 2014; N=113,043)</a> found that <strong>81.2% of Indians have some form of dyslipidemia</strong> (abnormal cholesterol). High cholesterol has no symptoms until it causes a heart attack or stroke. A simple lipid profile test can detect it early, and <strong>dietary changes combined with medical guidance</strong> can significantly reduce your risk.</p>
 </div>
 
-High cholesterol in India has reached epidemic proportions. The landmark ICMR-INDIAB study — the largest nationally representative study on metabolic diseases in India — found that **81.2% of Indians** have some form of dyslipidemia. That means more than 4 out of every 5 people you know likely have abnormal cholesterol levels right now.
+High cholesterol in India has reached epidemic proportions. The landmark [ICMR-INDIAB study](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0096808) — the largest nationally representative study on metabolic diseases in India, published in *PLOS One* (2014) and based on 113,043 participants — found that **81.2% of Indians** have some form of dyslipidemia. That means more than 4 out of every 5 people you know likely have abnormal cholesterol levels right now.
 
 What makes this even more concerning is that Indians develop coronary artery disease nearly **a decade earlier** than Western populations. Genetic predisposition, combined with dietary habits and sedentary lifestyles, creates a perfect storm for heart disease in our country.
 
 At [Kamalakar Heart Centre](/services/) in Guntur, we regularly see patients in their 30s and 40s with dangerously elevated cholesterol — many of whom had no idea until a routine test revealed the problem. The good news is that early detection and the right lifestyle changes can make a significant difference.
 
-<div class="not-prose bg-gray-50 dark:bg-gray-800/50 rounded-xl p-4 my-8 flex gap-4 items-start border border-gray-200 dark:border-gray-700">
-<div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-lg">DK</div>
-<div>
-<p class="font-bold text-gray-900 dark:text-white text-sm">Written by Dr. Kamalakar Kosaraju</p>
-<p class="text-xs text-gray-500 dark:text-gray-400">M.D. (Gold Medalist), D.M. Cardiology, FESC | Interventional Cardiologist | 10+ years experience</p>
-<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Kamalakar Heart Centre, Guntur &bull; <a href="/about/" class="text-accent dark:text-accent-light underline">View full profile</a></p>
-</div>
-</div>
 
 ## Why Is High Cholesterol So Common in India?
 
@@ -56,7 +48,7 @@ Understanding your cholesterol numbers is the first step towards managing them. 
 | **Triglycerides** | Fat from food; high levels raise heart risk | Below 150 mg/dL |
 | **Total Cholesterol** | Combined measure of all cholesterol types | Below 200 mg/dL |
 
-The ICMR-INDIAB study revealed that **66.9% of Indians have low HDL cholesterol** — making it the single most common lipid abnormality in our population. Low HDL is particularly dangerous because it means your body has reduced ability to clear cholesterol from your arteries.
+The [ICMR-INDIAB study](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0096808) revealed that **66.9% of Indians have low HDL cholesterol** — making it the single most common lipid abnormality in our population. Low HDL is particularly dangerous because it means your body has reduced ability to clear cholesterol from your arteries.
 
 This is why the Lipid Association of India 2023 guidelines recommend that Indians maintain stricter cholesterol targets compared to Western standards. If you have diabetes or existing [heart disease](/services/heart-failure/), your LDL target may need to be below 70 mg/dL or even 55 mg/dL.
 

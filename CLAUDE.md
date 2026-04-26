@@ -92,6 +92,8 @@ These are encoded in `src/utils/schemas.ts` `buildPhysicianSchema()` and the con
 - **Fellowship:** FESC — Fellow of the European Society of Cardiology
 - **AP Medical Council registration:** **#57814** (2007)
 - **Years as cardiologist:** dynamically computed from `START_YEAR = 2015` in `src/utils/content.ts`
+- **Procedure volume:** 3,000+ coronary angiograms · 1,000+ angioplasty procedures (confirmed by user 2026-04-27; encoded in `Physician.description` JSON-LD)
+- **NOT an Assistant Professor.** Earlier blog content claimed this — it is incorrect and has been removed. Do not re-introduce.
 
 ## Current published prices (₹, INR)
 

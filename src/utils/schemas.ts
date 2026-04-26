@@ -122,7 +122,7 @@ export function buildPhysicianSchema() {
     familyName: 'Kosaraju',
     jobTitle: 'Interventional Cardiologist',
     medicalSpecialty: 'Cardiology',
-    description: 'M.D. General Medicine and D.M. Cardiology from Dr. NTR University of Health Sciences, Vijayawada. D.M. Cardiology residency at Osmania Medical College (2012–2015). Fellow of the European Society of Cardiology (FESC). Andhra Pradesh Medical Council registration #57814.',
+    description: 'M.D. General Medicine and D.M. Cardiology from Dr. NTR University of Health Sciences, Vijayawada. D.M. Cardiology residency at Osmania Medical College (2012–2015). Fellow of the European Society of Cardiology (FESC). Andhra Pradesh Medical Council registration #57814. 3,000+ coronary angiograms and 1,000+ angioplasty procedures performed.',
     image: `${CANONICAL_BASE}/media/dr-kamalakar.jpg`,
     url: CANONICAL_BASE,
     telephone: '+919959423566',

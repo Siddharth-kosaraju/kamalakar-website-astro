@@ -10,7 +10,7 @@ published: true
 
 <div class="not-prose bg-primary/5 dark:bg-primary/10 border-l-4 border-primary rounded-r-xl p-5 mb-10">
 <p class="text-sm font-bold uppercase tracking-wider text-primary dark:text-accent-light mb-2">Key Takeaway</p>
-<p class="text-base leading-relaxed text-gray-700 dark:text-gray-300">Choosing the <strong>right heart specialist</strong> can be the difference between life and death. Look for experience, advanced infrastructure, and a patient-centric approach. <strong>Early diagnosis reduces heart-related risks by over 60%.</strong></p>
+<p class="text-base leading-relaxed text-gray-700 dark:text-gray-300">Choosing the <strong>right heart specialist</strong> can be the difference between life and death. Look for experience, advanced infrastructure, and a patient-centric approach. <strong>The <a href="https://www.who.int/news-room/fact-sheets/detail/cardiovascular-diseases-(cvds)" target="_blank" rel="noopener">World Health Organization estimates that over 80% of premature heart attacks and strokes are preventable</a></strong> with timely care and risk-factor management.</p>
 </div>
 
 Heart diseases are rising rapidly due to stress, lifestyle changes, and dietary habits. In a growing city like Guntur, choosing the **right heart specialist (cardiologist)** can make a life-saving difference.
@@ -74,7 +74,7 @@ Not all cardiologists offer the same level of expertise. The right doctor ensure
 
 <div class="not-prose bg-amber-50 dark:bg-amber-900/10 border-l-4 border-amber-500 rounded-r-xl p-5 my-8">
 <p class="text-sm font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2">Did You Know?</p>
-<p class="text-base text-gray-700 dark:text-gray-300">Studies show that <strong>early detection reduces heart-related risks by over 60%</strong>. Regular check-ups with an expert cardiologist ensure timely treatment and better outcomes.</p>
+<p class="text-base text-gray-700 dark:text-gray-300">Cardiovascular disease is the leading cause of death in India, claiming over 28 lakh lives every year — yet the <a href="https://www.who.int/news-room/fact-sheets/detail/cardiovascular-diseases-(cvds)" target="_blank" rel="noopener">WHO estimates that more than 80% of premature heart attacks and strokes are preventable</a> through risk-factor control and early intervention. Regular check-ups with an experienced cardiologist are the single most reliable way to catch problems before they become emergencies.</p>
 </div>
 
 ## Who is the Best Heart Specialist in Guntur?
@@ -90,7 +90,7 @@ When it comes to trusted cardiac care in Guntur, many patients recommend:
 <div class="grid gap-3">
 <div class="flex gap-3 items-start">
 <span class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center text-xs font-bold">&#x2713;</span>
-<p class="text-gray-700 dark:text-gray-300">15+ years of experience in cardiology</p>
+<p class="text-gray-700 dark:text-gray-300">11+ years of experience in cardiology · 3,000+ coronary angiograms · 1,000+ angioplasty procedures</p>
 </div>
 <div class="flex gap-3 items-start">
 <span class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500 text-white flex items-center justify-center text-xs font-bold">&#x2713;</span>

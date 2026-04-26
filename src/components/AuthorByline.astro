@@ -1,0 +1,32 @@
+---
+/**
+ * AuthorByline — the "Written by Dr. Kamalakar Kosaraju" attribution block
+ * shown on every blog post. The years-of-experience figure is computed from
+ * `START_YEAR = 2015` in src/utils/content.ts so it never goes stale.
+ *
+ * Why this lives in a component instead of inside the markdown:
+ *   Earlier each post hand-coded an HTML byline like "10+ years experience".
+ *   That meant 5 of 7 posts were stale by April 2026 (real figure was 11+),
+ *   and a 6th post made up "15+ years". Centralising the byline kills the
+ *   recurring drift.  See `SEO optimisation/audits/content_audit_2026-04-27.md`.
+ */
+
+const START_YEAR = 2015; // DM Cardiology completion — kept in lock-step with src/utils/content.ts
+const years = `${new Date().getFullYear() - START_YEAR}+`;
+---
+
+<div class="not-prose bg-gray-50 dark:bg-gray-800/50 rounded-xl p-4 my-8 flex gap-4 items-start border border-gray-200 dark:border-gray-700">
+  <div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-lg">
+    DK
+  </div>
+  <div>
+    <p class="font-bold text-gray-900 dark:text-white text-sm">Written by Dr. Kamalakar Kosaraju</p>
+    <p class="text-xs text-gray-500 dark:text-gray-400">
+      M.D. (Gold Medalist), D.M. Cardiology, FESC | Interventional Cardiologist | {years} years experience
+    </p>
+    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+      Kamalakar Heart Centre, Guntur &bull;{' '}
+      <a href="/about/" class="text-accent dark:text-accent-light underline">View full profile</a>
+    </p>
+  </div>
+</div>

@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import SEO from '../../components/SEO.astro';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer.astro';
+import AuthorByline from '../../components/AuthorByline.astro';
 import { getSiteContent } from '../../utils/content';
 import { getCollection, render } from 'astro:content';
 import { execSync } from 'node:child_process';
@@ -233,6 +234,10 @@ if (faqSection) {
           )}
         </div>
       </header>
+
+      <!-- Author byline (rendered from a single component so the year count
+           stays in sync; the per-post hand-written byline used to drift) -->
+      <AuthorByline />
 
       <!-- Content -->
       <div class="prose md:prose-lg dark:prose-invert max-w-none prose-headings:font-serif prose-headings:text-primary dark:prose-headings:text-white prose-a:text-accent dark:prose-a:text-accent-light hover:prose-a:text-primary dark:hover:prose-a:text-white prose-strong:text-primary dark:prose-strong:text-white prose-li:marker:text-accent">

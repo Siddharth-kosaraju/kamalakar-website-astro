@@ -19,29 +19,22 @@ Dr. Kamalakar Kosaraju is an interventional **cardiologist in Guntur** who combi
 
 This article covers Dr. Kamalakar's qualifications, the advanced cardiac infrastructure at the centre, and the full range of heart treatments available — helping you make an informed decision about your cardiac care in Guntur.
 
-<div class="not-prose bg-gray-50 dark:bg-gray-800/50 rounded-xl p-4 my-8 flex gap-4 items-start border border-gray-200 dark:border-gray-700">
-<div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-lg">DK</div>
-<div>
-<p class="font-bold text-gray-900 dark:text-white text-sm">Written by Dr. Kamalakar Kosaraju</p>
-<p class="text-xs text-gray-500 dark:text-gray-400">M.D. (Gold Medalist), D.M. Cardiology, FESC | Interventional Cardiologist | 11+ years experience</p>
-<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Kamalakar Heart Centre, Guntur &bull; <a href="/about/" class="text-accent dark:text-accent-light underline">View full profile</a></p>
-</div>
-</div>
 
 ## Who Is Dr. Kamalakar Kosaraju?
 
 Dr. Kamalakar Kosaraju is one of the most trusted heart specialists in Guntur, specialising in interventional cardiology and advanced cardiac care. His academic journey reflects a deep commitment to medical excellence.
 
-He completed his MBBS from Rangaraya Medical College, followed by an M.D. in General Medicine from Katuri Medical College — where he was awarded the **Gold Medal** for academic distinction. He then pursued his D.M. in Cardiology from the prestigious **Osmania Medical College**, one of India's leading centres for advanced cardiac training.
+He completed his MBBS, M.D. (General Medicine), and D.M. (Cardiology) all under **Dr. NTR University of Health Sciences, Vijayawada**, with his D.M. Cardiology training (2012–2015) carried out at the prestigious **Osmania Medical College, Hyderabad** — one of India's leading centres for advanced cardiac residency. He was awarded a **Gold Medal** during his M.D. for academic distinction. He is registered with the Andhra Pradesh Medical Council (#57814) and is a Fellow of the European Society of Cardiology (FESC).
 
-With over **11 years of dedicated experience** in cardiology, Dr. Kamalakar has built a practice grounded in accurate diagnosis, ethical treatment, and a patient-centred approach. He currently serves as an **Assistant Professor of Cardiology**, combining clinical practice with academic teaching — ensuring he stays at the forefront of the latest advances in cardiac medicine.
+With over **11 years of dedicated experience** as an Interventional Cardiologist, Dr. Kamalakar has performed **3,000+ coronary angiograms** and **1,000+ angioplasty procedures**, building a practice grounded in accurate diagnosis, ethical treatment, and a patient-centred approach.
 
-| Qualification | Institution |
-|---|---|
-| **MBBS** | Rangaraya Medical College |
-| **M.D. General Medicine (Gold Medal)** | Katuri Medical College |
-| **D.M. Cardiology** | Osmania Medical College |
-| **FESC** | Fellow of the European Society of Cardiology |
+| Qualification | Granting Institution | Year |
+|---|---|---|
+| **MBBS** | Dr. NTR University of Health Sciences, Vijayawada (studied at Rangaraya Medical College) | 2007 |
+| **M.D. General Medicine** (Gold Medal) | Dr. NTR University of Health Sciences, Vijayawada (studied at Katuri Medical College) | 2012 |
+| **D.M. Cardiology** | Dr. NTR University of Health Sciences, Vijayawada (residency at Osmania Medical College, Hyderabad) | 2015 |
+| **FESC** | Fellow of the European Society of Cardiology | — |
+| **AP Medical Council Registration** | Andhra Pradesh Medical Council, #57814 | 2007 |
 
 His specialties include interventional cardiology, coronary artery disease treatment, complex angioplasty, [heart failure management](/services/heart-failure/), and preventive cardiology.
 
@@ -118,7 +111,7 @@ The centre has access to advanced **Cath Lab facilities** for performing coronar
 
 <div class="not-prose bg-amber-50 dark:bg-amber-900/10 border-l-4 border-amber-500 rounded-r-xl p-5 my-8">
 <p class="text-sm font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2">Did You Know?</p>
-<p class="text-base text-gray-700 dark:text-gray-300">According to the World Health Organization, <strong>cardiovascular diseases account for 45% of all deaths in the 40–69 age group in India</strong> — making it the single largest killer of working-age adults. The WHO emphasises that early diagnosis through basic tests like ECG and echocardiogram can significantly reduce mortality by enabling timely intervention.</p>
+<p class="text-base text-gray-700 dark:text-gray-300">According to the <a href="https://www.who.int/news-room/fact-sheets/detail/cardiovascular-diseases-(cvds)" target="_blank" rel="noopener">World Health Organization</a>, <strong>cardiovascular diseases account for 45% of all deaths in the 40–69 age group in India</strong> — making it the single largest killer of working-age adults. The WHO emphasises that early diagnosis through basic tests like ECG and echocardiogram can significantly reduce mortality by enabling timely intervention.</p>
 </div>
 
 ## What Heart Conditions Can a Cardiologist in Guntur Treat?
@@ -172,7 +165,7 @@ Kamalakar Heart Centre provides comprehensive care for the full spectrum of hear
 
 ## When Should You Consult a Cardiologist?
 
-Many heart conditions develop silently over years before presenting with sudden, life-threatening symptoms. The American Heart Association recommends regular cardiac screening for adults over 35, especially those with risk factors common in the Indian population.
+Many heart conditions develop silently over years before presenting with sudden, life-threatening symptoms. The American Heart Association recommends [cardiovascular risk assessment beginning at age 20](https://www.heart.org/en/healthy-living/healthy-lifestyle/prevention-screening-guidelines), with formal screenings every 4–6 years if risk factors are normal — and earlier or more frequent checks for those with diabetes, hypertension, or a family history of heart disease, all common in the Indian population.
 
 Consult a cardiologist in Guntur if you experience:
 

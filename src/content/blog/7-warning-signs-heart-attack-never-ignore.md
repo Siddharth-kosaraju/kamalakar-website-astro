@@ -17,18 +17,9 @@ A heart attack does not always arrive with crushing chest pain. For many Indians
 
 At [Kamalakar Heart Centre](/services/) in Guntur, we see this pattern every week. This guide walks you through the **7 warning signs of a heart attack** you should never ignore, how each one feels, why it happens, and exactly when to act.
 
-<div class="not-prose bg-gray-50 dark:bg-gray-800/50 rounded-xl p-4 my-8 flex gap-4 items-start border border-gray-200 dark:border-gray-700">
-<div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-lg">DK</div>
-<div>
-<p class="font-bold text-gray-900 dark:text-white text-sm">Written by Dr. Kamalakar Kosaraju</p>
-<p class="text-xs text-gray-500 dark:text-gray-400">M.D. (Gold Medalist), D.M. Cardiology, FESC | Interventional Cardiologist | 10+ years experience</p>
-<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Kamalakar Heart Centre, Guntur &bull; <a href="/about/" class="text-accent dark:text-accent-light underline">View full profile</a></p>
-</div>
-</div>
-
 ## Why are heart attacks more dangerous for Indians?
 
-According to the **Indian Heart Journal (2024)**, Indians develop coronary artery disease **5 to 10 years earlier** than Western populations, and cardiovascular disease is now the leading cause of death in India, claiming over 28 lakh lives annually. The **World Health Organization (WHO)** estimates that 1 in 4 deaths in India is caused by heart disease.
+According to the [INTERHEART study (Yusuf et al., *The Lancet*, 2004)](https://pubmed.ncbi.nlm.nih.gov/15364185/) — and confirmed by the [Lancet Regional Health – Southeast Asia (2023)](https://www.thelancet.com/journals/lansea/article/PIIS2772-3682(23)00016-1/fulltext) — Indians develop coronary artery disease **5 to 10 years earlier** than Western populations. Cardiovascular disease is now the leading cause of death in India, claiming over 28 lakh lives annually. The [World Health Organization](https://www.who.int/news-room/fact-sheets/detail/cardiovascular-diseases-(cvds)) estimates that 1 in 4 deaths in India is caused by heart disease.
 
 What makes this urgent: the average Indian patient presenting with a heart attack is in their **40s or early 50s**, not 60s. This is why every adult above 30 — and especially those with diabetes, hypertension, or a family history — should memorise the warning signs below.
 

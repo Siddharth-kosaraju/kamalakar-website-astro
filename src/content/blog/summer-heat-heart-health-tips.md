@@ -19,14 +19,6 @@ At [Kamalakar Heart Centre](/services/) in Guntur, we see a significant rise in 
 
 This guide explains exactly how heat affects your heart, who is most vulnerable, and what you can do to stay safe from April through June.
 
-<div class="not-prose bg-gray-50 dark:bg-gray-800/50 rounded-xl p-4 my-8 flex gap-4 items-start border border-gray-200 dark:border-gray-700">
-<div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-lg">DK</div>
-<div>
-<p class="font-bold text-gray-900 dark:text-white text-sm">Written by Dr. Kamalakar Kosaraju</p>
-<p class="text-xs text-gray-500 dark:text-gray-400">M.D. (Gold Medalist), D.M. Cardiology, FESC | Interventional Cardiologist | 10+ years experience</p>
-<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Kamalakar Heart Centre, Guntur &bull; <a href="/about/" class="text-accent dark:text-accent-light underline">View full profile</a></p>
-</div>
-</div>
 
 ## How Does Summer Heat Affect Your Heart?
 
@@ -163,7 +155,7 @@ You should also seek an urgent consultation if you experience new or worsening s
 
 <div class="not-prose bg-amber-50 dark:bg-amber-900/10 border-l-4 border-amber-500 rounded-r-xl p-5 my-8">
 <p class="text-sm font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2">Did You Know?</p>
-<p class="text-base text-gray-700 dark:text-gray-300">According to a meta-analysis published in the <em>European Heart Journal</em>, for every <strong>1°C rise above the local heat threshold</strong>, cardiovascular mortality increases by approximately <strong>2.1%</strong>. The risk is even higher for stroke (3.8%) and acute coronary syndrome (3.5%). In cities like Guntur, where summer temperatures routinely exceed 40°C, this translates to a meaningful increase in cardiac risk for the entire population.</p>
+<p class="text-base text-gray-700 dark:text-gray-300">According to a <a href="https://academic.oup.com/eurheartj/article/46/30/2950/8155633" target="_blank" rel="noopener">meta-analysis of 266 studies, published as a 2025 ESC scientific statement in the <em>European Heart Journal</em></a>, for every <strong>1°C rise above the local heat threshold</strong>, cardiovascular mortality increases by approximately <strong>2.1%</strong>. The risk is even higher for stroke (3.8%) and acute coronary syndrome (3.5%). In cities like Guntur, where summer temperatures routinely exceed 40°C, this translates to a meaningful increase in cardiac risk for the entire population.</p>
 </div>
 
 ## Frequently Asked Questions

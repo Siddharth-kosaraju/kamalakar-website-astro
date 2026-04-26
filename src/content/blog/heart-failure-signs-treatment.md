@@ -19,14 +19,6 @@ As we mark **Heart Failure Awareness Days (April 27 – May 3)**, the theme this
 
 Heart failure affects lakhs of Indians, yet many go undiagnosed simply because the early signs are mistaken for normal ageing or fatigue. This guide explains what heart failure really is, how to spot it, and what can be done about it.
 
-<div class="not-prose bg-gray-50 dark:bg-gray-800/50 rounded-xl p-4 my-8 flex gap-4 items-start border border-gray-200 dark:border-gray-700">
-<div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-lg">DK</div>
-<div>
-<p class="font-bold text-gray-900 dark:text-white text-sm">Written by Dr. Kamalakar Kosaraju</p>
-<p class="text-xs text-gray-500 dark:text-gray-400">M.D. (Gold Medalist), D.M. Cardiology, FESC | Interventional Cardiologist | 10+ years experience</p>
-<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Kamalakar Heart Centre, Guntur &bull; <a href="/about/" class="text-accent dark:text-accent-light underline">View full profile</a></p>
-</div>
-</div>
 
 ## What Is Heart Failure (and What It Is Not)?
 
