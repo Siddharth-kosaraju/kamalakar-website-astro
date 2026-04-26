@@ -1,6 +1,8 @@
 User-agent: *
 Allow: /
 Sitemap: https://kamalakarheartcentre.com/sitemap.xml
+Sitemap: https://kamalakarheartcentre.com/feed.xml
+
 # Google SEO & AI
 User-agent: Googlebot
 Allow: /
@@ -8,11 +10,14 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-# OpenAI (ChatGPT & GPTBot)
+# OpenAI (ChatGPT, GPTBot, search-bot)
 User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
 Allow: /
 
 # Perplexity AI
@@ -23,10 +28,21 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
+User-agent: anthropic-ai
+Allow: /
+
 # DeepSeek AI
 User-agent: DeepSeekBot
 Allow: /
 
 # Microsoft Bing & Copilot
 User-agent: Bingbot
+Allow: /
+
+# ByteDance / TikTok
+User-agent: Bytespider
+Allow: /
+
+# Common Crawl (used by many LLM training sets)
+User-agent: CCBot
 Allow: /

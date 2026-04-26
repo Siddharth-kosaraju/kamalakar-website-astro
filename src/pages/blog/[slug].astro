@@ -5,6 +5,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer.astro';
 import { getSiteContent } from '../../utils/content';
 import { getCollection, render } from 'astro:content';
+import { execSync } from 'node:child_process';
 
 export async function getStaticPaths() {
   const now = new Date();
@@ -24,6 +25,23 @@ const content = await getSiteContent();
 // --- Schema generation ---
 const postUrl = `https://kamalakarheartcentre.com/blog/${post.id}/`;
 
+// Compute the post's last-modified date from git history of the source .md file.
+// Matches the sitemap generator's approach so freshness signals are consistent.
+// Falls back to the publish date if git history isn't available (e.g. shallow clone).
+function getPostLastModified(slug: string, fallback: Date): string {
+  try {
+    const iso = execSync(
+      `git log -1 --format=%aI -- "src/content/blog/${slug}.md"`,
+      { encoding: 'utf-8', stdio: ['pipe', 'pipe', 'pipe'] }
+    ).trim();
+    return iso || fallback.toISOString();
+  } catch {
+    return fallback.toISOString();
+  }
+}
+
+const lastModified = getPostLastModified(post.id, post.data.date);
+
 const schemas: object[] = [
   // BlogPosting schema (enhanced with E-E-A-T signals)
   {
@@ -32,7 +50,7 @@ const schemas: object[] = [
     headline: post.data.title,
     description: post.data.summary,
     datePublished: post.data.date.toISOString(),
-    dateModified: post.data.date.toISOString(),
+    dateModified: lastModified,
     // Reference the canonical #physician entity defined on the homepage so
     // Google sees one Dr Kamalakar across the site, not a near-duplicate per post.
     author: {
@@ -64,7 +82,7 @@ const schemas: object[] = [
     url: postUrl,
     name: post.data.title,
     description: post.data.summary,
-    lastReviewed: post.data.date.toISOString(),
+    lastReviewed: lastModified,
     reviewedBy: {
       '@type': 'Physician',
       '@id': 'https://kamalakarheartcentre.com/#physician',
@@ -143,6 +161,7 @@ if (faqSection) {
     page="blog-post"
     ogType="article"
     articlePublishedTime={post.data.date.toISOString()}
+    articleModifiedTime={lastModified}
     articleAuthor={post.data.author}
   />
 
