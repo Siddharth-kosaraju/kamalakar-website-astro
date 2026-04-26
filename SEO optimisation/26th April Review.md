@@ -4,6 +4,116 @@
 **Site:** https://kamalakarheartcentre.com
 **Author:** Siddharth Kosaraju
 
+> 📊 **Live status dashboard:** see [§ 0 Status — current as of 27 April 2026](#0-status--current-as-of-27-april-2026) below. The original plan is preserved unchanged from §1 onward.
+
+---
+
+## 0. Status — current as of 27 April 2026
+
+### Status legend
+
+| Badge | Meaning |
+|---|---|
+| ✅ DONE | Shipped to production and verified live. |
+| 🟦 IN PROGRESS | Started, partially shipped. |
+| 🟧 OPEN | Not started, planned. |
+| ⏸ DEFERRED | In scope but explicitly later (Phase 2/3 backlog). |
+| 👤 NEEDS USER | Code-side complete but a human action outside the repo is required (GSC, GBP, etc). |
+| 🔁 RECURRING | Ongoing cadence (monthly/quarterly). |
+
+### Phase 1 (week of 27 April – 3 May) — **COMPLETE**
+
+P0 shipped Sun 26 Apr; P1 + AEO improvements shipped Mon 27 Apr — **6 days ahead of the original Sun 3 May target.**
+
+| ID | Title | Phase | Pri | Status | Last action |
+|---|---|---|---|---|---|
+| US-01 | Single canonical host & scheme | P0 | P0 | ✅ DONE | 26 Apr — commit `d78d8e8` |
+| US-02 | One trailing-slash convention site-wide | P0 | P0 | ✅ DONE | 26 Apr — `d78d8e8` |
+| US-03 | Strip indexable query-string variants of homepage | P0 | P0 | ✅ DONE | 26 Apr — `d78d8e8` |
+| US-04 | Rewrite homepage title & meta | P1 | P1 | ✅ DONE | 27 Apr — `80e4e9b` |
+| US-05 | Rewrite title/meta on top 4 pages | P1 | P1 | ✅ DONE | 27 Apr — `80e4e9b` |
+| US-06 | New `/services/diagnostics-pricing/` page | P1 | P1 | ✅ DONE | 27 Apr — `80e4e9b` |
+| US-07 | New `/services/eecp/` page | P1 | P1 | ✅ DONE | 27 Apr — `80e4e9b` |
+| US-08 | Reviews block + `AggregateRating` schema | P1 | P1 | ✅ DONE | 27 Apr — `80e4e9b` |
+| US-09 | `FAQPage` schema on top service pages | P1 | P1 | ✅ DONE | 27 Apr — `80e4e9b` (already in production for service pages, now also on EECP + pricing) |
+| US-10 | Connected `Physician` ↔ `MedicalClinic` ↔ `MedicalProcedure` JSON-LD graph | P1 | P1 | ✅ DONE | 27 Apr — `80e4e9b` + `94822b5` (extended to doctor-profile blog posts) |
+| US-11 | Sitemap & robots regenerated on every change | P0 | P0 | ✅ DONE | 26 Apr — `d78d8e8` (build-time canonical verifier `scripts/verify-canonicals.mjs`) |
+| US-12 | Verification & re-submission | P0 | P0 | 🟦 IN PROGRESS · 👤 NEEDS USER | Site-side verified live; GSC sitemap re-submit + URL Inspection still pending (see §0.5 below) |
+
+### Phase 2 (May, weeks 2–4) — **all 🟧 OPEN**
+
+| ID | Title | Pri | Status | Notes |
+|---|---|---|---|---|
+| US-13 | Pillar page targeting "best cardiologist in guntur" (or homepage H1 stack rework) | P2 | 🟧 OPEN | Highest CTR upside left in the plan — 40-impression query stuck at pos 19 |
+| US-14 | Author profile page `/team/dr-kamalakar/` (full E-E-A-T) | P2 | 🟧 OPEN | Consolidates credentials in one URL distinct from `/about/` |
+| US-15 | Telugu translation of top 4 service pages + about | P2 | 🟧 OPEN | If we ship this, **remove the `/te/*` 301 in the CF function FIRST** (encoded in CLAUDE.md) |
+| US-16 | "Medically reviewed by" line + last-reviewed date on every blog post | P2 | 🟦 IN PROGRESS | `article:modified_time` already shipped 27 Apr (`a23d419`); the visible "Medically reviewed by Dr Kamalakar — last reviewed [date]" UI line is still TODO |
+| US-17 | Internal-linking pass across blog posts → pillar pages (3 topical clusters) | P2 | 🟧 OPEN | Depends on US-13 landing first |
+
+### Phase 3 (June onwards — agentic / off-site) — **🟧 OPEN / 🔁 RECURRING / 👤 NEEDS USER**
+
+| ID | Title | Pri | Status | Notes |
+|---|---|---|---|---|
+| US-18 | Refresh `llms.txt` with pointers to highest-authority pages | P3 | 🟧 OPEN | Existing `/llms.txt` and `/.well-known/llms.txt` ship from 27 Apr (`a23d419`) — content not yet updated to reflect the new pricing/EECP pages |
+| US-19 | Off-site NAP consistency: Practo, JustDial, Lybrate, Google Business | P3 | 👤 NEEDS USER | SERP scan during keyword research showed aggregators dominate — winning on these depends on profile completeness |
+| US-20 | Wikidata entry for the clinic | P3 | 🟧 OPEN | Strong agentic-search lift; takes 1–2 weeks for Wikidata review |
+| US-21 | Quarterly AI-mention audit (ChatGPT / Perplexity / Gemini / Google AI Overviews) for top 20 GSC queries | P3 | 🔁 RECURRING | First run: end Q2 2026 (≈ 30 June 2026) |
+| US-22 | Monthly GSC export diff vs the 27 Apr baseline | P3 | 🔁 RECURRING | First run: end May 2026 |
+
+### Items discovered post-plan (numbered US-23+)
+
+| ID | Title | Pri | Status | Last action |
+|---|---|---|---|---|
+| US-23 | robots.txt full 9-AI-bot allowlist (added OAI-SearchBot, anthropic-ai, Bytespider, CCBot) | P1 | ✅ DONE | 27 Apr — `a23d419` |
+| US-24 | RSS feed (`/feed.xml`) + `<link rel="alternate">` discovery on every page | P1 | ✅ DONE | 27 Apr — `a23d419` |
+| US-25 | Mirror `llms.txt` and `llms-full.txt` to `/.well-known/` | P2 | ✅ DONE | 27 Apr — `a23d419` |
+| US-26 | `article:modified_time` on every blog post (computed from git lastmod at build time) | P1 | ✅ DONE | 27 Apr — `a23d419` |
+| US-27 | Drift-proof author byline (single `<AuthorByline />` component, year computed from `START_YEAR=2015`) — replaces hand-written HTML in 5 markdown posts | P1 | ✅ DONE | 27 Apr — `b2403de` |
+| US-28 | Brand-DNA refresh from authoritative facts: NTR Univ degrees, Osmania residency, AP MC #57814, 3,000+ angiograms, 1,000+ angioplasty; remove "Assistant Professor" claim | P0 | ✅ DONE | 27 Apr — `b2403de` (content) + `80e4e9b` (Physician schema) |
+| US-29 | Inline full Physician schema on doctor-profile blog posts (was previously only on home + about) | P1 | ✅ DONE | 27 Apr — `94822b5` (after Rich Results Test surfaced the gap) |
+| US-30 | Replace unsourced "60% early diagnosis" claim with sourced WHO 80%-preventable claim (×2 in best-heart-specialist post) | P0 | ✅ DONE | 27 Apr — `b2403de` |
+| US-31 | Resolve AHA screening-age contradiction in dr-kamalakar post (was "over 35" in one paragraph and "age 20" in another) | P0 | ✅ DONE | 27 Apr — `b2403de` |
+| US-32 | Add external citation links to verified primary sources (ICMR-INDIAB, INTERHEART, EHJ heat meta-analysis, Lancet Regional Health, WHO CVDs fact sheet, AHA prevention guidelines) | P1 | 🟦 IN PROGRESS | 27 Apr — `b2403de`. Done: 6 posts now carry 3–6 citation links each. **Still missing**: AHA McSweeney *Circulation* 2003 link for the 70% women fatigue claim; AHA brisk-walking 35% link; remaining "Indian Heart Journal (2024)" attribution in `understanding-heart-attack-warning-signs.md` (line 16) — see below |
+| US-33 | About page word count (currently 374) → 500+ for AEO depth signal | P3 | ⏸ DEFERRED | Below the 250 floor → fine. Above 500 is "ideal" per AEO skill — content addition, not urgent |
+| US-34 | `aws_deploy.sh` runtime upgrade `cloudfront-js-1.0` → `cloudfront-js-2.0` | P3 | ⏸ DEFERRED | Only matters if `infra` mode is re-run. Live function already on `2.0` since 26 Apr |
+| US-35 | Pre-existing uncommitted modifications in `src/content.config.ts` and `src/pages/contact.astro` (in repo since before this session, never staged) | — | 👤 NEEDS USER | Not my work — your in-progress changes. Decide to keep / commit / discard |
+
+### Manual actions outside the repo (👤 NEEDS USER)
+
+| # | Action | When | Why |
+|---|---|---|---|
+| M1 | Re-submit `https://kamalakarheartcentre.com/sitemap.xml` in Google Search Console | This week | Closes US-12. Sitemap now has 22 URLs (vs 16 before) and `feed.xml` Sitemap entry — Google needs a nudge to recrawl. |
+| M2 | GSC URL Inspection on 5 previously-duplicated URLs: `/services/ecg-echo` (no slash), `/services/hypertension-cholesterol` (no slash), `/te/`, `/?page=education`, `http://kamalakarheartcentre.com/` | This week | Confirm Google sees the canonical consolidation from US-01/02/03. |
+| M3 | Re-test `/blog/dr-kamalakar-kosaraju-cardiologist-in-guntur/` in [Rich Results Test](https://search.google.com/test/rich-results) | After 27 Apr deploy propagates (~1–4 hours) | Confirm Physician schema now shows up (closes the issue you raised on commit `94822b5`) |
+| M4 | Rich Results Test on `/services/diagnostics-pricing/` | This week | Confirm OfferCatalog with 7 priced items validates |
+| M5 | Lighthouse mobile run on `/`, `/services/`, `/about/`, `/services/ecg-echo/` | This week | Capture post-P1 baseline (target: SEO ≥ 95, Perf ≥ 90) |
+| M6 | Confirm or correct two facts in CLAUDE.md before US-13 / US-14 ship: any awards / fellowships not yet listed? Hospital affiliations beyond Life Hospital? | Before US-14 | Author profile page wants the most complete E-E-A-T story |
+| M7 | Off-site profile audit: Practo, JustDial, Lybrate, Google Business — confirm NAP consistency with the canonical address; encourage Google reviews | Phase 3 | US-19 — biggest off-site lever for "best cardiologist in guntur" |
+| M8 | First quarterly AI-mention audit | end Q2 2026 (≈ 30 June) | US-21 — log citation rate across ChatGPT/Perplexity/Gemini for top 20 GSC queries |
+| M9 | First monthly GSC export diff | end May 2026 | US-22 — measure CTR delta on rewritten metas + new page traction |
+
+### Open citation work (US-32 sub-tasks)
+
+These are the warning-level items from the content audit that haven't been linked yet. Smaller, lower-priority than the critical fixes — flagged so we don't lose them.
+
+| # | Article | Claim | Action |
+|---|---|---|---|
+| C1 | `7-warning-signs-heart-attack-never-ignore.md` (line 84 & 161) | "AHA: over 70% of women reported unusual fatigue weeks before their heart attack" | Add `[McSweeney et al., *Circulation*, 2003](https://www.ahajournals.org/doi/10.1161/01.CIR.0000097116.29625.7C)` |
+| C2 | Same post (line 146) | "Brisk walking reduces heart attack risk by up to 35% (AHA)" | Add link to AHA's "Why is walking the most popular form of exercise" or NEJM 2002 Manson study |
+| C3 | `understanding-heart-attack-warning-signs.md` (line 16) | "claiming over 28 lakh lives annually" — currently unlinked | Add link to Lancet GBD India profile / WHO India CVD profile |
+| C4 | `understanding-heart-attack-warning-signs.md` (line 13 & 16) | "Indians develop heart disease nearly a decade earlier" — needs primary source | Same INTERHEART link used in `7-warning-signs` post |
+
+### Snapshot — count of items by status
+
+| Status | Count |
+|---|---|
+| ✅ DONE | 19 (US-01 through 11, US-23–31, US-30, US-31) |
+| 🟦 IN PROGRESS | 3 (US-12, US-16, US-32) |
+| 🟧 OPEN | 5 (US-13, 14, 15, 17, 18, 20) |
+| ⏸ DEFERRED | 2 (US-33, US-34) |
+| 👤 NEEDS USER | 1 user-story (US-19) + 9 manual actions M1–M9 + US-35 |
+| 🔁 RECURRING | 2 (US-21, US-22) |
+
 ---
 
 ## 1. Snapshot of where we are
