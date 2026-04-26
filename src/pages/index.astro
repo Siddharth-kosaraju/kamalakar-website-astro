@@ -15,55 +15,14 @@ import FAQ from '../components/FAQ';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 import { getSiteContent } from '../utils/content';
+import { buildHomepageSchemaGraph } from '../utils/schemas';
 const content = await getSiteContent();
 
-const homepageSchema = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'WebSite',
-      '@id': 'https://kamalakarheartcentre.com/#website',
-      url: 'https://kamalakarheartcentre.com/',
-      name: 'Kamalakar Heart Centre',
-      inLanguage: 'en-IN',
-    },
-    {
-      '@type': 'MedicalClinic',
-      '@id': 'https://kamalakarheartcentre.com/#clinic',
-      name: 'Kamalakar Heart Centre',
-      url: 'https://kamalakarheartcentre.com/',
-      telephone: '+91-9959423566',
-      medicalSpecialty: 'Cardiology',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Life Hospital, Old Club Road, Kothapet',
-        addressLocality: 'Guntur',
-        addressRegion: 'Andhra Pradesh',
-        postalCode: '522001',
-        addressCountry: 'IN',
-      },
-      openingHoursSpecification: [
-        {
-          '@type': 'OpeningHoursSpecification',
-          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-          opens: '10:00',
-          closes: '18:00',
-        },
-      ],
-      areaServed: { '@type': 'City', name: 'Guntur' },
-      founder: { '@id': 'https://kamalakarheartcentre.com/#doctor' },
-    },
-    {
-      '@type': 'Physician',
-      '@id': 'https://kamalakarheartcentre.com/#doctor',
-      name: 'Dr. Kamalakar Kosaraju',
-      jobTitle: 'Interventional Cardiologist',
-      medicalSpecialty: 'Cardiology',
-      worksFor: { '@id': 'https://kamalakarheartcentre.com/#clinic' },
-      description: 'Dr. Kamalakar Kosaraju is an Interventional Cardiologist providing diagnosis and treatment for heart diseases including angioplasty, angiogram, pacemaker implantation, hypertension and heart failure management.',
-    },
-  ],
-};
+// Single connected JSON-LD graph for the homepage:
+//   WebSite → MedicalClinic (#organization, with AggregateRating from testimonials) → Physician (#physician).
+// Every other page (about, services, blog) references #organization and #physician
+// by @id so Google sees one canonical entity, not parallel copies.
+const homepageSchema = buildHomepageSchemaGraph(content.testimonials.items);
 
 const faqSchema = {
   '@context': 'https://schema.org',

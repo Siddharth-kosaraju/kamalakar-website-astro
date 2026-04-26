@@ -4,11 +4,11 @@ import SEO from '../../components/SEO.astro';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer.astro';
 import ServiceFAQ from '../../components/ServiceFAQ';
-import { getSiteContent, getServicePage, SERVICE_SLUGS } from '../../utils/content';
-import { buildServicePageSchema } from '../../utils/schemas';
+import { getSiteContent, getServicePage, ALL_SERVICE_SLUGS } from '../../utils/content';
+import { buildServicePageSchema, buildPricingOfferCatalog } from '../../utils/schemas';
 
 export async function getStaticPaths() {
-  return SERVICE_SLUGS.map((slug) => ({ params: { slug } }));
+  return ALL_SERVICE_SLUGS.map((slug) => ({ params: { slug } }));
 }
 
 const { slug } = Astro.params;
@@ -19,13 +19,29 @@ if (!service) {
   return Astro.redirect('/404');
 }
 
-const schemas = buildServicePageSchema({
+const schemas: object[] = buildServicePageSchema({
   title: service.title,
   metaDescription: service.metaDescription,
   steps: service.steps,
   faq: service.faq,
   slug: service.slug,
 });
+
+// /services/diagnostics-pricing/ gets a structured OfferCatalog so Google has
+// explicit price answers for "echo test cost in guntur", "angiogram cost", etc.
+if (slug === 'diagnostics-pricing') {
+  schemas.push(
+    buildPricingOfferCatalog([
+      { name: 'Cardiology Consultation', type: 'MedicalProcedure', price: 500, description: 'Consultation with Dr Kamalakar Kosaraju, Interventional Cardiologist. Includes basic ECG.' },
+      { name: 'ECG Test', type: 'MedicalTest', price: 200, description: 'Electrocardiogram — records the heart\'s electrical activity. 5–10 minutes, immediate results. Included with consultation.' },
+      { name: '2D Echocardiography', type: 'MedicalTest', price: 1000, description: 'Ultrasound imaging of heart chambers, valves, and pumping function. 15–30 minutes.' },
+      { name: 'Treadmill Test (TMT) / Stress Test', type: 'MedicalTest', price: 1200, description: 'Stress test that evaluates how the heart performs under exertion. 20–30 minutes.' },
+      { name: 'Holter Monitoring', type: 'MedicalTest', price: 6000, description: 'Continuous 24-hour ambulatory ECG to detect intermittent rhythm problems.' },
+      { name: 'Coronary Angiogram', type: 'MedicalProcedure', price: 15000, description: 'Diagnostic imaging of coronary arteries using contrast dye and X-ray.' },
+      { name: 'Coronary Angioplasty', type: 'MedicalProcedure', price: null, minPrice: 110000, note: 'Starting from ₹1,10,000 — final cost depends on stent / hardware used.', description: 'Minimally invasive procedure to open blocked coronary arteries with balloon and stent.' },
+    ])
+  );
+}
 ---
 
 <BaseLayout class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">

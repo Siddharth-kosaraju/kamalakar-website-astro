@@ -24,6 +24,8 @@ interface VideoItem {
 interface TestimonialItem {
   text: string;
   author: string;
+  /** Star rating 1-5. Defaults to 5 when omitted. */
+  rating?: number;
 }
 
 interface ServiceStep {
@@ -41,7 +43,7 @@ function durationToISO(duration: string): string {
 export function buildBusinessSchema(testimonials?: TestimonialItem[]) {
   const schema: Record<string, any> = {
     '@context': 'https://schema.org',
-    '@type': ['MedicalOrganization', 'MedicalBusiness', 'LocalBusiness'],
+    '@type': ['MedicalOrganization', 'LocalBusiness'],
     '@id': `${CANONICAL_BASE}/#organization`,
     name: 'Kamalakar Heart Centre',
     alternateName: 'Kamalakar Heart Centre at Life Hospital',
@@ -84,18 +86,23 @@ export function buildBusinessSchema(testimonials?: TestimonialItem[]) {
     },
   };
 
-  // Merge reviews/ratings directly into the business schema (avoids duplicate MedicalBusiness entities)
+  // Merge reviews/ratings directly into the business schema.
+  // Compliance: aggregateRating MUST be derived from the reviews actually displayed on the page
+  // where this schema appears (Google Rich Results policy). The testimonials passed in here are
+  // rendered visibly via <Testimonials /> on the homepage and contact page.
   if (testimonials && testimonials.length > 0) {
+    const ratings = testimonials.map(t => t.rating ?? 5);
+    const avg = ratings.reduce((a, b) => a + b, 0) / ratings.length;
     schema.aggregateRating = {
       '@type': 'AggregateRating',
-      ratingValue: '4.9',
+      ratingValue: avg.toFixed(1),
       bestRating: '5',
       worstRating: '1',
       reviewCount: String(testimonials.length),
     };
     schema.review = testimonials.map(t => ({
       '@type': 'Review',
-      reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+      reviewRating: { '@type': 'Rating', ratingValue: String(t.rating ?? 5), bestRating: '5' },
       author: { '@type': 'Person', name: t.author },
       reviewBody: t.text,
     }));
@@ -115,15 +122,28 @@ export function buildPhysicianSchema() {
     familyName: 'Kosaraju',
     jobTitle: 'Interventional Cardiologist',
     medicalSpecialty: 'Cardiology',
-    description: 'Gold Medalist in M.D. (General Medicine), D.M. Cardiology from Osmania Medical College, Fellow of European Society of Cardiology (FESC). 10+ years of experience with 5,000+ cardiac procedures.',
+    description: 'M.D. General Medicine and D.M. Cardiology from Dr. NTR University of Health Sciences, Vijayawada. D.M. Cardiology residency at Osmania Medical College (2012–2015). Fellow of the European Society of Cardiology (FESC). Andhra Pradesh Medical Council registration #57814.',
     image: `${CANONICAL_BASE}/media/dr-kamalakar.jpg`,
     url: CANONICAL_BASE,
     telephone: '+919959423566',
     alumniOf: [
-      { '@type': 'CollegeOrUniversity', name: 'Osmania Medical College', sameAs: 'https://en.wikipedia.org/wiki/Osmania_Medical_College' },
+      { '@type': 'CollegeOrUniversity', name: 'Dr. NTR University of Health Sciences', sameAs: 'https://en.wikipedia.org/wiki/Dr._NTR_University_of_Health_Sciences' },
+      { '@type': 'CollegeOrUniversity', name: 'Osmania Medical College', sameAs: 'https://en.wikipedia.org/wiki/Osmania_Medical_College', description: 'D.M. Cardiology residency, 2012–2015' },
       { '@type': 'Organization', name: 'European Society of Cardiology', sameAs: 'https://www.escardio.org/' },
     ],
-    knowsAbout: ['Interventional Cardiology', 'Angioplasty', 'Angiogram', 'Pacemaker Implantation', 'Heart Failure Management', 'ECG', '2D Echocardiography', 'Cardiac Emergency Care', 'Hypertension', 'Cholesterol Management', 'TMT Stress Test'],
+    hasCredential: [
+      { '@type': 'EducationalOccupationalCredential', credentialCategory: 'MBBS', educationalLevel: 'Bachelor of Medicine and Bachelor of Surgery', recognizedBy: { '@type': 'CollegeOrUniversity', name: 'Dr. NTR University of Health Sciences, Vijayawada' }, dateCreated: '2007' },
+      { '@type': 'EducationalOccupationalCredential', credentialCategory: 'M.D. General Medicine', recognizedBy: { '@type': 'CollegeOrUniversity', name: 'Dr. NTR University of Health Sciences, Vijayawada' }, dateCreated: '2012' },
+      { '@type': 'EducationalOccupationalCredential', credentialCategory: 'D.M. Cardiology', recognizedBy: { '@type': 'CollegeOrUniversity', name: 'Dr. NTR University of Health Sciences, Vijayawada' }, dateCreated: '2015' },
+      { '@type': 'EducationalOccupationalCredential', credentialCategory: 'FESC — Fellow of the European Society of Cardiology', recognizedBy: { '@type': 'Organization', name: 'European Society of Cardiology' } },
+      { '@type': 'EducationalOccupationalCredential', credentialCategory: 'Medical Council Registration', identifier: '57814', recognizedBy: { '@type': 'Organization', name: 'Andhra Pradesh Medical Council' }, dateCreated: '2007' },
+    ],
+    identifier: {
+      '@type': 'PropertyValue',
+      propertyID: 'Andhra Pradesh Medical Council Registration',
+      value: '57814',
+    },
+    knowsAbout: ['Interventional Cardiology', 'Angioplasty', 'Angiogram', 'Pacemaker Implantation', 'Heart Failure Management', 'ECG', '2D Echocardiography', 'Cardiac Emergency Care', 'Hypertension', 'Cholesterol Management', 'TMT Stress Test', 'EECP Therapy'],
     memberOf: { '@type': 'Organization', name: 'European Society of Cardiology', sameAs: 'https://www.escardio.org/' },
     worksFor: { '@type': 'MedicalOrganization', name: 'Kamalakar Heart Centre', '@id': `${CANONICAL_BASE}/#organization` },
     address: {
@@ -238,6 +258,91 @@ export function buildVideoListSchema(videos: VideoItem[]) {
   };
 }
 
+
+/**
+ * One connected JSON-LD graph for the homepage that ties together:
+ *   WebSite  →  MedicalClinic (#organization, with aggregateRating from reviews)
+ *            →  Physician     (#physician — worksFor → #organization)
+ *
+ * Use this on the homepage instead of inlining a parallel graph with different
+ * @ids — every page that references #organization or #physician then resolves
+ * to the same entity in Google's knowledge graph.
+ */
+export function buildHomepageSchemaGraph(testimonials?: TestimonialItem[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        '@id': `${CANONICAL_BASE}/#website`,
+        url: `${CANONICAL_BASE}/`,
+        name: 'Kamalakar Heart Centre',
+        publisher: { '@id': `${CANONICAL_BASE}/#organization` },
+        inLanguage: 'en-IN',
+      },
+      buildBusinessSchema(testimonials),
+      buildPhysicianSchema(),
+    ],
+  };
+}
+
+interface ServicePrice {
+  /** Service name as it should appear in JSON-LD (e.g. "ECG Test"). */
+  name: string;
+  /** Description for the MedicalProcedure / MedicalTest schema. */
+  description: string;
+  /** @type: MedicalProcedure for treatments, MedicalTest for diagnostics. */
+  type: 'MedicalProcedure' | 'MedicalTest';
+  /** Price in INR. Use null for "starting from" prices and pass minPrice instead. */
+  price: number | null;
+  /** Optional minimum price for ranges (e.g. angioplasty: ₹1,10,000 + hardware). */
+  minPrice?: number;
+  /** Optional disclaimer to render in valueAddedTaxIncluded / description. */
+  note?: string;
+}
+
+/**
+ * OfferCatalog with PriceSpecification per cardiac test/procedure.
+ * Used on /services/diagnostics-pricing/ to give Google explicit price
+ * answers for "echo test cost in guntur", "angiogram cost", etc.
+ */
+export function buildPricingOfferCatalog(items: ServicePrice[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'OfferCatalog',
+    name: 'Cardiac Test & Procedure Pricing — Kamalakar Heart Centre, Guntur',
+    provider: { '@id': `${CANONICAL_BASE}/#organization` },
+    itemListElement: items.map((it) => {
+      const offer: Record<string, any> = {
+        '@type': 'Offer',
+        priceCurrency: 'INR',
+        availability: 'https://schema.org/InStock',
+        seller: { '@id': `${CANONICAL_BASE}/#organization` },
+        itemOffered: {
+          '@type': it.type,
+          name: it.name,
+          description: it.description,
+        },
+      };
+      if (it.price !== null) {
+        offer.price = String(it.price);
+        offer.priceSpecification = {
+          '@type': 'PriceSpecification',
+          price: String(it.price),
+          priceCurrency: 'INR',
+        };
+      } else if (it.minPrice !== undefined) {
+        offer.priceSpecification = {
+          '@type': 'PriceSpecification',
+          minPrice: String(it.minPrice),
+          priceCurrency: 'INR',
+          description: it.note || 'Starting price; final cost depends on hardware/consumables.',
+        };
+      }
+      return offer;
+    }),
+  };
+}
 
 export function buildServicePageSchema(service: {
   title: string;

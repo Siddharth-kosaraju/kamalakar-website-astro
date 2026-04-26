@@ -78,3 +78,30 @@ Any of these triggers the full canonical/sitemap/robots review cycle above:
 - **Dates:** when adding any dated content (blog posts, content plans, this CLAUDE.md), use the absolute date — never "today" or "this week".
 - **Phase 2 / Phase 3 SEO work** is tracked as user stories US-13 through US-22 in `SEO optimisation/26th April Review.md`.
 - **Telugu (`/te/`)**: retired. Currently 301s to `/`. If we rebuild Telugu content (US-15), update the CF function to drop the redirect first, then ship the pages.
+
+## Authoritative facts about Dr Kamalakar Kosaraju
+
+These are encoded in `src/utils/schemas.ts` `buildPhysicianSchema()` and the connected JSON-LD graph. **Do not invent or change without source.**
+
+- **Specialisation:** Cardiologist (Interventional Cardiology)
+- **MBBS:** Dr. NTR University of Health Sciences, Vijayawada — 2007
+- **MD General Medicine:** Dr. NTR University of Health Sciences, Vijayawada — 2012
+- **DM Cardiology:** Dr. NTR University of Health Sciences, Vijayawada — 2015
+- **DM residency:** Osmania Medical College, Hyderabad (2012–2015)
+- **Fellowship:** FESC — Fellow of the European Society of Cardiology
+- **AP Medical Council registration:** **#57814** (2007)
+- **Years as cardiologist:** dynamically computed from `START_YEAR = 2015` in `src/utils/content.ts`
+
+## Current published prices (₹, INR)
+
+These are the prices encoded in `/services/diagnostics-pricing/` and the corresponding `OfferCatalog` JSON-LD. **Update both the yaml prose AND `buildPricingOfferCatalog()` call in `src/pages/services/[slug].astro` if a price changes.**
+
+| Service | Price |
+|---|---|
+| Cardiology Consultation (includes basic ECG) | ₹500 |
+| ECG | ₹200 |
+| 2D Echocardiography | ₹1,000 |
+| Treadmill Test (TMT) | ₹1,200 |
+| Holter Monitoring | ₹6,000 |
+| Coronary Angiogram | ₹15,000 |
+| Coronary Angioplasty | from ₹1,10,000 + hardware |

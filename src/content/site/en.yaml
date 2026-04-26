@@ -219,14 +219,19 @@ testimonials:
   items:
     - text: "Dr. Kamalakar offers top-notch supervision. The team provides quick and extremely supportive care."
       author: "Sambasivarao"
+      rating: 5
     - text: "One of the best interventional cardiologists in Guntur. He has done complex cases successfully."
       author: "Sarath"
+      rating: 5
     - text: "Reasonably priced treatment with speedy recovery. Excellent care by doctors and staff."
       author: "Sugguna Sampurna"
+      rating: 5
     - text: "Very experienced doctor. My father had a heart attack and Dr. Kamalakar performed emergency angioplasty within an hour. Saved his life. Forever grateful."
       author: "Ravi Kumar"
+      rating: 5
     - text: "Best cardiologist in Guntur. Very transparent about treatment options and costs. No unnecessary procedures. Highly recommend for heart problems."
       author: "Lakshmi Devi"
+      rating: 5
 
 gallery:
   heading: "Modern Cardiology Facility in Guntur"
@@ -312,10 +317,10 @@ contact:
   viewLocationBtn: "View Location & Directions"
 
 seo:
-  title: "Cardiologist in Guntur | Dr Kamalakar Kosaraju Heart Specialist"
-  description: "Consult Dr Kamalakar Kosaraju experienced cardiologist in Guntur for heart checkup angiogram angioplasty ECG echo test and complete cardiac care at Kamalakar Heart Centre."
-  homeTitle: "Cardiologist in Guntur | Dr Kamalakar Kosaraju Heart Specialist"
-  homeDescription: "Consult Dr Kamalakar Kosaraju experienced cardiologist in Guntur for heart checkup angiogram angioplasty ECG echo test and complete cardiac care at Kamalakar Heart Centre."
+  title: "Best Cardiologist in Guntur | Dr Kamalakar Kosaraju, MD DM"
+  description: "Interventional Cardiologist in Guntur. Dr Kamalakar Kosaraju (MD, DM Cardiology, FESC) — angioplasty, angiogram, ECG, 2D Echo, TMT. Book today."
+  homeTitle: "Best Cardiologist in Guntur | Dr Kamalakar Kosaraju, MD DM"
+  homeDescription: "Interventional Cardiologist in Guntur. Dr Kamalakar Kosaraju (MD, DM Cardiology, FESC) — angioplasty, angiogram, ECG, 2D Echo, TMT. Book today."
   educationTitle: "Education and Medical Training | Dr Kamalakar Kosaraju"
   educationDescription: "Learn about the medical education training and cardiology qualifications of Dr Kamalakar Kosaraju including MD General Medicine and DM Cardiology."
   keywords:

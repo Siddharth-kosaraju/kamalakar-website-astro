@@ -33,21 +33,17 @@ const schemas: object[] = [
     description: post.data.summary,
     datePublished: post.data.date.toISOString(),
     dateModified: post.data.date.toISOString(),
+    // Reference the canonical #physician entity defined on the homepage so
+    // Google sees one Dr Kamalakar across the site, not a near-duplicate per post.
     author: {
-      '@type': 'Person',
+      '@type': 'Physician',
+      '@id': 'https://kamalakarheartcentre.com/#physician',
       name: post.data.author,
       url: 'https://kamalakarheartcentre.com/about/',
-      jobTitle: 'Interventional Cardiologist',
-      honorificPrefix: 'Dr.',
-      alumniOf: 'D.M. Cardiology',
-      hasCredential: [
-        { '@type': 'EducationalOccupationalCredential', credentialCategory: 'M.D. General Medicine (Gold Medalist)' },
-        { '@type': 'EducationalOccupationalCredential', credentialCategory: 'D.M. Cardiology' },
-        { '@type': 'EducationalOccupationalCredential', credentialCategory: 'FESC (Fellow of the European Society of Cardiology)' },
-      ],
     },
     publisher: {
-      '@type': 'Organization',
+      '@type': 'MedicalOrganization',
+      '@id': 'https://kamalakarheartcentre.com/#organization',
       name: 'Kamalakar Heart Centre',
       url: 'https://kamalakarheartcentre.com',
       logo: { '@type': 'ImageObject', url: 'https://kamalakarheartcentre.com/images/logo.svg' },
@@ -70,10 +66,8 @@ const schemas: object[] = [
     description: post.data.summary,
     lastReviewed: post.data.date.toISOString(),
     reviewedBy: {
-      '@type': 'Person',
-      name: 'Dr. Kamalakar Kosaraju',
-      jobTitle: 'Interventional Cardiologist',
-      url: 'https://kamalakarheartcentre.com/about/',
+      '@type': 'Physician',
+      '@id': 'https://kamalakarheartcentre.com/#physician',
     },
     specialty: {
       '@type': 'MedicalSpecialty',

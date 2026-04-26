@@ -41,7 +41,8 @@ export async function getAllServicePages() {
 }
 
 /**
- * Service slugs.
+ * Core service slugs — positionally aligned with `services.items` and
+ * `footer.serviceLinks` in en.yaml. These appear in the homepage grid.
  */
 export const SERVICE_SLUGS = [
   'angioplasty',
@@ -53,6 +54,21 @@ export const SERVICE_SLUGS = [
 ] as const;
 
 /**
- * Footer service slugs (matches SERVICE_SLUGS).
+ * Extra service pages that don't appear in the homepage grid but are real
+ * landing pages (own SEO targets). Static routes are still generated and
+ * they appear in the sitemap.
+ */
+export const EXTRA_SERVICE_SLUGS = [
+  'eecp',
+  'diagnostics-pricing',
+] as const;
+
+/**
+ * All service pages — used by getStaticPaths so every service.yaml gets a route.
+ */
+export const ALL_SERVICE_SLUGS = [...SERVICE_SLUGS, ...EXTRA_SERVICE_SLUGS] as const;
+
+/**
+ * Footer service slugs (matches SERVICE_SLUGS — homepage-grid services only).
  */
 export const FOOTER_SERVICE_SLUGS = SERVICE_SLUGS;
