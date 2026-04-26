@@ -12,7 +12,7 @@ You are the deployment and verification agent for the Kamalakar Heart Centre web
 
 - **Site:** https://kamalakarheartcentre.com
 - **Repo:** https://github.com/AlbusisDead/kamalakar-website-astro
-- **Build command:** `npm run build` (runs `astro build && node scripts/generate-sitemap.mjs`)
+- **Build command:** `npm run build` (runs `astro build`, sitemap generator, and canonical verifier — all three must pass)
 - **Deploy command:** `npm run deploy` (builds + S3 sync + CloudFront invalidation — all-in-one)
 - **Output directory:** `dist/`
 - **Branch:** `main`
@@ -51,8 +51,19 @@ Verify:
 - Build completes without errors
 - `dist/sitemap.xml` exists (NOT `sitemap-0.xml`)
 - `dist/robots.txt` exists and contains `Sitemap: https://kamalakarheartcentre.com/sitemap.xml`
-- Page count matches expectations (currently 16 pages)
+- Page count matches expectations (currently 21 HTML pages, 20 indexable + the noindex /404/)
 - Only published posts with `date <= now` are built (future-dated posts must NOT appear)
+- `[verify-canonicals] OK: ... all canonicals valid` printed at end of build (the build script now runs `scripts/verify-canonicals.mjs`)
+
+**Structural-change checklist (run before commit if any of these apply):**
+
+If this change adds, renames, removes, or redirects a page — or touches the CloudFront function, robots.txt, or `astro.config.mjs` — then the canonical/sitemap/robots policy in `CLAUDE.md` requires:
+
+- [ ] `npm run build` passes (sitemap regenerated, canonical verifier passes)
+- [ ] Diff `dist/sitemap.xml` against the previous build — added/removed routes match the change
+- [ ] `public/robots.txt` reviewed — still has exactly one `Sitemap:` line, AI crawlers still allowed
+- [ ] If the CF function changed, plan to deploy it via `scripts/aws_deploy.sh` (NOT `npm run deploy`)
+- [ ] Sitemap re-submitted in Google Search Console after deploy
 
 #### Step 2a: Commit and push
 
@@ -138,14 +149,57 @@ Fetch the most recently published blog post URL from the sitemap, then:
 - [ ] og:type is "article"
 - [ ] article:published_time meta tag present
 
-#### 3f. Dead Telugu routes (regression check)
+#### 3f. Retired Telugu routes — must 301 to homepage
 
 ```
-WebFetch: https://kamalakarheartcentre.com/te/
+curl -sI https://kamalakarheartcentre.com/te/
+curl -sI https://kamalakarheartcentre.com/te
+curl -sI https://kamalakarheartcentre.com/te/about
 ```
 
 Check:
-- [ ] Returns 404 (Telugu pages must NOT exist)
+- [ ] All three return `301 Moved Permanently` with `Location: https://kamalakarheartcentre.com/`
+- [ ] Telugu pages must NOT serve content (no 200)
+
+#### 3g. Trailing-slash canonicalisation — no-slash 301s to slash
+
+```
+curl -sI https://kamalakarheartcentre.com/services/ecg-echo
+curl -sI https://kamalakarheartcentre.com/about
+```
+
+Check:
+- [ ] Each returns `301` with `Location` ending in `/`
+- [ ] The redirect target itself returns `200` (the slash form is the canonical)
+- [ ] Files (`/sitemap.xml`, `/robots.txt`, `*.jpg`, `*.css`) are NOT redirected
+
+#### 3h. Legacy SPA query-string redirects
+
+```
+curl -sI 'https://kamalakarheartcentre.com/?page=education'
+curl -sI 'https://kamalakarheartcentre.com/?lang=te'
+```
+
+Check:
+- [ ] `?page=education` → 301 → `https://kamalakarheartcentre.com/education/`
+- [ ] `?page=about|services|contact|blog` → 301 → matching clean URL
+- [ ] `?lang=te` → 301 → `https://kamalakarheartcentre.com/`
+- [ ] An unknown query (e.g. `?ref=email`) is NOT redirected (renders homepage normally)
+
+#### 3i. Canonical-tag spot check
+
+For at least 3 random pages, confirm exactly one canonical and that it is self-referential:
+
+```
+curl -s https://kamalakarheartcentre.com/services/ecg-echo/ | grep -o '<link rel="canonical"[^>]*>'
+```
+
+Check:
+- [ ] Exactly one canonical tag per page
+- [ ] HTTPS, bare domain, trailing slash
+- [ ] `og:url` matches the canonical exactly
+
+(The build itself runs `scripts/verify-canonicals.mjs` and fails if any of these are violated, so this is a regression check, not a primary gate.)
 
 ### Step 4: Report
 

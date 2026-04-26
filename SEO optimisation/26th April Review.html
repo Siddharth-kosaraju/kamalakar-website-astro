@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>SEO Review &amp; 1-Week Execution Plan — 26 April 2026</title>
+<style>
+  :root {
+    /* Colours below all meet WCAG 2.1 AA against their paired backgrounds:
+       - Body / muted text: ≥ 4.5:1 on #fff and on #f6f6f4
+       - Badge text (white) on P0/P1/P2/P3 backgrounds: ≥ 4.5:1 (small bold text)
+       - Borders / rules: ≥ 3:1 against #fff (graphical objects, WCAG 1.4.11) */
+    --fg: #1a1a1a;        /* 17:1  on #fff   */
+    --muted: #555555;     /* 7.5:1 on #fff,  6.4:1 on #f6f6f4 */
+    --accent: #b00020;    /* 7.2:1 on #fff   */
+    --rule: #767676;      /* 4.5:1 on #fff   (was #d0d0d0 = 1.5:1, failed 3:1 floor) */
+    --bg-soft: #f6f6f4;
+    --p0: #b00020;        /* white-on-bg 7.2:1 */
+    --p1: #a04408;        /* white-on-bg 6.1:1 (was #c2570a = 4.4:1, just under AA) */
+    --p2: #5a5a5a;        /* white-on-bg 6.8:1 */
+    --p3: #666666;        /* white-on-bg 5.7:1 (was #888 = 3.6:1, failed AA for small text) */
+  }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: "Georgia", "Iowan Old Style", "Palatino", serif;
+    color: var(--fg);
+    max-width: 780px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    line-height: 1.55;
+    font-size: 11.5pt;
+  }
+  h1, h2, h3, h4 { font-family: "Helvetica Neue", "Arial", sans-serif; line-height: 1.25; }
+  h1 { font-size: 1.9rem; margin-bottom: 0.2rem; border-bottom: 2px solid var(--accent); padding-bottom: 0.4rem; }
+  h2 { font-size: 1.35rem; margin-top: 2rem; padding-top: 0.4rem; border-top: 1px solid var(--rule); }
+  h3 { font-size: 1.05rem; margin-top: 1.4rem; color: var(--accent); }
+  h4 { font-size: 0.95rem; margin-top: 1rem; }
+  .meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 1rem; }
+  table { border-collapse: collapse; width: 100%; margin: 0.8rem 0 1.2rem; font-size: 0.9rem; }
+  th, td { border: 1px solid var(--rule); padding: 0.4rem 0.6rem; text-align: left; vertical-align: top; }
+  th { background: var(--bg-soft); font-family: "Helvetica Neue", "Arial", sans-serif; font-weight: 600; }
+  code { font-family: "Menlo", "Consolas", monospace; font-size: 0.86em; background: var(--bg-soft); padding: 1px 4px; border-radius: 3px; }
+  ul, ol { padding-left: 1.4rem; }
+  li { margin: 0.2rem 0; }
+  blockquote { margin: 0.5rem 0 0.5rem 0; padding: 0.4rem 0.9rem; border-left: 3px solid var(--accent); color: var(--muted); background: var(--bg-soft); font-style: italic; }
+  .badge { display: inline-block; font-family: "Helvetica Neue", "Arial", sans-serif; font-size: 0.72rem; font-weight: 700; padding: 1px 6px; border-radius: 3px; color: #fff; vertical-align: 1px; margin-left: 0.4rem; }
+  .p0 { background: var(--p0); }
+  .p1 { background: var(--p1); }
+  .p2 { background: var(--p2); }
+  .p3 { background: var(--p3); }
+  .story { border: 1px solid var(--rule); border-radius: 4px; padding: 0.8rem 1rem; margin: 0.8rem 0; background: #fff; page-break-inside: avoid; }
+  .story h4 { margin-top: 0; }
+  hr { border: 0; border-top: 1px solid var(--rule); margin: 1.5rem 0; }
+  .toc { background: var(--bg-soft); padding: 0.8rem 1.2rem; border-radius: 4px; margin: 1rem 0 1.5rem; }
+  .toc ol { margin: 0.3rem 0; }
+  .footer { margin-top: 2.5rem; font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 0.6rem; }
+
+  @page { size: A4; margin: 18mm 14mm; }
+  @media print {
+    body { margin: 0; max-width: none; font-size: 10.5pt; }
+    h2 { page-break-before: auto; }
+    .story { page-break-inside: avoid; }
+    table { page-break-inside: avoid; }
+  }
+  .print-btn {
+    position: fixed; top: 1rem; right: 1rem;
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+    background: var(--accent); color: #fff; border: 0;
+    padding: 0.5rem 0.9rem; border-radius: 4px; cursor: pointer; font-size: 0.85rem;
+  }
+  @media print { .print-btn { display: none; } }
+</style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+
+<h1>SEO Review &amp; 1-Week Execution Plan — 26 April 2026</h1>
+<div class="meta">
+  Source data: Google Search Console export, last 90 days (2026-01-23 → 2026-04-22).<br/>
+  Site: <code>https://kamalakarheartcentre.com</code> &nbsp;·&nbsp; Author: Siddharth Kosaraju
+</div>
+
+<div class="toc">
+  <strong>Contents</strong>
+  <ol>
+    <li>Snapshot of where we are</li>
+    <li>Compressed 1-week execution plan</li>
+    <li>Book of work — user stories</li>
+    <li>Requirements consolidated (priority order)</li>
+    <li>Canonical-tag policy</li>
+    <li>Sitemap &amp; robots policy</li>
+    <li>Reference — full multi-month strategy</li>
+  </ol>
+</div>
+
+<h2>1. Snapshot of where we are</h2>
+<ul>
+  <li>61 clicks / ~1,100 impressions / avg position <strong>9.2</strong> (page-1/page-2 boundary).</li>
+  <li>94% of impressions from India; brand + “guntur” geo modifiers dominate.</li>
+  <li>Mobile = 75% of impressions, but only 4.66% CTR vs desktop 8.42% — mobile under-converts.</li>
+  <li>Top page = <code>/</code> (879 imp, 5.23% CTR). <code>/services/</code> ranks well (pos 5.6) but converts at only 1.32% CTR.</li>
+  <li>HTTP variant, trailing-slash variants, and <code>?page=…&amp;lang=…</code> query variants are <strong>all indexed separately</strong> — link equity is being split.</li>
+</ul>
+
+<h3>High-intent demand we are leaking</h3>
+<table>
+  <thead><tr><th>Query</th><th>Impr</th><th>Pos</th><th>Clicks</th><th>Root cause</th></tr></thead>
+  <tbody>
+    <tr><td>heart specialist in guntur</td><td>22</td><td>5.7</td><td>0</td><td>Title/meta CTR failure</td></tr>
+    <tr><td>echo and tmt test price</td><td>24</td><td>66</td><td>0</td><td>No pricing page exists</td></tr>
+    <tr><td>cardiologist in guntur</td><td>14</td><td>17.6</td><td>0</td><td>Stuck on page 2</td></tr>
+    <tr><td>best cardiologist in guntur</td><td>40</td><td>19.4</td><td>1</td><td>Stuck on page 2</td></tr>
+    <tr><td>2d echo test cost in guntur</td><td>8</td><td>12.3</td><td>0</td><td>No pricing content</td></tr>
+    <tr><td>eecp treatment in guntur</td><td>1</td><td>15</td><td>0</td><td>No <code>/services/eecp</code> page</td></tr>
+    <tr><td>kamalakar hospital reviews</td><td>3</td><td>11</td><td>0</td><td>No reviews page</td></tr>
+  </tbody>
+</table>
+
+<h2>2. Compressed 1-week execution plan</h2>
+<p>The full multi-month strategy is preserved at the bottom of this document. The block below is what we commit to ship in the <strong>week of 27 April – 3 May 2026</strong>.</p>
+
+<table>
+  <thead><tr><th>Day</th><th>Focus</th><th>Deliverable</th></tr></thead>
+  <tbody>
+    <tr><td>Mon 27 Apr</td><td>Technical hygiene — canonicals, redirects, trailing slash</td><td>US-01, US-02, US-03</td></tr>
+    <tr><td>Tue 28 Apr</td><td>CTR rescue — titles &amp; meta on top 4 pages</td><td>US-04, US-05</td></tr>
+    <tr><td>Wed 29 Apr</td><td>New page: diagnostics pricing</td><td>US-06</td></tr>
+    <tr><td>Thu 30 Apr</td><td>New page: EECP service + reviews block</td><td>US-07, US-08</td></tr>
+    <tr><td>Fri 1 May</td><td>FAQ schema + Physician/MedicalClinic JSON-LD upgrade</td><td>US-09, US-10</td></tr>
+    <tr><td>Sat 2 May</td><td>Sitemap + robots regeneration + GSC re-submit</td><td>US-11</td></tr>
+    <tr><td>Sun 3 May</td><td>Verification: Lighthouse, Rich Results, GSC URL inspection</td><td>US-12</td></tr>
+  </tbody>
+</table>
+
+<p><strong>Definition of done for the week:</strong></p>
+<ol>
+  <li>Every indexed URL resolves to exactly one canonical (host, scheme, trailing-slash, query-string).</li>
+  <li><code>/services/</code> and <code>/about/</code> SERP snippets rewritten — measured CTR delta over the following 14 days.</li>
+  <li>Two new high-intent pages live: pricing + EECP.</li>
+  <li>Sitemap regenerated, robots.txt reviewed, GSC re-pinged.</li>
+  <li>No regressions in Lighthouse (mobile ≥ 90 perf, ≥ 95 SEO).</li>
+</ol>
+
+<h2>3. Book of work — user stories</h2>
+<p>Stories grouped by execution phase. <strong>Phase 1 = this week.</strong> Phase 2 and 3 are scheduled into May/June and listed here so the backlog is one document.</p>
+<p><strong>Priority key:</strong>
+  <span class="badge p0">P0</span> must ship this week, blocks other work or fixes a leak.
+  <span class="badge p1">P1</span> ships this week, high impact.
+  <span class="badge p2">P2</span> next 2–4 weeks.
+  <span class="badge p3">P3</span> longer-term / agentic-search work.
+</p>
+
+<h3>Phase 1 — Website-changeable, this week</h3>
+
+<div class="story">
+  <h4>US-01 — Single canonical host &amp; scheme <span class="badge p0">P0</span></h4>
+  <blockquote>As a search engine, I want one authoritative URL per page so I do not split ranking signals between <code>http://</code>, <code>https://</code>, <code>www</code>, and non-<code>www</code> versions.</blockquote>
+  <p><strong>Acceptance criteria</strong></p>
+  <ul>
+    <li>All <code>http://kamalakarheartcentre.com/*</code> requests 301 → <code>https://kamalakarheartcentre.com/*</code> at the CloudFront / origin layer.</li>
+    <li>Every page emits <code>&lt;link rel="canonical" href="https://kamalakarheartcentre.com{pathname}"&gt;</code> via <code>src/components/SEO.astro</code>.</li>
+    <li>No page emits a canonical that points to a non-existent or redirected URL.</li>
+    <li>Verified by <code>curl -I</code> on three sample pages.</li>
+  </ul>
+  <p><strong>Files touched:</strong> <code>cloudfront-functions/</code>, <code>src/components/SEO.astro</code>, every page that constructs <code>canonicalUrl</code> manually.</p>
+</div>
+
+<div class="story">
+  <h4>US-02 — One trailing-slash convention site-wide <span class="badge p0">P0</span></h4>
+  <blockquote>As a crawler, I want <code>/services/ecg-echo</code> and <code>/services/ecg-echo/</code> to resolve to the same canonical URL so duplicate impressions stop appearing in Search Console.</blockquote>
+  <p><strong>Acceptance criteria</strong></p>
+  <ul>
+    <li><code>astro.config.mjs</code> sets <code>trailingSlash: 'always'</code> (matches existing URLs already in GSC such as <code>/about/</code>, <code>/services/</code>, <code>/contact/</code>).</li>
+    <li>A CloudFront function or origin rule 301s the no-slash variant to the slash variant for non-asset paths.</li>
+    <li>All internal links (<code>&lt;a href&gt;</code>, sitemap entries, schema URLs, breadcrumbs) updated to the canonical form.</li>
+    <li><code>npm run build &amp;&amp; grep -r 'href="/services/ecg-echo"' dist/</code> returns 0 hits.</li>
+  </ul>
+  <p><strong>Files touched:</strong> <code>astro.config.mjs</code>, <code>cloudfront-functions/</code>, <code>scripts/generate-sitemap.mjs</code>, internal link refs across <code>src/</code>.</p>
+</div>
+
+<div class="story">
+  <h4>US-03 — Strip indexable query-string variants of the homepage <span class="badge p0">P0</span></h4>
+  <blockquote>As a search engine, I want <code>/?page=education</code>, <code>/?lang=te</code>, <code>/?page=education&amp;lang=en</code>, <code>/?page=education&amp;lang=te</code> to all canonicalise to a single primary URL so they stop being indexed as duplicates of <code>/</code>.</blockquote>
+  <p><strong>Acceptance criteria</strong></p>
+  <ul>
+    <li>Homepage emits <code>&lt;link rel="canonical" href="https://kamalakarheartcentre.com/"&gt;</code> regardless of query string.</li>
+    <li>The <code>?page=education</code> legacy pattern 301s to <code>/education/</code> (page already exists).</li>
+    <li>The <code>?lang=te</code> legacy pattern 301s to <code>/te/</code>.</li>
+    <li>Sitemap contains zero query-string URLs.</li>
+    <li>Verified in GSC URL inspection for at least one previously-duplicated URL.</li>
+  </ul>
+  <p><strong>Files touched:</strong> <code>src/pages/index.astro</code>, <code>cloudfront-functions/</code>, <code>scripts/generate-sitemap.mjs</code>.</p>
+</div>
+
+<div class="story">
+  <h4>US-04 — Rewrite homepage <code>&lt;title&gt;</code> and meta description <span class="badge p1">P1</span></h4>
+  <blockquote>As a Guntur patient searching for “best cardiologist in guntur”, I want the SERP snippet to clearly identify Dr Kamalakar’s specialism, location, and experience so I click through.</blockquote>
+  <p><strong>Acceptance criteria</strong></p>
+  <ul>
+    <li>Title ≤ 60 chars, leads with “Dr Kamalakar Kosaraju” + role + city.</li>
+    <li>Description ≤ 155 chars, includes credentials (DM Cardiology), 30+ yrs experience, key services, Guntur.</li>
+    <li>Meta refreshed in <code>src/content/site/en.yaml</code> and the Telugu equivalent.</li>
+    <li>Sitemap <code>lastmod</code> updated (auto via existing build script).</li>
+  </ul>
+  <p><strong>Files touched:</strong> <code>src/content/site/en.yaml</code>, <code>src/content/site/te.yaml</code> (if exists), <code>src/pages/index.astro</code> if hardcoded.</p>
+</div>
+
+<div class="story">
+  <h4>US-05 — Rewrite title &amp; meta on <code>/services/</code>, <code>/about/</code>, <code>/services/ecg-echo/</code>, <code>/services/hypertension-cholesterol/</code> <span class="badge p1">P1</span></h4>
+  <blockquote>As a search-engine user, I want each landing page to promise a clearly differentiated answer in the SERP so I click on the right one.</blockquote>
+  <ul>
+    <li><code>/services/</code> description names the actual procedures (Angioplasty, ECG/Echo, Pacemaker, EECP, BP/Cholesterol management).</li>
+    <li><code>/about/</code> title leads with credentials, links to author E-E-A-T story.</li>
+    <li><code>/services/ecg-echo/</code> includes the words “cost”, “price”, “Guntur” in the description.</li>
+    <li><code>/services/hypertension-cholesterol/</code> title + description recover its current 0% CTR at pos 5.</li>
+  </ul>
+  <p><strong>Files touched:</strong> <code>src/content/services/*.yaml</code>, <code>src/pages/services/[slug].astro</code>.</p>
+</div>
+
+<div class="story">
+  <h4>US-06 — New page: <code>/services/diagnostics-pricing/</code> <span class="badge p1">P1</span></h4>
+  <blockquote>As a patient comparing test costs, I want a single page that lists ECG, 2D Echo, TMT, Holter, and angiogram pricing at Kamalakar Heart Centre so I can decide before visiting.</blockquote>
+  <ul>
+    <li>Live at <code>/services/diagnostics-pricing/</code>.</li>
+    <li>Targets queries: <code>echo and tmt test price</code>, <code>2d echo test cost in guntur</code>, <code>echo tmt test price</code>, <code>angiogram cost in guntur</code>.</li>
+    <li>Includes <code>MedicalProcedure</code> + <code>PriceSpecification</code> structured data per test.</li>
+    <li>Linked from <code>/services/</code>, <code>/services/ecg-echo/</code>, homepage services grid.</li>
+    <li>Internal nav: breadcrumb, prev/next.</li>
+    <li>Sitemap regenerated (US-11).</li>
+  </ul>
+  <p><strong>Files touched:</strong> new <code>src/pages/services/diagnostics-pricing.astro</code> (or content yaml under <code>src/content/services/</code> if reusing <code>[slug].astro</code>), nav update, sitemap regen.</p>
+</div>
+
+<div class="story">
+  <h4>US-07 — New page: <code>/services/eecp/</code> <span class="badge p1">P1</span></h4>
+  <blockquote>As a patient referred for EECP therapy in Guntur, I want a dedicated page describing the procedure, indications, and how to book at Kamalakar Heart Centre.</blockquote>
+  <ul>
+    <li>Live at <code>/services/eecp/</code>.</li>
+    <li>Targets <code>eecp treatment in guntur</code> (currently pos 15 with no dedicated page).</li>
+    <li>Uses the existing <code>[slug].astro</code> template via a new <code>eecp.yaml</code> content entry.</li>
+    <li>Linked from <code>/services/</code> and the related-services block on <code>/services/heart-failure/</code>.</li>
+  </ul>
+  <p><strong>Files touched:</strong> new <code>src/content/services/eecp.yaml</code>, nav update.</p>
+</div>
+
+<div class="story">
+  <h4>US-08 — Reviews / testimonials block on homepage and <code>/about/</code> <span class="badge p1">P1</span></h4>
+  <blockquote>As a prospective patient, I want to see real reviews so I trust the clinic before booking.</blockquote>
+  <ul>
+    <li>Reviews block visible on homepage and <code>/about/</code>.</li>
+    <li>Markup uses <code>Review</code> items + <code>AggregateRating</code> on the <code>MedicalClinic</code> schema.</li>
+    <li>Targets the <code>kamalakar hospital reviews</code> query.</li>
+    <li>Source: at least 5 verifiable Google Business reviews quoted.</li>
+  </ul>
+  <p><strong>Files touched:</strong> <code>src/components/Reviews.astro</code> (new), <code>src/utils/schemas.ts</code>, page templates.</p>
+</div>
+
+<div class="story">
+  <h4>US-09 — FAQ schema on top service pages <span class="badge p1">P1</span></h4>
+  <blockquote>As a search engine, I want structured FAQ Q&amp;A on service pages so I can render rich results that lift CTR.</blockquote>
+  <ul>
+    <li>4–6 FAQs on <code>/services/ecg-echo/</code>, <code>/services/hypertension-cholesterol/</code>, <code>/services/diagnostics-pricing/</code>, <code>/services/eecp/</code>.</li>
+    <li>Marked up as <code>FAQPage</code> JSON-LD via <code>src/utils/schemas.ts</code>.</li>
+    <li>Validates in Google Rich Results Test.</li>
+    <li>Each answer ≤ 300 chars (LLM-extraction friendly).</li>
+  </ul>
+  <p><strong>Files touched:</strong> <code>src/utils/schemas.ts</code>, service yaml content, page templates.</p>
+</div>
+
+<div class="story">
+  <h4>US-10 — Upgrade site JSON-LD graph: <code>Physician</code> + <code>MedicalClinic</code> + <code>MedicalProcedure</code> <span class="badge p1">P1</span></h4>
+  <blockquote>As an LLM grounding answer, I want one connected JSON-LD graph that ties Dr Kamalakar to the clinic and to each service so I can cite the site reliably.</blockquote>
+  <ul>
+    <li>Single JSON-LD graph using <code>@id</code> references: <code>Physician</code> → <code>worksFor</code> → <code>MedicalClinic</code> → <code>availableService</code> → <code>MedicalProcedure</code>.</li>
+    <li>Author/byline on every blog post links to the <code>Physician</code> <code>@id</code>.</li>
+    <li><code>Physician</code> includes degrees, council registration, years of experience.</li>
+    <li>Validates in Schema.org validator and Google Rich Results Test.</li>
+  </ul>
+  <p><strong>Files touched:</strong> <code>src/utils/schemas.ts</code>, layout templates, blog post template.</p>
+</div>
+
+<div class="story">
+  <h4>US-11 — Sitemap &amp; robots.txt always rebuilt on content / route changes <span class="badge p0">P0</span></h4>
+  <blockquote>As an operator, I want the sitemap and robots.txt to be regenerated automatically whenever a page is added, removed, renamed, or redirected so search engines never see a stale URL list.</blockquote>
+  <ul>
+    <li><code>npm run build</code> invokes <code>scripts/generate-sitemap.mjs</code> (already exists) and the script output is part of the CI build artefact.</li>
+    <li>The script reads pages and content collections — confirmed it picks up <code>diagnostics-pricing</code> and <code>eecp</code> automatically once US-06/07 ship.</li>
+    <li><code>public/robots.txt</code> reviewed: contains exactly one <code>Sitemap:</code> directive, points to the canonical HTTPS sitemap URL, and lists the AI crawlers.</li>
+    <li>A short note added to <code>CLAUDE.md</code> and to the <code>deploy-verify</code> skill so this becomes a permanent pre-deploy gate: <em>“if you added/renamed/removed a page, rebuild sitemap and re-verify robots before deploying.”</em></li>
+    <li>Post-deploy: GSC <em>Sitemaps</em> page shows the new sitemap successfully fetched.</li>
+  </ul>
+  <p><strong>Files touched:</strong> <code>package.json</code>, <code>scripts/generate-sitemap.mjs</code>, <code>public/robots.txt</code>, <code>CLAUDE.md</code>, <code>.claude/skills/deploy-verify/*</code> (if applicable).</p>
+</div>
+
+<div class="story">
+  <h4>US-12 — Verification &amp; re-submission <span class="badge p0">P0</span></h4>
+  <blockquote>As an SEO owner, I want post-deploy verification so I know the canonical, schema, and sitemap changes actually took effect.</blockquote>
+  <ul>
+    <li>Lighthouse mobile run on <code>/</code>, <code>/services/</code>, <code>/about/</code>, <code>/services/ecg-echo/</code>: SEO ≥ 95, Perf ≥ 90.</li>
+    <li>Rich Results Test passes on home, services, blog, new pricing &amp; EECP pages.</li>
+    <li>GSC sitemap re-submitted; URL Inspection run for 3 previously-duplicated URLs to confirm canonical consolidation.</li>
+    <li>Result captured in <code>SEO optimisation/26th April Review — verification.md</code>.</li>
+  </ul>
+</div>
+
+<h3>Phase 2 — Content gaps (May, weeks 2–4) <span class="badge p2">P2</span></h3>
+<ul>
+  <li><strong>US-13</strong> — Pillar page <code>/best-cardiologist-in-guntur/</code> (or homepage H1 stack rework) targeting the 40-impression query at pos 19.</li>
+  <li><strong>US-14</strong> — Author profile page <code>/team/dr-kamalakar/</code> with full E-E-A-T (degrees, registration #, fellowships, papers, hospital affiliations, photos).</li>
+  <li><strong>US-15</strong> — Telugu translation of top 4 service pages + about, linked from <code>/te/</code>.</li>
+  <li><strong>US-16</strong> — “Medically reviewed by” line + last-reviewed date on every blog post.</li>
+  <li><strong>US-17</strong> — Internal-linking pass across blog posts → pillar pages (3 topical clusters: interventional, diagnostics, chronic conditions).</li>
+</ul>
+
+<h3>Phase 3 — Agentic / LLM search (June onwards) <span class="badge p3">P3</span></h3>
+<ul>
+  <li><strong>US-18</strong> — Refresh <code>llms.txt</code> with pointers to highest-authority pages once new pages ship.</li>
+  <li><strong>US-19</strong> — Off-site NAP consistency: Practo, JustDial, Lybrate, Google Business — all match exactly.</li>
+  <li><strong>US-20</strong> — Wikidata entry for the clinic.</li>
+  <li><strong>US-21</strong> — Quarterly AI-mention audit across ChatGPT / Perplexity / Gemini / Google AI Overviews for the top 20 GSC queries. First run: end Q2 2026.</li>
+  <li><strong>US-22</strong> — Monthly GSC export diff vs this baseline so we can attribute lift to specific changes.</li>
+</ul>
+
+<h2>4. Requirements consolidated — what changes on the website (priority order)</h2>
+<table>
+  <thead><tr><th>#</th><th>Requirement</th><th>Story</th><th>Priority</th><th>Repo area</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>All HTTP traffic 301s to HTTPS</td><td>US-01</td><td><span class="badge p0">P0</span></td><td><code>cloudfront-functions/</code></td></tr>
+    <tr><td>2</td><td>One trailing-slash convention enforced</td><td>US-02</td><td><span class="badge p0">P0</span></td><td><code>astro.config.mjs</code>, CloudFront, sitemap</td></tr>
+    <tr><td>3</td><td>Homepage canonicalises away <code>?page=…</code> and <code>?lang=…</code> variants</td><td>US-03</td><td><span class="badge p0">P0</span></td><td><code>src/pages/index.astro</code>, CloudFront</td></tr>
+    <tr><td>4</td><td><code>&lt;link rel="canonical"&gt;</code> present and correct on every page</td><td>US-01</td><td><span class="badge p0">P0</span></td><td><code>src/components/SEO.astro</code></td></tr>
+    <tr><td>5</td><td>Sitemap regenerated on every build; robots.txt reviewed</td><td>US-11</td><td><span class="badge p0">P0</span></td><td><code>scripts/generate-sitemap.mjs</code>, <code>package.json</code>, <code>public/robots.txt</code></td></tr>
+    <tr><td>6</td><td>Homepage title + meta rewritten</td><td>US-04</td><td><span class="badge p1">P1</span></td><td><code>src/content/site/en.yaml</code></td></tr>
+    <tr><td>7</td><td>Top 4 page titles + metas rewritten</td><td>US-05</td><td><span class="badge p1">P1</span></td><td>content yamls</td></tr>
+    <tr><td>8</td><td>New <code>/services/diagnostics-pricing/</code></td><td>US-06</td><td><span class="badge p1">P1</span></td><td><code>src/content/services/</code>, sitemap</td></tr>
+    <tr><td>9</td><td>New <code>/services/eecp/</code></td><td>US-07</td><td><span class="badge p1">P1</span></td><td><code>src/content/services/</code>, sitemap</td></tr>
+    <tr><td>10</td><td>Reviews block + <code>AggregateRating</code></td><td>US-08</td><td><span class="badge p1">P1</span></td><td><code>src/components/</code>, schemas</td></tr>
+    <tr><td>11</td><td><code>FAQPage</code> schema on 4 service pages</td><td>US-09</td><td><span class="badge p1">P1</span></td><td><code>src/utils/schemas.ts</code></td></tr>
+    <tr><td>12</td><td>Connected JSON-LD graph (Physician ↔ Clinic ↔ Procedure)</td><td>US-10</td><td><span class="badge p1">P1</span></td><td><code>src/utils/schemas.ts</code></td></tr>
+    <tr><td>13</td><td>Verification: Lighthouse + Rich Results + GSC re-submit</td><td>US-12</td><td><span class="badge p0">P0</span></td><td>none (verification)</td></tr>
+  </tbody>
+</table>
+
+<h2>5. Canonical-tag policy</h2>
+<p>This rule applies from this week onward, enforced via <code>src/components/SEO.astro</code>:</p>
+<ol>
+  <li>Every page emits exactly one <code>&lt;link rel="canonical"&gt;</code>.</li>
+  <li>The canonical URL is <strong>absolute</strong>, <strong>HTTPS</strong>, <strong>bare domain</strong> (no <code>www.</code>), and uses the chosen <strong>trailing-slash convention</strong> (<code>always</code>, per US-02).</li>
+  <li>The canonical never includes a query string unless the query string is the page’s defining identifier (no current page qualifies).</li>
+  <li>Localised pages (<code>/te/...</code>) canonicalise to themselves and add <code>&lt;link rel="alternate" hreflang="te"&gt;</code> and <code>&lt;link rel="alternate" hreflang="en"&gt;</code> cross-references.</li>
+  <li>Paginated/filterable pages (none today) point canonical to the unfiltered base URL.</li>
+  <li><code>og:url</code> matches the canonical exactly.</li>
+  <li>Build-time check: assert every <code>*.html</code> in <code>dist/</code> has a canonical tag whose URL resolves to itself.</li>
+</ol>
+
+<h2>6. Sitemap &amp; robots policy</h2>
+<ol>
+  <li><code>npm run build</code> always regenerates the sitemap. No manual sitemap edits.</li>
+  <li>The sitemap script is the single source of truth for indexable URLs — it reads from Astro pages + content collections, so any new <code>/services/*.yaml</code> or new <code>src/pages/*.astro</code> automatically appears.</li>
+  <li>After <strong>any</strong> of these, sitemap and robots are reviewed before deploy:
+    <ul>
+      <li>new page added</li>
+      <li>existing page renamed or path changed</li>
+      <li>page removed or 301-redirected</li>
+      <li>canonical convention changed</li>
+    </ul>
+  </li>
+  <li><code>public/robots.txt</code> is treated as code. Diff it on every PR. Exactly one <code>Sitemap:</code> line pointing to <code>https://kamalakarheartcentre.com/sitemap.xml</code>.</li>
+  <li>Post-deploy: hit <code>/sitemap.xml</code> and <code>/robots.txt</code> over HTTPS, confirm 200, then re-submit sitemap in GSC.</li>
+  <li>This rule is captured permanently in <code>CLAUDE.md</code> and the <code>deploy-verify</code> skill so future sessions cannot forget it.</li>
+</ol>
+
+<h2>7. Reference — full multi-month strategy</h2>
+<p><strong>Pillars for topical authority (Q2–Q3 2026):</strong></p>
+<ol>
+  <li>Interventional cardiology (angioplasty / stents / angiogram) — pillar + 6 supporting articles.</li>
+  <li>Diagnostics &amp; costs (ECG / Echo / TMT / Holter — with prices) — pillar + 4 articles.</li>
+  <li>Chronic conditions (hypertension / cholesterol / heart failure) — pillar + 6 articles.</li>
+</ol>
+<p><strong>Agentic-search readiness:</strong></p>
+<ul>
+  <li>E-E-A-T at the document level — author profile, medically-reviewed-by, last-reviewed dates.</li>
+  <li>One connected <code>Physician</code>/<code>MedicalClinic</code>/<code>MedicalProcedure</code> JSON-LD graph (US-10).</li>
+  <li>Short, factual TL;DR paragraphs (≤60 words) at the top of every clinical page — what LLMs lift verbatim.</li>
+  <li><code>FAQPage</code> blocks with ≤300-char answers.</li>
+  <li><code>llms.txt</code> updated as new authoritative pages ship.</li>
+  <li>Off-site NAP consistency on Practo / JustDial / Lybrate / Google Business; encourage Google reviews.</li>
+  <li>Wikidata entry for the clinic if/when notable.</li>
+</ul>
+<p><strong>Measurement cadence:</strong></p>
+<ul>
+  <li>Monthly: re-export GSC, diff against this baseline.</li>
+  <li>Quarterly: AI-mention audit across ChatGPT / Perplexity / Gemini / Google AI Overviews for the top 20 GSC queries.</li>
+</ul>
+
+<div class="footer">
+  Document: <code>SEO optimisation/26th April Review.md</code> · Generated 26 April 2026.
+</div>
+
+</body>
+</html>
