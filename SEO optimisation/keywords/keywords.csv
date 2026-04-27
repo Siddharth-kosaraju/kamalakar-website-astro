@@ -32,8 +32,6 @@ angioplasty guntur,,,commercial,target,procedures,true,,manual,"core procedure p
 angiogram guntur,,,commercial,target,procedures,false,,manual,"diagnostic + procedural"
 pacemaker guntur,,,commercial,target,procedures,false,,manual,"GSC: 4 imp pos 5.67 — niche, already ranking well"
 pacemaker implantation,,,commercial,target,procedures,false,,manual,"clinical query — Phase 2 explainer content"
-eecp guntur,,,commercial,easy_win,procedures,false,,manual,"new dedicated page (US-07); pos 15 → push to top 5"
-eecp treatment,,,commercial,easy_win,procedures,false,,manual,"GSC: 1 imp pos 15 — niche, low competition"
 ecg test guntur,,,commercial,target,tests_diagnostics,true,,manual,"core diagnostic pillar"
 2d echo test,,,commercial,target,tests_diagnostics,false,,manual,"GSC: 24+8+6 imp combined — strong demand"
 tmt test,,,commercial,target,tests_diagnostics,false,,manual,"stress test variant"

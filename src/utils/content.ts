@@ -57,9 +57,12 @@ export const SERVICE_SLUGS = [
  * Extra service pages that don't appear in the homepage grid but are real
  * landing pages (own SEO targets). Static routes are still generated and
  * they appear in the sitemap.
+ *
+ * NOTE: EECP was here briefly (US-07, 27 Apr) but removed the same day —
+ * Dr Kamalakar does NOT offer EECP. /services/eecp/ now 301s to /services/
+ * via the CloudFront function. Do NOT re-add it.
  */
 export const EXTRA_SERVICE_SLUGS = [
-  'eecp',
   'diagnostics-pricing',
 ] as const;
 

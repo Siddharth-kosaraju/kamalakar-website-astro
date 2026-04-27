@@ -93,6 +93,7 @@ These are encoded in `src/utils/schemas.ts` `buildPhysicianSchema()` and the con
 - **Years as cardiologist:** dynamically computed from `START_YEAR = 2015` in `src/utils/content.ts`
 - **Procedure volume:** 3,000+ coronary angiograms · 1,000+ angioplasty procedures (confirmed by user 2026-04-27; encoded in `Physician.description` JSON-LD)
 - **NOT an Assistant Professor.** Earlier blog content claimed this — it is incorrect and has been removed. Do not re-introduce.
+- **EECP is NOT offered by Dr Kamalakar / Kamalakar Heart Centre.** A `/services/eecp/` page existed briefly (shipped 2026-04-27 as US-07, removed the same day). The CF function 301s `/services/eecp/*` → `/services/`. Do not re-introduce EECP as a service offering, do not list it in `knowsAbout`, and do not include it in keyword targets.
 
 ## Current published prices (₹, INR)
 

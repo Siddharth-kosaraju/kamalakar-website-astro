@@ -15,6 +15,7 @@
 | Badge | Meaning |
 |---|---|
 | ✅ DONE | Shipped to production and verified live. |
+| ↩️ REVERTED | Was shipped, then removed/rolled back (factual correction). |
 | 🟦 IN PROGRESS | Started, partially shipped. |
 | 🟧 OPEN | Not started, planned. |
 | ⏸ DEFERRED | In scope but explicitly later (Phase 2/3 backlog). |
@@ -33,7 +34,7 @@ P0 shipped Sun 26 Apr; P1 + AEO improvements shipped Mon 27 Apr — **6 days ahe
 | US-04 | Rewrite homepage title & meta | P1 | P1 | ✅ DONE | 27 Apr — `80e4e9b` |
 | US-05 | Rewrite title/meta on top 4 pages | P1 | P1 | ✅ DONE | 27 Apr — `80e4e9b` |
 | US-06 | New `/services/diagnostics-pricing/` page | P1 | P1 | ✅ DONE | 27 Apr — `80e4e9b` |
-| US-07 | New `/services/eecp/` page | P1 | P1 | ✅ DONE | 27 Apr — `80e4e9b` |
+| US-07 | New `/services/eecp/` page | P1 | P1 | ↩️ REVERTED | Shipped 27 Apr (`80e4e9b`); removed same day after user clarified Dr Kamalakar does NOT offer EECP. CF function 301s `/services/eecp/*` → `/services/`. See US-36. |
 | US-08 | Reviews block + `AggregateRating` schema | P1 | P1 | ✅ DONE | 27 Apr — `80e4e9b` |
 | US-09 | `FAQPage` schema on top service pages | P1 | P1 | ✅ DONE | 27 Apr — `80e4e9b` (already in production for service pages, now also on EECP + pricing) |
 | US-10 | Connected `Physician` ↔ `MedicalClinic` ↔ `MedicalProcedure` JSON-LD graph | P1 | P1 | ✅ DONE | 27 Apr — `80e4e9b` + `94822b5` (extended to doctor-profile blog posts) |
@@ -77,6 +78,7 @@ P0 shipped Sun 26 Apr; P1 + AEO improvements shipped Mon 27 Apr — **6 days ahe
 | US-33 | About page word count (currently 374) → 500+ for AEO depth signal | P3 | ⏸ DEFERRED | Below the 250 floor → fine. Above 500 is "ideal" per AEO skill — content addition, not urgent |
 | US-34 | `aws_deploy.sh` runtime upgrade `cloudfront-js-1.0` → `cloudfront-js-2.0` | P3 | ⏸ DEFERRED | Only matters if `infra` mode is re-run. Live function already on `2.0` since 26 Apr |
 | US-35 | Pre-existing uncommitted modifications in `src/content.config.ts` and `src/pages/contact.astro` (in repo since before this session, never staged) | — | 👤 NEEDS USER | Not my work — your in-progress changes. Decide to keep / commit / discard |
+| US-36 | Remove EECP page + all references (yaml, schema `knowsAbout`, route registration, homepage Additional Resources card, keywords.csv); add CF 301 `/services/eecp/*` → `/services/`; lock guard in CLAUDE.md and project memory | P0 | 🟦 IN PROGRESS | 27 Apr — code committed; CF function publish + post-deploy 301 verification still in this commit cycle |
 
 ### Manual actions outside the repo (👤 NEEDS USER)
 
@@ -105,14 +107,15 @@ These are the warning-level items from the content audit that haven't been linke
 
 ### Snapshot — count of items by status
 
-| Status | Count |
-|---|---|
-| ✅ DONE | 19 (US-01 through 11, US-23–31, US-30, US-31) |
-| 🟦 IN PROGRESS | 3 (US-12, US-16, US-32) |
-| 🟧 OPEN | 5 (US-13, 14, 15, 17, 18, 20) |
-| ⏸ DEFERRED | 2 (US-33, US-34) |
-| 👤 NEEDS USER | 1 user-story (US-19) + 9 manual actions M1–M9 + US-35 |
-| 🔁 RECURRING | 2 (US-21, US-22) |
+| Status | Count | Stories |
+|---|---|---|
+| ✅ DONE | 18 | US-01–06, US-08–11, US-23–31 |
+| ↩️ REVERTED | 1 | US-07 (EECP — Dr Kamalakar does not offer it) |
+| 🟦 IN PROGRESS | 4 | US-12, US-16, US-32, US-36 |
+| 🟧 OPEN | 6 | US-13, 14, 15, 17, 18, 20 |
+| ⏸ DEFERRED | 2 | US-33, US-34 |
+| 👤 NEEDS USER | 11 | US-19 + 9 manual actions M1–M9 + US-35 |
+| 🔁 RECURRING | 2 | US-21, US-22 |
 
 ---
 

@@ -66,6 +66,14 @@ function handler(event) {
         return redirect301(SITE + '/');
     }
 
+    // 2b. Retired EECP page → /services/
+    //    EECP was published 2026-04-27 (US-07) and removed the same day —
+    //    Dr Kamalakar does NOT offer EECP. Anything indexed by Google
+    //    between deploy and removal must be redirected, not 404'd.
+    if (uri === '/services/eecp' || uri.indexOf('/services/eecp/') === 0) {
+        return redirect301(SITE + '/services/');
+    }
+
     // 3. Legacy SPA query params on the homepage
     //    /?page=education            →  /education/
     //    /?page=education&lang=te    →  /education/

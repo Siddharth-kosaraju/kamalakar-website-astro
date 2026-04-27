@@ -143,7 +143,7 @@ export function buildPhysicianSchema() {
       propertyID: 'Andhra Pradesh Medical Council Registration',
       value: '57814',
     },
-    knowsAbout: ['Interventional Cardiology', 'Angioplasty', 'Angiogram', 'Pacemaker Implantation', 'Heart Failure Management', 'ECG', '2D Echocardiography', 'Cardiac Emergency Care', 'Hypertension', 'Cholesterol Management', 'TMT Stress Test', 'EECP Therapy'],
+    knowsAbout: ['Interventional Cardiology', 'Angioplasty', 'Angiogram', 'Pacemaker Implantation', 'Heart Failure Management', 'ECG', '2D Echocardiography', 'Cardiac Emergency Care', 'Hypertension', 'Cholesterol Management', 'TMT Stress Test'],
     memberOf: { '@type': 'Organization', name: 'European Society of Cardiology', sameAs: 'https://www.escardio.org/' },
     worksFor: { '@type': 'MedicalOrganization', name: 'Kamalakar Heart Centre', '@id': `${CANONICAL_BASE}/#organization` },
     address: {
