@@ -39,7 +39,7 @@ P0 shipped Sun 26 Apr; P1 + AEO improvements shipped Mon 27 Apr — **6 days ahe
 | US-09 | `FAQPage` schema on top service pages | P1 | P1 | ✅ DONE | 27 Apr — `80e4e9b` (already in production for service pages, now also on EECP + pricing) |
 | US-10 | Connected `Physician` ↔ `MedicalClinic` ↔ `MedicalProcedure` JSON-LD graph | P1 | P1 | ✅ DONE | 27 Apr — `80e4e9b` + `94822b5` (extended to doctor-profile blog posts) |
 | US-11 | Sitemap & robots regenerated on every change | P0 | P0 | ✅ DONE | 26 Apr — `d78d8e8` (build-time canonical verifier `scripts/verify-canonicals.mjs`) |
-| US-12 | Verification & re-submission | P0 | P0 | 🟦 IN PROGRESS · 👤 NEEDS USER | Site-side verified live; GSC sitemap re-submit + URL Inspection still pending (see §0.5 below) |
+| US-12 | Verification & re-submission | P0 | P0 | ✅ DONE | 27 Apr — site-side verification gates green; M1 (GSC sitemap re-submit), M2 (URL Inspection on previously-duplicated URLs), M3 (Rich Results re-test), M4 (Rich Results on pricing page), M5 (Lighthouse mobile baseline) all completed by user 27 Apr |
 
 ### Phase 2 (May, weeks 2–4) — **all 🟧 OPEN**
 
@@ -82,17 +82,17 @@ P0 shipped Sun 26 Apr; P1 + AEO improvements shipped Mon 27 Apr — **6 days ahe
 
 ### Manual actions outside the repo (👤 NEEDS USER)
 
-| # | Action | When | Why |
+| # | Action | Status | Why |
 |---|---|---|---|
-| M1 | Re-submit `https://kamalakarheartcentre.com/sitemap.xml` in Google Search Console | This week | Closes US-12. Sitemap now has 22 URLs (vs 16 before) and `feed.xml` Sitemap entry — Google needs a nudge to recrawl. |
-| M2 | GSC URL Inspection on 5 previously-duplicated URLs: `/services/ecg-echo` (no slash), `/services/hypertension-cholesterol` (no slash), `/te/`, `/?page=education`, `http://kamalakarheartcentre.com/` | This week | Confirm Google sees the canonical consolidation from US-01/02/03. |
-| M3 | Re-test `/blog/dr-kamalakar-kosaraju-cardiologist-in-guntur/` in [Rich Results Test](https://search.google.com/test/rich-results) | After 27 Apr deploy propagates (~1–4 hours) | Confirm Physician schema now shows up (closes the issue you raised on commit `94822b5`) |
-| M4 | Rich Results Test on `/services/diagnostics-pricing/` | This week | Confirm OfferCatalog with 7 priced items validates |
-| M5 | Lighthouse mobile run on `/`, `/services/`, `/about/`, `/services/ecg-echo/` | This week | Capture post-P1 baseline (target: SEO ≥ 95, Perf ≥ 90) |
-| M6 | Confirm or correct two facts in CLAUDE.md before US-13 / US-14 ship: any awards / fellowships not yet listed? Hospital affiliations beyond Life Hospital? | Before US-14 | Author profile page wants the most complete E-E-A-T story |
-| M7 | Off-site profile audit: Practo, JustDial, Lybrate, Google Business — confirm NAP consistency with the canonical address; encourage Google reviews | Phase 3 | US-19 — biggest off-site lever for "best cardiologist in guntur" |
-| M8 | First quarterly AI-mention audit | end Q2 2026 (≈ 30 June) | US-21 — log citation rate across ChatGPT/Perplexity/Gemini for top 20 GSC queries |
-| M9 | First monthly GSC export diff | end May 2026 | US-22 — measure CTR delta on rewritten metas + new page traction |
+| M1 | Re-submit `https://kamalakarheartcentre.com/sitemap.xml` in Google Search Console | ✅ DONE 27 Apr | Closed US-12. Sitemap now has 21 URLs (after EECP removal). |
+| M2 | GSC URL Inspection on 6 previously-duplicated URLs: `/services/ecg-echo` (no slash), `/services/hypertension-cholesterol` (no slash), `/te/`, `/?page=education`, `http://kamalakarheartcentre.com/`, `/services/eecp/` | ✅ DONE 27 Apr | Confirmed Google sees the canonical consolidation from US-01/02/03 + US-36 (EECP 301). |
+| M3 | Re-test `/blog/dr-kamalakar-kosaraju-cardiologist-in-guntur/` in [Rich Results Test](https://search.google.com/test/rich-results) | ✅ DONE 27 Apr | Confirmed Physician schema now appears (after `94822b5`). |
+| M4 | Rich Results Test on `/services/diagnostics-pricing/` | ✅ DONE 27 Apr | Confirmed OfferCatalog with 7 priced items validates. |
+| M5 | Lighthouse mobile run on `/`, `/services/`, `/about/`, `/services/ecg-echo/` | ✅ DONE 27 Apr | Captured post-P1 baseline. |
+| M6 | Confirm or correct two facts in CLAUDE.md before US-13 / US-14 ship: any awards / fellowships not yet listed? Hospital affiliations beyond Life Hospital? | 👤 NEEDS USER | Author profile page (US-14) wants the most complete E-E-A-T story |
+| M7 | Off-site profile audit: Practo, JustDial, Lybrate, Google Business — confirm NAP consistency with the canonical address; encourage Google reviews | 👤 NEEDS USER (Phase 3) | US-19 — biggest off-site lever for "best cardiologist in guntur" |
+| M8 | First quarterly AI-mention audit | 🔁 RECURRING — first run end Q2 2026 (≈ 30 June) | US-21 — log citation rate across ChatGPT/Perplexity/Gemini for top 20 GSC queries |
+| M9 | First monthly GSC export diff | 🔁 RECURRING — first run end May 2026 | US-22 — measure CTR delta on rewritten metas + new page traction |
 
 ### Open citation work (US-32 sub-tasks)
 
@@ -109,13 +109,13 @@ These are the warning-level items from the content audit that haven't been linke
 
 | Status | Count | Stories |
 |---|---|---|
-| ✅ DONE | 19 | US-01–06, US-08–11, US-23–31, US-36 |
+| ✅ DONE | 20 | US-01–06, **US-12**, US-08–11, US-23–31, US-36 |
 | ↩️ REVERTED | 1 | US-07 (EECP — Dr Kamalakar does not offer it) |
-| 🟦 IN PROGRESS | 3 | US-12, US-16, US-32 |
+| 🟦 IN PROGRESS | 2 | US-16, US-32 |
 | 🟧 OPEN | 6 | US-13, 14, 15, 17, 18, 20 |
 | ⏸ DEFERRED | 2 | US-33, US-34 |
-| 👤 NEEDS USER | 11 | US-19 + 9 manual actions M1–M9 + US-35 |
-| 🔁 RECURRING | 2 | US-21, US-22 |
+| 👤 NEEDS USER | 4 | US-19, US-35, M6, M7 (M1–M5 ✅ DONE 27 Apr) |
+| 🔁 RECURRING | 4 | US-21, US-22, M8, M9 |
 
 ---
 
