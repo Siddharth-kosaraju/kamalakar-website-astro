@@ -29,6 +29,8 @@ const articleItemSchema = z.object({
 const testimonialItemSchema = z.object({
   text: z.string(),
   author: z.string(),
+  // Optional star rating 1-5. Defaults to 5 in buildBusinessSchema when omitted.
+  rating: z.number().min(1).max(5).optional(),
 });
 
 const galleryImageSchema = z.object({
@@ -245,6 +247,12 @@ const blogPostSchema = z.object({
   tags: z.array(z.string()).optional(),
   readingTime: z.string().optional(),
   published: z.boolean().default(true),
+  // Optional hero image rendered at the top of the post and used as the og:image.
+  // Paths are relative to /public, e.g. "/media/blog-foo-hero.jpg".
+  // If heroImage is set, a sibling .webp at the same path stem is auto-resolved
+  // for the <picture> srcset (matches the gallery-*.{jpg,webp} convention).
+  heroImage: z.string().optional(),
+  heroImageAlt: z.string().optional(),
 });
 
 const site = defineCollection({

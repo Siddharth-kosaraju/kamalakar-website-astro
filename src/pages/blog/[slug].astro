@@ -54,6 +54,18 @@ function getPostLastModified(slug: string, fallback: Date): string {
 
 const lastModified = getPostLastModified(post.id, post.data.date);
 
+// Hero image: prefer the per-post heroImage when present, else fall back to the
+// doctor portrait (matches the previous BlogPosting.image default).
+// Per-post heroImage paths in frontmatter are site-absolute (e.g. /media/foo.jpg);
+// resolve a sibling .webp at the same stem for the <picture> srcset, mirroring
+// the gallery-*.{jpg,webp} convention used elsewhere in /public/media.
+const heroImage = post.data.heroImage;
+const heroImageAlt = post.data.heroImageAlt || post.data.title;
+const heroImageWebp = heroImage?.replace(/\.(jpe?g|png)$/i, '.webp');
+const ogImage = heroImage
+  ? `https://kamalakarheartcentre.com${heroImage}`
+  : 'https://kamalakarheartcentre.com/media/dr-kamalakar.jpg';
+
 const schemas: object[] = [
   // BlogPosting schema (enhanced with E-E-A-T signals)
   {
@@ -82,7 +94,7 @@ const schemas: object[] = [
       '@type': 'WebPage',
       '@id': postUrl,
     },
-    image: 'https://kamalakarheartcentre.com/media/dr-kamalakar.jpg',
+    image: ogImage,
     keywords: post.data.tags?.join(', '),
     articleSection: 'Heart Health Education',
     inLanguage: 'en',
@@ -179,6 +191,7 @@ if (faqSection) {
     description={post.data.summary}
     keywords={post.data.tags || []}
     canonicalUrl={postUrl}
+    ogImage={ogImage}
     schemas={schemas}
     page="blog-post"
     ogType="article"
@@ -255,6 +268,26 @@ if (faqSection) {
           )}
         </div>
       </header>
+
+      <!-- Hero image (optional per-post). Sits between the metadata divider
+           and the AuthorByline so it reads as the visual lede. -->
+      {heroImage && (
+        <figure class="mb-8 md:mb-10 -mx-4 sm:mx-0">
+          <picture>
+            {heroImageWebp && <source srcset={heroImageWebp} type="image/webp" />}
+            <img
+              src={heroImage}
+              alt={heroImageAlt}
+              width="1200"
+              height="750"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+              class="w-full h-auto sm:rounded-2xl shadow-md"
+            />
+          </picture>
+        </figure>
+      )}
 
       <!-- Author byline (rendered from a single component so the year count
            stays in sync; the per-post hand-written byline used to drift) -->
