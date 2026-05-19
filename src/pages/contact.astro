@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SEO from '../components/SEO.astro';
 import Header from '../components/Header';
+import Testimonials from '../components/Testimonials.astro';
 import Footer from '../components/Footer.astro';
 import { getSiteContent } from '../utils/content';
 import { buildBusinessSchema, buildBreadcrumbSchema } from '../utils/schemas';
@@ -156,6 +157,11 @@ const schemas = [
         </div>
       </div>
     </section>
+
+    <!-- Patient testimonials — co-located with aggregateRating + review JSON-LD
+         emitted in `schemas` above so that the schema reflects content displayed on this page
+         (Google Rich Results compliance). -->
+    <Testimonials content={content.testimonials} />
   </main>
 
   <Footer content={content.footer} navContent={content.nav} currentPage="contact" />
