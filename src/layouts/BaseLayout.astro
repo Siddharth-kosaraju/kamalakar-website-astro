@@ -9,7 +9,7 @@ const { class: className = '' } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en" data-gtag-id="GT-WRGJZJKJ">
+<html lang="en" data-gtm-id="GTM-5LHV53HC">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -32,28 +32,40 @@ const { class: className = '' } = Astro.props;
   <!-- SEO + schemas injected via slot -->
   <slot name="head" />
 
-  <!-- Google tag (gtag.js) — lazy loaded -->
+  <!-- Google Tag Manager — lazy loaded. All GA4 + Google Ads tags live inside the GTM container. -->
   <script is:inline>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    function loadGtag() {
-      var id = document.documentElement.dataset.gtagId;
+
+    function loadGTM() {
+      var id = document.documentElement.dataset.gtmId;
       if (!id) return;
+      window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
       var s = document.createElement('script');
       s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
-      s.onload = function() {
-        gtag('js', new Date());
-        gtag('config', id);
-      };
+      s.src = 'https://www.googletagmanager.com/gtm.js?id=' + id;
       document.head.appendChild(s);
     }
-    if (typeof requestIdleCallback !== 'undefined') requestIdleCallback(loadGtag, { timeout: 2500 });
-    else window.addEventListener('load', function() { setTimeout(loadGtag, 500); });
+
+    if (typeof requestIdleCallback !== 'undefined') requestIdleCallback(loadGTM, { timeout: 2500 });
+    else window.addEventListener('load', function() { setTimeout(loadGTM, 500); });
+
+    // Push Call CTA clicks to dataLayer — GTM picks these up via a Custom Event trigger named "phone_call_click"
+    document.addEventListener('click', function(e) {
+      var link = e.target.closest && e.target.closest('a[href^="tel:"]');
+      if (!link) return;
+      window.dataLayer.push({
+        event: 'phone_call_click',
+        link_url: link.href,
+        link_text: (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 100),
+        page_path: location.pathname
+      });
+    });
   </script>
 </head>
 
 <body class={className}>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5LHV53HC" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a href="#main-content" class="skip-link">Skip to main content</a>
   <slot />
 </body>
