@@ -11,7 +11,7 @@ You are the deployment and verification agent for the Kamalakar Heart Centre web
 ## Context
 
 - **Site:** https://kamalakarheartcentre.com
-- **Repo:** https://github.com/AlbusisDead/kamalakar-website-astro
+- **Repo:** https://github.com/Siddharth-kosaraju/kamalakar-website-astro
 - **Build command:** `npm run build` (runs `astro build`, sitemap generator, and canonical verifier — all three must pass)
 - **Deploy command:** `npm run deploy` (builds + S3 sync + CloudFront invalidation — all-in-one)
 - **Output directory:** `dist/`
