@@ -51,7 +51,8 @@ Verify:
 - Build completes without errors
 - `dist/sitemap.xml` exists (NOT `sitemap-0.xml`)
 - `dist/robots.txt` exists and contains `Sitemap: https://kamalakarheartcentre.com/sitemap.xml`
-- Page count matches expectations (currently 21 HTML pages, 20 indexable + the noindex /404/)
+- `dist/llms.txt` exists and passes the llms verifier — the build runs `scripts/generate-llms.mjs`, which prints `[llms] Generated .../dist/llms.txt (N URLs; …)` and fails the build if a forbidden claim is present or if the sitemap ⇄ llms.txt completeness cross-check finds a page missing a description entry. The generated file starts with `# Kamalakar Heart Centre`.
+- Page count matches expectations (currently 27 HTML pages, 26 indexable + the noindex /404/ — as of 2026-07-07; must equal the sitemap and llms.txt URL count)
 - Only published posts with `date <= now` are built (future-dated posts must NOT appear)
 - `[verify-canonicals] OK: ... all canonicals valid` printed at end of build (the build script now runs `scripts/verify-canonicals.mjs`)
 
@@ -59,8 +60,9 @@ Verify:
 
 If this change adds, renames, removes, or redirects a page — or touches the CloudFront function, robots.txt, or `astro.config.mjs` — then the canonical/sitemap/robots policy in `CLAUDE.md` requires:
 
-- [ ] `npm run build` passes (sitemap regenerated, canonical verifier passes)
+- [ ] `npm run build` passes (sitemap regenerated, llms.txt regenerated, canonical verifier passes)
 - [ ] Diff `dist/sitemap.xml` against the previous build — added/removed routes match the change
+- [ ] **New static page?** Add a matching description entry to `STATIC_DESCRIPTIONS` in `scripts/generate-llms.mjs`. Blog posts (`src/content/blog/*.md`) and services (`src/content/services/*.yaml`) are derived automatically from frontmatter and need no entry, but a new static route (`src/pages/*.astro`) will FAIL the build with `→ in sitemap but missing from llms.txt. Add a STATIC_DESCRIPTIONS["<path>"] entry` until you add one.
 - [ ] `public/robots.txt` reviewed — still has exactly one `Sitemap:` line, AI crawlers still allowed
 - [ ] If the CF function changed, plan to deploy it via `scripts/aws_deploy.sh` (NOT `npm run deploy`)
 - [ ] Sitemap re-submitted in Google Search Console after deploy
@@ -119,6 +121,28 @@ Check:
 - [ ] Contains `Sitemap: https://kamalakarheartcentre.com/sitemap.xml` (with space after `Sitemap:`)
 - [ ] `Allow: /` is set for all user agents
 - [ ] AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Bingbot) are allowed
+
+#### 3b-ii. llms.txt verification
+
+```
+WebFetch: https://kamalakarheartcentre.com/llms.txt
+```
+
+Check:
+- [ ] Returns HTTP `200` (not a 404) and is served as text, not redirected
+- [ ] Content starts with `# Kamalakar Heart Centre`
+- [ ] Lists the current pages (blog posts, services, static pages) as Markdown links under H2 sections
+
+The retired files must now be **gone** (they were deleted from `public/` and the S3 `--delete` sync removes them from the bucket):
+
+```
+curl -sI https://kamalakarheartcentre.com/llms-full.txt
+curl -sI https://kamalakarheartcentre.com/.well-known/llms.txt
+curl -sI https://kamalakarheartcentre.com/.well-known/llms-full.txt
+```
+
+Check:
+- [ ] Each returns `404` (or `403`) — these are retired and must NOT serve content
 
 #### 3c. Homepage check
 
@@ -209,6 +233,8 @@ Present results as a table:
 |-------|--------|---------|
 | Sitemap at /sitemap.xml | PASS/FAIL | ... |
 | robots.txt Sitemap reference | PASS/FAIL | ... |
+| llms.txt at /llms.txt (200, starts `# Kamalakar Heart Centre`) | PASS/FAIL | ... |
+| Retired /llms-full.txt returns 404/403 | PASS/FAIL | ... |
 | Homepage loads | PASS/FAIL | ... |
 | Blog listing (no future posts) | PASS/FAIL | ... |
 | Latest blog post SEO schemas | PASS/FAIL | ... |

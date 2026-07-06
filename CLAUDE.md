@@ -47,6 +47,14 @@ These rules are encoded in `cloudfront-functions/redirect-www-to-non-www.js`, `s
    - GET `/robots.txt` returns 200 and references the canonical sitemap URL
    - Re-submit the sitemap in Google Search Console after structural changes
 
+## llms.txt policy (must hold)
+
+1. `dist/llms.txt` is **generated at build time** by `scripts/generate-llms.mjs` (runs after `astro build` and after the sitemap generator). **Never hand-edit `llms.txt`, and never re-add a static copy under `public/` or `public/.well-known/`** — the old hand-written `public/llms.txt` / `llms-full.txt` and `.well-known` variants were deleted deliberately.
+2. Data sources: blog entries come from `src/content/blog/*.md` frontmatter (`title` + `summary`), service entries from `src/content/services/*.yaml` (`title` + `metaDescription`), both included **only if the page actually built into `dist/`**. Static-page descriptions live in the `STATIC_DESCRIPTIONS` map inside the generator.
+3. **New pages force an llms.txt update.** The generator cross-checks itself against `dist/sitemap.xml`: every sitemap URL must appear in `llms.txt` and vice-versa. A new static page with no `STATIC_DESCRIPTIONS` entry **fails the build (exit 1)** with a message telling you to add its description. Follows the llmstxt.org format (single H1, blockquote summary, facts paragraphs, H2 link-list sections with `- [name](url): description`).
+4. **Forbidden claims** (build fails if present in the output): any success-rate stat (e.g. "99% success rate"), "5,000+ procedures", "Assistant Professor", EECP in any form, and any named insurance company. Insurance is described only with the approved wording from `diagnostics-pricing.yaml`.
+5. Adding/renaming/removing a page or changing the facts block is a structural change (see below) and requires a build + review before deploy.
+
 ## Definition of "structural change"
 
 Any of these triggers the full canonical/sitemap/robots review cycle above:
@@ -68,6 +76,7 @@ Any of these triggers the full canonical/sitemap/robots review cycle above:
 | CloudFront redirects | `cloudfront-functions/redirect-www-to-non-www.js` |
 | Sitemap generator | `scripts/generate-sitemap.mjs` |
 | Canonical verifier (build gate) | `scripts/verify-canonicals.mjs` |
+| llms.txt generator (build gate) | `scripts/generate-llms.mjs` |
 | Robots | `public/robots.txt` |
 | Deploy + verify skill | `.claude/skills/deploy-verify/SKILL.md` |
 | Blog writer skill | `.claude/skills/blog-writer/SKILL.md` |
@@ -98,7 +107,13 @@ These are encoded in `src/utils/schemas.ts` `buildPhysicianSchema()` and the con
 
 ## Current published prices (₹, INR)
 
-These are the prices encoded in `/services/diagnostics-pricing/` and the corresponding `OfferCatalog` JSON-LD. **Update both the yaml prose AND `buildPricingOfferCatalog()` call in `src/pages/services/[slug].astro` if a price changes.**
+These prices live in **three** places and a change must update **all three** (there is no build gate that cross-checks them, so a missed copy silently ships contradictory prices):
+
+1. the yaml prose in `src/content/services/diagnostics-pricing.yaml`,
+2. the `buildPricingOfferCatalog()` call in `src/pages/services/[slug].astro` (the `OfferCatalog` JSON-LD), and
+3. the hardcoded **"Published prices (INR)"** line in `factsBlock()` inside `scripts/generate-llms.mjs` (the AI-facing `llms.txt` facts block).
+
+The same insurance rule applies: the approved wording ("Cashless and reimbursement options are available for most major procedures — please call to confirm with your provider.") is duplicated in both the yaml and `factsBlock()`; never name a specific insurer in either.
 
 | Service | Price |
 |---|---|

@@ -1,6 +1,6 @@
 ---
 title: "High Cholesterol in India – Diet, Risks, and How to Manage It"
-summary: "High cholesterol affects over 80% of Indians. Learn about Indian-specific risk factors, foods to avoid, a heart-healthy Indian diet plan, and when to get tested."
+summary: "The ICMR-INDIAB study found 81.2% of Indians have some form of dyslipidemia (abnormal cholesterol). Learn about Indian-specific risk factors, foods to avoid, a heart-healthy Indian diet plan, and when to get tested."
 date: 2026-04-21
 author: "Dr. Kamalakar Kosaraju"
 tags: ["high cholesterol India", "cholesterol management diet", "lipid profile test", "cholesterol foods avoid", "heart healthy Indian diet", "dyslipidemia", "cholesterol treatment"]
