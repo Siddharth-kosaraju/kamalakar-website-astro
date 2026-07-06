@@ -10,11 +10,11 @@ You orchestrate the saved workflow at `.claude/workflows/changes-review-confirm.
 
 ## How to run it
 
-Invoke the Workflow tool with the saved workflow and a fully specified `args` object:
+Invoke the Workflow tool with the saved workflow and a fully specified `args` object. Prefer `scriptPath: ".claude/workflows/changes-review-confirm.js"` (absolute path) over `name:` — the name registry can serve a copy cached at session start, so edits made mid-session are only guaranteed to take effect via `scriptPath`. The script also tolerates `args` arriving as a JSON-encoded string (it normalizes internally).
 
 ```
 Workflow({
-  name: "changes-review-confirm",
+  name: "changes-review-confirm",   // or scriptPath: "<repo>/.claude/workflows/changes-review-confirm.js"
   args: {
     task: "<one-line description>",
     instructions: "<detailed implementation instructions: file paths, exact edits, constraints, what NOT to touch>",

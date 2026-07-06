@@ -35,20 +35,22 @@ export const meta = {
 //     (deploy via the deploy-verify skill, only if this workflow's checks pass).
 // ---------------------------------------------------------------------------
 
-if (!args || !args.task || !args.instructions) {
+// Normalize: some invocation paths deliver args as a JSON-encoded string.
+const A = (typeof args === 'string') ? JSON.parse(args) : (args || {})
+if (!A.task || !A.instructions) {
   throw new Error('changes-review-confirm requires args: { task, instructions, ... }')
 }
 
-const CONTEXT = args.context ? `\nADDITIONAL CONTEXT / CONSTRAINTS:\n${args.context}\n` : ''
+const CONTEXT = A.context ? `\nADDITIONAL CONTEXT / CONSTRAINTS:\n${A.context}\n` : ''
 const NO_SHIP = 'Do NOT commit, push, or deploy — the main conversation handles that after this workflow reports.'
 
 phase('Implement')
 const impl = await agent(`You are working in the current repo (Kamalakar Heart Centre — Astro 5 static site). Read CLAUDE.md first and honour every policy in it (canonical/trailing-slash rules, sitemap/llms.txt generation, authoritative facts, forbidden claims).
 ${CONTEXT}
-TASK: ${args.task}
+TASK: ${A.task}
 
 IMPLEMENTATION INSTRUCTIONS (follow thoroughly):
-${args.instructions}
+${A.instructions}
 
 After implementing, run "npm run build" and make sure the full pipeline passes (astro build, sitemap generator, llms.txt generator, canonical verifier). Fix anything that breaks. ${NO_SHIP}
 
@@ -68,16 +70,16 @@ log(`Implement done (build passed: ${impl.build_passed}). Files: +${impl.files_c
 
 phase('Deploy Scripts')
 let deployCheck = { summary: 'Skipped (check_deploy=false)', files_modified: [], risks: [] }
-if (args.check_deploy !== false) {
+if (A.check_deploy !== false) {
   const dc = await agent(`Current repo: Kamalakar Heart Centre Astro site. A change was just implemented:
-${JSON.stringify({ task: args.task, summary: impl.summary, files_created: impl.files_created, files_modified: impl.files_modified, files_deleted: impl.files_deleted }, null, 2)}
+${JSON.stringify({ task: A.task, summary: impl.summary, files_created: impl.files_created, files_modified: impl.files_modified, files_deleted: impl.files_deleted }, null, 2)}
 ${CONTEXT}
 Check every deployment-related script/config and update what is needed so the deploy pipeline correctly ships and verifies this change. Read CLAUDE.md first. Standard checklist:
 1. package.json "deploy" script (build → aws s3 sync --delete → CloudFront invalidation) — still correct for this change?
 2. cloudfront-functions/redirect-www-to-non-www.js — READ the actual logic; confirm no new path is mis-redirected. Do NOT modify unless genuinely broken (it deploys via scripts/aws_deploy.sh, a separate pipeline) — flag prominently instead.
 3. .claude/skills/deploy-verify/SKILL.md — add/adjust pre-deploy and post-deploy verification steps for this change.
 4. Anything change-specific:
-${args.deploy_notes || '(none provided — use judgement)'}
+${A.deploy_notes || '(none provided — use judgement)'}
 ${NO_SHIP}
 Return what you checked, what you changed, and any risks.`,
     { label: 'deploy-scripts', phase: 'Deploy Scripts', model: 'opus', effort: 'high',
@@ -108,9 +110,9 @@ const DEFAULT_LENSES = [
   { key: 'quality', prompt: 'LENS: quality & effectiveness. Does the change actually achieve its stated goal? Check the built dist/ output where relevant. Look for half-measures, silent degradations, and accessibility/SEO regressions. Report only substantiated findings.' },
 ]
 
-const lenses = (Array.isArray(args.lenses) && args.lenses.length > 0) ? args.lenses : DEFAULT_LENSES
+const lenses = (Array.isArray(A.lenses) && A.lenses.length > 0) ? A.lenses : DEFAULT_LENSES
 const changedFiles = [...new Set([...impl.files_created, ...impl.files_modified, ...deployCheck.files_modified])].join(', ')
-const REVIEW_CTX = `Current repo: Kamalakar Heart Centre Astro site. Change under review: ${args.task}. Files created/modified: ${changedFiles}. Deleted: ${impl.files_deleted.join(', ') || '(none)'}. Inspect the files on disk and "git status"/"git diff" for ground truth. Rebuild with "npm run build" if you need fresh dist/ output.${CONTEXT}`
+const REVIEW_CTX = `Current repo: Kamalakar Heart Centre Astro site. Change under review: ${A.task}. Files created/modified: ${changedFiles}. Deleted: ${impl.files_deleted.join(', ') || '(none)'}. Inspect the files on disk and "git status"/"git diff" for ground truth. Rebuild with "npm run build" if you need fresh dist/ output.${CONTEXT}`
 
 const reviewed = await pipeline(
   lenses,
@@ -141,12 +143,12 @@ if (confirmed.length > 0) {
 }
 
 phase('Test')
-const test = await agent(`Current repo: Kamalakar Heart Centre Astro site. Final acceptance test of: ${args.task}. Run checks and report honestly — do NOT fix anything, report only.${CONTEXT}
+const test = await agent(`Current repo: Kamalakar Heart Centre Astro site. Final acceptance test of: ${A.task}. Run checks and report honestly — do NOT fix anything, report only.${CONTEXT}
 ALWAYS check first:
 1. "rm -rf dist && npm run build" exits 0; sitemap, llms.txt, and canonical verifier all print their success lines; sitemap URL count == llms.txt URL count.
 2. "git status --short" — capture the exact change set; flag anything unexpected.
 CHANGE-SPECIFIC TEST PLAN:
-${args.test_plan || '(none provided — derive assertions from the task description and verify each implemented item in the built dist/ output)'}
+${A.test_plan || '(none provided — derive assertions from the task description and verify each implemented item in the built dist/ output)'}
 Return passed=true ONLY if every assertion holds. List each assertion with ok true/false and detail.`,
   { label: 'test', phase: 'Test', effort: 'high',
     schema: { type: 'object', properties: {
@@ -159,7 +161,7 @@ Return passed=true ONLY if every assertion holds. List each assertion with ok tr
       required: ['passed', 'assertions', 'git_status'] } })
 
 return {
-  task: args.task,
+  task: A.task,
   implementation: { summary: impl.summary, files_created: impl.files_created, files_modified: impl.files_modified, files_deleted: impl.files_deleted, notes: impl.notes || '' },
   deploy_scripts: deployCheck,
   review: { confirmed_findings: confirmed, refuted_count: refuted.length },
