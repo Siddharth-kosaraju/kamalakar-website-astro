@@ -35,7 +35,7 @@ These rules are encoded in `cloudfront-functions/redirect-www-to-non-www.js`, `s
 1. `npm run build` always regenerates `dist/sitemap.xml` via `scripts/generate-sitemap.mjs`. **Never edit the sitemap by hand.**
 2. The sitemap script is the single source of truth for indexable URLs — it walks `dist/` for every `index.html` and excludes `/404/`.
 3. `lastmod` uses `git log -1 --format=%aI` against the **content file** (`.md` / `.yaml`), NOT the shared template. A template refactor must not reset every page's `lastmod`.
-4. `public/robots.txt` is hand-maintained code. It must contain exactly one `Sitemap:` line pointing to `https://kamalakarheartcentre.com/sitemap.xml` (with a space after the colon). AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Bingbot, etc.) must remain `Allow: /`.
+4. `public/robots.txt` is hand-maintained code. It must contain exactly two `Sitemap:` lines (each with a space after the colon): `https://kamalakarheartcentre.com/sitemap.xml` (primary) and `https://kamalakarheartcentre.com/feed.xml` (the RSS feed, submitted as a sitemap for freshness signals — added deliberately in commit `a23d419`; Google accepts RSS/Atom feeds as sitemaps). No other `Sitemap:` lines. AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Bingbot, etc.) must remain `Allow: /`.
 5. **After any of these changes, sitemap and robots are reviewed before deploy:**
    - new page added
    - existing page renamed or path changed

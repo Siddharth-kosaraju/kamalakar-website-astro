@@ -63,7 +63,7 @@ If this change adds, renames, removes, or redirects a page — or touches the Cl
 - [ ] `npm run build` passes (sitemap regenerated, llms.txt regenerated, canonical verifier passes)
 - [ ] Diff `dist/sitemap.xml` against the previous build — added/removed routes match the change
 - [ ] **New static page?** Add a matching description entry to `STATIC_DESCRIPTIONS` in `scripts/generate-llms.mjs`. Blog posts (`src/content/blog/*.md`) and services (`src/content/services/*.yaml`) are derived automatically from frontmatter and need no entry, but a new static route (`src/pages/*.astro`) will FAIL the build with `→ in sitemap but missing from llms.txt. Add a STATIC_DESCRIPTIONS["<path>"] entry` until you add one.
-- [ ] `public/robots.txt` reviewed — still has exactly one `Sitemap:` line, AI crawlers still allowed
+- [ ] `public/robots.txt` reviewed — still has exactly two `Sitemap:` lines (`sitemap.xml` primary + `feed.xml` RSS-as-sitemap), AI crawlers still allowed
 - [ ] If the CF function changed, plan to deploy it via `scripts/aws_deploy.sh` (NOT `npm run deploy`)
 - [ ] Sitemap re-submitted in Google Search Console after deploy
 
