@@ -79,11 +79,12 @@ git push origin main
 #### Step 2b: Deploy to AWS
 
 ```bash
-aws s3 sync dist/ s3://kamalakar-heart-centre-prod --delete --profile sid-personal
-aws cloudfront create-invalidation --distribution-id E3STOTV0PG9BZU --paths "/*" --profile sid-personal
+bash scripts/deploy.sh
 ```
 
-**IMPORTANT:** Always invalidate CloudFront after S3 sync. Without invalidation, CloudFront serves stale cached content (TTL can be up to 24 hours). The `--delete` flag on S3 sync removes files from the bucket that no longer exist in `dist/` (e.g., old `sitemap-0.xml`).
+This is the canonical deploy path (same as `npm run deploy`). It rebuilds, strips `dist/.DS_Store`, then runs the **tiered** S3 sync with per-tier `Cache-Control` and invalidates CloudFront `/*`. **Do NOT** fall back to a single `aws s3 sync dist/ s3://… --delete` — that uploads every object with default (no `Cache-Control`) headers and undoes the cache-tier work. Each tier prunes its own prefix with `--delete`, so orphaned assets and HTML are still removed.
+
+**IMPORTANT:** `scripts/deploy.sh` always invalidates CloudFront after the sync. Without invalidation, CloudFront serves stale cached content (TTL can be up to 24 hours). The per-tier `--delete` removes files from the bucket that no longer exist in `dist/` (e.g., old `sitemap-0.xml`, a stale content-hashed `_astro/` asset).
 
 #### Step 2c: Wait for invalidation
 
@@ -298,7 +299,7 @@ Present results as a table:
 - **Sitemap generator:** `scripts/generate-sitemap.mjs` — runs post-build, uses git dates for lastmod
 - **SEO schemas:** Auto-generated in `src/pages/blog/[slug].astro` from frontmatter (BlogPosting, MedicalWebPage, BreadcrumbList, FAQPage)
 - **robots.txt:** Static file in `public/robots.txt` — copied to `dist/` at build time
-- **Deploy script:** `npm run deploy` — builds, syncs to S3 with `--delete`, invalidates CloudFront
+- **Deploy script:** `npm run deploy` (= `bash scripts/deploy.sh`) — builds, strips `.DS_Store`, tiered S3 sync (each tier prunes its own prefix with `--delete`, per-tier `Cache-Control`), invalidates CloudFront
 
 ## Workflow Learnings (Avoid Repeating These Mistakes)
 

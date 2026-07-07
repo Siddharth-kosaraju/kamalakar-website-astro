@@ -81,15 +81,12 @@ done
 
 echo "==> Tier 2b: root favicons / apple-touch-icon (30 days)"
 # Individual root objects — set each explicitly (no --recursive, exact key).
-declare -A ROOT_ICONS=(
-  ["favicon.ico"]="image/x-icon"
-  ["favicon.svg"]="image/svg+xml"
-  ["favicon-48x48.png"]="image/png"
-  ["favicon-192x192.png"]="image/png"
-  ["apple-touch-icon.png"]="image/png"
-)
-for key in "${!ROOT_ICONS[@]}"; do
-  ct="${ROOT_ICONS[$key]}"
+# NOTE: intentionally NOT a `declare -A` associative array — this script runs on
+# macOS where the system bash is 3.2 (no associative arrays); under
+# `set -euo pipefail` a `declare -A` aborts the whole run before Tier 3. We use a
+# plain "key|content-type" list instead so it works on bash 3.2+.
+root_icon() {
+  local key="$1" ct="$2"
   if aws s3api head-object --bucket "$BUCKET" --key "$key" --profile "$PROFILE" >/dev/null 2>&1; then
     echo "    [$ct] $key"
     aws s3 cp "$S3/$key" "$S3/$key" \
@@ -98,7 +95,12 @@ for key in "${!ROOT_ICONS[@]}"; do
       --content-type "$ct" \
       --profile "$PROFILE"
   fi
-done
+}
+root_icon "favicon.ico"          "image/x-icon"
+root_icon "favicon.svg"          "image/svg+xml"
+root_icon "favicon-48x48.png"    "image/png"
+root_icon "favicon-192x192.png"  "image/png"
+root_icon "apple-touch-icon.png" "image/png"
 
 echo "==> Tier 3: catch-all (HTML/sitemap/robots/llms/feeds) — always revalidate"
 # HTML pages live at nested keys ending in index.html (directory format).
