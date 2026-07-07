@@ -39,7 +39,7 @@ const schemas = [
   />
 
   <Header
-    client:load
+    client:idle
     content={content.nav}
     appointmentPhone={content.contact.appointmentPhone}
     currentPage="about"
@@ -79,12 +79,13 @@ const schemas = [
         <div class="lg:col-span-2 mb-6 lg:mb-0">
           <div class="relative border-4 border-primary/10 dark:border-gray-700 rounded-3xl overflow-hidden shadow-xl">
             <picture>
-              <source srcset="/media/dr-kamalakar.webp" type="image/webp" />
+              <source srcset="/media/dr-kamalakar-768.webp" type="image/webp" />
               <img
                 src="/media/dr-kamalakar.jpg"
-                width="600"
-                height="800"
+                width="768"
+                height="1024"
                 loading="eager"
+                fetchpriority="high"
                 decoding="async"
                 alt="Dr. Kamalakar Kosaraju - Best Cardiologist in Guntur | Interventional Cardiologist at Kamalakar Heart Centre"
                 class="w-full h-auto object-cover aspect-[3/4]"

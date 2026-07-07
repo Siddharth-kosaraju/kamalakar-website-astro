@@ -12,8 +12,8 @@ You are the deployment and verification agent for the Kamalakar Heart Centre web
 
 - **Site:** https://kamalakarheartcentre.com
 - **Repo:** https://github.com/Siddharth-kosaraju/kamalakar-website-astro
-- **Build command:** `npm run build` (runs `astro build`, sitemap generator, and canonical verifier — all three must pass)
-- **Deploy command:** `npm run deploy` (builds + S3 sync + CloudFront invalidation — all-in-one)
+- **Build command:** `npm run build` (runs `astro build`, sitemap generator, llms.txt generator, and canonical verifier — all must pass)
+- **Deploy command:** `npm run deploy` → runs `scripts/deploy.sh` (build + **tiered** S3 sync with per-tier `Cache-Control` + CloudFront invalidation)
 - **Output directory:** `dist/`
 - **Branch:** `main`
 
@@ -23,11 +23,12 @@ You are the deployment and verification agent for the Kamalakar Heart Centre web
 - **S3 Bucket:** `kamalakar-heart-centre-prod`
 - **CloudFront Distribution:** `E3STOTV0PG9BZU`
 - **AWS CLI Profile:** `sid-personal`
-- **Deploy commands (manual):**
-  ```bash
-  aws s3 sync dist/ s3://kamalakar-heart-centre-prod --delete --profile sid-personal
-  aws cloudfront create-invalidation --distribution-id E3STOTV0PG9BZU --paths "/*" --profile sid-personal
-  ```
+- **Deploy:** `npm run deploy` (= `bash scripts/deploy.sh`). The script syncs in three cache tiers, each pruning its own prefix with `--delete`:
+  - `_astro/**` → `Cache-Control: public,max-age=31536000,immutable`
+  - `fonts/ images/ media/` + root favicons → `public,max-age=2592000`
+  - HTML/`sitemap.xml`/`robots.txt`/`llms.txt`/`feed.xml` → `public,max-age=0,must-revalidate`
+  then invalidates CloudFront `/*`.
+- **One-time cache-header backfill:** `scripts/backfill-cache-headers.sh` rewrites `Cache-Control` in place on **pre-existing** objects (a plain sync only sets headers on files it re-uploads). **Already run once on 2026-07-07** — do NOT re-run on routine deploys; only needed again if the bucket accumulates objects predating the tiered deploy script.
 
 ## Deploy Workflow
 
@@ -143,6 +144,29 @@ curl -sI https://kamalakarheartcentre.com/.well-known/llms-full.txt
 
 Check:
 - [ ] Each returns `404` (or `403`) — these are retired and must NOT serve content
+
+#### 3b-iii. Cache-Control header verification
+
+The tiered deploy (`scripts/deploy.sh`) sets per-tier `Cache-Control`. Verify one asset per tier plus HTML:
+
+```bash
+# Tier 1 — content-hashed asset (grab a real filename from the homepage first)
+ASSET=$(curl -s https://kamalakarheartcentre.com/ | grep -oE '/_astro/[^"]+\.(js|css)' | head -1)
+curl -sI "https://kamalakarheartcentre.com${ASSET}" | grep -i cache-control
+# Tier 2 — font / image
+curl -sI https://kamalakarheartcentre.com/fonts/inter-latin.woff2 | grep -i cache-control
+# Tier 3 — HTML + llms.txt
+curl -sI https://kamalakarheartcentre.com/ | grep -i cache-control
+curl -sI https://kamalakarheartcentre.com/llms.txt | grep -i cache-control
+```
+
+Check:
+- [ ] `_astro/*` asset → `public,max-age=31536000,immutable`
+- [ ] `fonts/*.woff2` → `public,max-age=2592000`
+- [ ] `/` (HTML) and `/llms.txt` → `public,max-age=0,must-revalidate`
+- [ ] If any asset still has **no** `Cache-Control` header, a pre-existing object was missed — run `scripts/backfill-cache-headers.sh` once, then re-invalidate CloudFront.
+
+> The CloudFront function `redirect-www-to-non-www.js` is a **viewer-request** function — it never touches response headers, so it cannot strip `Cache-Control`. If headers are missing, the cause is an un-backfilled S3 object, not the CF function.
 
 #### 3c. Homepage check
 

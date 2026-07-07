@@ -60,9 +60,9 @@ export default function Stats({ content }: StatsProps) {
             <div className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-6 bg-accent/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
               <Award className="text-accent" size={32} />
             </div>
-            <h3 className="text-2xl font-serif font-bold text-white mb-2 leading-tight min-h-[3rem] flex items-center justify-center">
+            <p className="text-2xl font-serif font-bold text-white mb-2 leading-tight min-h-[3rem] flex items-center justify-center">
               {content.goldMedalist}
-            </h3>
+            </p>
             <p className="text-accent-light text-sm font-semibold uppercase tracking-widest">{content.goldMedalistLabel}</p>
           </div>
 
@@ -70,7 +70,7 @@ export default function Stats({ content }: StatsProps) {
             <div className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-6 bg-primary-light/50 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
               <GraduationCap className="text-sky-300" size={32} />
             </div>
-            <h3 className="text-2xl md:text-4xl font-serif font-bold text-white mb-2">{content.fellow}</h3>
+            <p className="text-2xl md:text-4xl font-serif font-bold text-white mb-2">{content.fellow}</p>
             <p className="text-gray-300 text-sm font-semibold uppercase tracking-widest">{content.fellowLabel}</p>
           </div>
 
@@ -78,7 +78,7 @@ export default function Stats({ content }: StatsProps) {
             <div className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-6 bg-accent/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
               <Star className="text-accent" size={32} fill="currentColor" />
             </div>
-            <h3 className="text-3xl font-serif font-bold text-white mb-2">4.9/5</h3>
+            <p className="text-3xl font-serif font-bold text-white mb-2">4.9/5</p>
             <p className="text-accent-light text-sm font-semibold uppercase tracking-widest">{content.patientRating || 'Patient Rating'}</p>
           </div>
         </div>

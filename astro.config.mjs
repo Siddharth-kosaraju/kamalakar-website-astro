@@ -12,6 +12,11 @@ export default defineConfig({
   trailingSlash: 'always',
   build: {
     format: 'directory',
+    // Inline all page CSS into <style> tags to remove the render-blocking
+    // /_astro/*.css request. This eliminates the LCP render-delay caused by
+    // the external stylesheet fetch. Bundle is small (~15.5 KiB) so inlining
+    // is a net win for first paint.
+    inlineStylesheets: 'always',
   },
   integrations: [
     react(),
