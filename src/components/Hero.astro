@@ -36,34 +36,40 @@ const { content, appointmentPhone } = Astro.props;
   <div aria-hidden="true" class="absolute bottom-10 right-10 w-96 h-96 bg-primary/5 rounded-full filter blur-3xl animate-float pointer-events-none" style="animation-delay: 2s"></div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-    <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-6xl mx-auto">
+
+    {/* Full-width header — trust badge + title span the whole width */}
+    <div class="text-center max-w-4xl mx-auto space-y-5 mb-8 md:mb-12 animate-fade-in-up">
+
+      {/* Trust Badge */}
+      <div>
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-primary border border-accent/30 shadow-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          <span class="text-xs font-bold tracking-widest uppercase text-primary dark:text-gray-200" set:html={content.trustBadge || 'Gold Medalist &bull; FESC Certified'}>
+          </span>
+        </div>
+      </div>
+
+      {/* Headline — full width */}
+      <h1 id="hero-headline" class="text-[28px] md:text-5xl lg:text-6xl font-serif font-bold text-primary dark:text-white leading-[1.1]">
+        {content.headline}
+      </h1>
+    </div>
+
+    {/* Two columns — content on the left, passport photo on the right */}
+    <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-5xl mx-auto">
 
       {/* Image Column — mobile first/top, desktop second/right */}
-      <div class="order-1 lg:order-2">
-        <div class="relative border-4 border-primary/10 dark:border-gray-700 rounded-3xl overflow-hidden shadow-xl mx-auto max-w-sm lg:max-w-none">
+      <div class="order-1 lg:order-2 flex justify-center">
+        <div class="relative border-4 border-primary/10 dark:border-gray-700 rounded-3xl overflow-hidden shadow-xl w-full max-w-[240px] sm:max-w-[280px] lg:max-w-xs">
           <picture>
-            <source type="image/webp" srcset="/media/dr-kamalakar-480.webp 480w, /media/dr-kamalakar-768.webp 768w" sizes="(max-width: 1023px) 100vw, 40vw" />
-            <img src="/media/dr-kamalakar.jpg" width="768" height="1024" fetchpriority="high" loading="eager" decoding="async" alt={content.imageAlt} class="w-full h-64 sm:h-80 lg:h-auto object-cover object-top lg:aspect-[3/4]" />
+            <source type="image/webp" srcset="/media/dr-kamalakar-portrait-320.webp 320w, /media/dr-kamalakar-portrait-440.webp 440w" sizes="(max-width: 1023px) 280px, 320px" />
+            <img src="/media/dr-kamalakar-portrait.jpg" width="440" height="550" fetchpriority="high" loading="eager" decoding="async" alt={content.imageAlt} class="w-full h-auto aspect-[4/5] object-cover" />
           </picture>
         </div>
       </div>
 
       {/* Content Column — mobile second, desktop first/left */}
       <div class="order-2 lg:order-1 space-y-5 md:space-y-8 animate-fade-in-up text-center lg:text-left">
-
-        {/* Trust Badge */}
-        <div class="text-center lg:text-left">
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-primary border border-accent/30 shadow-sm">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
-            <span class="text-xs font-bold tracking-widest uppercase text-primary dark:text-gray-200" set:html={content.trustBadge || 'Gold Medalist &bull; FESC Certified'}>
-            </span>
-          </div>
-        </div>
-
-        {/* Headline */}
-        <h1 id="hero-headline" class="text-[28px] md:text-5xl lg:text-6xl font-serif font-bold text-primary dark:text-white leading-[1.1] text-center lg:text-left">
-          {content.headline}
-        </h1>
 
         {/* Body text */}
         <div class="max-w-xl mx-auto lg:mx-0 space-y-4">
