@@ -1,6 +1,7 @@
 ---
 title: "Best Food Habits for a Healthy Heart"
 summary: "What to eat — and what to avoid — for a healthy heart, plus the foods that help recovery after heart surgery or stent placement. Practical guidance from Kamalakar Heart Centre, Guntur."
+metaDescription: "What to eat and avoid for a healthy heart, plus foods that aid recovery after heart surgery or a stent. Cardiologist guidance from Guntur."
 date: 2026-05-19
 author: "Dr. Kamalakar Kosaraju"
 tags: ["heart healthy diet", "best foods for heart health", "diet after heart surgery", "diet after stent placement", "low cholesterol diet", "heart disease prevention", "Indian heart diet", "cardiologist diet advice Guntur"]
@@ -55,7 +56,7 @@ What you avoid matters just as much as what you eat.
 
 - **High-sodium foods** such as processed snacks and canned soups can raise blood pressure.
 - **Added sugars and refined carbs** in sugary drinks and pastries increase heart risk.
-- **Saturated and trans fats** found in fried foods, fatty meats and baked goods can clog arteries.
+- **Saturated and trans fats** found in fried foods, fatty meats and baked goods can clog arteries. If your numbers are already high, our detailed guide on [managing high cholesterol in India](/blog/high-cholesterol-india-diet-management/) explains which everyday foods to cut first.
 
 ## 5. Foods after heart surgery or stent placement
 

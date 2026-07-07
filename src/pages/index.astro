@@ -22,7 +22,7 @@ const content = await getSiteContent();
 //   WebSite → MedicalClinic (#organization, with AggregateRating from testimonials) → Physician (#physician).
 // Every other page (about, services, blog) references #organization and #physician
 // by @id so Google sees one canonical entity, not parallel copies.
-const homepageSchema = buildHomepageSchemaGraph(content.testimonials.items);
+const homepageSchema = buildHomepageSchemaGraph(content.testimonials.items, content.seo.gbpUrl);
 
 const faqSchema = {
   '@context': 'https://schema.org',

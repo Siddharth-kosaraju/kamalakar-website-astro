@@ -51,8 +51,8 @@ const navLinks = [
   { name: navContent.contact, href: '/contact/' },
 ];
 
-const privacyHref = '/privacy-policy';
-const termsHref = '/terms-of-service';
+const privacyHref = '/privacy-policy/';
+const termsHref = '/terms-of-service/';
 ---
 
 <footer class="bg-primary-dark text-white pt-10 md:pt-20 pb-6 md:pb-10 border-t border-primary/20">
@@ -121,7 +121,7 @@ const termsHref = '/terms-of-service';
           {content.serviceLinks.map((item, idx) => (
             <li>
               <a
-                href={`/services/${SERVICE_SLUGS[idx] || ''}`}
+                href={`/services/${SERVICE_SLUGS[idx] || ''}/`}
                 class="hover:text-accent transition-colors"
               >
                 {item}

@@ -53,7 +53,7 @@ Verify:
 - `dist/sitemap.xml` exists (NOT `sitemap-0.xml`)
 - `dist/robots.txt` exists and contains `Sitemap: https://kamalakarheartcentre.com/sitemap.xml`
 - `dist/llms.txt` exists and passes the llms verifier — the build runs `scripts/generate-llms.mjs`, which prints `[llms] Generated .../dist/llms.txt (N URLs; …)` and fails the build if a forbidden claim is present or if the sitemap ⇄ llms.txt completeness cross-check finds a page missing a description entry. The generated file starts with `# Kamalakar Heart Centre`.
-- Page count matches expectations (currently 27 HTML pages, 26 indexable + the noindex /404/ — as of 2026-07-07; must equal the sitemap and llms.txt URL count)
+- Page count matches expectations (currently 26 HTML pages, 25 indexable + the noindex /404/ — as of 2026-07-07, after the duplicate `understanding-heart-attack-warning-signs` blog post was removed; the 25 indexable count must equal the sitemap and llms.txt URL count)
 - Only published posts with `date <= now` are built (future-dated posts must NOT appear)
 - `[verify-canonicals] OK: ... all canonicals valid` printed at end of build (the build script now runs `scripts/verify-canonicals.mjs`)
 
@@ -66,6 +66,7 @@ If this change adds, renames, removes, or redirects a page — or touches the Cl
 - [ ] **New static page?** Add a matching description entry to `STATIC_DESCRIPTIONS` in `scripts/generate-llms.mjs`. Blog posts (`src/content/blog/*.md`) and services (`src/content/services/*.yaml`) are derived automatically from frontmatter and need no entry, but a new static route (`src/pages/*.astro`) will FAIL the build with `→ in sitemap but missing from llms.txt. Add a STATIC_DESCRIPTIONS["<path>"] entry` until you add one.
 - [ ] `public/robots.txt` reviewed — still has exactly two `Sitemap:` lines (`sitemap.xml` primary + `feed.xml` RSS-as-sitemap), AI crawlers still allowed
 - [ ] If the CF function changed, plan to deploy it via `scripts/aws_deploy.sh` (NOT `npm run deploy`)
+- [ ] **Deleted/renamed a page that had a new CF 301 rule added for its old URL?** Deploy the CF function **before or together with** the site deploy. `npm run deploy` runs `--delete`, so the old URL's `index.html` is pruned from S3 the moment the site deploys. If the CF function (which 301s the old URL) is not yet live, the old URL 404s in the gap. Deploy order: `bash scripts/aws_deploy.sh deploy prod` (or the CF-function-only path) → then `npm run deploy` → then verify the 301. (As of 2026-07-07 this applies to `/blog/understanding-heart-attack-warning-signs/` → `/blog/7-warning-signs-heart-attack-never-ignore/`.)
 - [ ] Sitemap re-submitted in Google Search Console after deploy
 
 #### Step 2a: Commit and push
@@ -209,6 +210,20 @@ curl -sI https://kamalakarheartcentre.com/te/about
 Check:
 - [ ] All three return `301 Moved Permanently` with `Location: https://kamalakarheartcentre.com/`
 - [ ] Telugu pages must NOT serve content (no 200)
+
+#### 3f-ii. Retired duplicate blog post — must 301 to consolidated guide
+
+The `understanding-heart-attack-warning-signs` post was removed (2026-07-07) and superseded by `7-warning-signs-heart-attack-never-ignore`. The CF function 301s the old slug (both slash and no-slash forms). Its `index.html` no longer exists in the bucket, so if the CF function is NOT deployed the old URL 404s.
+
+```bash
+curl -sI https://kamalakarheartcentre.com/blog/understanding-heart-attack-warning-signs/
+curl -sI https://kamalakarheartcentre.com/blog/understanding-heart-attack-warning-signs
+```
+
+Check:
+- [ ] Both return `301 Moved Permanently` with `Location: https://kamalakarheartcentre.com/blog/7-warning-signs-heart-attack-never-ignore/`
+- [ ] The redirect target returns `200`
+- [ ] If either returns `404`, the CF function was not deployed before the site — run `bash scripts/aws_deploy.sh deploy prod` (CF function path) and re-invalidate. This is the deploy-ordering failure mode called out in the structural-change checklist.
 
 #### 3g. Trailing-slash canonicalisation — no-slash 301s to slash
 

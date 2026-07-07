@@ -5,11 +5,9 @@ const pages = [
   '/services/angioplasty/', '/services/ecg-echo/', '/services/emergency-cardiac-care/',
   '/services/heart-failure/', '/services/hypertension-cholesterol/', '/services/pacemaker/',
   '/privacy-policy/', '/terms-of-service/',
-  '/blog/understanding-heart-attack-warning-signs/',
   '/te/', '/te/about/', '/te/blog/', '/te/contact/', '/te/education/', '/te/services/',
   '/te/services/angioplasty/', '/te/services/ecg-echo/', '/te/services/emergency-cardiac-care/',
   '/te/services/heart-failure/', '/te/services/hypertension-cholesterol/', '/te/services/pacemaker/',
-  '/te/blog/understanding-heart-attack-warning-signs/',
   '/te/privacy-policy/', '/te/terms-of-service/'
 ];
 

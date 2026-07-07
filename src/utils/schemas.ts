@@ -40,7 +40,7 @@ function durationToISO(duration: string): string {
   return `PT${duration}`;
 }
 
-export function buildBusinessSchema(testimonials?: TestimonialItem[]) {
+export function buildBusinessSchema(testimonials?: TestimonialItem[], gbpUrl?: string) {
   const schema: Record<string, any> = {
     '@context': 'https://schema.org',
     '@type': ['MedicalOrganization', 'LocalBusiness'],
@@ -48,7 +48,7 @@ export function buildBusinessSchema(testimonials?: TestimonialItem[]) {
     name: 'Kamalakar Heart Centre',
     alternateName: 'Kamalakar Heart Centre at Life Hospital',
     description: 'Advanced cardiac care in Guntur by Dr. Kamalakar Kosaraju. Angioplasty, Pacemaker, ECG, 2D Echo and Heart Failure management.',
-    url: CANONICAL_BASE,
+    url: `${CANONICAL_BASE}/`,
     logo: `${CANONICAL_BASE}/images/logo.svg`,
     image: `${CANONICAL_BASE}/media/dr-kamalakar.jpg`,
     telephone: '+919959423566',
@@ -75,7 +75,10 @@ export function buildBusinessSchema(testimonials?: TestimonialItem[]) {
     paymentAccepted: 'Cash, Credit Card, UPI',
     areaServed: { '@type': 'GeoCircle', geoMidpoint: { '@type': 'GeoCoordinates', latitude: 16.298329, longitude: 80.452655 }, geoRadius: '50000' },
     medicalSpecialty: 'Cardiology',
-    sameAs: ['https://www.facebook.com/DR.Kamalakarkosaraju/'],
+    sameAs: [
+      'https://www.facebook.com/DR.Kamalakarkosaraju/',
+      ...(gbpUrl ? [gbpUrl] : []),
+    ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Cardiac Services',
@@ -124,7 +127,7 @@ export function buildPhysicianSchema() {
     medicalSpecialty: 'Cardiology',
     description: 'MBBS and M.D. General Medicine (Gold Medalist) from Dr. NTR University of Health Sciences, Vijayawada. D.M. Cardiology from Osmania Medical College, Hyderabad (2012–2015) — the three-year super-specialty residency program. Fellow of the European Society of Cardiology (FESC). Andhra Pradesh Medical Council registration #57814. 3,000+ coronary angiograms and 1,000+ angioplasty procedures performed.',
     image: `${CANONICAL_BASE}/media/dr-kamalakar.jpg`,
-    url: CANONICAL_BASE,
+    url: `${CANONICAL_BASE}/`,
     telephone: '+919959423566',
     alumniOf: [
       { '@type': 'CollegeOrUniversity', name: 'Dr. NTR University of Health Sciences', sameAs: 'https://en.wikipedia.org/wiki/Dr._NTR_University_of_Health_Sciences', description: 'MBBS (2007) and M.D. General Medicine, Gold Medal (2012)' },
@@ -209,7 +212,7 @@ export function buildBreadcrumbSchema(items: { name: string; url: string }[]) {
 
 export function buildWebPageSchema(page: 'home' | 'education') {
   const isHome = page === 'home';
-  const url = isHome ? `${CANONICAL_BASE}/` : `${CANONICAL_BASE}/education`;
+  const url = isHome ? `${CANONICAL_BASE}/` : `${CANONICAL_BASE}/education/`;
 
   return {
     '@context': 'https://schema.org',
@@ -220,7 +223,7 @@ export function buildWebPageSchema(page: 'home' | 'education') {
       ? 'Expert cardiac care in Guntur by Dr. Kamalakar Kosaraju.'
       : 'Heart health education resources from Kamalakar Heart Centre.',
     inLanguage: 'en',
-    isPartOf: { '@type': 'WebSite', url: CANONICAL_BASE, name: 'Kamalakar Heart Centre' },
+    isPartOf: { '@type': 'WebSite', url: `${CANONICAL_BASE}/`, name: 'Kamalakar Heart Centre' },
     about: { '@type': 'MedicalSpecialty', name: 'Cardiology' },
     speakable: {
       '@type': 'SpeakableSpecification',
@@ -268,7 +271,7 @@ export function buildVideoListSchema(videos: VideoItem[]) {
  * @ids — every page that references #organization or #physician then resolves
  * to the same entity in Google's knowledge graph.
  */
-export function buildHomepageSchemaGraph(testimonials?: TestimonialItem[]) {
+export function buildHomepageSchemaGraph(testimonials?: TestimonialItem[], gbpUrl?: string) {
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -280,7 +283,7 @@ export function buildHomepageSchemaGraph(testimonials?: TestimonialItem[]) {
         publisher: { '@id': `${CANONICAL_BASE}/#organization` },
         inLanguage: 'en-IN',
       },
-      buildBusinessSchema(testimonials),
+      buildBusinessSchema(testimonials, gbpUrl),
       buildPhysicianSchema(),
     ],
   };
@@ -351,7 +354,7 @@ export function buildServicePageSchema(service: {
   faq: FAQItem[];
   slug: string;
 }) {
-  const url = `${CANONICAL_BASE}/services/${service.slug}`;
+  const url = `${CANONICAL_BASE}/services/${service.slug}/`;
   const schemas = [];
 
   // MedicalProcedure
@@ -372,8 +375,8 @@ export function buildServicePageSchema(service: {
 
   // Breadcrumb
   schemas.push(buildBreadcrumbSchema([
-    { name: 'Home', url: CANONICAL_BASE },
-    { name: 'Services', url: `${CANONICAL_BASE}/#services` },
+    { name: 'Home', url: `${CANONICAL_BASE}/` },
+    { name: 'Services', url: `${CANONICAL_BASE}/services/` },
     { name: service.title, url },
   ]));
 

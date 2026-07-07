@@ -1,6 +1,8 @@
 ---
 title: "High Cholesterol in India – Diet, Risks, and How to Manage It"
+metaTitle: "High Cholesterol in India: Diet & Management"
 summary: "The ICMR-INDIAB study found 81.2% of Indians have some form of dyslipidemia (abnormal cholesterol). Learn about Indian-specific risk factors, foods to avoid, a heart-healthy Indian diet plan, and when to get tested."
+metaDescription: "81.2% of Indians have abnormal cholesterol. Learn Indian-specific risk factors, foods to avoid, a heart-healthy diet plan and when to get tested."
 date: 2026-04-21
 author: "Dr. Kamalakar Kosaraju"
 tags: ["high cholesterol India", "cholesterol management diet", "lipid profile test", "cholesterol foods avoid", "heart healthy Indian diet", "dyslipidemia", "cholesterol treatment"]
@@ -119,7 +121,7 @@ The good news is that you do not need to abandon Indian cuisine to manage choles
 </ul>
 </div>
 
-Fibre-rich foods deserve special attention. Soluble fibre — found in oats, barley, rajma, chana, and fruits like apples and oranges — actively binds cholesterol in your gut and helps remove it from your body. Aim for at least 25-30 grams of dietary fibre daily.
+Fibre-rich foods deserve special attention. Soluble fibre — found in oats, barley, rajma, chana, and fruits like apples and oranges — actively binds cholesterol in your gut and helps remove it from your body. Aim for at least 25-30 grams of dietary fibre daily. For a broader guide to building meals around your heart, see our tips on the [best food habits for a healthy heart](/blog/best-food-habits-for-a-healthy-heart/).
 
 Regular physical activity is equally important. Even 30 minutes of brisk walking five days a week can raise your HDL cholesterol by 5-10%. Combine this with the dietary changes above, and you create a powerful defence against [hypertension and cholesterol](/services/hypertension-cholesterol/) complications.
 

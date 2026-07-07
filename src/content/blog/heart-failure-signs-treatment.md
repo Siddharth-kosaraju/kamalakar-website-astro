@@ -1,6 +1,8 @@
 ---
 title: "What Is Heart Failure? Signs, Treatment, and Living Well"
+metaTitle: "Heart Failure: Signs, Causes & Treatment"
 summary: "Heart failure doesn't mean your heart stops. Learn the early warning signs, causes, treatment options, and how patients in India can manage heart failure effectively."
+metaDescription: "Heart failure doesn't mean the heart stops. Learn early warning signs, causes, treatment options and how to manage it well in India."
 date: 2026-04-28
 author: "Dr. Kamalakar Kosaraju"
 tags: ["heart failure symptoms treatment", "heart failure signs", "heart failure India", "weak heart pump", "heart failure management", "congestive heart failure", "cardiologist guntur"]
@@ -28,7 +30,7 @@ When the heart cannot keep up with the body's demands, blood backs up in the lun
 
 There are two main types of heart failure. **HFrEF (Heart Failure with Reduced Ejection Fraction)** occurs when the heart muscle weakens and cannot contract strongly enough. **HFpEF (Heart Failure with Preserved Ejection Fraction)** occurs when the heart muscle becomes stiff and cannot relax properly to fill with blood. Both types require different treatment approaches, which is why accurate diagnosis matters.
 
-A heart attack is a sudden event where blood flow to the heart is blocked. Heart failure, on the other hand, is a chronic condition that develops gradually. However, a heart attack can damage the heart muscle and eventually lead to heart failure if not treated promptly.
+A heart attack is a sudden event where blood flow to the heart is blocked. Heart failure, on the other hand, is a chronic condition that develops gradually. However, a heart attack can damage the heart muscle and eventually lead to heart failure if not treated promptly — which is why knowing the [warning signs of a heart attack you should never ignore](/blog/7-warning-signs-heart-attack-never-ignore/) matters just as much.
 
 ## What Are the Early Signs of Heart Failure?
 

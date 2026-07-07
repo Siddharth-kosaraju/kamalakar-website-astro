@@ -34,6 +34,12 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 const content = await getSiteContent();
 
+// SEO title/description: prefer per-post overrides, else the H1 title / summary.
+// The H1 (post.data.title) always stays the on-page heading; metaTitle only
+// affects the <title> tag (and its shortened brand suffix).
+const seoTitle = `${post.data.metaTitle ?? post.data.title} | Kamalakar Heart Centre`;
+const seoDescription = post.data.metaDescription ?? post.data.summary;
+
 // --- Schema generation ---
 const postUrl = `https://kamalakarheartcentre.com/blog/${post.id}/`;
 
@@ -87,7 +93,7 @@ const schemas: object[] = [
       '@type': 'MedicalOrganization',
       '@id': 'https://kamalakarheartcentre.com/#organization',
       name: 'Kamalakar Heart Centre',
-      url: 'https://kamalakarheartcentre.com',
+      url: 'https://kamalakarheartcentre.com/',
       logo: { '@type': 'ImageObject', url: 'https://kamalakarheartcentre.com/images/logo.svg' },
     },
     mainEntityOfPage: {
@@ -187,8 +193,8 @@ if (faqSection) {
 <BaseLayout class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
   <SEO
     slot="head"
-    title={`${post.data.title} | Kamalakar Heart Centre Blog`}
-    description={post.data.summary}
+    title={seoTitle}
+    description={seoDescription}
     keywords={post.data.tags || []}
     canonicalUrl={postUrl}
     ogImage={ogImage}

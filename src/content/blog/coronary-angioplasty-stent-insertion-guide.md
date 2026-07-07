@@ -1,6 +1,8 @@
 ---
 title: "Coronary Angioplasty and Stent Insertion: Procedure, Benefits, Risks and Recovery"
+metaTitle: "Coronary Angioplasty & Stent Insertion Guide"
 summary: "Learn about coronary angioplasty and stent insertion — the procedure, benefits, risks and recovery. Consult Dr. Kamalakar Kosaraju for angioplasty treatment in Guntur at Kamalakar Heart Centre."
+metaDescription: "Coronary angioplasty and stent insertion explained — procedure, benefits, risks and recovery. Angioplasty in Guntur with Dr. Kamalakar Kosaraju."
 date: 2026-06-26
 author: "Dr. Kamalakar Kosaraju"
 tags: ["coronary angioplasty in Guntur", "stent insertion in Guntur", "angioplasty treatment in Guntur", "heart blockage treatment in Guntur", "coronary artery disease", "interventional cardiologist in Guntur", "Kamalakar Heart Centre"]

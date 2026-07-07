@@ -1,5 +1,6 @@
 ---
 title: "7 Warning Signs of Heart Attack You Should Never Ignore"
+metaTitle: "7 Heart Attack Warning Signs to Never Ignore"
 summary: "7 warning signs of a heart attack every Indian should know — chest pain, breathlessness, jaw pain and more. Learn what they mean and when to act fast."
 date: 2026-04-14
 author: "Dr. Kamalakar Kosaraju"
@@ -90,7 +91,7 @@ A **silent heart attack** (silent myocardial infarction) is a cardiac event that
 - **Women** — often present with fatigue, nausea, or back pain rather than chest pain
 - **Older adults** — may experience only confusion or sudden weakness
 
-Silent heart attacks still cause the same permanent damage to heart muscle. They are often discovered weeks or months later during a routine ECG or [2D echocardiogram](/services/ecg-echo/), when the patient visits a cardiologist for an unrelated concern. If you are diabetic or above 40, an **annual cardiac check-up is the only reliable way** to detect silent heart attacks early.
+Silent heart attacks still cause the same permanent damage to heart muscle. They are often discovered weeks or months later during a routine ECG or [2D echocardiogram](/services/ecg-echo/), when the patient visits a cardiologist for an unrelated concern. If you are diabetic or above 40, an **annual cardiac check-up is the only reliable way** to detect silent heart attacks early — our guide comparing [ECG, 2D Echo and TMT heart tests](/blog/ecg-vs-2d-echo-vs-tmt-heart-tests-explained/) explains which one you actually need.
 
 ## When should you call for emergency help?
 

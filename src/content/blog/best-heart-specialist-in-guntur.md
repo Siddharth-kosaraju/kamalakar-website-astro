@@ -1,6 +1,8 @@
 ---
 title: "Best Heart Specialist in Guntur – How to Choose the Right Doctor?"
 summary: "Heart diseases are rising rapidly in India. This guide helps you identify the best heart specialist in Guntur, understand what to look for in a cardiologist, and make an informed decision for your heart health."
+metaTitle: "Best Heart Specialist in Guntur: A Guide"
+metaDescription: "How to choose the best heart specialist in Guntur — what qualifications matter, when to see a cardiologist, and what to expect at your first heart checkup."
 date: 2026-04-02
 author: "Dr. Kamalakar Kosaraju"
 tags: ["heart specialist guntur", "best cardiologist guntur", "heart doctor", "cardiac care", "cardiology", "heart checkup", "heart health tips"]
@@ -203,6 +205,24 @@ Don't ignore these warning signs — early consultation can save your life:
 <li class="flex gap-2 items-start"><span class="text-green-600 font-bold">&#x2022;</span> Get regular cardiac check-ups, especially after age 30</li>
 </ul>
 </div>
+
+## Frequently Asked Questions
+
+### What qualifications should a heart specialist in Guntur have?
+
+A cardiologist should hold an MBBS followed by an MD in General Medicine and a DM in Cardiology — the three-year super-specialty residency that trains a doctor specifically in heart care. Dr. Kamalakar Kosaraju completed his MD in General Medicine (Gold Medalist) from Dr. NTR University of Health Sciences, Vijayawada, and his DM Cardiology from Osmania Medical College, Hyderabad. He holds the FESC fellowship from the European Society of Cardiology and is registered with the Andhra Pradesh Medical Council (#57814). Beyond degrees, look for hands-on interventional experience — Dr. Kamalakar has performed over 3,000 coronary angiograms and more than 1,000 angioplasty procedures across more than a decade as a practising cardiologist.
+
+### When should I see a cardiologist instead of a general physician?
+
+See a cardiologist directly if you have chest pain or pressure, breathlessness on mild exertion, palpitations, unexplained fatigue, swelling in the legs, or a family history of early heart disease. A general physician is fine for a first assessment, but persistent or heart-specific symptoms — and any abnormal ECG or blood-pressure reading — are best evaluated by a heart specialist who can order and interpret the right tests.
+
+### What tests will a cardiologist do at the first visit?
+
+Most first visits start with a consultation and a basic ECG, which at Kamalakar Heart Centre is included in the consultation fee. Depending on your symptoms, the cardiologist may recommend a 2D Echocardiography to assess the heart's pumping function and valves, or a Treadmill Test (TMT) to see how your heart performs under exertion. These simple, painless tests together give a clear picture of your heart health. Call the clinic for current consultation and test charges.
+
+### How do I book an appointment with Dr. Kamalakar Kosaraju?
+
+Call +91-9959423566 to book a consultation. The clinic is at Kamalakar Heart Centre, Life Hospital, Old Club Road, Kothapet, Guntur, and is open Monday to Saturday from 10 AM to 6 PM. Walk-ins are welcome, but calling ahead helps reduce your waiting time.
 
 ## Book an Appointment with a Heart Specialist in Guntur
 

@@ -340,7 +340,7 @@ seo:
     - "heart disease treatment guntur"
   ogImage: "https://kamalakarheartcentre.com/media/dr-kamalakar.jpg"
   canonicalBase: "https://kamalakarheartcentre.com"
-  gbpUrl: ""  # Optional: set to Google Business Profile URL when live (added to schema sameAs)
+  gbpUrl: "https://maps.google.com/?cid=5826098809468149451"  # Google Business Profile CID (confirmed by owner); added to schema sameAs
 
 footer:
   brandDescription: "Advanced cardiac care in Guntur. We combine world-class expertise with compassionate patient service."
