@@ -237,12 +237,19 @@ const servicePageSchema = z.object({
     alt: z.string(),
     caption: z.string(),
   })).optional(),
+  // Blog post slugs to surface as "Related Patient Guides" on the service page.
+  // Each must resolve to a published blog post; [slug].astro throws at build if not.
+  relatedPosts: z.array(z.string()).optional(),
   ctaText: z.string(),
 });
 
 const blogPostSchema = z.object({
   title: z.string(),
   summary: z.string(),
+  // Optional SEO overrides. metaTitle feeds the <title> (H1 stays `title`);
+  // metaDescription feeds the meta description (falls back to `summary`).
+  metaTitle: z.string().optional(),
+  metaDescription: z.string().optional(),
   date: z.coerce.date(),
   author: z.string().default('Dr. Kamalakar Kosaraju'),
   tags: z.array(z.string()).optional(),

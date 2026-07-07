@@ -74,6 +74,14 @@ function handler(event) {
         return redirect301(SITE + '/services/');
     }
 
+    // 2c. Retired duplicate blog post → consolidated guide
+    //    'understanding-heart-attack-warning-signs' was fully superseded by
+    //    '7-warning-signs-heart-attack-never-ignore' (better citations, same
+    //    stats). Redirect the old slug so its indexed URL is not 404'd.
+    if (uri === '/blog/understanding-heart-attack-warning-signs' || uri.indexOf('/blog/understanding-heart-attack-warning-signs/') === 0) {
+        return redirect301(SITE + '/blog/7-warning-signs-heart-attack-never-ignore/');
+    }
+
     // 3. Legacy SPA query params on the homepage
     //    /?page=education            →  /education/
     //    /?page=education&lang=te    →  /education/

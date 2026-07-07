@@ -16,9 +16,9 @@ const locationCoords = {
 const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${locationCoords.lat},${locationCoords.lng}`;
 
 const schemas = [
-  buildBusinessSchema(content.testimonials.items),
+  buildBusinessSchema(content.testimonials.items, content.seo.gbpUrl),
   buildBreadcrumbSchema([
-    { name: 'Home', url: 'https://kamalakarheartcentre.com' },
+    { name: 'Home', url: 'https://kamalakarheartcentre.com/' },
     { name: 'Contact', url: 'https://kamalakarheartcentre.com/contact/' },
   ]),
   {
@@ -28,7 +28,7 @@ const schemas = [
     name: 'Contact Cardiologist in Guntur | Heart Care Appointment',
     description: 'Contact a cardiologist in Guntur to book a heart checkup angiogram angioplasty ECG echo test or cardiac consultation. Visit the clinic at Kothapet Guntur.',
     inLanguage: 'en',
-    isPartOf: { '@type': 'WebSite', url: 'https://kamalakarheartcentre.com', name: 'Kamalakar Heart Centre' },
+    isPartOf: { '@type': 'WebSite', url: 'https://kamalakarheartcentre.com/', name: 'Kamalakar Heart Centre' },
   },
 ];
 ---

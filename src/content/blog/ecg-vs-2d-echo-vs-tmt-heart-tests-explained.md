@@ -1,6 +1,8 @@
 ---
 title: "ECG vs 2D Echo vs TMT — Which Heart Test Do You Need?"
+metaTitle: "ECG vs 2D Echo vs TMT: Which Test?"
 summary: "Learn which heart test is right for you — ECG, 2D Echo or TMT. Expert guidance from Dr. Kamalakar Kosaraju, the best cardiology doctor in Guntur, at Kamalakar Heart Centre."
+metaDescription: "ECG vs 2D Echo vs TMT — understand which heart test you need and why. Expert guidance from cardiologist Dr. Kamalakar Kosaraju in Guntur."
 date: 2026-05-19
 author: "Dr. Kamalakar Kosaraju"
 tags: ["ECG vs 2D Echo vs TMT", "heart tests in Guntur", "ECG test", "2D echocardiography", "TMT test", "cardiac diagnosis", "heart checkup", "best cardiology doctor in Guntur", "heart screening", "coronary artery disease diagnosis"]
