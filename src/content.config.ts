@@ -73,8 +73,9 @@ const siteSchema = z.object({
     experienceLabel: z.string(),
     procedures: z.string(),
     proceduresLabel: z.string(),
-    successRate: z.string(),
-    successRateLabel: z.string(),
+    angioplasties: z.string(),
+    angioplastiesLabel: z.string(),
+    imageAlt: z.string(),
   }),
   stats: z.object({
     experience: z.string(),

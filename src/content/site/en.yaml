@@ -14,20 +14,23 @@ nav:
 
 hero:
   headline: "Best Cardiologist in Guntur for Advanced Heart Care"
-  subHeadline: "Your heart health deserves timely attention and expert care. Kamalakar Heart Centre provides comprehensive cardiac diagnosis and treatment guided by experience and modern medical technology. Led by Dr. Kamalakar Kosaraju, an experienced interventional cardiologist in Guntur, the centre focuses on early detection, accurate diagnosis, and effective treatment of heart conditions."
-  bodyText: "Patients visit the clinic for symptoms such as chest pain, breathlessness, high blood pressure, or irregular heartbeat. Early consultation with a heart specialist in Guntur can prevent serious complications and support long-term heart health."
+  subHeadline: "Expert cardiac care in Guntur from Dr. Kamalakar Kosaraju — interventional cardiologist (FESC) at Kamalakar Heart Centre."
+  bodyText: "Accurate diagnosis and modern treatment for chest pain, high blood pressure and other heart conditions — with timely, personal care."
   brandLine: "Kamalakar Heart Centre – Cardiac Care at Life Hospital, Guntur"
   trustBadge: "Gold Medalist &bull; FESC Certified"
   ctaBook: "Book Consultation"
   ctaEmergency: "Emergency: 99594 23566"
   address: "Life Hospital, Old Club Road, Kothapet, Guntur - 522001"
   addressLink: "https://www.google.com/maps/search/Kamalakar+Heart+Centre+Life+Hospital+Old+Club+Road+Kothapeta+Guntur+Andhra+Pradesh"
-  experience: "10+"
+  # Hero stat row — verifiable figures only (match schemas.ts / CLAUDE.md).
+  # Do NOT use success-rate percentages or "5k+" procedure counts (unverified).
+  experience: "11+"
   experienceLabel: "Years Exp."
-  procedures: "5k+"
-  proceduresLabel: "Procedures"
-  successRate: "99%"
-  successRateLabel: "Success Rate"
+  procedures: "3,000+"
+  proceduresLabel: "Angiograms"
+  angioplasties: "1,000+"
+  angioplastiesLabel: "Angioplasties"
+  imageAlt: "Dr. Kamalakar Kosaraju, Interventional Cardiologist at Kamalakar Heart Centre, Guntur"
 
 stats:
   experience: "10+" # Note: The dynamic calculation is handled in code, but this serves as a fallback or override base
