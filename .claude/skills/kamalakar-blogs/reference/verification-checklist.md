@@ -54,6 +54,23 @@ These must be equal. A legitimate mismatch against your *memory* of the count: `
 curl -sS -o /dev/null -w "status=%{http_code} -> %{redirect_url}\n" "$BASE/blog/<retired-slug>/"   # expect 301
 ```
 
+## B2. `lastmod` — only your pages may move
+
+`lastmod` comes from `git log -1` on each page's **content file**, so pages you didn't edit must keep their old dates.
+
+```bash
+grep -oE '<loc>[^<]+|<lastmod>[^<]+' dist/sitemap.xml | paste - - \
+  | sed 's|<loc>https://kamalakarheartcentre.com||;s|<lastmod>||'
+```
+
+Expect: **only the new/edited pages carry today's date.** Everything else keeps its previous date.
+
+Two failure signals:
+- A `[sitemap] WARNING: … not committed; used its mtime` line → **commit first, then rebuild.** Deploying now publishes a date that doesn't match the content history.
+- A page you never touched jumped to today → investigate before pushing. Usually it means a sweep commit (formatting pass, mass find-replace) touched every content file; that legitimately resets `lastmod` and burns crawl budget, so keep bulk edits off `src/content/**` unless the content really changed.
+
+Many pages sharing one older date is normal — it just means one commit last edited them all.
+
 ## C. Per-post SEO tags (local)
 
 ```bash

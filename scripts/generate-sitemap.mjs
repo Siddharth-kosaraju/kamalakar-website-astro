@@ -74,38 +74,59 @@ function getSourceFiles(route) {
 
 /**
  * Get the last git commit date for a file (ISO format).
- * Falls back to the file's mtime if not tracked by git.
+ *
+ * Resolution order per source file:
+ *   1. last git commit that touched it  (the real "content changed" signal)
+ *   2. the SOURCE file's mtime          (new/uncommitted file)
+ *   3. the built HTML's mtime           (= build time — last resort, warned about)
+ *
+ * Step 2 matters more than it looks: `git log -1 -- <path>` on an untracked
+ * file exits 0 with EMPTY output rather than throwing, so the catch block
+ * below never fires for new files. Without the explicit empty-string branch,
+ * a page built before its source is committed falls through to step 3 and gets
+ * stamped with build time — which is exactly the crawl-budget churn this
+ * generator exists to avoid.
  */
-function getLastModified(route) {
+function getLastModified(route, warnings) {
   const sources = getSourceFiles(route);
 
   let latestDate = null;
 
   for (const src of sources) {
     const fullPath = join(ROOT, src);
+    let gitDate = '';
+
     try {
-      // Get the author date of the last commit that touched this file
-      const gitDate = execSync(
+      // Author date of the last commit that touched this file.
+      gitDate = execSync(
         `git log -1 --format=%aI -- "${src}"`,
         { cwd: ROOT, encoding: 'utf-8', stdio: ['pipe', 'pipe', 'pipe'] }
       ).trim();
-
-      if (gitDate) {
-        const d = new Date(gitDate);
-        if (!latestDate || d > latestDate) latestDate = d;
-      }
     } catch {
-      // Not in git — try file mtime
-      try {
-        const mtime = statSync(fullPath).mtime;
-        if (!latestDate || mtime > latestDate) latestDate = mtime;
-      } catch {
-        // File doesn't exist at expected path — skip
-      }
+      // git unavailable / not a repo — handled by the mtime fallback below.
+      gitDate = '';
+    }
+
+    if (gitDate) {
+      const d = new Date(gitDate);
+      if (!latestDate || d > latestDate) latestDate = d;
+      continue;
+    }
+
+    // Untracked, uncommitted, or no git: use the source file's own mtime.
+    try {
+      const mtime = statSync(fullPath).mtime;
+      if (!latestDate || mtime > latestDate) latestDate = mtime;
+      warnings.push(
+        `${route} — "${src}" is not committed; used its mtime. Commit before deploying so lastmod reflects the real content date.`
+      );
+    } catch {
+      // File doesn't exist at the expected path — skip.
     }
   }
 
-  // Fallback: use the built HTML file's mtime
+  // Last resort: the built HTML's mtime (i.e. build time). Always worth flagging —
+  // it means no source file could be resolved for this route.
   if (!latestDate) {
     const routeDir = route === '/' ? '' : route.replace(/^\//, '').replace(/\/$/, '');
     const htmlPath = join(DIST, routeDir, 'index.html');
@@ -114,6 +135,9 @@ function getLastModified(route) {
     } catch {
       latestDate = new Date();
     }
+    warnings.push(
+      `${route} — no source file resolved; fell back to BUILD TIME. Add a getSourceFiles() mapping for this route.`
+    );
   }
 
   // Format as YYYY-MM-DD (Google's preferred format for lastmod)
@@ -190,9 +214,10 @@ if (extra.length > 0) {
 }
 
 // Generate sitemap XML with real lastmod dates
+const lastmodWarnings = [];
 const urls = routes
   .map((route) => {
-    const lastmod = getLastModified(route);
+    const lastmod = getLastModified(route, lastmodWarnings);
     const { priority } = getGroupAndPriority(route);
     return `<url>
   <loc>${SITE}${route}</loc>
@@ -209,4 +234,15 @@ ${urls}
 `;
 
 writeFileSync(OUT_FILE, xml);
+
+if (lastmodWarnings.length > 0) {
+  console.warn(
+    `\n[sitemap] WARNING: ${lastmodWarnings.length} route(s) could not take lastmod from git history:`
+  );
+  lastmodWarnings.forEach((w) => console.warn(`  ! ${w}`));
+  console.warn(
+    '  Deploying now would publish a lastmod that does not match the content history.\n'
+  );
+}
+
 console.log(`\n[sitemap] Generated ${OUT_FILE} with ${routes.length} URLs.\n`);

@@ -240,6 +240,17 @@ Screenshot both posts and `/blog/`. Verify the hero renders full-width, byline i
 
 ## Phase 7 — Commit, push, deploy
 
+> **Commit before you deploy — the order matters for `lastmod`.**
+> `scripts/generate-sitemap.mjs` takes each page's `lastmod` from `git log -1` on its
+> **content file**. An uncommitted file has no commit date, so the generator falls back
+> to the source file's mtime and prints a `[sitemap] WARNING`. Deploying at that point
+> publishes a date that doesn't match the content history. `npm run deploy` rebuilds, so
+> committing first is what makes the published dates correct.
+> **Never deploy while that warning is on screen.**
+>
+> Corollary: only the pages you actually edited should change date. If a page you didn't
+> touch moves to today, something is wrong — investigate before pushing.
+
 **Stage only your own files.** The repo carries pre-existing untracked paths (`.agents/`, `.codex/`, `AGENTS.md`, `google search data/`) — never `git add -A`.
 
 ```bash
