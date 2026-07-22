@@ -53,7 +53,17 @@ Verify:
 - `dist/sitemap.xml` exists (NOT `sitemap-0.xml`)
 - `dist/robots.txt` exists and contains `Sitemap: https://kamalakarheartcentre.com/sitemap.xml`
 - `dist/llms.txt` exists and passes the llms verifier — the build runs `scripts/generate-llms.mjs`, which prints `[llms] Generated .../dist/llms.txt (N URLs; …)` and fails the build if a forbidden claim is present or if the sitemap ⇄ llms.txt completeness cross-check finds a page missing a description entry. The generated file starts with `# Kamalakar Heart Centre`.
-- Page count matches expectations (currently 26 HTML pages, 25 indexable + the noindex /404/ — as of 2026-07-07, after the duplicate `understanding-heart-attack-warning-signs` blog post was removed; the 25 indexable count must equal the sitemap and llms.txt URL count)
+- Page count matches expectations. Assert the **invariant**, not a fixed number — the count grows with every new page, so a hardcoded value goes stale:
+  - `indexable HTML  ==  sitemap <loc> count  ==  llms.txt URL count`
+  - `total HTML  ==  indexable + 1` (the extra is `dist/404.html`, the only `noindex` page — note it is emitted as `404.html` at the root, not `/404/index.html`)
+  - the count should equal **previous total + pages added in this change**; if it doesn't, reconcile before deploying (a page may have been retired earlier — see the redirect note below)
+  ```bash
+  find dist -name '*.html' | wc -l                  # total (indexable + 404)
+  grep -c '<loc>' dist/sitemap.xml                  # indexable
+  grep -cE '^- \[' dist/llms.txt                    # must equal sitemap
+  ls src/content/blog/*.md | wc -l                  # must equal blog entries in sitemap
+  ```
+  *Reference point: 28 total / 27 indexable as of 2026-07-22, after adding `heart-treatment-in-guntur` and `medical-emergency-heart-attack-first-aid`.*
 - Only published posts with `date <= now` are built (future-dated posts must NOT appear)
 - `[verify-canonicals] OK: ... all canonicals valid` printed at end of build (the build script now runs `scripts/verify-canonicals.mjs`)
 
