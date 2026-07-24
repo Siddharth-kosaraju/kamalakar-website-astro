@@ -51,6 +51,7 @@ const siteSchema = z.object({
     education: z.string(),
     services: z.string(),
     blog: z.string(),
+    media: z.string().optional(),
     contact: z.string(),
     bookBtn: z.string(),
     emergencyLabel: z.string(),
@@ -243,6 +244,39 @@ const servicePageSchema = z.object({
   ctaText: z.string(),
 });
 
+// The 5 categories fixed by CLAUDE.md media-section plan. Every video must be
+// assigned one at add time — matches the admin-portal dropdown planned for
+// Phase 3 (DynamoDB-backed CMS), enforced here for the Phase 1 YAML source.
+const MEDIA_CATEGORIES = [
+  'Heart Tests Explained',
+  'Heart Attack & Emergency',
+  'Prevention & Lifestyle',
+  'Inside the Clinic',
+] as const;
+
+const mediaItemSchema = z.object({
+  // Full YouTube URL (youtube.com/watch?v=... or youtu.be/...) — matches what
+  // the admin portal will accept verbatim; the youtube ID is derived at build
+  // time in src/utils/youtube.ts, never hand-entered.
+  youtubeUrl: z.string().url(),
+  displayTitle: z.string(),
+  category: z.enum(MEDIA_CATEGORIES),
+  language: z.enum(['English', 'Telugu']).default('English'),
+  // featured = shown in the large player at the top of /media/ (only one should be featured)
+  // full     = gets its own /media/<slug>/ page with schema + related links
+  // grid-only = appears in the gallery grid only, no dedicated page
+  tier: z.enum(['featured', 'full', 'grid-only']).default('grid-only'),
+  description: z.string().optional(),
+  keyPoints: z.array(z.string()).optional(),
+  uploadDate: z.string().optional(),
+  duration: z.string().optional(),
+  relatedService: z.string().optional(),
+  relatedPost: z.string().optional(),
+  // Admin-managed display order (ascending) — see /admin/'s up/down reorder
+  // controls. Materialized straight from the DynamoDB item's `order` field.
+  order: z.number().default(0),
+});
+
 const blogPostSchema = z.object({
   title: z.string(),
   summary: z.string(),
@@ -284,4 +318,14 @@ const blog = defineCollection({
   schema: blogPostSchema,
 });
 
-export const collections = { site, services, blog };
+const media = defineCollection({
+  loader: glob({
+    pattern: '**/*.yaml',
+    base: './src/content/media',
+    // Filename is the slug (used for /media/<slug>/ full-tier pages).
+    generateId: ({ entry }) => entry.replace(/\.yaml$/, ''),
+  }),
+  schema: mediaItemSchema,
+});
+
+export const collections = { site, services, blog, media };

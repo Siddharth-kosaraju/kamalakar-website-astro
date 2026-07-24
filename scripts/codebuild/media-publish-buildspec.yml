@@ -1,0 +1,34 @@
+version: 0.2
+
+env:
+  variables:
+    NODE_ENV: "production"
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 22
+  pre_build:
+    commands:
+      - echo "Installing site dependencies..."
+      - npm ci
+      - echo "Installing AWS SDK for the DynamoDB->YAML materialize step (not a site dependency)..."
+      - npm install --no-save @aws-sdk/client-dynamodb @aws-sdk/lib-dynamodb
+      - echo "Pulling video list from DynamoDB into src/content/media/..."
+      - node scripts/materialize-media-from-dynamo.mjs
+  build:
+    commands:
+      - echo "Building site (runs astro build + sitemap + llms.txt + canonical verifier — publish fails here if any gate fails)..."
+      - npm run build
+  post_build:
+    commands:
+      - echo "Syncing dist/ to S3..."
+      - aws s3 sync dist/ s3://$S3_BUCKET_NAME --delete
+      - echo "Invalidating CloudFront..."
+      - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
+      - echo "Publish complete."
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: dist

@@ -24,10 +24,15 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     build: {
-      minify: 'terser',
-      terserOptions: {
-        compress: { drop_console: true, drop_debugger: true },
-      },
+      // esbuild's built-in minifier — bundled natively in Vite, no separate
+      // worker-thread dependency on the `terser` package. Switched from
+      // minify:'terser' after it started crashing silently mid-build in
+      // this environment (Node 25 / terser worker-thread incompatibility,
+      // unrelated to any site code — confirmed by bisecting with minify:false).
+      minify: 'esbuild',
+    },
+    esbuild: {
+      drop: ['console', 'debugger'],
     },
   },
 });

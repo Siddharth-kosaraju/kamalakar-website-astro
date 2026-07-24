@@ -41,6 +41,7 @@ const ROOT = new URL('../', import.meta.url).pathname;
 const DIST = new URL('../dist/', import.meta.url).pathname;
 const BLOG_SRC = join(ROOT, 'src/content/blog');
 const SERVICES_SRC = join(ROOT, 'src/content/services');
+const MEDIA_SRC = join(ROOT, 'src/content/media');
 const SITE = 'https://kamalakarheartcentre.com';
 const OUT_FILE = join(DIST, 'llms.txt');
 const SITEMAP_FILE = join(DIST, 'sitemap.xml');
@@ -89,6 +90,11 @@ const STATIC_DESCRIPTIONS = {
     section: 'clinic',
     name: 'Heart Health Blog',
     desc: 'Articles and patient guides on heart attacks, heart tests, angioplasty, cholesterol, heart failure and heart-healthy living from Dr. Kamalakar Kosaraju.',
+  },
+  '/media/': {
+    section: 'clinic',
+    name: 'Heart Health Videos',
+    desc: 'Short video explainers from Dr. Kamalakar Kosaraju on heart tests, heart attack warning signs, and prevention — in English and Telugu.',
   },
   '/privacy-policy/': {
     section: 'optional',
@@ -211,6 +217,35 @@ function collectServices() {
 }
 
 // ---------------------------------------------------------------------------
+// Collect media (video) entries — only full/featured tier, and only those
+// actually built into dist/ (grid-only videos have no dedicated page and are
+// intentionally excluded — nothing for llms.txt or the sitemap to point at).
+// ---------------------------------------------------------------------------
+function collectMedia() {
+  const entries = [];
+  const files = existsSync(MEDIA_SRC)
+    ? readdirSync(MEDIA_SRC).filter((f) => f.endsWith('.yaml'))
+    : [];
+  for (const file of files) {
+    const slug = file.replace(/\.yaml$/, '');
+    if (!existsSync(join(DIST, 'media', slug, 'index.html'))) continue;
+    const fm = parseScalars(
+      readFileSync(join(MEDIA_SRC, file), 'utf-8'),
+      ['displayTitle', 'description', 'tier'],
+      `src/content/media/${file}`
+    );
+    if (fm.tier !== 'full' && fm.tier !== 'featured') continue;
+    entries.push({
+      url: `${SITE}/media/${slug}/`,
+      name: fm.displayTitle || slug,
+      desc: fm.description || fm.displayTitle || '',
+    });
+  }
+  entries.sort((a, b) => a.name.localeCompare(b.name));
+  return entries;
+}
+
+// ---------------------------------------------------------------------------
 // Build the authoritative facts block (verbatim; do not invent alternatives).
 // ---------------------------------------------------------------------------
 function factsBlock() {
@@ -233,6 +268,7 @@ function factsBlock() {
 function buildDoc() {
   const blog = collectBlog();
   const services = collectServices();
+  const media = collectMedia();
 
   const staticEntries = Object.entries(STATIC_DESCRIPTIONS).map(([path, v]) => ({
     url: SITE + path,
@@ -258,6 +294,9 @@ function buildDoc() {
   parts.push('## Patient Guides');
   parts.push(blog.map(link).join('\n'));
   parts.push('');
+  parts.push('## Videos');
+  parts.push(media.map(link).join('\n'));
+  parts.push('');
   parts.push('## Clinic');
   parts.push(clinic.map(link).join('\n'));
   parts.push('');
@@ -271,6 +310,7 @@ function buildDoc() {
   const emitted = new Set([
     ...services.map((e) => e.url),
     ...blog.map((e) => e.url),
+    ...media.map((e) => e.url),
     ...staticEntries.map((e) => e.url),
   ]);
 

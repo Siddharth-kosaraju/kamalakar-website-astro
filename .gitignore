@@ -19,6 +19,9 @@ pnpm-debug.log*
 .env-*
 .env.production
 
+# CDK synth output (infra/)
+infra/cdk.out/
+
 # macOS-specific files
 .DS_Store
 

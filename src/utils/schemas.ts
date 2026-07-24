@@ -77,6 +77,8 @@ export function buildBusinessSchema(testimonials?: TestimonialItem[], gbpUrl?: s
     medicalSpecialty: 'Cardiology',
     sameAs: [
       'https://www.facebook.com/DR.Kamalakarkosaraju/',
+      'https://www.youtube.com/@drkamalakarcardiologist',
+      'https://www.instagram.com/kamalakarheartclinic/',
       ...(gbpUrl ? [gbpUrl] : []),
     ],
     hasOfferCatalog: {
@@ -230,6 +232,61 @@ export function buildWebPageSchema(page: 'home' | 'education') {
       cssSelector: isHome
         ? ['#hero-headline', '#about', '#faq']
         : ['#education-heading', '#education-description'],
+    },
+  };
+}
+
+interface MediaItem {
+  slug: string;
+  displayTitle: string;
+  youtubeId: string;
+  description?: string;
+  uploadDate?: string;
+}
+
+/** ItemList of VideoObject for /media/ — same VideoObject shape as buildVideoListSchema
+ *  but sourced from the media collection (description instead of transcript). */
+export function buildMediaListSchema(items: MediaItem[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Heart Health Videos — Kamalakar Heart Centre',
+    itemListElement: items.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'VideoObject',
+        name: item.displayTitle,
+        description: item.description || item.displayTitle,
+        thumbnailUrl: `https://img.youtube.com/vi/${item.youtubeId}/maxresdefault.jpg`,
+        uploadDate: item.uploadDate || '2024-01-15T00:00:00+05:30',
+        contentUrl: `https://www.youtube.com/watch?v=${item.youtubeId}`,
+        embedUrl: `https://www.youtube.com/embed/${item.youtubeId}`,
+        publisher: {
+          '@type': 'Organization',
+          name: 'Kamalakar Heart Centre',
+          logo: { '@type': 'ImageObject', url: `${CANONICAL_BASE}/images/logo.svg` },
+        },
+      },
+    })),
+  };
+}
+
+/** Single VideoObject for a full-tier /media/<slug>/ page. */
+export function buildVideoObjectSchema(item: MediaItem) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: item.displayTitle,
+    description: item.description || item.displayTitle,
+    thumbnailUrl: `https://img.youtube.com/vi/${item.youtubeId}/maxresdefault.jpg`,
+    uploadDate: item.uploadDate || '2024-01-15T00:00:00+05:30',
+    contentUrl: `https://www.youtube.com/watch?v=${item.youtubeId}`,
+    embedUrl: `https://www.youtube.com/embed/${item.youtubeId}`,
+    publisher: {
+      '@type': 'Organization',
+      name: 'Kamalakar Heart Centre',
+      logo: { '@type': 'ImageObject', url: `${CANONICAL_BASE}/images/logo.svg` },
     },
   };
 }

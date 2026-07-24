@@ -7,6 +7,7 @@ interface NavContent {
   education: string;
   services: string;
   blog: string;
+  media?: string;
   contact: string;
   bookBtn: string;
   emergencyLabel: string;
@@ -19,7 +20,7 @@ interface NavContent {
 interface HeaderProps {
   content: NavContent;
   appointmentPhone: string;
-  currentPage?: 'home' | 'about' | 'services' | 'education' | 'blog' | 'contact';
+  currentPage?: 'home' | 'about' | 'services' | 'education' | 'blog' | 'media' | 'contact';
   currentPath?: string;
 }
 
@@ -48,6 +49,7 @@ export default function Header({ content, appointmentPhone, currentPage = 'home'
     { name: content.services, href: '/services/', page: 'services' as const },
     { name: content.education, href: '/education/', page: 'education' as const },
     { name: content.blog, href: '/blog/', page: 'blog' as const },
+    { name: content.media || 'Media', href: '/media/', page: 'media' as const },
     { name: content.contact, href: '/contact/', page: 'contact' as const },
   ];
 

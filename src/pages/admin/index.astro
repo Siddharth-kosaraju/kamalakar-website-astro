@@ -1,0 +1,19 @@
+---
+// Media CMS admin portal. Deliberately excluded from the sitemap, llms.txt,
+// and search indexing (see scripts/generate-sitemap.mjs EXCLUDE and the
+// noindex tag below, which verify-canonicals.mjs treats as exempt).
+// client:only because this page has no meaningful SSR value — it's an
+// auth-gated app that needs sessionStorage/fetch, and shipping it as a pure
+// client bundle avoids ever leaking a signed-in-looking SSR shell.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AdminApp from '../../components/admin/AdminApp';
+---
+
+<BaseLayout class="min-h-screen bg-neutral-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans px-4">
+  <Fragment slot="head">
+    <title>Media Admin | Kamalakar Heart Centre</title>
+    <meta name="robots" content="noindex, nofollow" />
+  </Fragment>
+
+  <AdminApp client:only="react" />
+</BaseLayout>

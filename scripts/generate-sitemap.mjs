@@ -31,7 +31,9 @@ const SITE = 'https://kamalakarheartcentre.com';
 const OUT_FILE = join(DIST, 'sitemap.xml');
 
 // Paths to exclude from the sitemap
-const EXCLUDE = new Set(['/404/', '/404']);
+// /admin/ is the media-CMS admin portal — noindex'd, never a public/indexable
+// page, and it must never appear in the sitemap or llms.txt.
+const EXCLUDE = new Set(['/404/', '/404', '/admin/', '/admin']);
 
 /**
  * Map a route to the source file(s) that generate it.
@@ -52,6 +54,12 @@ function getSourceFiles(route) {
     return [`src/content/services/${serviceMatch[1]}.yaml`];
   }
 
+  // Media (video) detail pages — only track the content file (.yaml), not the template.
+  const mediaMatch = route.match(/^\/media\/([^/]+)\/$/);
+  if (mediaMatch) {
+    return [`src/content/media/${mediaMatch[1]}.yaml`];
+  }
+
   // Static routes mapped to their page files
   const staticMap = {
     '/': 'src/pages/index.astro',
@@ -60,6 +68,7 @@ function getSourceFiles(route) {
     '/contact/': 'src/pages/contact.astro',
     '/education/': 'src/pages/education.astro',
     '/services/': 'src/pages/services/index.astro',
+    '/media/': 'src/pages/media/index.astro',
     '/privacy-policy/': 'src/pages/privacy-policy.astro',
     '/terms-of-service/': 'src/pages/terms-of-service.astro',
   };

@@ -55,11 +55,20 @@ These rules are encoded in `cloudfront-functions/redirect-www-to-non-www.js`, `s
 4. **Forbidden claims** (build fails if present in the output): any success-rate stat (e.g. "99% success rate"), "5,000+ procedures", "Assistant Professor", EECP in any form, and any named insurance company. Insurance is described only with the approved wording from `diagnostics-pricing.yaml`.
 5. Adding/renaming/removing a page or changing the facts block is a structural change (see below) and requires a build + review before deploy.
 
+## Media section & admin CMS (must hold)
+
+1. **`/media/` is a curated video gallery, not a channel mirror.** Videos are added explicitly — either by hand-authoring `src/content/media/<slug>.yaml`, or (once `infra/` is deployed) via the `/admin/` portal, which writes to DynamoDB. There is no auto-sync from the YouTube channel; a video only appears because someone deliberately added it.
+2. **Categories are fixed at 4**: `Heart Tests Explained`, `Heart Attack & Emergency`, `Prevention & Lifestyle`, `Inside the Clinic` (enum in `src/content.config.ts`). There is deliberately no separate Telugu category — Telugu is the majority language of the catalog, tracked instead via the per-video `language` field. Do not re-add a Telugu bucket; adding videos overwhelmingly favors it, which defeats the purpose of the 4 topic buckets.
+3. **`tier` controls what gets built**: `featured` (one, shown at the top of `/media/`) and `full` get a dedicated `/media/<slug>/` page (`VideoObject` schema, sitemap entry, llms.txt entry); `grid-only` appears in the gallery grid but has no page and is excluded from the sitemap and llms.txt. Only Dr. Kamalakar's own videos belong here — never a colleague's.
+4. **`/admin/` is permanently noindex and excluded from the sitemap/llms.txt** (`scripts/generate-sitemap.mjs` `EXCLUDE` set, `<meta name="robots" content="noindex, nofollow">`). Do not add it to `STATIC_DESCRIPTIONS` in `scripts/generate-llms.mjs` — it must never appear there.
+5. **The admin CMS's publish pipeline runs the same `npm run build` as every other deploy.** CodeBuild (`infra/lib/media-cms-stack.ts`) materializes DynamoDB into `src/content/media/*.yaml` (`scripts/materialize-media-from-dynamo.mjs`), then runs the full build — sitemap, llms.txt, and canonical-verifier gates all apply to CMS-driven publishes exactly as they do to a developer-driven deploy. A gate failure blocks the publish.
+6. **`infra/` is a separate CDK app**, deployed independently of the site (`npx cdk deploy` from `infra/`, not part of `npm run deploy`). See `infra/README.md` for one-time setup (GitHub PAT in Secrets Manager, CDK bootstrap, Cognito user creation, wiring `PUBLIC_COGNITO_*`/`PUBLIC_MEDIA_API_URL` into the site's env before the admin page can log in).
+
 ## Definition of "structural change"
 
 Any of these triggers the full canonical/sitemap/robots review cycle above:
 
-- new page (`src/pages/*.astro`, new `src/content/services/*.yaml`, new `src/content/blog/*.md`)
+- new page (`src/pages/*.astro`, new `src/content/services/*.yaml`, new `src/content/blog/*.md`, new `src/content/media/*.yaml`)
 - renamed slug or path
 - removed page
 - new redirect rule in the CF function
@@ -78,6 +87,12 @@ Any of these triggers the full canonical/sitemap/robots review cycle above:
 | Canonical verifier (build gate) | `scripts/verify-canonicals.mjs` |
 | llms.txt generator (build gate) | `scripts/generate-llms.mjs` |
 | Robots | `public/robots.txt` |
+| Media collection schema | `src/content.config.ts` (`media` collection) |
+| Media gallery page + component | `src/pages/media/index.astro`, `src/components/MediaGallery.tsx` |
+| Media video page | `src/pages/media/[slug].astro` |
+| Admin CMS portal | `src/pages/admin/index.astro`, `src/components/admin/` |
+| Media CMS infra (CDK) | `infra/` — see `infra/README.md` for setup |
+| DynamoDB→YAML publish step | `scripts/materialize-media-from-dynamo.mjs`, `scripts/codebuild/media-publish-buildspec.yml` |
 | Deploy + verify skill | `.claude/skills/deploy-verify/SKILL.md` |
 | Blog writer skill | `.claude/skills/blog-writer/SKILL.md` |
 | Content planner skill | `.claude/skills/content-planner/SKILL.md` |
