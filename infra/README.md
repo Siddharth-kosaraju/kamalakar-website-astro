@@ -22,12 +22,24 @@ deploy`) — this is a separate, additive stack.
        --profile sid-personal --region ap-south-1
      ```
 
-2. **Bootstrap CDK** in the target account/region (one-time per account+region):
+2. **Admin login for the downloadable user manual** — the `/admin/` portal's
+   "Download User Manual" button fetches these from Secrets Manager via an
+   authenticated call (never baked into any committed file or JS bundle):
+   ```bash
+   aws secretsmanager create-secret \
+     --name kamalakar/media-admin-doc-credentials \
+     --secret-string '{"email":"admin@example.com","password":"the-real-password"}' \
+     --profile sid-personal --region ap-south-1
+   ```
+   Keep this in sync manually if the admin password is ever rotated —
+   nothing does that automatically.
+
+3. **Bootstrap CDK** in the target account/region (one-time per account+region):
    ```bash
    npx cdk bootstrap aws://236229417910/ap-south-1 --profile sid-personal
    ```
 
-3. **Deploy**:
+4. **Deploy**:
    ```bash
    npm install
    AWS_PROFILE=sid-personal npx cdk deploy
@@ -38,7 +50,7 @@ deploy`) — this is a separate, additive stack.
    the identical, correct CloudFormation). If `cdk deploy` fails the same
    way, add `--no-validation`.
 
-4. **Create admin users** (no self-signup by design):
+5. **Create admin users** (no self-signup by design):
    ```bash
    aws cognito-idp admin-create-user \
      --user-pool-id <UserPoolId from stack output> \
@@ -49,7 +61,7 @@ deploy`) — this is a separate, additive stack.
    This emails a temporary password. First login requires a password reset
    (`admin-set-user-password --permanent` can also set one directly).
 
-5. **Wire the admin page to the deployed stack** — after `cdk deploy` prints
+6. **Wire the admin page to the deployed stack** — after `cdk deploy` prints
    its outputs, add to the site's `.env` (or your deploy environment) and
    rebuild/redeploy the *main* site once:
    ```

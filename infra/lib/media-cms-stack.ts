@@ -9,6 +9,7 @@ import * as apigwv2Authorizers from 'aws-cdk-lib/aws-apigatewayv2-authorizers';
 import * as codebuild from 'aws-cdk-lib/aws-codebuild';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as s3 from 'aws-cdk-lib/aws-s3';
+import * as secretsmanager from 'aws-cdk-lib/aws-secretsmanager';
 
 /**
  * Existing production infra this stack plugs into (CLAUDE.md is the source
@@ -132,15 +133,30 @@ export class MediaCmsStack extends cdk.Stack {
     // -----------------------------------------------------------------
     const commonEnv = { ALLOWED_ORIGIN: SITE_ORIGIN };
 
+    // Holds the admin login shown in the downloadable user manual (GET
+    // /manual-credentials, Cognito-authorized like every other route).
+    // Deliberately NOT a CDK-created secret with a literal value — that
+    // value would land in this committed source file. Created once via
+    // `aws secretsmanager create-secret` (see infra/README.md) and just
+    // referenced here by name.
+    const manualCredentialsSecret = secretsmanager.Secret.fromSecretNameV2(
+      this, 'ManualCredentialsSecret', 'kamalakar/media-admin-doc-credentials'
+    );
+
     const mediaApiFn = new lambda.Function(this, 'MediaApiFunction', {
       functionName: 'kamalakar-media-api',
       runtime: lambda.Runtime.NODEJS_22_X,
       handler: 'index.handler',
       code: lambda.Code.fromAsset('lambda/media-api'),
       timeout: cdk.Duration.seconds(15),
-      environment: { ...commonEnv, TABLE_NAME: table.tableName },
+      environment: {
+        ...commonEnv,
+        TABLE_NAME: table.tableName,
+        MANUAL_CREDENTIALS_SECRET_ARN: manualCredentialsSecret.secretArn,
+      },
     });
     table.grantReadWriteData(mediaApiFn);
+    manualCredentialsSecret.grantRead(mediaApiFn);
 
     const publishFn = new lambda.Function(this, 'PublishFunction', {
       functionName: 'kamalakar-media-publish-trigger',
@@ -193,6 +209,7 @@ export class MediaCmsStack extends cdk.Stack {
     authorizedRoute('/videos/reorder', [apigwv2.HttpMethod.POST], mediaApiIntegration);
     authorizedRoute('/videos/{slug}', [apigwv2.HttpMethod.PUT, apigwv2.HttpMethod.DELETE, apigwv2.HttpMethod.GET], mediaApiIntegration);
     authorizedRoute('/oembed', [apigwv2.HttpMethod.POST], mediaApiIntegration);
+    authorizedRoute('/manual-credentials', [apigwv2.HttpMethod.GET], mediaApiIntegration);
     authorizedRoute('/publish', [apigwv2.HttpMethod.POST], publishIntegration);
     authorizedRoute('/publish/{buildId}', [apigwv2.HttpMethod.GET], publishIntegration);
 

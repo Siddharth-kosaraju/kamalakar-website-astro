@@ -22,6 +22,11 @@ pnpm-debug.log*
 # CDK synth output (infra/)
 infra/cdk.out/
 
+# Contains the live admin login in plaintext — local reference only, never
+# commit. The downloadable-from-/admin/ version fetches the password from
+# Secrets Manager at request time instead (see src/components/admin/userManual.ts).
+docs/media-admin-user-manual.md
+
 # macOS-specific files
 .DS_Store
 

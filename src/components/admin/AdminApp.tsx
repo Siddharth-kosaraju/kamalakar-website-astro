@@ -1,6 +1,7 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import * as auth from './cognito';
 import type { AuthTokens } from './cognito';
+import { buildUserManualHtml } from './userManual';
 
 const API_BASE = import.meta.env.PUBLIC_MEDIA_API_URL || '';
 const CATEGORIES = ['Heart Tests Explained', 'Heart Attack & Emergency', 'Prevention & Lifestyle', 'Inside the Clinic'];
@@ -391,6 +392,13 @@ export default function AdminApp() {
     });
   }, [tokens, refreshList]);
 
+  // Rules of Hooks: every hook the component can ever call must run on
+  // EVERY render, including the one before login where the JSX below
+  // returns early — so these live up here, not after that early return.
+  const dragIndex = useRef<number | null>(null);
+  const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
+  const [manualDownloading, setManualDownloading] = useState(false);
+
   if (!tokens) return <LoginScreen onLogin={setTokens} />;
 
   const idToken = tokens.idToken;
@@ -401,21 +409,67 @@ export default function AdminApp() {
     refreshList(idToken);
   };
 
-  const handleReorder = async (slugA: string, slugB: string) => {
-    await apiFetch('/videos/reorder', idToken, { method: 'POST', body: JSON.stringify({ slugA, slugB }) });
+  // Drag-and-drop reorder: on drop, the whole list is renumbered 0..n-1 to
+  // match the new visual order and persisted in one batch of PUTs — simpler
+  // and more correct than pairwise swaps for a drag that crosses multiple
+  // positions at once.
+  const handleDrop = async (dropIndex: number) => {
+    const fromIndex = dragIndex.current;
+    dragIndex.current = null;
+    setDragOverIndex(null);
+    if (fromIndex === null || fromIndex === dropIndex || !videos) return;
+
+    const reordered = [...videos];
+    const [moved] = reordered.splice(fromIndex, 1);
+    reordered.splice(dropIndex, 0, moved);
+    setVideos(reordered); // optimistic — updates instantly, no wait for the network
+
+    await Promise.all(
+      reordered.map((v, i) => apiFetch(`/videos/${v.slug}`, idToken, { method: 'PUT', body: JSON.stringify({ order: i }) }))
+    );
     refreshList(idToken);
+  };
+
+  const handleDownloadManual = async () => {
+    setManualDownloading(true);
+    try {
+      const res = await apiFetch('/manual-credentials', idToken);
+      const creds = await res.json();
+      if (!res.ok) throw new Error(creds.error || 'Could not fetch login details');
+      const html = buildUserManualHtml(creds.email, creds.password);
+      const blob = new Blob([html], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'media-admin-user-manual.html';
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch (err: any) {
+      alert(err.message || 'Failed to download the user manual.');
+    } finally {
+      setManualDownloading(false);
+    }
   };
 
   return (
     <div className="max-w-4xl mx-auto py-8">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-primary dark:text-white">Media Admin</h1>
-        <button
-          onClick={() => { auth.logout(); setTokens(null); }}
-          className="text-sm font-semibold text-gray-500 hover:text-primary dark:hover:text-white"
-        >
-          Sign out
-        </button>
+        <div className="flex items-center gap-4">
+          <button
+            onClick={handleDownloadManual}
+            disabled={manualDownloading}
+            className="text-sm font-semibold text-primary dark:text-accent-light hover:underline disabled:opacity-50"
+          >
+            {manualDownloading ? 'Preparing…' : 'Download User Manual'}
+          </button>
+          <button
+            onClick={() => { auth.logout(); setTokens(null); }}
+            className="text-sm font-semibold text-gray-500 hover:text-primary dark:hover:text-white"
+          >
+            Sign out
+          </button>
+        </div>
       </div>
 
       <PublishBar idToken={idToken} />
@@ -446,32 +500,26 @@ export default function AdminApp() {
 
       {videos && videos.length > 0 && (
         <p className="text-xs text-gray-500 mb-3">
-          This is the display order on /media/ — use ↑↓ to rearrange. Publish afterward for it to take effect on the live site.
+          This is the display order on /media/ — drag a card to rearrange. New videos start at the top. Publish afterward for it to take effect on the live site.
         </p>
       )}
 
       {videos && (
         <div className="space-y-3">
           {videos.map((v, i) => (
-            <div key={v.slug} className="flex items-center gap-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
-              <div className="flex flex-col gap-1 flex-shrink-0">
-                <button
-                  onClick={() => handleReorder(v.slug, videos[i - 1].slug)}
-                  disabled={i === 0}
-                  aria-label="Move up"
-                  className="w-6 h-6 flex items-center justify-center rounded bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 disabled:opacity-30 disabled:cursor-not-allowed"
-                >
-                  ↑
-                </button>
-                <button
-                  onClick={() => handleReorder(v.slug, videos[i + 1].slug)}
-                  disabled={i === videos.length - 1}
-                  aria-label="Move down"
-                  className="w-6 h-6 flex items-center justify-center rounded bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 disabled:opacity-30 disabled:cursor-not-allowed"
-                >
-                  ↓
-                </button>
-              </div>
+            <div
+              key={v.slug}
+              draggable
+              onDragStart={() => { dragIndex.current = i; }}
+              onDragOver={(e) => { e.preventDefault(); setDragOverIndex(i); }}
+              onDragLeave={() => setDragOverIndex((cur) => (cur === i ? null : cur))}
+              onDrop={(e) => { e.preventDefault(); handleDrop(i); }}
+              onDragEnd={() => { dragIndex.current = null; setDragOverIndex(null); }}
+              className={`flex items-center gap-4 bg-white dark:bg-gray-800 border rounded-xl p-4 cursor-grab active:cursor-grabbing transition-colors ${
+                dragOverIndex === i ? 'border-accent border-2' : 'border-gray-200 dark:border-gray-700'
+              }`}
+            >
+              <span className="text-gray-300 dark:text-gray-600 flex-shrink-0 select-none" aria-hidden="true">⠿</span>
               <img
                 src={`https://img.youtube.com/vi/${(v.youtubeUrl.match(/[\w-]{11}(?=[^\w-]|$)/) || [''])[0]}/default.jpg`}
                 alt=""

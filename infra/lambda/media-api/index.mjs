@@ -9,9 +9,12 @@ import {
   DeleteCommand,
   GetCommand,
 } from '@aws-sdk/lib-dynamodb';
+import { SecretsManagerClient, GetSecretValueCommand } from '@aws-sdk/client-secrets-manager';
 
 const ddb = DynamoDBDocumentClient.from(new DynamoDBClient({}));
+const secretsManager = new SecretsManagerClient({});
 const TABLE = process.env.TABLE_NAME;
+const MANUAL_CREDENTIALS_SECRET = process.env.MANUAL_CREDENTIALS_SECRET_ARN;
 
 const CATEGORIES = [
   'Heart Tests Explained',
@@ -108,10 +111,11 @@ async function addVideo(body) {
   const existing = await ddb.send(new GetCommand({ TableName: TABLE, Key: { slug } }));
   if (existing.Item) return json(409, { error: `A video with slug "${slug}" already exists.` });
 
-  // New videos go to the end of the display order by default — never jump
-  // ahead of what an admin has already arranged without being asked to.
+  // New videos go to the TOP of the display order by default — freshly
+  // added content is usually what an admin wants visitors to see first;
+  // they can always drag it elsewhere afterward.
   const all = await ddb.send(new ScanCommand({ TableName: TABLE }));
-  const maxOrder = (all.Items || []).reduce((max, i) => Math.max(max, i.order ?? 0), -1);
+  const minOrder = (all.Items || []).reduce((min, i) => Math.min(min, i.order ?? 0), 0);
 
   const item = {
     slug,
@@ -125,7 +129,7 @@ async function addVideo(body) {
     uploadDate: body.uploadDate || now,
     relatedService: body.relatedService || null,
     relatedPost: body.relatedPost || null,
-    order: maxOrder + 1,
+    order: minOrder - 1,
     hidden: false,
     createdAt: now,
     updatedAt: now,
@@ -205,6 +209,15 @@ async function reorderVideos(body) {
   return json(200, { ok: true });
 }
 
+/** GET /manual-credentials — behind the same Cognito authorizer as every
+ *  other route, so the login shown in the downloadable user manual is only
+ *  ever served to an already-authenticated admin, never baked into the
+ *  public JS bundle. */
+async function getManualCredentials() {
+  const out = await secretsManager.send(new GetSecretValueCommand({ SecretId: MANUAL_CREDENTIALS_SECRET }));
+  return json(200, JSON.parse(out.SecretString));
+}
+
 async function oembedLookup(body) {
   const url = body.youtubeUrl;
   const videoId = url ? extractYoutubeId(url) : null;
@@ -232,6 +245,7 @@ export const handler = async (event) => {
     const slug = event.pathParameters?.slug;
 
     if (method === 'GET' && path.endsWith('/videos')) return await listVideos();
+    if (method === 'GET' && path.endsWith('/manual-credentials')) return await getManualCredentials();
     if (method === 'GET' && slug) return await getVideo(slug);
     if (method === 'POST' && path.endsWith('/oembed')) return await oembedLookup(body);
     if (method === 'POST' && path.endsWith('/videos/reorder')) return await reorderVideos(body);
