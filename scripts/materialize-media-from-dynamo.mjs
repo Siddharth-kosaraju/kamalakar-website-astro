@@ -50,6 +50,12 @@ function itemToYaml(item) {
   if (item.relatedService) lines.push(`relatedService: ${yamlString(item.relatedService)}`);
   if (item.relatedPost) lines.push(`relatedPost: ${yamlString(item.relatedPost)}`);
   lines.push(`order: ${Number.isFinite(item.order) ? item.order : 0}`);
+  // Authoritative sitemap lastmod for this route — see generate-sitemap.mjs.
+  // This file itself is regenerated fresh on every publish and never
+  // committed to git, so git history/mtime can't tell "actually edited"
+  // apart from "just republished unchanged" the way it can for hand-authored
+  // content. DynamoDB's updatedAt is the real signal.
+  if (item.updatedAt) lines.push(`updatedAt: ${yamlString(item.updatedAt)}`);
   return lines.join('\n') + '\n';
 }
 

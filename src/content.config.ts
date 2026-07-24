@@ -275,6 +275,11 @@ const mediaItemSchema = z.object({
   // Admin-managed display order (ascending) — see /admin/'s up/down reorder
   // controls. Materialized straight from the DynamoDB item's `order` field.
   order: z.number().default(0),
+  // Set only by the CMS materialize step (scripts/materialize-media-from-dynamo.mjs)
+  // from DynamoDB's updatedAt — the sitemap generator uses it as the
+  // authoritative lastmod for CMS-published videos. Absent on hand-authored
+  // YAML, which uses git history instead (see generate-sitemap.mjs).
+  updatedAt: z.string().optional(),
 });
 
 const blogPostSchema = z.object({

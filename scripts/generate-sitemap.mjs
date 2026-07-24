@@ -96,7 +96,33 @@ function getSourceFiles(route) {
  * stamped with build time — which is exactly the crawl-budget churn this
  * generator exists to avoid.
  */
+/**
+ * CMS-published video pages (scripts/materialize-media-from-dynamo.mjs) have
+ * no meaningful git history — that YAML is regenerated fresh on every
+ * publish and never committed — so git/mtime can't distinguish "actually
+ * edited" from "just republished unchanged". DynamoDB's updatedAt, written
+ * into the YAML as `updatedAt:`, is the authoritative signal for those
+ * routes instead. Hand-authored media YAML (no updatedAt field) falls
+ * through to the normal git-history resolution below, same as everything else.
+ */
+function getMediaUpdatedAt(route) {
+  const mediaMatch = route.match(/^\/media\/([^/]+)\/$/);
+  if (!mediaMatch) return null;
+  try {
+    const yaml = readFileSync(join(ROOT, `src/content/media/${mediaMatch[1]}.yaml`), 'utf-8');
+    const m = yaml.match(/^updatedAt:\s*"([^"]+)"/m);
+    return m ? m[1] : null;
+  } catch {
+    return null;
+  }
+}
+
 function getLastModified(route, warnings) {
+  const cmsUpdatedAt = getMediaUpdatedAt(route);
+  if (cmsUpdatedAt) {
+    return new Date(cmsUpdatedAt).toISOString().split('T')[0];
+  }
+
   const sources = getSourceFiles(route);
 
   let latestDate = null;
