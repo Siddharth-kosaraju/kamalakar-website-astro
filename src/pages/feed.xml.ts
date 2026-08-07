@@ -8,20 +8,30 @@ export async function GET(_context: APIContext) {
   const now = new Date();
   const posts = (await getCollection('blog'))
     .filter((p) => p.data.published && p.data.date <= now)
-    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+    .map((p) => ({ entry: p, link: `${SITE}/blog/${p.id}/` }));
+
+  // Case studies share the feed — robots.txt submits feed.xml as a sitemap for
+  // freshness signals, so new case-study URLs should surface here too.
+  const caseStudies = (await getCollection('caseStudies'))
+    .filter((p) => p.data.published && p.data.date <= now)
+    .map((p) => ({ entry: p, link: `${SITE}/case-study/${p.id}/` }));
+
+  const items = [...posts, ...caseStudies].sort(
+    (a, b) => b.entry.data.date.getTime() - a.entry.data.date.getTime()
+  );
 
   return rss({
     title: 'Kamalakar Heart Centre — Heart Health Education',
     description:
-      'Plain-English heart-health articles by Dr Kamalakar Kosaraju, Interventional Cardiologist at Kamalakar Heart Centre, Guntur.',
+      'Plain-English heart-health articles and patient case studies by Dr Kamalakar Kosaraju, Interventional Cardiologist at Kamalakar Heart Centre, Guntur.',
     site: SITE,
-    items: posts.map((post) => ({
-      title: post.data.title,
-      pubDate: post.data.date,
-      description: post.data.summary,
-      link: `${SITE}/blog/${post.id}/`,
-      author: post.data.author,
-      categories: post.data.tags ?? [],
+    items: items.map(({ entry, link }) => ({
+      title: entry.data.title,
+      pubDate: entry.data.date,
+      description: entry.data.summary,
+      link,
+      author: entry.data.author,
+      categories: entry.data.tags ?? [],
     })),
     customData: `<language>en-in</language>`,
     stylesheet: false,

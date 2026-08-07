@@ -5,8 +5,15 @@
       "name": "astro-dev",
       "runtimeExecutable": "/opt/homebrew/bin/node",
       "env": {"PATH": "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"},
-      "runtimeArgs": ["/opt/homebrew/lib/node_modules/npm/bin/npm-cli.js", "run", "dev"],
-      "port": 4321
+      "runtimeArgs": ["/opt/homebrew/lib/node_modules/npm/bin/npm-cli.js", "run", "dev", "--", "--port", "4325"],
+      "port": 4325
+    },
+    {
+      "name": "astro-preview",
+      "runtimeExecutable": "/opt/homebrew/bin/node",
+      "env": {"PATH": "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"},
+      "runtimeArgs": ["/opt/homebrew/lib/node_modules/npm/bin/npm-cli.js", "run", "preview", "--", "--port", "4326"],
+      "port": 4326
     }
   ]
 }

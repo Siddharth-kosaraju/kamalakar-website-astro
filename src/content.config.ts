@@ -51,6 +51,7 @@ const siteSchema = z.object({
     education: z.string(),
     services: z.string(),
     blog: z.string(),
+    caseStudies: z.string().optional(),
     media: z.string().optional(),
     contact: z.string(),
     bookBtn: z.string(),
@@ -323,6 +324,15 @@ const blog = defineCollection({
   schema: blogPostSchema,
 });
 
+// Case studies share the blog frontmatter shape (same SEO overrides and
+// hero-image convention). Directory name matches the URL base exactly
+// (/case-study/<slug>/ ← src/content/case-study/<slug>.md) so the sitemap
+// generator's route→source mapping stays trivial.
+const caseStudies = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/case-study' }),
+  schema: blogPostSchema,
+});
+
 const media = defineCollection({
   loader: glob({
     pattern: '**/*.yaml',
@@ -333,4 +343,4 @@ const media = defineCollection({
   schema: mediaItemSchema,
 });
 
-export const collections = { site, services, blog, media };
+export const collections = { site, services, blog, caseStudies, media };

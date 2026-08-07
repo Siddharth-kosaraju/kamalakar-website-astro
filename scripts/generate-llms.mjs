@@ -13,6 +13,8 @@
  *                      actually built (dist/blog/<slug>/index.html exists).
  *                      Unpublished / future-dated posts are excluded by Astro
  *                      at build time, so gating on the built HTML mirrors that.
+ *   - Case studies   → frontmatter of src/content/case-study/*.md, same
+ *                      title + summary + built-HTML gating as blog entries.
  *   - Service entries→ src/content/services/*.yaml (title + metaDescription),
  *                      included ONLY if dist/services/<slug>/index.html exists.
  *   - Static pages   → STATIC_DESCRIPTIONS map below (hand-maintained).
@@ -40,6 +42,7 @@ import { join } from 'node:path';
 const ROOT = new URL('../', import.meta.url).pathname;
 const DIST = new URL('../dist/', import.meta.url).pathname;
 const BLOG_SRC = join(ROOT, 'src/content/blog');
+const CASESTUDY_SRC = join(ROOT, 'src/content/case-study');
 const SERVICES_SRC = join(ROOT, 'src/content/services');
 const MEDIA_SRC = join(ROOT, 'src/content/media');
 const SITE = 'https://kamalakarheartcentre.com';
@@ -90,6 +93,11 @@ const STATIC_DESCRIPTIONS = {
     section: 'clinic',
     name: 'Heart Health Blog',
     desc: 'Articles and patient guides on heart attacks, heart tests, angioplasty, cholesterol, heart failure and heart-healthy living from Dr. Kamalakar Kosaraju.',
+  },
+  '/case-study/': {
+    section: 'clinic',
+    name: 'Patient Case Studies',
+    desc: 'Anonymized real patient case studies from Kamalakar Heart Centre — how heart conditions such as coronary artery disease were diagnosed and treated by Dr. Kamalakar Kosaraju.',
   },
   '/media/': {
     section: 'clinic',
@@ -191,6 +199,35 @@ function collectBlog() {
 }
 
 // ---------------------------------------------------------------------------
+// Collect case-study entries — same convention as blog (title + summary from
+// frontmatter, gated on the built HTML in dist/case-study/<slug>/).
+// ---------------------------------------------------------------------------
+function collectCaseStudies() {
+  const entries = [];
+  const files = existsSync(CASESTUDY_SRC)
+    ? readdirSync(CASESTUDY_SRC).filter((f) => f.endsWith('.md'))
+    : [];
+  for (const file of files) {
+    const slug = file.replace(/\.md$/, '');
+    if (!existsSync(join(DIST, 'case-study', slug, 'index.html'))) continue;
+    const fm = parseScalars(
+      frontmatter(readFileSync(join(CASESTUDY_SRC, file), 'utf-8')),
+      ['title', 'summary', 'date'],
+      `src/content/case-study/${file}`
+    );
+    entries.push({
+      url: `${SITE}/case-study/${slug}/`,
+      name: fm.title || slug,
+      desc: fm.summary || '',
+      date: fm.date || '',
+    });
+  }
+  // Newest first.
+  entries.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
+  return entries;
+}
+
+// ---------------------------------------------------------------------------
 // Collect service entries — only those actually built into dist/.
 // ---------------------------------------------------------------------------
 function collectServices() {
@@ -267,6 +304,7 @@ function factsBlock() {
 // ---------------------------------------------------------------------------
 function buildDoc() {
   const blog = collectBlog();
+  const caseStudies = collectCaseStudies();
   const services = collectServices();
   const media = collectMedia();
 
@@ -294,6 +332,9 @@ function buildDoc() {
   parts.push('## Patient Guides');
   parts.push(blog.map(link).join('\n'));
   parts.push('');
+  parts.push('## Patient Case Studies');
+  parts.push(caseStudies.map(link).join('\n'));
+  parts.push('');
   parts.push('## Videos');
   parts.push(media.map(link).join('\n'));
   parts.push('');
@@ -310,6 +351,7 @@ function buildDoc() {
   const emitted = new Set([
     ...services.map((e) => e.url),
     ...blog.map((e) => e.url),
+    ...caseStudies.map((e) => e.url),
     ...media.map((e) => e.url),
     ...staticEntries.map((e) => e.url),
   ]);
@@ -380,7 +422,7 @@ function crossCheck(emitted) {
       const path = url.replace(SITE, '');
       failures.push(
         `${path}  →  in sitemap but missing from llms.txt. ` +
-          (path.startsWith('/blog/') || path.startsWith('/services/')
+          (path.startsWith('/blog/') || path.startsWith('/case-study/') || path.startsWith('/services/')
             ? 'Content page — check it built into dist/.'
             : `Add a STATIC_DESCRIPTIONS["${path}"] entry in scripts/generate-llms.mjs.`)
       );

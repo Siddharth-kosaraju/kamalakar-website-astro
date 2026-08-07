@@ -68,7 +68,7 @@ These rules are encoded in `cloudfront-functions/redirect-www-to-non-www.js`, `s
 
 Any of these triggers the full canonical/sitemap/robots review cycle above:
 
-- new page (`src/pages/*.astro`, new `src/content/services/*.yaml`, new `src/content/blog/*.md`, new `src/content/media/*.yaml`)
+- new page (`src/pages/*.astro`, new `src/content/services/*.yaml`, new `src/content/blog/*.md`, new `src/content/case-study/*.md`, new `src/content/media/*.yaml`)
 - renamed slug or path
 - removed page
 - new redirect rule in the CF function
@@ -93,6 +93,9 @@ Any of these triggers the full canonical/sitemap/robots review cycle above:
 | Admin CMS portal | `src/pages/admin/index.astro`, `src/components/admin/` |
 | Media CMS infra (CDK) | `infra/` — see `infra/README.md` for setup |
 | DynamoDB→YAML publish step | `scripts/materialize-media-from-dynamo.mjs`, `scripts/codebuild/media-publish-buildspec.yml` |
+| Case-study pages | `src/pages/case-study/index.astro`, `src/pages/case-study/[slug].astro` |
+| Case-study content | `src/content/case-study/*.md` (`caseStudies` collection in `src/content.config.ts`, reuses `blogPostSchema`) |
+| Case-study ingestion skill | `.claude/skills/kamalakar-case-studies/SKILL.md` |
 | Deploy + verify skill | `.claude/skills/deploy-verify/SKILL.md` |
 | Blog writer skill | `.claude/skills/blog-writer/SKILL.md` |
 | Content planner skill | `.claude/skills/content-planner/SKILL.md` |

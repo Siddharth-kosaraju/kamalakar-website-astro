@@ -1,0 +1,312 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SEO from '../../components/SEO.astro';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer.astro';
+import AuthorByline from '../../components/AuthorByline.astro';
+import { getSiteContent } from '../../utils/content';
+import { getCollection, render } from 'astro:content';
+import { execSync } from 'node:child_process';
+
+export async function getStaticPaths() {
+  const now = new Date();
+  const studies = await getCollection('caseStudies');
+  return studies
+    .filter((study) => study.data.published && study.data.date <= now)
+    .map((study) => ({
+      params: { slug: study.id },
+      props: { study },
+    }));
+}
+
+const { study } = Astro.props;
+const { Content } = await render(study);
+const content = await getSiteContent();
+
+// SEO title/description: prefer per-study overrides, else the H1 title / summary.
+// The H1 (study.data.title) always stays the on-page heading; metaTitle only
+// affects the <title> tag (and its shortened brand suffix).
+const seoTitle = `${study.data.metaTitle ?? study.data.title} | Kamalakar Heart Centre`;
+const seoDescription = study.data.metaDescription ?? study.data.summary;
+
+// --- Schema generation ---
+const studyUrl = `https://kamalakarheartcentre.com/case-study/${study.id}/`;
+
+// Compute the page's last-modified date from git history of the source .md file.
+// Matches the sitemap generator's approach so freshness signals are consistent.
+// Falls back to the publish date if git history isn't available (e.g. shallow clone).
+function getLastModified(slug: string, fallback: Date): string {
+  try {
+    const iso = execSync(
+      `git log -1 --format=%aI -- "src/content/case-study/${slug}.md"`,
+      { encoding: 'utf-8', stdio: ['pipe', 'pipe', 'pipe'] }
+    ).trim();
+    return iso || fallback.toISOString();
+  } catch {
+    return fallback.toISOString();
+  }
+}
+
+const lastModified = getLastModified(study.id, study.data.date);
+
+// Hero image: prefer the per-study heroImage when present, else fall back to
+// the doctor portrait (same convention as blog posts).
+const heroImage = study.data.heroImage;
+const heroImageAlt = study.data.heroImageAlt || study.data.title;
+const heroImageWebp = heroImage?.replace(/\.(jpe?g|png)$/i, '.webp');
+const ogImage = heroImage
+  ? `https://kamalakarheartcentre.com${heroImage}`
+  : 'https://kamalakarheartcentre.com/media/dr-kamalakar.jpg';
+
+const schemas: object[] = [
+  // Article schema — a case study is not a blog post, so plain Article (not
+  // BlogPosting) with its own articleSection. E-E-A-T signals mirror the blog.
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: study.data.title,
+    description: study.data.summary,
+    datePublished: study.data.date.toISOString(),
+    dateModified: lastModified,
+    // Reference the canonical #physician entity defined on the homepage so
+    // Google sees one Dr Kamalakar across the site, not a near-duplicate per page.
+    author: {
+      '@type': 'Physician',
+      '@id': 'https://kamalakarheartcentre.com/#physician',
+      name: study.data.author,
+      url: 'https://kamalakarheartcentre.com/about/',
+    },
+    publisher: {
+      '@type': 'MedicalOrganization',
+      '@id': 'https://kamalakarheartcentre.com/#organization',
+      name: 'Kamalakar Heart Centre',
+      url: 'https://kamalakarheartcentre.com/',
+      logo: { '@type': 'ImageObject', url: 'https://kamalakarheartcentre.com/images/logo.svg' },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': studyUrl,
+    },
+    image: ogImage,
+    keywords: study.data.tags?.join(', '),
+    articleSection: 'Patient Case Studies',
+    inLanguage: 'en',
+  },
+  // MedicalWebPage schema (critical for YMYL medical content E-E-A-T)
+  {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalWebPage',
+    url: studyUrl,
+    name: study.data.title,
+    description: study.data.summary,
+    lastReviewed: lastModified,
+    reviewedBy: {
+      '@type': 'Physician',
+      '@id': 'https://kamalakarheartcentre.com/#physician',
+    },
+    specialty: {
+      '@type': 'MedicalSpecialty',
+      name: 'Cardiology',
+    },
+    audience: {
+      '@type': 'PeopleAudience',
+      suggestedMinAge: 18,
+      audienceType: 'patients and caregivers',
+    },
+    inLanguage: 'en',
+  },
+  // BreadcrumbList schema
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://kamalakarheartcentre.com/' },
+      { '@type': 'ListItem', position: 2, name: 'Case Studies', item: 'https://kamalakarheartcentre.com/case-study/' },
+      { '@type': 'ListItem', position: 3, name: study.data.title },
+    ],
+  },
+];
+
+// Build FAQPage schema from raw markdown if a FAQ section exists (same
+// convention as blog posts: ## Frequently Asked Questions with ### questions).
+const rawBody = study.body || '';
+const faqSection = rawBody.includes('## Frequently Asked Questions');
+if (faqSection) {
+  const faqContent = rawBody
+    .split('## Frequently Asked Questions')[1]
+    ?.split(/\n## /)[0]
+    ?.split(/\n<div\b/)[0] || '';
+  const faqs: { question: string; answer: string }[] = [];
+  let match;
+  const faqBodyRegex = /###\s+(.+?)\n\n([\s\S]*?)(?=\n###|$)/g;
+  while ((match = faqBodyRegex.exec(faqContent)) !== null) {
+    const question = match[1].trim();
+    const answer = match[2].trim().replace(/<[^>]+>/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/\n+/g, ' ').trim();
+    if (question && answer) {
+      faqs.push({ question, answer });
+    }
+  }
+  if (faqs.length > 0) {
+    schemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map(faq => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    });
+  }
+}
+---
+
+<BaseLayout class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
+  <SEO
+    slot="head"
+    title={seoTitle}
+    description={seoDescription}
+    keywords={study.data.tags || []}
+    canonicalUrl={studyUrl}
+    ogImage={ogImage}
+    schemas={schemas}
+    page="case-study-post"
+    ogType="article"
+    articleSection="Patient Case Studies"
+    articlePublishedTime={study.data.date.toISOString()}
+    articleModifiedTime={lastModified}
+    articleAuthor={study.data.author}
+  />
+
+  <Header
+    client:idle
+    content={content.nav}
+    appointmentPhone={content.contact.appointmentPhone}
+    currentPage="case-study"
+    currentPath={Astro.url.pathname}
+  />
+
+  <main id="main-content" aria-label="Case Study">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-1">
+      <ol class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+        <li>
+          <a href="/" class="hover:text-primary dark:hover:text-white transition-colors">Home</a>
+        </li>
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </li>
+        <li>
+          <a href="/case-study/" class="hover:text-primary dark:hover:text-white transition-colors">Case Studies</a>
+        </li>
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </li>
+        <li class="text-primary dark:text-white font-medium truncate max-w-[200px]" aria-current="page">{study.data.title}</li>
+      </ol>
+    </nav>
+
+    <!-- Article -->
+    <article class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-12">
+      <!-- Header -->
+      <header class="mb-6 md:mb-12">
+        {study.data.tags && (
+          <div class="flex flex-wrap gap-2 mb-3 md:mb-6">
+            {study.data.tags.map((tag) => (
+              <span class="px-3 py-1 bg-primary/10 dark:bg-primary/20 text-primary dark:text-accent-light text-xs font-bold uppercase tracking-wider rounded-full">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+
+        <h1 class="text-2xl md:text-4xl lg:text-5xl font-bold font-serif text-primary dark:text-white mb-3 md:mb-6 leading-tight">
+          {study.data.title}
+        </h1>
+
+        <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 pb-5 md:pb-8">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs">
+              {study.data.author.charAt(0)}
+            </div>
+            <span class="font-medium text-gray-700 dark:text-gray-300">{study.data.author}</span>
+          </div>
+          <span class="text-gray-300 dark:text-gray-600">|</span>
+          <time datetime={study.data.date.toISOString()}>
+            {study.data.date.toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </time>
+          {study.data.readingTime && (
+            <>
+              <span class="text-gray-300 dark:text-gray-600">|</span>
+              <span class="flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                {study.data.readingTime}
+              </span>
+            </>
+          )}
+        </div>
+      </header>
+
+      <!-- Hero image (optional per-study) -->
+      {heroImage && (
+        <figure class="mb-8 md:mb-10 -mx-4 sm:mx-0">
+          <picture>
+            {heroImageWebp && <source srcset={heroImageWebp} type="image/webp" />}
+            <img
+              src={heroImage}
+              alt={heroImageAlt}
+              width="1200"
+              height="750"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+              class="w-full h-auto sm:rounded-2xl shadow-md"
+            />
+          </picture>
+        </figure>
+      )}
+
+      <!-- Author byline (single component so the year count stays in sync) -->
+      <AuthorByline />
+
+      <!-- Content -->
+      <div class="prose md:prose-lg dark:prose-invert max-w-none prose-headings:font-serif prose-headings:text-primary dark:prose-headings:text-white prose-a:text-accent dark:prose-a:text-accent-light hover:prose-a:text-primary dark:hover:prose-a:text-white prose-strong:text-primary dark:prose-strong:text-white prose-li:marker:text-accent">
+        <Content />
+      </div>
+
+      <!-- Author CTA -->
+      <div class="mt-8 md:mt-16 p-5 md:p-8 bg-neutral-50 dark:bg-primary-dark rounded-2xl border border-gray-100 dark:border-gray-800">
+        <div class="flex flex-col sm:flex-row items-center gap-4 md:gap-6">
+          <div class="w-14 h-14 md:w-20 md:h-20 rounded-full overflow-hidden border-4 border-primary/20 flex-shrink-0">
+            <picture>
+              <source srcset="/media/dr-kamalakar.webp" type="image/webp" />
+              <img
+                src="/media/dr-kamalakar.jpg"
+                width="80"
+                height="80"
+                loading="lazy"
+                alt="Dr. Kamalakar Kosaraju"
+                class="w-full h-full object-cover"
+              />
+            </picture>
+          </div>
+          <div class="text-center sm:text-left">
+            <p class="font-bold text-primary dark:text-white text-lg font-serif">Dr. Kamalakar Kosaraju</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">M.D. (Gold Medalist), D.M. Cardiology, FESC — Interventional Cardiologist, Guntur</p>
+            <a
+              href={`tel:${content.contact.appointmentPhone}`}
+              class="inline-flex items-center gap-2 bg-primary text-white px-6 py-2.5 rounded-lg font-bold text-sm shadow-md hover:bg-primary-light transition-all"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Book Consultation
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <Footer content={content.footer} navContent={content.nav} currentPage="case-study" />
+</BaseLayout>

@@ -11,9 +11,11 @@ interface Props {
   canonicalUrl: string;
   ogImage?: string;
   schemas?: object[];
-  page?: 'home' | 'education' | 'service' | 'privacy' | 'terms' | 'blog' | 'blog-post' | 'media' | 'media-video';
+  page?: 'home' | 'education' | 'service' | 'privacy' | 'terms' | 'blog' | 'blog-post' | 'case-study' | 'case-study-post' | 'media' | 'media-video';
   /** For blog posts: set to 'article' for proper OG tagging */
   ogType?: 'website' | 'article';
+  /** article:section value for ogType 'article' (blog vs case-study pages) */
+  articleSection?: string;
   /** ISO date string for article:published_time */
   articlePublishedTime?: string;
   /** ISO date string for article:modified_time (freshness signal for AI engines) */
@@ -31,6 +33,7 @@ const {
   schemas = [],
   page = 'home',
   ogType = 'website',
+  articleSection = 'Heart Health Education',
   articlePublishedTime,
   articleModifiedTime,
   articleAuthor,
@@ -77,7 +80,7 @@ const {
   <meta property="article:author" content={articleAuthor} />
 )}
 {ogType === 'article' && (
-  <meta property="article:section" content="Heart Health Education" />
+  <meta property="article:section" content={articleSection} />
 )}
 
 <!-- Twitter -->

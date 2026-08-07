@@ -7,6 +7,7 @@ interface NavContent {
   education: string;
   services: string;
   blog: string;
+  caseStudies?: string;
   media?: string;
   contact: string;
   bookBtn: string;
@@ -20,7 +21,7 @@ interface NavContent {
 interface HeaderProps {
   content: NavContent;
   appointmentPhone: string;
-  currentPage?: 'home' | 'about' | 'services' | 'education' | 'blog' | 'media' | 'contact';
+  currentPage?: 'home' | 'about' | 'services' | 'education' | 'blog' | 'case-study' | 'media' | 'contact';
   currentPath?: string;
 }
 
@@ -49,6 +50,7 @@ export default function Header({ content, appointmentPhone, currentPage = 'home'
     { name: content.services, href: '/services/', page: 'services' as const },
     { name: content.education, href: '/education/', page: 'education' as const },
     { name: content.blog, href: '/blog/', page: 'blog' as const },
+    { name: content.caseStudies || 'Case Studies', href: '/case-study/', page: 'case-study' as const },
     { name: content.media || 'Media', href: '/media/', page: 'media' as const },
     { name: content.contact, href: '/contact/', page: 'contact' as const },
   ];
@@ -107,8 +109,8 @@ export default function Header({ content, appointmentPhone, currentPage = 'home'
             </a>
 
             {/* Desktop Nav */}
-            <div className="hidden lg:flex items-center gap-8">
-              <nav className="flex items-center gap-8" aria-label="Main navigation">
+            <div className="hidden lg:flex items-center gap-6 xl:gap-8">
+              <nav className="flex items-center gap-5 xl:gap-8" aria-label="Main navigation">
                 {navLinks.map((link) => (
                   <a
                     key={link.name}

@@ -10,15 +10,15 @@
  *
  * Grouping order:
  *   1. Homepage
- *   2. Top-level sections (about, services, education, blog, contact)
+ *   2. Top-level sections (about, services, education, blog, case-study, contact)
  *   3. Service detail pages
  *   4. Legal pages
- *   5. Blog post pages
+ *   5. Blog post + case-study pages
  *
  * Priority rules:
  *   1.00 — Homepage (/)
  *   0.80 — Top-level sections, service detail pages, legal pages
- *   0.60 — Blog post pages
+ *   0.60 — Blog post + case-study pages
  */
 
 import { readdirSync, statSync, writeFileSync, readFileSync } from 'node:fs';
@@ -48,6 +48,12 @@ function getSourceFiles(route) {
     return [`src/content/blog/${blogMatch[1]}.md`];
   }
 
+  // Case studies — same convention as blog posts (content .md, not the template).
+  const caseStudyMatch = route.match(/^\/case-study\/([^/]+)\/$/);
+  if (caseStudyMatch) {
+    return [`src/content/case-study/${caseStudyMatch[1]}.md`];
+  }
+
   // Service detail pages — only track the content file (.yaml), not the template.
   const serviceMatch = route.match(/^\/services\/([^/]+)\/$/);
   if (serviceMatch) {
@@ -65,6 +71,7 @@ function getSourceFiles(route) {
     '/': 'src/pages/index.astro',
     '/about/': 'src/pages/about.astro',
     '/blog/': 'src/pages/blog/index.astro',
+    '/case-study/': 'src/pages/case-study/index.astro',
     '/contact/': 'src/pages/contact.astro',
     '/education/': 'src/pages/education.astro',
     '/services/': 'src/pages/services/index.astro',
@@ -197,7 +204,7 @@ function collectHtmlRoutes(dir, routes = []) {
 function getGroupAndPriority(route) {
   if (route === '/') return { group: 0, priority: '1.00' };
 
-  if (/^\/(about|services|education|blog|contact)\/$/.test(route))
+  if (/^\/(about|services|education|blog|case-study|contact)\/$/.test(route))
     return { group: 1, priority: '0.80' };
 
   if (/^\/services\/.+\/$/.test(route))
@@ -206,7 +213,7 @@ function getGroupAndPriority(route) {
   if (/^\/(privacy-policy|terms-of-service)\/$/.test(route))
     return { group: 3, priority: '0.80' };
 
-  if (/^\/blog\/.+\/$/.test(route))
+  if (/^\/(blog|case-study)\/.+\/$/.test(route))
     return { group: 4, priority: '0.60' };
 
   return { group: 5, priority: '0.50' };

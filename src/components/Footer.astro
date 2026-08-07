@@ -24,6 +24,7 @@ interface Props {
     services: string;
     education: string;
     blog: string;
+    caseStudies?: string;
     media?: string;
     contact: string;
     [key: string]: string;
@@ -49,6 +50,7 @@ const navLinks = [
   { name: navContent.services, href: '/services/' },
   { name: navContent.education, href: '/education/' },
   { name: navContent.blog, href: '/blog/' },
+  { name: navContent.caseStudies || 'Case Studies', href: '/case-study/' },
   { name: navContent.media || 'Media', href: '/media/' },
   { name: navContent.contact, href: '/contact/' },
 ];
@@ -107,7 +109,7 @@ const termsHref = '/terms-of-service/';
             <span>YouTube</span>
           </a>
           <a
-            href="https://www.instagram.com/kamalakarheartclinic/"
+            href="https://www.instagram.com/drkamalakarcardiologist/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Follow Dr. Kamalakar on Instagram"

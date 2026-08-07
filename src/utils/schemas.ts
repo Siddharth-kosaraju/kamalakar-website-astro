@@ -78,7 +78,7 @@ export function buildBusinessSchema(testimonials?: TestimonialItem[], gbpUrl?: s
     sameAs: [
       'https://www.facebook.com/DR.Kamalakarkosaraju/',
       'https://www.youtube.com/@drkamalakarcardiologist',
-      'https://www.instagram.com/kamalakarheartclinic/',
+      'https://www.instagram.com/drkamalakarcardiologist/',
       ...(gbpUrl ? [gbpUrl] : []),
     ],
     hasOfferCatalog: {
