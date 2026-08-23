@@ -51,6 +51,7 @@ Every blog post MUST have this exact frontmatter structure:
 ```yaml
 ---
 title: "SEO-optimized title with primary keyword"
+category: "Prevention & Lifestyle"   # REQUIRED — one of the 6 fixed buckets (see Frontmatter Rules)
 summary: "150-160 character meta description with primary keyword near the start"
 date: YYYY-MM-DD
 author: "Dr. Kamalakar Kosaraju"
@@ -64,6 +65,7 @@ published: true
 
 - **title:** 50-65 characters. Include primary keyword. Use question format or "Best X" format for local SEO posts. Use an en-dash (--) not a hyphen for separators.
 - **summary:** 150-160 characters. This becomes the meta description. Put the primary keyword in the first 60 characters. Write as a compelling snippet that earns clicks from search results.
+- **category (required):** exactly one of `Heart Tests Explained` · `Heart Attack & Emergency` · `Prevention & Lifestyle` · `Procedures & Treatment` · `Heart Conditions` · `Heart Care in Guntur`. It drives the `/blog/` filter bar, the card label, and "Read next" related-post selection; the build **fails** if a blog post has none. Pick by the post's primary intent: diagnostics → Tests; symptoms/first aid → Emergency; diet/exercise/seasonal/rehab → Prevention; angiogram/angioplasty/stent/pacemaker → Procedures; a disease explainer (heart failure, diabetes & heart) → Conditions; local/doctor-profile/"best cardiologist in Guntur" → Heart Care in Guntur. Never invent a new value — the enum lives in `src/content.config.ts` `BLOG_CATEGORIES`.
 - **tags:** 5-8 tags. First tag = primary keyword. Include location-based tags when relevant (e.g., "heart specialist guntur"). Mix broad terms ("cardiology") with specific long-tail terms ("chest pain causes in young adults").
 - **readingTime:** Calculate based on ~200 words per minute. Format as "X min read".
 - **date:** Use the current date or a specified future date.
@@ -379,6 +381,7 @@ Queries:
 - [ ] readingTime matches word count
 - [ ] Date is set correctly
 - [ ] `published: true` is set
+- [ ] `category:` is set to one of the 6 fixed buckets
 - [ ] Content is medically responsible (encourages consultation, does not diagnose)
 - [ ] **NO pricing, costs, fees, or rupee amounts anywhere in the post**
 - [ ] Short paragraphs (2-3 sentences) for mobile readability

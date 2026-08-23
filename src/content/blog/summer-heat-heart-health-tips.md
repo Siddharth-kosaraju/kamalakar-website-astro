@@ -1,5 +1,6 @@
 ---
 title: "How Summer Heat Affects Your Heart – Tips from a Guntur Cardiologist"
+category: "Prevention & Lifestyle"
 metaTitle: "Summer Heat and Your Heart: Safety Tips"
 summary: "Summer heat strains your heart through dehydration and blood pressure changes. Learn how to protect your heart during Indian summers with expert tips."
 date: 2026-04-21

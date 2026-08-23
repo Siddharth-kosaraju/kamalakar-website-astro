@@ -3,16 +3,36 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import SEO from '../../components/SEO.astro';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer.astro';
-import { getSiteContent } from '../../utils/content';
-import { getCollection } from 'astro:content';
+import BlogCard from '../../components/BlogCard.astro';
+import { getSiteContent, getPublishedBlogPosts } from '../../utils/content';
+import { BLOG_CATEGORIES } from '../../content.config';
 
 const content = await getSiteContent();
 
-// Get all published blog posts with date <= today, sorted by date (newest first)
-const now = new Date();
-const posts = (await getCollection('blog'))
-  .filter((post) => post.data.published && post.data.date <= now)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+// All published, non-future posts, newest first (shared predicate).
+const posts = await getPublishedBlogPosts();
+
+// Every blog post must carry a category — it drives the filter bar, card label
+// and "Read next". The schema keeps it optional only because case studies
+// share blogPostSchema, so enforce it here for the blog collection.
+for (const post of posts) {
+  if (!post.data.category) {
+    throw new Error(
+      `[blog] src/content/blog/${post.id}.md is missing \`category:\`. ` +
+      `Set it to one of: ${BLOG_CATEGORIES.join(' | ')}.`
+    );
+  }
+}
+
+const [featured, ...rest] = posts;
+
+// The grid lists everything except the featured (newest) post, which already
+// has its own slot above. Category → count in fixed BLOG_CATEGORIES order;
+// empty buckets are hidden.
+const gridPosts = rest;
+const categoryCounts = BLOG_CATEGORIES
+  .map((c) => ({ name: c, count: gridPosts.filter((p) => p.data.category === c).length }))
+  .filter((c) => c.count > 0);
 
 const schemas = [
   {
@@ -27,6 +47,15 @@ const schemas = [
       name: 'Kamalakar Heart Centre',
       url: 'https://kamalakarheartcentre.com/',
     },
+    blogPost: posts.map((p) => ({
+      '@type': 'BlogPosting',
+      headline: p.data.title,
+      url: `https://kamalakarheartcentre.com/blog/${p.id}/`,
+      datePublished: p.data.date.toISOString(),
+      articleSection: p.data.category,
+      ...(p.data.heroImage ? { image: `https://kamalakarheartcentre.com${p.data.heroImage}` } : {}),
+      author: { '@type': 'Person', name: p.data.author },
+    })),
   },
 ];
 ---
@@ -52,7 +81,7 @@ const schemas = [
 
   <main id="main-content" aria-label="Blog">
     <!-- Breadcrumb -->
-    <nav aria-label="Breadcrumb" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-1">
+    <nav aria-label="Breadcrumb" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-1">
       <ol class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
         <li>
           <a href="/" class="hover:text-primary dark:hover:text-white transition-colors">Home</a>
@@ -75,67 +104,121 @@ const schemas = [
           Heart Health Blog
         </h1>
         <p class="text-base md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-medium">
-          Expert insights on cardiac health, prevention strategies, and the latest advances in heart care — written by Dr. Kamalakar Kosaraju.
+          {posts.length} plain-English articles on heart tests, emergencies, prevention, procedures and heart conditions — written by Dr. Kamalakar Kosaraju, Interventional Cardiologist, Guntur.
         </p>
       </div>
     </section>
 
-    <!-- Blog Posts Grid -->
-    <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16">
-      {posts.length === 0 ? (
+    <!-- Featured post -->
+    {featured && (
+      <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 md:pt-12" aria-labelledby="featured-heading">
+        <h2 id="featured-heading" class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3 md:mb-4">Latest article</h2>
+        <BlogCard post={featured} headingLevel="h3" variant="featured" />
+      </section>
+    )}
+
+    <!-- Category filter + grid -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12" aria-labelledby="all-articles-heading">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-4 md:mb-6">
+        <h2 id="all-articles-heading" class="text-2xl md:text-3xl font-bold font-serif text-primary dark:text-white">More articles</h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400" data-blog-count aria-live="polite">
+          Showing {gridPosts.length} articles
+        </p>
+      </div>
+
+      <div
+        role="group"
+        aria-label="Filter articles by category"
+        class="flex gap-2 overflow-x-auto pb-2 mb-6 md:mb-8 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap"
+        data-blog-filters
+      >
+        <button
+          type="button"
+          data-filter="all"
+          aria-pressed="true"
+          class="blog-filter flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold border transition-colors bg-primary text-white border-primary dark:bg-white dark:text-primary dark:border-white"
+        >
+          All <span class="opacity-70">({gridPosts.length})</span>
+        </button>
+        {categoryCounts.map((c) => (
+          <button
+            type="button"
+            data-filter={c.name}
+            aria-pressed="false"
+            class="blog-filter flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold border transition-colors bg-white text-gray-700 border-gray-200 hover:border-primary/40 hover:text-primary dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700 dark:hover:border-white/40"
+          >
+            {c.name} <span class="opacity-70">({c.count})</span>
+          </button>
+        ))}
+      </div>
+
+      {gridPosts.length === 0 ? (
         <div class="text-center py-20">
-          <p class="text-gray-500 dark:text-gray-400 text-lg">Blog posts coming soon. Stay tuned!</p>
+          <p class="text-gray-500 dark:text-gray-400 text-lg">More articles coming soon. Stay tuned!</p>
         </div>
       ) : (
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8">
-          {posts.map((post) => (
-            <a
-              href={`/blog/${post.id}/`}
-              class="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-primary/20 transition-all duration-300 hover:-translate-y-1"
-            >
-              <div class="p-5 md:p-8">
-                <div class="flex items-center gap-3 mb-4">
-                  <time
-                    datetime={post.data.date.toISOString()}
-                    class="text-xs font-bold text-gray-400 uppercase tracking-wider"
-                  >
-                    {post.data.date.toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}
-                  </time>
-                </div>
-
-                <h2 class="text-xl font-bold font-serif text-primary dark:text-white mb-3 group-hover:text-accent dark:group-hover:text-accent-light transition-colors leading-tight">
-                  {post.data.title}
-                </h2>
-
-                <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 md:mb-6 line-clamp-3">
-                  {post.data.summary}
-                </p>
-
-                {post.data.tags && (
-                  <div class="flex flex-wrap gap-2 mb-4 md:mb-6">
-                    {post.data.tags.slice(0, 3).map((tag) => (
-                      <span class="px-2.5 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs font-medium rounded-full">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-
-                <div class="flex items-center justify-between">
-                  <span class="text-sm text-gray-500 dark:text-gray-400 font-medium">
-                    {post.data.author}
-                  </span>
-                  <span class="inline-flex items-center gap-1 text-sm font-bold text-primary dark:text-white group-hover:translate-x-1 transition-transform">
-                    Read Article
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                  </span>
-                </div>
-              </div>
-            </a>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6" data-blog-grid>
+          {gridPosts.map((post) => (
+            <BlogCard post={post} headingLevel="h3" variant="compact" />
           ))}
         </div>
       )}
+
+      <p class="hidden text-center py-16 text-gray-500 dark:text-gray-400" data-blog-empty>
+        No articles in this category yet.
+      </p>
     </section>
+
+    <script>
+      // Client-side category filter. All cards are in the DOM (crawlable,
+      // works without JS); this only toggles visibility and mirrors the
+      // selection into ?category= so a filtered view can be shared.
+      const ACTIVE =
+        'bg-primary text-white border-primary dark:bg-white dark:text-primary dark:border-white';
+      const INACTIVE =
+        'bg-white text-gray-700 border-gray-200 hover:border-primary/40 hover:text-primary dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700 dark:hover:border-white/40';
+
+      const filters = document.querySelector<HTMLElement>('[data-blog-filters]');
+      const grid = document.querySelector<HTMLElement>('[data-blog-grid]');
+      const countEl = document.querySelector<HTMLElement>('[data-blog-count]');
+      const emptyEl = document.querySelector<HTMLElement>('[data-blog-empty]');
+
+      if (filters && grid) {
+        const buttons = Array.from(filters.querySelectorAll<HTMLButtonElement>('.blog-filter'));
+        const cards = Array.from(grid.querySelectorAll<HTMLElement>('[data-category]'));
+
+        const apply = (name: string, pushUrl: boolean) => {
+          const match = buttons.find((b) => b.dataset.filter === name) ? name : 'all';
+          let shown = 0;
+          for (const card of cards) {
+            const visible = match === 'all' || card.dataset.category === match;
+            card.classList.toggle('hidden', !visible);
+            if (visible) shown++;
+          }
+          for (const b of buttons) {
+            const on = b.dataset.filter === match;
+            b.setAttribute('aria-pressed', String(on));
+            b.className = `blog-filter flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold border transition-colors ${on ? ACTIVE : INACTIVE}`;
+          }
+          if (countEl) countEl.textContent = `Showing ${shown} ${shown === 1 ? 'article' : 'articles'}`;
+          if (emptyEl) emptyEl.classList.toggle('hidden', shown > 0);
+          if (pushUrl) {
+            const url = new URL(window.location.href);
+            if (match === 'all') url.searchParams.delete('category');
+            else url.searchParams.set('category', match);
+            history.replaceState(null, '', url);
+          }
+        };
+
+        filters.addEventListener('click', (e) => {
+          const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('.blog-filter');
+          if (btn?.dataset.filter) apply(btn.dataset.filter, true);
+        });
+
+        const initial = new URLSearchParams(window.location.search).get('category');
+        if (initial) apply(initial, false);
+      }
+    </script>
 
     <!-- CTA -->
     <section class="bg-primary dark:bg-primary-light py-6 md:py-10">

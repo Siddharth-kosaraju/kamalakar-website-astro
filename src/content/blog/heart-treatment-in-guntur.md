@@ -1,5 +1,6 @@
 ---
 title: "Heart Treatment in Guntur: Trusted Care by Dr. Kamalakar"
+category: "Heart Care in Guntur"
 metaTitle: "Heart Treatment in Guntur"
 summary: "Get trusted and affordable heart treatment in Guntur from Dr. Kamalakar Kosaraju — consultations, diagnostic tests, angioplasty, pacemaker care and emergency cardiac treatment."
 metaDescription: "Get trusted and affordable heart treatment in Guntur from Dr. Kamalakar, an experienced cardiologist offering advanced cardiac care and diagnosis."

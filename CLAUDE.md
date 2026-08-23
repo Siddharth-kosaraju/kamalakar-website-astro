@@ -64,6 +64,13 @@ These rules are encoded in `cloudfront-functions/redirect-www-to-non-www.js`, `s
 5. **The admin CMS's publish pipeline runs the same `npm run build` as every other deploy.** CodeBuild (`infra/lib/media-cms-stack.ts`) materializes DynamoDB into `src/content/media/*.yaml` (`scripts/materialize-media-from-dynamo.mjs`), then runs the full build — sitemap, llms.txt, and canonical-verifier gates all apply to CMS-driven publishes exactly as they do to a developer-driven deploy. A gate failure blocks the publish.
 6. **`infra/` is a separate CDK app**, deployed independently of the site (`npx cdk deploy` from `infra/`, not part of `npm run deploy`). See `infra/README.md` for one-time setup (GitHub PAT in Secrets Manager, CDK bootstrap, Cognito user creation, wiring `PUBLIC_COGNITO_*`/`PUBLIC_MEDIA_API_URL` into the site's env before the admin page can log in).
 
+## Blog section (must hold)
+
+1. **Blog categories are fixed at 6**: `Heart Tests Explained`, `Heart Attack & Emergency`, `Prevention & Lifestyle`, `Procedures & Treatment`, `Heart Conditions`, `Heart Care in Guntur` (enum `BLOG_CATEGORIES` in `src/content.config.ts`). Every `src/content/blog/*.md` must set `category:` to one of them — `src/pages/blog/index.astro` throws at build time if a blog post has none. Case studies share `blogPostSchema` but do not need a category. Do not add buckets casually; the filter bar on `/blog/` shows one pill per non-empty bucket and more than ~7 pills wraps badly on mobile.
+2. **`/blog/` listing is fully collection-driven** (`getPublishedBlogPosts()` in `src/utils/content.ts` — the single `published && date <= now` predicate used by the index, `blog/[slug]` `getStaticPaths`, `feed.xml`, the homepage "From the blog" section and service-page "Related Patient Guides"). Adding a post never requires touching the index; do not re-introduce a hardcoded post list anywhere.
+3. **One card component**: `src/components/BlogCard.astro` (variants `default` / `compact` / `featured`) is used for every blog-post card on the site. Do not inline card markup again.
+4. Filtering on `/blog/` is client-side over all cards (`?category=` is mirrored into the URL for sharing, but is **not** a separate page — canonical stays `/blog/`).
+
 ## Definition of "structural change"
 
 Any of these triggers the full canonical/sitemap/robots review cycle above:
@@ -98,6 +105,7 @@ Any of these triggers the full canonical/sitemap/robots review cycle above:
 | Case-study ingestion skill | `.claude/skills/kamalakar-case-studies/SKILL.md` |
 | Deploy + verify skill | `.claude/skills/deploy-verify/SKILL.md` |
 | Blog writer skill | `.claude/skills/blog-writer/SKILL.md` |
+| Blog index / article / card | `src/pages/blog/index.astro`, `src/pages/blog/[slug].astro`, `src/components/BlogCard.astro`, `src/components/LatestPosts.astro` (homepage), `getPublishedBlogPosts()` + `getRelatedBlogPosts()` in `src/utils/content.ts` |
 | Content planner skill | `.claude/skills/content-planner/SKILL.md` |
 | GTM/SEO skills (imported) — see `.claude/skills/NOTICE.md` for the full set | `.claude/skills/{audit-content, build-backlinks, build-resource-pages, create-geo-charts, geo-content-planning, geo-content-research, improve-aeo-geo, reddit-opportunity-research, research-brand, research-keywords, write-seo-geo-content}` |
 | SEO subagents (imported, project-local) — see `.claude/agents/NOTICE.md` | `.claude/agents/{seo-cluster, seo-content, seo-dataforseo, seo-flow, seo-geo, seo-image-gen, seo-local, seo-maps, seo-schema, seo-sitemap, seo-technical}` |

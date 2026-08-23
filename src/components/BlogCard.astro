@@ -1,0 +1,117 @@
+---
+/**
+ * BlogCard — the single card used everywhere a blog post is listed:
+ * /blog/ grid + featured slot, "Read next" on blog/[slug], the homepage
+ * "From the blog" section, and "Related Patient Guides" on service pages.
+ *
+ * variants:
+ *   default  — image on top, category / date / title / summary / reading time
+ *   compact  — same, tighter padding and 2-line summary (3-col grids)
+ *   featured — full-width, image left / text right on md+, eager-loaded image
+ *
+ * Posts without a heroImage get a category-tinted placeholder so grids keep
+ * uniform card heights. The root carries data-category for the /blog/ filter.
+ */
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  headingLevel?: 'h2' | 'h3';
+  variant?: 'default' | 'compact' | 'featured';
+}
+
+const { post, headingLevel = 'h2', variant = 'default' } = Astro.props;
+const Heading = headingLevel;
+
+const { title, summary, date, category, readingTime, heroImage, heroImageAlt } = post.data;
+const href = `/blog/${post.id}/`;
+// Sibling .webp at the same stem, mirroring blog/[slug].astro's hero <picture>.
+const heroImageWebp = heroImage?.replace(/\.(jpe?g|png)$/i, '.webp');
+const dateLabel = date.toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' });
+
+const isFeatured = variant === 'featured';
+const isCompact = variant === 'compact';
+
+// Placeholder tint per category (used only when there is no hero image).
+const PLACEHOLDER_TINT: Record<string, string> = {
+  'Heart Tests Explained': 'from-sky-100 to-sky-50 dark:from-sky-900/40 dark:to-gray-800',
+  'Heart Attack & Emergency': 'from-red-100 to-rose-50 dark:from-red-900/40 dark:to-gray-800',
+  'Prevention & Lifestyle': 'from-emerald-100 to-emerald-50 dark:from-emerald-900/40 dark:to-gray-800',
+  'Procedures & Treatment': 'from-indigo-100 to-indigo-50 dark:from-indigo-900/40 dark:to-gray-800',
+  'Heart Conditions': 'from-amber-100 to-amber-50 dark:from-amber-900/40 dark:to-gray-800',
+  'Heart Care in Guntur': 'from-primary/15 to-primary/5 dark:from-primary/40 dark:to-gray-800',
+};
+const tint = PLACEHOLDER_TINT[category ?? ''] ?? 'from-gray-100 to-gray-50 dark:from-gray-700 dark:to-gray-800';
+
+const padding = isCompact ? 'p-4 md:p-5' : isFeatured ? 'p-6 md:p-10' : 'p-5 md:p-6';
+const titleSize = isFeatured
+  ? 'text-2xl md:text-3xl lg:text-4xl'
+  : isCompact
+    ? 'text-base md:text-lg'
+    : 'text-lg md:text-xl';
+const summaryClamp = isFeatured ? 'line-clamp-4' : isCompact ? 'line-clamp-2' : 'line-clamp-3';
+---
+
+<a
+  href={href}
+  data-category={category}
+  class:list={[
+    'group flex bg-white dark:bg-gray-800 rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-primary/20 transition-all duration-300 hover:-translate-y-1',
+    isFeatured ? 'flex-col md:flex-row' : 'flex-col',
+  ]}
+>
+  <div
+    class:list={[
+      'relative overflow-hidden bg-gradient-to-br flex-shrink-0',
+      tint,
+      isFeatured ? 'aspect-[16/9] md:aspect-auto md:w-1/2' : 'aspect-[16/9] w-full',
+    ]}
+  >
+    {heroImage ? (
+      <picture>
+        {heroImageWebp && <source srcset={heroImageWebp} type="image/webp" />}
+        <img
+          src={heroImage}
+          alt={heroImageAlt ?? ''}
+          width="1200"
+          height="675"
+          loading={isFeatured ? 'eager' : 'lazy'}
+          fetchpriority={isFeatured ? 'high' : 'auto'}
+          decoding="async"
+          class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+      </picture>
+    ) : (
+      <div class="absolute inset-0 flex items-center justify-center" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width={isFeatured ? 72 : 44} height={isFeatured ? 72 : 44} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-primary/40 dark:text-white/30">
+          <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+          <path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/>
+        </svg>
+      </div>
+    )}
+  </div>
+
+  <div class:list={['flex flex-col flex-1', padding, isFeatured && 'md:justify-center']}>
+    <div class="flex items-center gap-2 mb-2 md:mb-3 text-[11px] font-bold uppercase tracking-wider">
+      {category && <span class="text-accent dark:text-accent-light">{category}</span>}
+      {category && <span class="text-gray-300 dark:text-gray-600" aria-hidden="true">·</span>}
+      <time datetime={date.toISOString()} class="text-gray-400">{dateLabel}</time>
+    </div>
+
+    <Heading class:list={[titleSize, 'font-bold font-serif text-primary dark:text-white mb-2 md:mb-3 group-hover:text-accent dark:group-hover:text-accent-light transition-colors leading-tight']}>
+      {title}
+    </Heading>
+
+    <p class:list={['text-gray-600 dark:text-gray-300 text-sm leading-relaxed', summaryClamp, isFeatured ? 'md:text-base mb-6' : 'mb-4']}>
+      {summary}
+    </p>
+
+    <div class="mt-auto flex items-center justify-between text-sm">
+      <span class="text-gray-500 dark:text-gray-400 font-medium">{readingTime ?? 'Dr. Kamalakar Kosaraju'}</span>
+      <span class="inline-flex items-center gap-1 font-bold text-primary dark:text-white group-hover:translate-x-1 transition-transform">
+        {isFeatured ? 'Read the article' : 'Read article'}
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </span>
+    </div>
+  </div>
+</a>

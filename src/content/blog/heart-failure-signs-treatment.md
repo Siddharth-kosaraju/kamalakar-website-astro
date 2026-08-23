@@ -1,5 +1,6 @@
 ---
 title: "What Is Heart Failure? Signs, Treatment, and Living Well"
+category: "Heart Conditions"
 metaTitle: "Heart Failure: Signs, Causes & Treatment"
 summary: "Heart failure doesn't mean your heart stops. Learn the early warning signs, causes, treatment options, and how patients in India can manage heart failure effectively."
 metaDescription: "Heart failure doesn't mean the heart stops. Learn early warning signs, causes, treatment options and how to manage it well in India."

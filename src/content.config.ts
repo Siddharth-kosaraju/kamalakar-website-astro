@@ -283,8 +283,24 @@ const mediaItemSchema = z.object({
   updatedAt: z.string().optional(),
 });
 
+// Blog topic buckets — fixed at 6 (see CLAUDE.md "Blog section"). Every blog
+// post must carry one; they drive the /blog/ category filter, "Read next"
+// related-post selection, and the card label. Case studies reuse
+// blogPostSchema but do not need a category (optional here; blog/index.astro
+// throws at build time if a *blog* post is missing one).
+export const BLOG_CATEGORIES = [
+  'Heart Tests Explained',
+  'Heart Attack & Emergency',
+  'Prevention & Lifestyle',
+  'Procedures & Treatment',
+  'Heart Conditions',
+  'Heart Care in Guntur',
+] as const;
+export type BlogCategory = (typeof BLOG_CATEGORIES)[number];
+
 const blogPostSchema = z.object({
   title: z.string(),
+  category: z.enum(BLOG_CATEGORIES).optional(),
   summary: z.string(),
   // Optional SEO overrides. metaTitle feeds the <title> (H1 stays `title`);
   // metaDescription feeds the meta description (falls back to `summary`).

@@ -1,5 +1,6 @@
 ---
 title: "Best Food Habits for a Healthy Heart"
+category: "Prevention & Lifestyle"
 summary: "What to eat — and what to avoid — for a healthy heart, plus the foods that help recovery after heart surgery or stent placement. Practical guidance from Kamalakar Heart Centre, Guntur."
 metaDescription: "What to eat and avoid for a healthy heart, plus foods that aid recovery after heart surgery or a stent. Cardiologist guidance from Guntur."
 date: 2026-05-19

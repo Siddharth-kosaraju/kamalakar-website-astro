@@ -1,0 +1,43 @@
+---
+/**
+ * "From the blog" — homepage section surfacing the 3 newest posts so every
+ * visitor lands one click from the blog, and Google sees fresh internal links
+ * to new articles from the highest-authority page on the site.
+ */
+import type { CollectionEntry } from 'astro:content';
+import BlogCard from './BlogCard.astro';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+}
+
+const { posts } = Astro.props;
+---
+
+{posts.length > 0 && (
+  <section class="py-14 md:py-24 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300" aria-labelledby="latest-posts-heading">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8 md:mb-12">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary/5 dark:bg-primary/30 text-primary dark:text-white rounded-full text-sm font-bold uppercase tracking-wide mb-4 border border-primary/10 dark:border-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/></svg>
+            From the blog
+          </div>
+          <h2 id="latest-posts-heading" class="text-3xl md:text-4xl font-bold font-serif text-primary dark:text-white leading-tight">
+            Heart health, explained in plain English
+          </h2>
+          <p class="mt-3 text-gray-600 dark:text-gray-300 max-w-2xl">
+            Patient guides on heart tests, emergencies, prevention and procedures — written by Dr. Kamalakar Kosaraju.
+          </p>
+        </div>
+        <a href="/blog/" class="inline-flex items-center gap-2 font-bold text-primary dark:text-white hover:text-accent dark:hover:text-accent-light transition-colors whitespace-nowrap">
+          View all articles
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        {posts.map((post) => <BlogCard post={post} headingLevel="h3" variant="compact" />)}
+      </div>
+    </div>
+  </section>
+)}

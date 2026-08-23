@@ -1,5 +1,6 @@
 ---
 title: "High Cholesterol in India – Diet, Risks, and How to Manage It"
+category: "Prevention & Lifestyle"
 metaTitle: "High Cholesterol in India: Diet & Management"
 summary: "The ICMR-INDIAB study found 81.2% of Indians have some form of dyslipidemia (abnormal cholesterol). Learn about Indian-specific risk factors, foods to avoid, a heart-healthy Indian diet plan, and when to get tested."
 metaDescription: "81.2% of Indians have abnormal cholesterol. Learn Indian-specific risk factors, foods to avoid, a heart-healthy diet plan and when to get tested."

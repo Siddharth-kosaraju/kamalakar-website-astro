@@ -1,5 +1,6 @@
 ---
 title: "Diabetes and Heart Disease: Why the Risk Is Higher"
+category: "Heart Conditions"
 metaTitle: "Diabetes and Heart Disease: Why the Risk Is Higher"
 summary: "Diabetes roughly doubles the risk of heart disease and stroke. Learn how high blood sugar damages arteries, why blood pressure and cholesterol matter just as much, the warning signs of heart failure, and how people with diabetes can protect their heart."
 metaDescription: "Learn why diabetes increases heart disease risk and how managing blood sugar, blood pressure, cholesterol, diet, and lifestyle can protect your heart."

@@ -1,4 +1,4 @@
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
 
 const START_YEAR = 2015;
 
@@ -75,3 +75,30 @@ export const ALL_SERVICE_SLUGS = [...SERVICE_SLUGS, ...EXTRA_SERVICE_SLUGS] as c
  * Footer service slugs (matches SERVICE_SLUGS — homepage-grid services only).
  */
 export const FOOTER_SERVICE_SLUGS = SERVICE_SLUGS;
+
+export type BlogPost = CollectionEntry<'blog'>;
+
+/**
+ * All blog posts that should exist on the site: `published` and not
+ * future-dated, newest first. Single source of truth for the predicate used by
+ * /blog/, blog/[slug] getStaticPaths, feed.xml, the homepage and service pages
+ * — keep them in sync by using this instead of re-implementing the filter.
+ */
+export async function getPublishedBlogPosts(): Promise<BlogPost[]> {
+  const now = new Date();
+  const posts = await getCollection('blog');
+  return posts
+    .filter((post) => post.data.published && post.data.date <= now)
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+}
+
+/**
+ * Related posts for "Read next": same-category posts first (newest first),
+ * then the newest remaining posts to fill up to `count`. Never includes `post`.
+ */
+export function getRelatedBlogPosts(post: BlogPost, all: BlogPost[], count = 3): BlogPost[] {
+  const others = all.filter((p) => p.id !== post.id);
+  const same = others.filter((p) => p.data.category && p.data.category === post.data.category);
+  const rest = others.filter((p) => !same.includes(p));
+  return [...same, ...rest].slice(0, count);
+}

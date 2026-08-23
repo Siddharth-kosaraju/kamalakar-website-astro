@@ -1,5 +1,6 @@
 ---
 title: "Cardiac Rehab Exercises After Open Heart Surgery"
+category: "Prevention & Lifestyle"
 metaTitle: "Cardiac Rehab Exercises After Open Heart Surgery"
 summary: "Safe, gentle cardiac rehabilitation exercises after open heart surgery — walking, ankle pumps, seated marching, deep breathing, sit-to-stand and stationary cycling — plus the safety rules and warning signs every patient should know."
 metaDescription: "Learn safe cardiac rehab exercises after open heart surgery, including walking, ankle pumps, seated marching, breathing exercises and more."

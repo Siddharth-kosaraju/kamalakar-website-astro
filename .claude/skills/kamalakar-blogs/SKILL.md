@@ -147,6 +147,7 @@ Frontmatter:
 ```yaml
 ---
 title: "<H1 — the doc's headline, verbatim>"
+category: "<one of the 6 fixed buckets>"   # REQUIRED — build fails without it
 metaTitle: "<short SEO title, NO brand suffix>"     # optional
 summary: "<1–2 sentences; also feeds llms.txt + RSS>"
 metaDescription: "<the doc's Meta Description, verbatim>"   # optional
@@ -172,6 +173,7 @@ The doc's "Meta Title" usually **already ends in `| Dr. Kamalakar Heart Centre`*
 **Strip the brand from `metaTitle`.** Keep the whole rendered title ≲60–65 chars.
 
 ### Other frontmatter rules
+- **`category` is required** and must be one of `Heart Tests Explained` · `Heart Attack & Emergency` · `Prevention & Lifestyle` · `Procedures & Treatment` · `Heart Conditions` · `Heart Care in Guntur` (enum `BLOG_CATEGORIES` in `src/content.config.ts`). The doc does not supply it — choose by the post's primary intent (diagnostic test → Tests; symptoms/first aid → Emergency; diet/exercise/seasonal/rehab → Prevention; angiogram/angioplasty/stent → Procedures; disease explainer → Conditions; local / doctor-profile → Heart Care in Guntur). `/blog/` throws at build time if a blog post lacks one.
 - **Slug = filename.** Use the doc's `URL Slug` if given; else derive a short keyword-bearing slug from the meta title. Check for collisions against `ls src/content/blog/`.
 - `metaDescription` falls back to `summary`; `metaTitle` falls back to `title`. Omit rather than duplicate.
 - `heroImage` auto-resolves the sibling `.webp` for the `<picture>` srcset — only reference the `.jpg`.

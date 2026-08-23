@@ -8,15 +8,17 @@ import About from '../components/About.astro';
 import Services from '../components/Services.astro';
 import Education from '../components/Education.astro';
 import Preventive from '../components/Preventive.astro';
+import LatestPosts from '../components/LatestPosts.astro';
 import WhyChoose from '../components/WhyChoose.astro';
 import Testimonials from '../components/Testimonials.astro';
 import Gallery from '../components/Gallery';
 import FAQ from '../components/FAQ';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
-import { getSiteContent } from '../utils/content';
+import { getSiteContent, getPublishedBlogPosts } from '../utils/content';
 import { buildHomepageSchemaGraph } from '../utils/schemas';
 const content = await getSiteContent();
+const latestPosts = (await getPublishedBlogPosts()).slice(0, 3);
 
 // Single connected JSON-LD graph for the homepage:
 //   WebSite → MedicalClinic (#organization, with AggregateRating from testimonials) → Physician (#physician).
@@ -91,6 +93,7 @@ const schemas = [homepageSchema, faqSchema];
     <About content={content.about} />
     <Services content={content.services} />
     <Education content={content.education} />
+    <LatestPosts posts={latestPosts} />
     {content.preventive && <Preventive content={content.preventive} />}
     {content.whyChoose && <WhyChoose content={content.whyChoose} />}
     <Testimonials content={content.testimonials} />

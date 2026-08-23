@@ -1,5 +1,6 @@
 ---
 title: "Best Heart Specialist in Guntur – How to Choose the Right Doctor?"
+category: "Heart Care in Guntur"
 summary: "Heart diseases are rising rapidly in India. This guide helps you identify the best heart specialist in Guntur, understand what to look for in a cardiologist, and make an informed decision for your heart health."
 metaTitle: "Best Heart Specialist in Guntur: A Guide"
 metaDescription: "How to choose the best heart specialist in Guntur — what qualifications matter, when to see a cardiologist, and what to expect at your first heart checkup."

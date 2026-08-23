@@ -1,5 +1,6 @@
 ---
 title: "Dr. Kamalakar Kosaraju – Best Cardiologist in Guntur"
+category: "Heart Care in Guntur"
 metaTitle: "Dr. Kamalakar Kosaraju: Cardiologist, Guntur"
 summary: "Dr. Kamalakar Kosaraju is a trusted cardiologist in Guntur with 11+ years of experience in angiogram, angioplasty, pacemaker implantation, ECG, and 2D Echo."
 date: 2026-04-13

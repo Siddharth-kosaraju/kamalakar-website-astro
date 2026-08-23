@@ -1,13 +1,13 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
+import { getPublishedBlogPosts } from '../utils/content';
 import type { APIContext } from 'astro';
 
 const SITE = 'https://kamalakarheartcentre.com';
 
 export async function GET(_context: APIContext) {
   const now = new Date();
-  const posts = (await getCollection('blog'))
-    .filter((p) => p.data.published && p.data.date <= now)
+  const posts = (await getPublishedBlogPosts())
     .map((p) => ({ entry: p, link: `${SITE}/blog/${p.id}/` }));
 
   // Case studies share the feed — robots.txt submits feed.xml as a sitemap for

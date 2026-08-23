@@ -4,9 +4,9 @@ import SEO from '../../components/SEO.astro';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer.astro';
 import ServiceFAQ from '../../components/ServiceFAQ';
-import { getSiteContent, getServicePage, ALL_SERVICE_SLUGS } from '../../utils/content';
+import BlogCard from '../../components/BlogCard.astro';
+import { getSiteContent, getServicePage, ALL_SERVICE_SLUGS, getPublishedBlogPosts } from '../../utils/content';
 import { buildServicePageSchema, buildPricingOfferCatalog } from '../../utils/schemas';
-import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
   return ALL_SERVICE_SLUGS.map((slug) => ({ params: { slug } }));
@@ -27,10 +27,7 @@ if (!service) {
 // slip through and ship a link to a page that was never generated (a live 404).
 // This also guards against typos or a related post being deleted/renamed (e.g.
 // the consolidated warning-signs post) without the yaml being updated.
-const now = new Date();
-const publishedBlogPosts = (await getCollection('blog')).filter(
-  (p) => p.data.published && p.data.date <= now
-);
+const publishedBlogPosts = await getPublishedBlogPosts();
 const relatedGuides = (service.relatedPosts ?? []).map((relSlug) => {
   const match = publishedBlogPosts.find((p) => p.id === relSlug);
   if (!match) {
@@ -229,22 +226,8 @@ if (slug === 'diagnostics-pricing') {
         <h2 class="text-2xl md:text-3xl font-bold font-serif text-primary dark:text-white mb-5 md:mb-8">
           Related Patient Guides
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8">
-          {relatedGuides.map((post) => (
-            <a
-              href={`/blog/${post.id}/`}
-              class="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:border-primary/20 transition-all duration-300 hover:-translate-y-1"
-            >
-              <div class="p-5 md:p-8">
-                <h3 class="text-xl font-bold font-serif text-primary dark:text-white mb-3 group-hover:text-accent dark:group-hover:text-accent-light transition-colors leading-tight">
-                  {post.data.title}
-                </h3>
-                <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed line-clamp-3">
-                  {post.data.summary}
-                </p>
-              </div>
-            </a>
-          ))}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+          {relatedGuides.map((post) => <BlogCard post={post} headingLevel="h3" variant="compact" />)}
         </div>
       </section>
     )}

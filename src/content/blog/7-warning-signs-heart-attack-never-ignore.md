@@ -1,5 +1,6 @@
 ---
 title: "7 Warning Signs of Heart Attack You Should Never Ignore"
+category: "Heart Attack & Emergency"
 metaTitle: "7 Heart Attack Warning Signs to Never Ignore"
 summary: "7 warning signs of a heart attack every Indian should know — chest pain, breathlessness, jaw pain and more. Learn what they mean and when to act fast."
 date: 2026-04-14

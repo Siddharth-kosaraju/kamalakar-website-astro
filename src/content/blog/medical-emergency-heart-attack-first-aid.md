@@ -1,5 +1,6 @@
 ---
 title: "What Should You Do During a Medical Emergency?"
+category: "Heart Attack & Emergency"
 metaTitle: "Medical Emergency & Heart Attack First Aid"
 summary: "Learn what to do during a medical emergency — recognise heart attack symptoms, understand safe medicine use, and know when and how to start CPR until help arrives."
 metaDescription: "Learn what to do during a medical emergency, recognise heart attack symptoms, understand safe medicine use and provide CPR until help arrives."

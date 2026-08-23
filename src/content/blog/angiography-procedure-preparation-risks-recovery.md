@@ -1,5 +1,6 @@
 ---
 title: "Angiography: Procedure, Preparation, Risks & Recovery Guide"
+category: "Procedures & Treatment"
 metaTitle: "Angiography: Procedure, Risks & Recovery"
 summary: "Learn about the angiography procedure, preparation, risks and recovery. Consult Dr. Kamalakar Kosaraju for budget-friendly angiography treatment in Guntur at Kamalakar Heart Centre."
 metaDescription: "Angiography explained — procedure, how to prepare, risks and recovery. Angiogram in Guntur with Dr. Kamalakar Kosaraju at Kamalakar Heart Centre."
