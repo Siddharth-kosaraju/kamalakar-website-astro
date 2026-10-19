@@ -82,6 +82,13 @@ function handler(event) {
         return redirect301(SITE + '/blog/7-warning-signs-heart-attack-never-ignore/');
     }
 
+    // 2d. Renamed blog slug (2026-10-19, NMC clause 8.1.ix — the old slug
+    //    contained a superiority word, "best"). Content is unchanged; only the
+    //    URL moved. Runs before step 4 so the no-slash form is a single hop.
+    if (uri === '/blog/best-heart-specialist-in-guntur' || uri.indexOf('/blog/best-heart-specialist-in-guntur/') === 0) {
+        return redirect301(SITE + '/blog/how-to-choose-a-heart-specialist-in-guntur/');
+    }
+
     // 3. Legacy SPA query params on the homepage
     //    /?page=education            →  /education/
     //    /?page=education&lang=te    →  /education/

@@ -5,6 +5,8 @@
  * Navigation uses standard anchor links (no onClick handlers).
  * Icons are inline SVGs replacing lucide-react imports.
  */
+import { getEntry } from 'astro:content';
+
 interface Props {
   content: {
     brandDescription: string;
@@ -33,6 +35,12 @@ interface Props {
 }
 
 const { content, navContent, currentPage = 'home' } = Astro.props;
+
+// Google Business Profile URL — single source of truth is en.yaml `seo.gbpUrl`
+// (also used for JSON-LD sameAs and the /contact/ page). Plain link only — no scores,
+// counts or prompts to post feedback (NMC 2026, cl. 3.2 Expl. V).
+const siteEntry = await getEntry('site', 'en');
+const gbpUrl = siteEntry?.data.seo.gbpUrl;
 
 const SERVICE_SLUGS = [
   'angioplasty',
@@ -94,7 +102,8 @@ const termsHref = '/terms-of-service/';
             href="https://www.facebook.com/DR.Kamalakarkosaraju/"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Follow Dr. Kamalakar on Facebook"
+            aria-label="Dr. Kamalakar Kosaraju on Facebook"
+            title="Dr. Kamalakar Kosaraju on Facebook"
             class="group flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#1463cc] hover:bg-[#1044A8] text-white text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 shadow-md hover:shadow-lg"
           >
             {/* Facebook icon */}
@@ -105,7 +114,8 @@ const termsHref = '/terms-of-service/';
             href="https://www.youtube.com/@drkamalakarcardiologist"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Subscribe to Dr. Kamalakar on YouTube"
+            aria-label="Dr. Kamalakar Kosaraju on YouTube"
+            title="Dr. Kamalakar Kosaraju on YouTube"
             class="group flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#CC1F1F] hover:bg-[#A81616] text-white text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 shadow-md hover:shadow-lg"
           >
             {/* YouTube icon */}
@@ -116,7 +126,8 @@ const termsHref = '/terms-of-service/';
             href="https://www.instagram.com/drkamalakarcardiologist/"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Follow Dr. Kamalakar on Instagram"
+            aria-label="Dr. Kamalakar Kosaraju on Instagram"
+            title="Dr. Kamalakar Kosaraju on Instagram"
             class="group flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#C13584] hover:bg-[#9c2969] text-white text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 shadow-md hover:shadow-lg"
           >
             {/* Instagram icon */}
@@ -185,6 +196,13 @@ const termsHref = '/terms-of-service/';
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent flex-shrink-0"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             <span>{content.hours}</span>
           </li>
+          {gbpUrl && (
+            <li class="flex items-center gap-3">
+              {/* Map icon */}
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent flex-shrink-0" aria-hidden="true"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></svg>
+              <a href={gbpUrl} target="_blank" rel="noopener" class="hover:text-white transition-colors">Google Maps listing</a>
+            </li>
+          )}
         </ul>
       </div>
     </div>

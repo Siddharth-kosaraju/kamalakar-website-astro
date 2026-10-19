@@ -113,7 +113,7 @@ Dr. Kamalakar Kosaraju, interventional cardiologist, practises at Kamalakar Hear
 
 ### How do I choose a heart doctor in Guntur?
 
-Choosing a cardiologist should be based on recognised qualifications and State Medical Council registration, experience with your specific condition, access to diagnostic and cath-lab facilities, and clear communication about risks, alternatives and costs. Our guide on [how to choose a heart specialist in Guntur](/blog/best-heart-specialist-in-guntur/) covers this in more detail.
+Choosing a cardiologist should be based on recognised qualifications and State Medical Council registration, experience with your specific condition, access to diagnostic and cath-lab facilities, and clear communication about risks, alternatives and costs. Our guide on [how to choose a heart specialist in Guntur](/blog/how-to-choose-a-heart-specialist-in-guntur/) covers this in more detail.
 
 ### What does heart treatment cost in Guntur?
 

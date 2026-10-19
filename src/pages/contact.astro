@@ -2,7 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SEO from '../components/SEO.astro';
 import Header from '../components/Header';
-import Testimonials from '../components/Testimonials.astro';
 import Footer from '../components/Footer.astro';
 import { getSiteContent } from '../utils/content';
 import { buildBusinessSchema, buildBreadcrumbSchema } from '../utils/schemas';
@@ -16,7 +15,7 @@ const locationCoords = {
 const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${locationCoords.lat},${locationCoords.lng}`;
 
 const schemas = [
-  buildBusinessSchema(content.testimonials.items, content.seo.gbpUrl),
+  buildBusinessSchema(content.seo.gbpUrl),
   buildBreadcrumbSchema([
     { name: 'Home', url: 'https://kamalakarheartcentre.com/' },
     { name: 'Contact', url: 'https://kamalakarheartcentre.com/contact/' },
@@ -102,6 +101,11 @@ const schemas = [
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
                 {content.contact.getDirections}
               </a>
+              {content.seo.gbpUrl && (
+                <p class="text-sm text-gray-600 dark:text-gray-400 mt-4">
+                  Patient reviews for Dr Kamalakar's Heart Centre are available on <a href={content.seo.gbpUrl} target="_blank" rel="noopener" class="underline underline-offset-2 text-primary dark:text-white hover:text-accent">Google Maps</a>.
+                </p>
+              )}
             </div>
           </div>
 
@@ -137,7 +141,7 @@ const schemas = [
             class="w-full flex items-center justify-center gap-3 bg-primary text-white px-6 py-3 md:px-8 md:py-4 rounded-xl font-bold text-base md:text-lg shadow-lg hover:bg-primary-light transition-all hover:-translate-y-1"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
-            Book Appointment
+            {content.appointment.callBtn || 'Call for an Appointment'}
           </a>
         </div>
 
@@ -158,10 +162,6 @@ const schemas = [
       </div>
     </section>
 
-    <!-- Patient testimonials — co-located with aggregateRating + review JSON-LD
-         emitted in `schemas` above so that the schema reflects content displayed on this page
-         (Google Rich Results compliance). -->
-    <Testimonials content={content.testimonials} />
   </main>
 
   <Footer content={content.footer} navContent={content.nav} currentPage="contact" />

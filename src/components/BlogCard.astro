@@ -11,6 +11,10 @@
  *
  * Posts without a heroImage get a category-tinted placeholder so grids keep
  * uniform card heights. The root carries data-category for the /blog/ filter.
+ *
+ * NMC clause 7.2 (AI source mark): when heroImageAi is true, the thumbnail
+ * carries a small "AI illustration" pill (absolutely positioned — no layout
+ * impact), matching the disclosure caption on blog/[slug].astro.
  */
 import type { CollectionEntry } from 'astro:content';
 
@@ -23,7 +27,7 @@ interface Props {
 const { post, headingLevel = 'h2', variant = 'default' } = Astro.props;
 const Heading = headingLevel;
 
-const { title, summary, date, category, readingTime, heroImage, heroImageAlt } = post.data;
+const { title, summary, date, category, readingTime, heroImage, heroImageAlt, heroImageAi } = post.data;
 const href = `/blog/${post.id}/`;
 // Sibling .webp at the same stem, mirroring blog/[slug].astro's hero <picture>.
 const heroImageWebp = heroImage?.replace(/\.(jpe?g|png)$/i, '.webp');
@@ -88,6 +92,11 @@ const summaryClamp = isFeatured ? 'line-clamp-4' : isCompact ? 'line-clamp-2' : 
           <path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/>
         </svg>
       </div>
+    )}
+    {heroImage && heroImageAi && (
+      <span class="absolute bottom-2 left-2 z-10 pointer-events-none select-none rounded-full bg-black/55 px-2 py-0.5 text-[10px] font-medium leading-tight text-white">
+        AI illustration
+      </span>
     )}
   </div>
 

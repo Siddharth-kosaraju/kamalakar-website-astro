@@ -8,7 +8,7 @@ function getExperienceYears(): string {
 
 /**
  * Load site content (English).
- * Injects dynamic experience text into stats, hero, and about.
+ * Injects the dynamic years-of-experience figure into the About badge.
  */
 export async function getSiteContent() {
   const entry = await getEntry('site', 'en');
@@ -17,8 +17,6 @@ export async function getSiteContent() {
 
   // Inject dynamic experience calculation
   const exp = getExperienceYears();
-  data.stats.experience = exp;
-  data.hero.experience = exp;
   data.about.experienceBadge = data.about.experienceBadge.replace(/\d+\+/, exp);
 
   return data;

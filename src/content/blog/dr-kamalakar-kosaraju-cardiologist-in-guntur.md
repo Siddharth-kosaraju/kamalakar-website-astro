@@ -12,7 +12,7 @@ published: true
 
 <div class="not-prose bg-primary/5 dark:bg-primary/10 border-l-4 border-primary rounded-r-xl p-5 mb-10">
 <p class="text-sm font-bold uppercase tracking-wider text-primary dark:text-accent-light mb-2">Key Takeaway</p>
-<p class="text-base leading-relaxed text-gray-700 dark:text-gray-300">Dr. Kamalakar Kosaraju is an interventional <strong>cardiologist in Guntur</strong> with 11+ years in practice, <strong>3,000+ coronary angiograms</strong>, and <strong>1,000+ angioplasty procedures</strong>. He practises at Kamalakar Heart Centre, Life Hospital, where ECG, 2D echo, treadmill testing and a Cath Lab are available.</p>
+<p class="text-base leading-relaxed text-gray-700 dark:text-gray-300">Dr. Kamalakar Kosaraju is an interventional <strong>cardiologist in Guntur</strong> in practice since 2015, with <strong>3,000+ coronary angiograms</strong> and <strong>1,000+ angioplasty procedures</strong>. He practises at Kamalakar Heart Centre, Life Hospital, where ECG, 2D echo, treadmill testing and a Cath Lab are available.</p>
 </div>
 
 Cardiovascular disease is the leading cause of death in India, claiming over 28 lakh lives every year according to the Global Burden of Disease Study published in *The Lancet*. For residents of Guntur and surrounding districts in Andhra Pradesh, knowing where cardiac care is available locally is useful.
@@ -28,7 +28,7 @@ Dr. Kamalakar Kosaraju is an interventional cardiologist practising in Guntur.
 
 He completed his MBBS and **M.D. in General Medicine** under **Dr. NTR University of Health Sciences, Vijayawada** (M.D. Gold Medalist). He then completed his **D.M. in Cardiology** at **Osmania Medical College, Hyderabad** (2012–2015) — a three-year super-specialty residency in cardiology. He is registered with the Andhra Pradesh Medical Council (#57814) and is a Fellow of the European Society of Cardiology (FESC).
 
-In over **11 years** as an Interventional Cardiologist, Dr. Kamalakar has performed **3,000+ coronary angiograms** and **1,000+ angioplasty procedures**.
+Since 2015, as an Interventional Cardiologist, Dr. Kamalakar has performed **3,000+ coronary angiograms** and **1,000+ angioplasty procedures**.
 
 | Qualification | Institution | Year |
 |---|---|---|
@@ -48,14 +48,14 @@ The following procedures are performed at the centre.
 <div class="flex gap-4 items-start p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
 <span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">1</span>
 <div>
-<p class="font-bold text-gray-900 dark:text-white">Coronary Angiogram — 3,000+ Procedures</p>
+<p class="font-bold text-gray-900 dark:text-white">Coronary Angiogram</p>
 <p class="text-sm text-gray-600 dark:text-gray-300">A diagnostic procedure that uses contrast dye and X-ray imaging to identify blockages in the heart's arteries. It is the standard test for evaluating coronary artery disease and planning further treatment. It is an invasive test and carries a small risk of complications, which your doctor will explain beforehand.</p>
 </div>
 </div>
 <div class="flex gap-4 items-start p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
 <span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">2</span>
 <div>
-<p class="font-bold text-gray-900 dark:text-white">Angioplasty & Stent Placement — 1,000+ Procedures</p>
+<p class="font-bold text-gray-900 dark:text-white">Angioplasty & Stent Placement</p>
 <p class="text-sm text-gray-600 dark:text-gray-300">A minimally invasive procedure that opens blocked coronary arteries by inserting a balloon-tipped catheter and placing a stent to restore blood flow. Learn more about <a href="/services/angioplasty/" class="text-accent dark:text-accent-light underline">angioplasty at Kamalakar Heart Centre</a>.</p>
 </div>
 </div>

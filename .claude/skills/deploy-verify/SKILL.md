@@ -75,9 +75,20 @@ If this change adds, renames, removes, or redirects a page — or touches the Cl
 - [ ] Diff `dist/sitemap.xml` against the previous build — added/removed routes match the change
 - [ ] **New static page?** Add a matching description entry to `STATIC_DESCRIPTIONS` in `scripts/generate-llms.mjs`. Blog posts (`src/content/blog/*.md`) and services (`src/content/services/*.yaml`) are derived automatically from frontmatter and need no entry, but a new static route (`src/pages/*.astro`) will FAIL the build with `→ in sitemap but missing from llms.txt. Add a STATIC_DESCRIPTIONS["<path>"] entry` until you add one.
 - [ ] `public/robots.txt` reviewed — still has exactly two `Sitemap:` lines (`sitemap.xml` primary + `feed.xml` RSS-as-sitemap), AI crawlers still allowed
-- [ ] If the CF function changed, plan to deploy it via `scripts/aws_deploy.sh` (NOT `npm run deploy`)
-- [ ] **Deleted/renamed a page that had a new CF 301 rule added for its old URL?** Deploy the CF function **before or together with** the site deploy. `npm run deploy` runs `--delete`, so the old URL's `index.html` is pruned from S3 the moment the site deploys. If the CF function (which 301s the old URL) is not yet live, the old URL 404s in the gap. Deploy order: `bash scripts/aws_deploy.sh deploy prod` (or the CF-function-only path) → then `npm run deploy` → then verify the 301. (As of 2026-07-07 this applies to `/blog/understanding-heart-attack-warning-signs/` → `/blog/7-warning-signs-heart-attack-never-ignore/`.)
+- [ ] If the CF function changed, publish it with the **CF-function-only** commands below (NOT `npm run deploy`, and NOT `aws_deploy.sh deploy` — that mode only syncs the site; the function update lives in `aws_deploy.sh infra`, which also re-runs bucket/OAC/distribution setup)
+- [ ] **Deleted/renamed a page that had a new CF 301 rule added for its old URL?** Deploy the CF function **before or together with** the site deploy. `npm run deploy` runs `--delete`, so the old URL's `index.html` is pruned from S3 the moment the site deploys. If the CF function (which 301s the old URL) is not yet live, the old URL 404s in the gap. Deploy order: the CF-function-only commands below → then `npm run deploy` → then verify the 301. (As of 2026-07-07 this applies to `/blog/understanding-heart-attack-warning-signs/` → `/blog/7-warning-signs-heart-attack-never-ignore/`; as of 2026-10-19 also to `/blog/best-heart-specialist-in-guntur/` → `/blog/how-to-choose-a-heart-specialist-in-guntur/` — see 3f-iii.)
 - [ ] Sitemap re-submitted in Google Search Console after deploy
+
+**CF-function-only publish** (updates and publishes the existing `redirect-www-to-non-www` function; creates nothing billable):
+
+```bash
+ETAG=$(aws cloudfront describe-function --name redirect-www-to-non-www --profile sid-personal --query ETag --output text)
+ETAG=$(aws cloudfront update-function --name redirect-www-to-non-www --if-match "$ETAG" \
+  --function-config '{"Comment":"Redirect www to non-www","Runtime":"cloudfront-js-1.0"}' \
+  --function-code fileb://cloudfront-functions/redirect-www-to-non-www.js --profile sid-personal --query ETag --output text)
+aws cloudfront publish-function --name redirect-www-to-non-www --if-match "$ETAG" --profile sid-personal
+```
+
 
 #### Step 2a: Commit and push
 
@@ -233,7 +244,23 @@ curl -sI https://kamalakarheartcentre.com/blog/understanding-heart-attack-warnin
 Check:
 - [ ] Both return `301 Moved Permanently` with `Location: https://kamalakarheartcentre.com/blog/7-warning-signs-heart-attack-never-ignore/`
 - [ ] The redirect target returns `200`
-- [ ] If either returns `404`, the CF function was not deployed before the site — run `bash scripts/aws_deploy.sh deploy prod` (CF function path) and re-invalidate. This is the deploy-ordering failure mode called out in the structural-change checklist.
+- [ ] If either returns `404`, the CF function was not deployed before the site — publish it with the CF-function-only commands (Step 1) and re-invalidate. This is the deploy-ordering failure mode called out in the structural-change checklist.
+
+#### 3f-iii. Renamed blog slug — must 301 to new slug
+
+On 2026-10-19 `best-heart-specialist-in-guntur` was renamed to `how-to-choose-a-heart-specialist-in-guntur` (NMC clause 8.1.ix — the old slug contained a superiority word). Content is unchanged. The CF function 301s the old slug (both slash and no-slash forms, plus subpaths) in a single hop. The old `index.html` is pruned by `npm run deploy --delete`, so the **deploy-order rule from Step 1 applies**: deploy the CF function first via the CF-function-only publish (Step 1), then `npm run deploy`.
+
+```bash
+curl -sI https://kamalakarheartcentre.com/blog/best-heart-specialist-in-guntur/
+curl -sI https://kamalakarheartcentre.com/blog/best-heart-specialist-in-guntur
+curl -sI https://kamalakarheartcentre.com/blog/how-to-choose-a-heart-specialist-in-guntur/
+```
+
+Check:
+- [ ] Both old-slug forms return `301 Moved Permanently` with `Location: https://kamalakarheartcentre.com/blog/how-to-choose-a-heart-specialist-in-guntur/` (no intermediate trailing-slash hop)
+- [ ] The new URL returns `200`, and is listed in `sitemap.xml` and `llms.txt` (the old URL is in neither)
+- [ ] If an old-slug form returns `404`, the CF function was not deployed before the site — publish it with the CF-function-only commands (Step 1) and re-invalidate.
+- [ ] Re-submit the sitemap in Google Search Console (structural change: renamed slug).
 
 #### 3g. Trailing-slash canonicalisation — no-slash 301s to slash
 

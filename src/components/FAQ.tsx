@@ -55,7 +55,7 @@ export default function FAQ({ content }: { content: FAQContent }) {
         <div className="mt-10 md:mt-16 text-center">
           <p className="text-gray-600 dark:text-gray-300 mb-6">{content.stillHaveQuestions || 'Still have questions?'}</p>
           <a href="#contact" className="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-primary-light transition-all hover:-translate-y-1">
-            {content.contactSupport || 'Contact Our Support Team'}
+            {content.contactSupport || 'Contact the Clinic'}
           </a>
         </div>
       </div>
