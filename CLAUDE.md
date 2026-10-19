@@ -107,6 +107,7 @@ Any of these triggers the full canonical/sitemap/robots review cycle above:
 | Blog writer skill | `.claude/skills/blog-writer/SKILL.md` |
 | Blog index / article / card | `src/pages/blog/index.astro`, `src/pages/blog/[slug].astro`, `src/components/BlogCard.astro`, `src/components/LatestPosts.astro` (homepage), `getPublishedBlogPosts()` + `getRelatedBlogPosts()` in `src/utils/content.ts` |
 | Content planner skill | `.claude/skills/content-planner/SKILL.md` |
+| NMC ethical-advertising compliance review (Public Notice R-13014/01/2024-Ethics, 2026-10-06) | `.claude/skills/nmc-check/SKILL.md` (+ `reference/` clause digest, `scripts/nmc-scan.mjs` phrase scanner) |
 | GTM/SEO skills (imported) — see `.claude/skills/NOTICE.md` for the full set | `.claude/skills/{audit-content, build-backlinks, build-resource-pages, create-geo-charts, geo-content-planning, geo-content-research, improve-aeo-geo, reddit-opportunity-research, research-brand, research-keywords, write-seo-geo-content}` |
 | SEO subagents (imported, project-local) — see `.claude/agents/NOTICE.md` | `.claude/agents/{seo-cluster, seo-content, seo-dataforseo, seo-flow, seo-geo, seo-image-gen, seo-local, seo-maps, seo-schema, seo-sitemap, seo-technical}` |
 
