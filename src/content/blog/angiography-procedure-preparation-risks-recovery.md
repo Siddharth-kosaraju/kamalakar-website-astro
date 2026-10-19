@@ -2,14 +2,15 @@
 title: "Angiography: Procedure, Preparation, Risks & Recovery Guide"
 category: "Procedures & Treatment"
 metaTitle: "Angiography: Procedure, Risks & Recovery"
-summary: "Learn about the angiography procedure, preparation, risks and recovery. Consult Dr. Kamalakar Kosaraju for budget-friendly angiography treatment in Guntur at Kamalakar Heart Centre."
-metaDescription: "Angiography explained — procedure, how to prepare, risks and recovery. Angiogram in Guntur with Dr. Kamalakar Kosaraju at Kamalakar Heart Centre."
+summary: "What a coronary angiography is, how to prepare, what happens during the test, its risks and recovery — and how it differs from angioplasty."
+metaDescription: "Angiography explained — the procedure, how to prepare, risks, recovery and how it differs from angioplasty. Written by cardiologist Dr. Kamalakar Kosaraju, Guntur."
 date: 2026-06-26
 author: "Dr. Kamalakar Kosaraju"
 tags: ["angiography in Guntur", "angiography treatment in Guntur", "coronary angiography", "heart blockage test", "angiography procedure", "angiography risks", "interventional cardiologist in Guntur", "Kamalakar Heart Centre"]
 readingTime: "7 min read"
 heroImage: "/media/blog-angiography-guide-hero.jpg"
-heroImageAlt: "Angiography: Procedure, Preparation, Risks & Recovery Guide — Best Angiography in Guntur, Dr. Kamalakar Heart Centre."
+heroImageAlt: "AI-generated banner titled 'Angiography: Procedure, Preparation, Risks & Recovery Guide' showing a cath lab, an angiogram on a monitor and an illustration of a heart and artery."
+heroImageAi: true
 published: true
 ---
 
@@ -20,7 +21,7 @@ published: true
 
 Heart problems often need timely diagnosis. If you have chest pain, shortness of breath, irregular heartbeat, or suspected heart blockage, your cardiologist may suggest an **angiography test**. Angiography helps doctors clearly view the blood vessels and check whether there are any narrow or blocked arteries.
 
-For patients looking for the **best angiography in Guntur**, [Kamalakar Heart Centre](/services/) provides advanced cardiac diagnosis and treatment guidance under **Dr. Kamalakar Kosaraju**, an experienced interventional cardiologist in Guntur. The centre focuses on accurate diagnosis, clear patient guidance and personalised heart care.
+This guide explains what the test involves, how to prepare, the possible risks and what recovery looks like. Angiography is among the [cardiac services](/services/) available in Guntur.
 
 ## What is Angiography?
 
@@ -43,7 +44,7 @@ Common reasons include:
 - High-risk heart patients needing detailed evaluation
 - Planning for angioplasty or other heart procedures
 
-If you are searching for angiography treatment in Guntur, it is important to consult a qualified cardiologist who can evaluate your symptoms and recommend the right test only when needed.
+Angiography is advised only when it is needed — a cardiologist decides this after evaluating your symptoms and earlier test results.
 
 ## How is the Angiography Procedure Done?
 
@@ -100,7 +101,7 @@ The [Mayo Clinic](https://www.mayoclinic.org/tests-procedures/coronary-angiogram
 
 ## Possible Risks of Angiography
 
-Angiography is a commonly performed and generally safe procedure, but like any medical test, it may have some risks. These risks are usually low when performed by an experienced cardiac team.
+Angiography is a commonly performed procedure, but it is an invasive test and carries some risks. Serious complications are uncommon.
 
 Possible risks may include:
 
@@ -124,32 +125,15 @@ Many patients confuse angiography and angioplasty.
 
 If angiography shows a significant blockage, your cardiologist may discuss whether angioplasty or another treatment is required. **Not every patient who undergoes angiography needs angioplasty.**
 
-## Why Choose Kamalakar Heart Centre for Angiography in Guntur?
+## Angiography at Kamalakar Heart Centre
 
-Kamalakar Heart Centre offers cardiac consultation, diagnosis, and treatment support for patients with heart-related symptoms. The centre is led by **Dr. Kamalakar Kosaraju**, an interventional cardiologist with M.D. in General Medicine, D.M. in Cardiology, and FESC.
-
-Patients choose Kamalakar Heart Centre for:
-
-- Experienced interventional cardiologist in Guntur
-- Modern cardiac diagnostic facilities
-- [Angiogram and angioplasty care](/services/angioplasty/)
-- Clear consultation and treatment guidance
-- Patient-focused approach
-- Budget-friendly heart care support
-- Transparent treatment discussion
-- [Emergency cardiac care](/services/emergency-cardiac-care/)
-
-The centre is located at **Life Hospital, Old Club Road, Kothapet, Guntur – 522001** and provides consultation from **Monday to Saturday, 10:00 AM to 6:00 PM**.
-
-## Looking for Budget-Friendly Angiography Treatment in Guntur?
-
-Heart diagnosis should be timely, clear, and guided by the right specialist. If you are looking for **budget-friendly angiography treatment in Guntur**, consult Kamalakar Heart Centre for proper evaluation and treatment guidance. The team helps patients understand the need for the test, expected process, recovery steps, and further treatment options.
+At Kamalakar Heart Centre, coronary angiography is performed by Dr. Kamalakar Kosaraju, interventional cardiologist (MD General Medicine, DM Cardiology, FESC), in the cath lab at Life Hospital, Old Club Road, Kothapet, Guntur. The fee for a coronary angiogram is ₹15,000 — see the [price list](/services/diagnostics-pricing/). [Angioplasty](/services/angioplasty/) and [emergency cardiac care](/services/emergency-cardiac-care/) are available at the same hospital.
 
 ## Frequently Asked Questions
 
 ### Is angiography a major surgery?
 
-No. Angiography is a minimally invasive diagnostic procedure, not open surgery. It is performed through a small puncture in the wrist or groin under local anaesthesia, and most patients are awake and comfortable throughout and can go home the same day.
+No. Angiography is a minimally invasive diagnostic procedure, not open surgery. It is performed through a small puncture in the wrist or groin under local anaesthesia, and most patients are awake throughout and can go home the same day.
 
 ### How long does an angiography take?
 
@@ -157,7 +141,7 @@ The procedure itself usually takes 30 minutes to 2 hours depending on your condi
 
 ### Is angiography painful?
 
-You may feel a small prick when the area is numbed and slight pressure as the catheter is inserted, but the procedure is generally not painful because of the local anaesthesia. Mild soreness or bruising at the insertion site afterward is normal.
+You may feel a small prick when the area is numbed and slight pressure as the catheter is inserted, but most people do not find the procedure painful because of the local anaesthesia. Some feel a brief warm flush when the dye is injected. Mild soreness or bruising at the insertion site afterward is normal.
 
 ### What is the difference between an angiogram and angioplasty?
 
@@ -171,12 +155,6 @@ Most people resume light activities within a day or two, but should avoid heavy 
 <p><strong>Medical Disclaimer:</strong> This article is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified cardiologist for personalised guidance. If you are experiencing a medical emergency, call 108 or visit your nearest emergency room immediately.</p>
 </div>
 
-<div class="not-prose bg-primary/10 dark:bg-primary/20 border border-primary/20 rounded-2xl p-6 sm:p-8 my-8 text-center">
-<p class="text-lg sm:text-xl font-bold mb-2 text-gray-900 dark:text-white">Book an Angiography Consultation</p>
-<p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">If you have chest pain, breathlessness, high blood pressure, or symptoms of heart blockage, do not delay consultation. Consult Dr. Kamalakar Kosaraju at Kamalakar Heart Centre, Kothapet, Guntur.</p>
-<a href="tel:9959423566" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:shadow-xl hover:bg-primary-dark transition-all">
-<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-99594 23566
-</a>
-<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">Life Hospital, Old Club Road, Kothapet, Guntur &mdash; 522001</p>
+<div class="not-prose bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-5 my-8">
+<p class="text-sm text-gray-600 dark:text-gray-300"><strong>Kamalakar Heart Centre</strong> — Life Hospital, Old Club Road, Kothapet, Guntur – 522001. OPD: Monday to Saturday, 10:00 AM – 6:00 PM. Phone: <a href="tel:9959423566" class="text-accent dark:text-accent-light underline">99594 23566</a>.</p>
 </div>

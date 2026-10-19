@@ -18,7 +18,7 @@ published: true
 
 The term "heart failure" is one of the most frightening phrases a patient can hear. Yet it is also one of the most misunderstood conditions in cardiology. Understanding heart failure symptoms treatment options and warning signs can help patients take control of their health rather than give in to fear.
 
-As we mark **Heart Failure Awareness Days (April 27 – May 3)**, the theme this year — *"Awareness Today, Protection Tomorrow"* — reminds us that knowledge is the first step towards better outcomes. At [Kamalakar Heart Centre](/services/) in Guntur, we are committed to helping patients understand this condition, catch it early, and manage it effectively.
+As we mark **Heart Failure Awareness Days (April 27 – May 3)**, the theme this year — *"Awareness Today, Protection Tomorrow"* — reminds us that knowledge is the first step towards better outcomes. This guide explains the condition, its early signs, and how it is diagnosed and managed.
 
 Heart failure affects lakhs of Indians, yet many go undiagnosed simply because the early signs are mistaken for normal ageing or fatigue. This guide explains what heart failure really is, how to spot it, and what can be done about it.
 
@@ -102,7 +102,7 @@ Other contributing factors include obesity, thyroid disorders, severe anaemia, a
 
 ### Diagnosis
 
-An accurate diagnosis is the foundation of effective treatment. At Kamalakar Heart Centre, we follow a systematic approach to evaluate heart failure.
+An accurate diagnosis is the foundation of effective treatment. Heart failure is evaluated step by step with the following tests.
 
 <div class="not-prose my-8 space-y-3">
 <div class="flex gap-4 items-start p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
@@ -116,7 +116,7 @@ An accurate diagnosis is the foundation of effective treatment. At Kamalakar Hea
 <span class="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm">2</span>
 <div>
 <p class="font-bold text-gray-900 dark:text-white">ECG (Electrocardiogram)</p>
-<p class="text-sm text-gray-600 dark:text-gray-300">Records the heart's electrical activity to detect rhythm abnormalities, prior heart attacks, or chamber enlargement. A quick, painless test done in minutes.</p>
+<p class="text-sm text-gray-600 dark:text-gray-300">Records the heart's electrical activity to detect rhythm abnormalities, prior heart attacks, or chamber enlargement. A quick, non-invasive test done in minutes.</p>
 </div>
 </div>
 <div class="flex gap-4 items-start p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
@@ -162,7 +162,7 @@ The goal of treatment is not just survival — it is helping patients return to 
 
 ## Can You Live a Normal Life with Heart Failure?
 
-**Yes.** This is one of the most important messages we share with our patients at Kamalakar Heart Centre. Heart failure is a serious condition, but it is manageable. Many of our patients lead active lives — working, travelling, and enjoying time with family — once their condition is properly treated and monitored.
+**Often, yes.** Heart failure is a serious, long-term condition, but in many people it can be managed. With treatment and monitoring, many patients continue to work, travel, and enjoy time with family, although this varies with the cause and severity of the condition.
 
 The key is consistency. Taking your medications, attending follow-up appointments, and making sustainable lifestyle adjustments can keep the condition stable for years.
 
@@ -206,12 +206,6 @@ Patients with heart failure should limit sodium (salt) intake, as excess salt ca
 <p><strong>Medical Disclaimer:</strong> This article is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified cardiologist for personalised guidance. If you are experiencing a medical emergency, call 108 or visit your nearest emergency room immediately.</p>
 </div>
 
-<div class="not-prose bg-primary/10 dark:bg-primary/20 border border-primary/20 rounded-2xl p-6 sm:p-8 my-8 text-center">
-<p class="text-lg sm:text-xl font-bold mb-2 text-gray-900 dark:text-white">Concerned About Heart Failure Symptoms?</p>
-<p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">Early diagnosis makes a real difference. Consult Dr. Kamalakar for expert evaluation and a personalised treatment plan.</p>
-<a href="tel:9959423566" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:shadow-xl hover:bg-primary-dark transition-all">
-<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-99594 23566
-</a>
-<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">Kamalakar Heart Centre, Kothapet, Guntur</p>
+<div class="not-prose bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-5 my-8">
+<p class="text-sm text-gray-600 dark:text-gray-300"><strong>Kamalakar Heart Centre</strong> — Life Hospital, Old Club Road, Kothapet, Guntur – 522001. OPD: Monday to Saturday, 10:00 AM – 6:00 PM. Phone: <a href="tel:9959423566" class="text-accent dark:text-accent-light underline">99594 23566</a>.</p>
 </div>

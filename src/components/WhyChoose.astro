@@ -1,7 +1,8 @@
 ---
 /**
- * Why Choose Us section — static Astro component.
- * Highlights key differentiators of Kamalakar Heart Centre.
+ * About the Centre section — static Astro component.
+ * Plain factual list of what is available at Kamalakar Heart Centre
+ * (NMC ethical-advertising guidelines: no persuasion/superiority copy here).
  */
 interface Props {
   content: {
@@ -28,7 +29,7 @@ const checkCircleIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="22" heig
     <div class="text-center mb-10 md:mb-16">
       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-white/10 border border-gray-200 dark:border-white/10 text-primary dark:text-white mb-6 font-semibold">
         <Fragment set:html={awardIcon} />
-        <span class="text-sm font-bold uppercase tracking-wider">Why Choose Us</span>
+        <span class="text-sm font-bold uppercase tracking-wider">About the Centre</span>
       </div>
       <h2 class="text-3xl md:text-5xl font-bold font-serif text-primary dark:text-white mb-6">
         {content.heading}

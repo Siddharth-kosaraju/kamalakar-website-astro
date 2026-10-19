@@ -67,7 +67,7 @@ const STATIC_DESCRIPTIONS = {
   '/': {
     section: 'clinic',
     name: 'Kamalakar Heart Centre — Home',
-    desc: 'Best cardiologist and heart specialist in Guntur; who is Dr. Kamalakar Kosaraju, where is the clinic, consultation fee, OPD timings and how to book an appointment.',
+    desc: 'Cardiologist and heart specialist in Guntur; who is Dr. Kamalakar Kosaraju, where is the clinic, consultation fee, OPD timings and how to book an appointment.',
   },
   '/about/': {
     section: 'clinic',

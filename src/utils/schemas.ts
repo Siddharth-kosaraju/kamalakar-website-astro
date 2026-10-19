@@ -47,7 +47,7 @@ export function buildBusinessSchema(testimonials?: TestimonialItem[], gbpUrl?: s
     '@id': `${CANONICAL_BASE}/#organization`,
     name: 'Kamalakar Heart Centre',
     alternateName: 'Kamalakar Heart Centre at Life Hospital',
-    description: 'Advanced cardiac care in Guntur by Dr. Kamalakar Kosaraju. Angioplasty, Pacemaker, ECG, 2D Echo and Heart Failure management.',
+    description: 'Cardiac care in Guntur by Dr. Kamalakar Kosaraju. Angioplasty, Pacemaker, ECG, 2D Echo and Heart Failure management.',
     url: `${CANONICAL_BASE}/`,
     logo: `${CANONICAL_BASE}/images/logo.svg`,
     image: `${CANONICAL_BASE}/media/dr-kamalakar.jpg`,
@@ -220,9 +220,9 @@ export function buildWebPageSchema(page: 'home' | 'education') {
     '@context': 'https://schema.org',
     '@type': 'MedicalWebPage',
     url,
-    name: isHome ? 'Kamalakar Heart Centre - Best Cardiologist in Guntur' : 'Heart Health Education - Kamalakar Heart Centre',
+    name: isHome ? 'Kamalakar Heart Centre - Cardiologist in Guntur' : 'Heart Health Education - Kamalakar Heart Centre',
     description: isHome
-      ? 'Expert cardiac care in Guntur by Dr. Kamalakar Kosaraju.'
+      ? 'Cardiac care in Guntur by Dr. Kamalakar Kosaraju, interventional cardiologist.'
       : 'Heart health education resources from Kamalakar Heart Centre.',
     inLanguage: 'en',
     isPartOf: { '@type': 'WebSite', url: `${CANONICAL_BASE}/`, name: 'Kamalakar Heart Centre' },

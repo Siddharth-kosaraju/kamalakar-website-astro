@@ -3,7 +3,7 @@ title: "Hypertension & Cholesterol Control"
 metaTitle: "BP & Cholesterol Specialist in Guntur | Dr Kamalakar Kosaraju"
 metaDescription: "High blood pressure and cholesterol treatment in Guntur by Dr Kamalakar Kosaraju, Interventional Cardiologist. Personalised plan, lifestyle guidance, regular monitoring."
 heroHeading: "Hypertension & Cholesterol Control"
-heroSubheading: "Silent risk factors behind most heart attacks — managed with expert care and continuous monitoring"
+heroSubheading: "Screening, treatment and follow-up for high blood pressure and high cholesterol"
 images:
   - src: "/media/services/hypertension-cholesterol.webp"
     alt: "Hypertension and cholesterol treatment at Kamalakar Heart Centre, Guntur"
@@ -11,7 +11,7 @@ images:
 sections:
   - paragraphs:
       - "High blood pressure (hypertension) and high cholesterol are two of the most common causes of heart disease in India. Often called \"silent killers,\" these conditions usually develop without noticeable symptoms, yet they significantly increase the risk of heart attack, stroke, and other cardiovascular complications."
-      - "At Kamalakar Heart Centre, Guntur, Dr. Kamalakar Kosaraju offers comprehensive screening and personalized treatment plans to help patients effectively manage these conditions and protect long-term heart health."
+      - "At Kamalakar Heart Centre, Guntur, Dr. Kamalakar Kosaraju offers screening and individual treatment plans for high blood pressure and high cholesterol."
   - heading: "Understanding the Risk"
     paragraphs:
       - "Hypertension puts extra strain on blood vessels and the heart, while high cholesterol leads to plaque buildup in arteries. Together, they reduce blood flow and increase the chances of serious cardiac events."
@@ -35,7 +35,7 @@ sections:
       - "Regular physical activity"
       - "Weight management"
       - "Stress control and better sleep habits"
-    closingText: "Dr. Kamalakar emphasizes that lasting results come from combining medication with consistent lifestyle improvements."
+    closingText: "Medication works best when combined with consistent lifestyle changes."
   - heading: "Ongoing Monitoring & Care"
     paragraphs:
       - "Regular follow-ups are essential to keep these conditions under control:"
@@ -43,7 +43,7 @@ sections:
       - "Initial monitoring every 4–8 weeks"
       - "Medication adjustments based on progress"
       - "Quarterly check-ups once levels stabilize"
-    closingText: "With proper management, patients can reduce their risk of heart attack by up to 50%."
+    closingText: "Good control of blood pressure and cholesterol lowers the risk of heart attack and stroke."
 steps:
   - title: "Screening & Diagnosis"
     description: "Comprehensive testing including blood pressure, cholesterol levels, and blood sugar."
@@ -80,4 +80,4 @@ keywords:
 relatedPosts:
   - "high-cholesterol-india-diet-management"
   - "best-food-habits-for-a-healthy-heart"
-ctaText: "Book a Preventive Heart Checkup"
+ctaText: "Call for an Appointment"

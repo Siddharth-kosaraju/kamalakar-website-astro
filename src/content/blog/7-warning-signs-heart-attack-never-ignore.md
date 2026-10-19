@@ -17,7 +17,7 @@ published: true
 
 A heart attack does not always arrive with crushing chest pain. For many Indians — especially women, diabetics, and older adults — the warning signs are subtle, easily dismissed as acidity, fatigue, or stress. By the time help is sought, precious heart muscle is already lost.
 
-At [Kamalakar Heart Centre](/services/) in Guntur, we see this pattern every week. This guide walks you through the **7 warning signs of a heart attack** you should never ignore, how each one feels, why it happens, and exactly when to act.
+This guide walks you through the **7 warning signs of a heart attack** you should never ignore, how each one feels, why it happens, and exactly when to act.
 
 ## Why are heart attacks more dangerous for Indians?
 
@@ -81,7 +81,7 @@ What makes this urgent: the average Indian patient presenting with a heart attac
 
 <div class="not-prose bg-amber-50 dark:bg-amber-900/10 border-l-4 border-amber-500 rounded-r-xl p-5 my-8">
 <p class="text-sm font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2">Did You Know?</p>
-<p class="text-base text-gray-700 dark:text-gray-300">According to the Indian Heart Journal, nearly <strong>45% of heart attacks in Indians occur before age 55</strong> — far earlier than in Western countries. A "chest pain at 40" is no longer rare. Regular <a href="/services/ecg-echo/" class="text-accent dark:text-accent-light underline">ECG and 2D echo screening</a> after age 30 can detect silent blockages before they become emergencies.</p>
+<p class="text-base text-gray-700 dark:text-gray-300">According to the Indian Heart Journal, nearly <strong>45% of heart attacks in Indians occur before age 55</strong> — far earlier than in Western countries. A "chest pain at 40" is no longer rare. If you have risk factors, ask your doctor whether tests such as an <a href="/services/ecg-echo/" class="text-accent dark:text-accent-light underline">ECG or 2D echo</a> are appropriate for you.</p>
 </div>
 
 ## What is a silent heart attack and how is it different?
@@ -92,7 +92,7 @@ A **silent heart attack** (silent myocardial infarction) is a cardiac event that
 - **Women** — often present with fatigue, nausea, or back pain rather than chest pain
 - **Older adults** — may experience only confusion or sudden weakness
 
-Silent heart attacks still cause the same permanent damage to heart muscle. They are often discovered weeks or months later during a routine ECG or [2D echocardiogram](/services/ecg-echo/), when the patient visits a cardiologist for an unrelated concern. If you are diabetic or above 40, an **annual cardiac check-up is the only reliable way** to detect silent heart attacks early — our guide comparing [ECG, 2D Echo and TMT heart tests](/blog/ecg-vs-2d-echo-vs-tmt-heart-tests-explained/) explains which one you actually need.
+Silent heart attacks still cause the same permanent damage to heart muscle. They are often discovered weeks or months later during a routine ECG or [2D echocardiogram](/services/ecg-echo/), when the patient visits a cardiologist for an unrelated concern. If you are diabetic or above 40, ask your doctor how often you should have a heart check-up — our guide comparing [ECG, 2D Echo and TMT heart tests](/blog/ecg-vs-2d-echo-vs-tmt-heart-tests-explained/) explains which one you actually need.
 
 ## When should you call for emergency help?
 
@@ -129,12 +129,12 @@ Silent heart attacks still cause the same permanent damage to heart muscle. They
 </div>
 </div>
 
-At Kamalakar Heart Centre, our cath lab is equipped for **[emergency angioplasty](/services/angioplasty/)** — the gold-standard treatment for a heart attack. The faster a blocked artery is reopened, the more heart muscle is saved.
+**[Emergency angioplasty](/services/angioplasty/)**, performed in a cath lab, is the standard treatment for a major heart attack where it is available in time. The faster a blocked artery is reopened, the more heart muscle is saved.
 
 <div class="not-prose bg-green-50 dark:bg-green-900/10 border-l-4 border-green-500 rounded-r-xl p-5 my-8">
 <p class="text-sm font-bold uppercase tracking-wider text-green-700 dark:text-green-400 mb-3">Reduce Your Risk Today</p>
 <ul class="space-y-2 text-base text-gray-700 dark:text-gray-300">
-<li class="flex gap-2 items-start"><span class="text-green-600 font-bold">&#x2022;</span> <span><strong>Get an annual ECG:</strong> From age 30, especially with family history or diabetes.</span></li>
+<li class="flex gap-2 items-start"><span class="text-green-600 font-bold">&#x2022;</span> <span><strong>Ask about heart check-ups:</strong> Discuss with your doctor when to start, especially with family history or diabetes.</span></li>
 <li class="flex gap-2 items-start"><span class="text-green-600 font-bold">&#x2022;</span> <span><strong>Control blood pressure and cholesterol:</strong> Two of the biggest modifiable risk factors — see our <a href="/services/hypertension-cholesterol/" class="text-accent dark:text-accent-light underline">hypertension and cholesterol care</a>.</span></li>
 <li class="flex gap-2 items-start"><span class="text-green-600 font-bold">&#x2022;</span> <span><strong>Walk 30 minutes daily:</strong> Brisk walking reduces heart attack risk by up to 35% (AHA).</span></li>
 <li class="flex gap-2 items-start"><span class="text-green-600 font-bold">&#x2022;</span> <span><strong>Quit smoking and limit alcohol:</strong> Both are leading triggers of early heart attacks in Indian men.</span></li>
@@ -147,11 +147,11 @@ At Kamalakar Heart Centre, our cath lab is equipped for **[emergency angioplasty
 
 ### Can a heart attack happen without chest pain?
 
-Yes. Nearly **1 in 5 heart attacks are silent**, with no obvious chest pain — especially in women, diabetics, and older adults. The warning signs may be fatigue, nausea, breathlessness, or jaw pain instead. If you have risk factors, regular [ECG and 2D echo screening](/services/ecg-echo/) is the safest way to detect silent heart attacks early.
+Yes. Nearly **1 in 5 heart attacks are silent**, with no obvious chest pain — especially in women, diabetics, and older adults. The warning signs may be fatigue, nausea, breathlessness, or jaw pain instead. If you have risk factors, your doctor may advise tests such as an [ECG or 2D echo](/services/ecg-echo/).
 
 ### How are heart attack symptoms different in women?
 
-Women are more likely to experience atypical signs — unusual fatigue, nausea, jaw or back pain, and shortness of breath — rather than classic chest pain. Studies by the American Heart Association show over 70% of women had unusual fatigue in the weeks before their heart attack. If something feels "off" and persists, consult a [cardiologist in Guntur](/about/) without delay.
+Women are more likely to experience atypical signs — unusual fatigue, nausea, jaw or back pain, and shortness of breath — rather than classic chest pain. Studies by the American Heart Association show over 70% of women had unusual fatigue in the weeks before their heart attack. If something feels "off" and persists, see a doctor promptly.
 
 ### What should I do in the first 10 minutes of suspected heart attack?
 
@@ -159,7 +159,7 @@ Call 108 or rush to a hospital with a cath lab. If not allergic, chew a 325 mg a
 
 ### At what age should Indians start heart check-ups?
 
-Because Indians develop heart disease 5–10 years earlier than Western populations (Indian Heart Journal), routine cardiac screening should begin at **age 30** — or earlier if you have diabetes, hypertension, high cholesterol, or a family history of heart disease.
+Because Indians develop heart disease 5–10 years earlier than Western populations (Indian Heart Journal), many cardiologists advise discussing heart screening with your doctor from around **age 30**, earlier with risk factors such as diabetes, hypertension, high cholesterol, or a family history of heart disease.
 
 ### Is chest pain always a heart attack?
 
@@ -169,12 +169,7 @@ No. Chest pain can be caused by acidity, muscle strain, anxiety, or lung issues.
 <p><strong>Medical Disclaimer:</strong> This article is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified cardiologist for personalised guidance. If you are experiencing a medical emergency, call 108 or visit your nearest emergency room immediately.</p>
 </div>
 
-<div class="not-prose bg-primary/10 dark:bg-primary/20 border border-primary/20 rounded-2xl p-6 sm:p-8 my-8 text-center">
-<p class="text-lg sm:text-xl font-bold mb-2 text-gray-900 dark:text-white">Worried About Heart Attack Warning Signs?</p>
-<p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">Don't wait for symptoms to worsen. Book a cardiac screening with Dr. Kamalakar Kosaraju today.</p>
-<a href="tel:9959423566" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:shadow-xl hover:bg-primary-dark transition-all">
-<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-99594 23566
-</a>
-<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">Kamalakar Heart Centre, Kothapet, Guntur &mdash; 24/7 Emergency Cardiac Care</p>
+<div class="not-prose bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-5 my-8">
+<p class="text-sm text-gray-700 dark:text-gray-300 mb-2">If you have these symptoms now, call 108 or go to the nearest emergency department. For non-urgent concerns, speak to a doctor.</p>
+<p class="text-sm text-gray-600 dark:text-gray-300"><strong>Kamalakar Heart Centre</strong> — Life Hospital, Old Club Road, Kothapet, Guntur – 522001. OPD: Monday to Saturday, 10:00 AM – 6:00 PM. Phone: <a href="tel:9959423566" class="text-accent dark:text-accent-light underline">99594 23566</a>.</p>
 </div>

@@ -317,6 +317,9 @@ const blogPostSchema = z.object({
   // for the <picture> srcset (matches the gallery-*.{jpg,webp} convention).
   heroImage: z.string().optional(),
   heroImageAlt: z.string().optional(),
+  // NMC clause 7.2 (AI source mark): set true when the hero image is
+  // AI-generated; blog/[slug].astro then renders a visible disclosure caption.
+  heroImageAi: z.boolean().optional(),
 });
 
 const site = defineCollection({

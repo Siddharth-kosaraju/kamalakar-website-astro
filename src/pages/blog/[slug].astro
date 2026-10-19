@@ -17,7 +17,6 @@ import { buildPhysicianSchema } from '../../utils/schemas';
 // attribute the doctor's knowledge panel.
 const DOCTOR_PROFILE_POSTS = new Set([
   'dr-kamalakar-kosaraju-cardiologist-in-guntur',
-  'best-heart-specialist-in-guntur',
 ]);
 
 export async function getStaticPaths() {
@@ -291,6 +290,11 @@ if (faqSection) {
               class="w-full h-auto sm:rounded-2xl shadow-md"
             />
           </picture>
+          {post.data.heroImageAi && (
+            <figcaption class="mt-2 px-4 sm:px-0 text-xs text-gray-500 dark:text-gray-400 italic">
+              Illustration generated using AI. It does not depict real patients or doctors.
+            </figcaption>
+          )}
         </figure>
       )}
 
@@ -321,13 +325,14 @@ if (faqSection) {
           </div>
           <div class="text-center sm:text-left">
             <p class="font-bold text-primary dark:text-white text-lg font-serif">Dr. Kamalakar Kosaraju</p>
-            <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">M.D. (Gold Medalist), D.M. Cardiology, FESC — Interventional Cardiologist, Guntur</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400">MBBS, MD (General Medicine), DM (Cardiology), FESC — Interventional Cardiologist, Guntur</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mb-3">Registered with the Andhra Pradesh Medical Council, Reg. No. 57814</p>
             <a
               href={`tel:${content.contact.appointmentPhone}`}
               class="inline-flex items-center gap-2 bg-primary text-white px-6 py-2.5 rounded-lg font-bold text-sm shadow-md hover:bg-primary-light transition-all"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              Book Consultation
+              Call for an Appointment
             </a>
           </div>
         </div>

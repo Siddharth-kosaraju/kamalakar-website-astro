@@ -1,18 +1,18 @@
 ---
-title: "Successful Coronary Angioplasty and Stent Placement in an Elderly Patient"
+title: "Coronary Angioplasty and Stent Placement in an Elderly Patient: An Educational Case"
 metaTitle: "Coronary Angioplasty & Stent Case Study"
-summary: "How an elderly patient with recurring chest pain and breathlessness was diagnosed with coronary artery disease and treated successfully with angioplasty and stent placement at Kamalakar Heart Centre, Guntur."
-metaDescription: "Read how an elderly patient with chest pain and breathlessness was diagnosed with coronary artery disease and treated successfully with angioplasty and stent placement."
+summary: "An anonymised educational case: how recurring chest pain and breathlessness in an elderly patient were evaluated, and how coronary artery disease was treated with angioplasty and stent placement."
+metaDescription: "An anonymised educational case: how chest pain and breathlessness in an elderly patient were evaluated, and how coronary artery disease was treated with angioplasty and a stent."
 date: 2026-08-06
 author: "Dr. Kamalakar Kosaraju"
-tags: ["coronary angioplasty case study", "heart stent treatment in Guntur", "coronary angioplasty in Guntur", "heart blockage treatment", "coronary artery disease treatment", "stent placement for elderly patients"]
+tags: ["coronary angioplasty case study", "coronary artery disease", "coronary stent placement", "chest pain evaluation", "coronary angiography", "heart care for elderly patients"]
 readingTime: "6 min read"
 published: true
 ---
 
 <div class="not-prose bg-primary/5 dark:bg-primary/10 border-l-4 border-primary rounded-r-xl p-5 mb-10">
 <p class="text-sm font-bold uppercase tracking-wider text-primary dark:text-accent-light mb-2">Key Takeaway</p>
-<p class="text-base leading-relaxed text-gray-700 dark:text-gray-300">An elderly patient with recurring chest discomfort and breathlessness was found to have a <strong>severe narrowing in a major coronary artery</strong>. Timely evaluation — ECG, blood tests, 2D Echo and coronary angiography — followed by <strong>angioplasty with stent placement</strong> restored blood flow through a minimally invasive procedure. The patient recovered well and returned to routine activities under medical guidance. Chest discomfort, breathlessness or unusual fatigue in elderly individuals should never be ignored.</p>
+<p class="text-base leading-relaxed text-gray-700 dark:text-gray-300">An elderly patient with recurring chest discomfort and breathlessness was found to have a <strong>severe narrowing in a major coronary artery</strong>. Evaluation — ECG, blood tests, 2D Echo and coronary angiography — was followed by <strong>angioplasty with stent placement</strong>, a catheter-based procedure that restored blood flow in the affected artery. This patient returned to routine activities under medical guidance. Outcomes vary between patients: angioplasty carries risks, including bleeding, vessel injury and re-narrowing of the artery, and is not suitable for every blockage. Chest discomfort, breathlessness or unusual fatigue in elderly individuals should be medically evaluated.</p>
 </div>
 
 ## Case Overview
@@ -22,6 +22,8 @@ An elderly patient visited Kamalakar Heart Centre after experiencing recurring c
 Considering the patient's age and symptoms, the cardiac team conducted a detailed evaluation to identify whether the heart was receiving an adequate blood supply.
 
 *Patient-identifying information has been withheld to protect privacy.*
+
+*Published for educational purposes with the patient's documented consent.*
 
 ## The Patient's Problem
 
@@ -117,27 +119,13 @@ After treatment, blood flow through the affected coronary artery was restored. T
 
 The patient was discharged in a stable condition with a personalized medication, lifestyle and follow-up plan. During follow-up, the patient showed satisfactory recovery and was gradually able to resume routine daily activities under medical guidance.
 
+This describes one patient's course. Outcomes vary between patients, and angioplasty carries risks — including bleeding, injury to the blood vessel and re-narrowing of the treated artery — and is not suitable for every blockage. Some patients are better treated with medicines alone or with bypass surgery.
+
 ## Conclusion
 
 This case demonstrates the importance of not ignoring chest discomfort, breathlessness or sudden fatigue in elderly individuals. Early cardiac evaluation helped identify a serious coronary-artery blockage before it caused further damage.
 
-Timely coronary angiography followed by angioplasty and stent placement helped restore blood flow to the heart through a minimally invasive approach. Continued medication adherence, risk-factor management, lifestyle changes and regular follow-up remain essential for protecting the patient's long-term heart health.
-
-## Timely Heart Care Can Make a Difference
-
-Kamalakar Heart Centre provides cardiac evaluation and interventional cardiology services, including [ECG, 2D Echo](/services/ecg-echo/), coronary angiography, [angioplasty and stenting](/services/angioplasty/). For sudden or severe symptoms, the centre also provides [emergency cardiac care](/services/emergency-cardiac-care/).
-
-Do not ignore recurring chest pain, breathlessness, sweating or unexplained fatigue.
-
-<div class="not-prose bg-primary/10 dark:bg-primary/20 border border-primary/20 rounded-2xl p-6 sm:p-8 my-8 text-center">
-<p class="text-lg sm:text-xl font-bold mb-2 text-gray-900 dark:text-white">Book a Cardiac Consultation</p>
-<p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">Do not ignore recurring chest pain, breathlessness, sweating or unexplained fatigue. Consult Dr. Kamalakar Kosaraju at Kamalakar Heart Centre, Kothapet, Guntur.</p>
-<a href="tel:9959423566" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:shadow-xl hover:bg-primary-dark transition-all">
-<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-99594 23566
-</a>
-<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">Life Hospital, Old Club Road, Kothapet, Guntur &mdash; 522001</p>
-</div>
+In this patient, coronary angiography followed by angioplasty and stent placement restored blood flow through the narrowed artery using a catheter-based approach. The same result cannot be assumed for every patient; the choice of treatment depends on individual assessment of benefits and risks. Continued medication adherence, risk-factor management, lifestyle changes and regular follow-up remain essential for protecting the patient's long-term heart health.
 
 <div class="not-prose text-xs text-gray-400 dark:text-gray-500 border-t border-gray-200 dark:border-gray-700 pt-4 mt-8">
 <p><strong>Medical Disclaimer:</strong> This anonymized educational case scenario does not disclose any patient-identifying information. Symptoms, investigations and treatments vary between patients — the final diagnosis and treatment must always be determined by a qualified cardiologist. This article is not a substitute for professional medical advice, diagnosis, or treatment. If you are experiencing a medical emergency, call 108 or visit your nearest emergency room immediately.</p>

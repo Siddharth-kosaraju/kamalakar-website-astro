@@ -2,7 +2,7 @@
 title: "How Summer Heat Affects Your Heart – Tips from a Guntur Cardiologist"
 category: "Prevention & Lifestyle"
 metaTitle: "Summer Heat and Your Heart: Safety Tips"
-summary: "Summer heat strains your heart through dehydration and blood pressure changes. Learn how to protect your heart during Indian summers with expert tips."
+summary: "Summer heat strains your heart through dehydration and blood pressure changes. Learn how to protect your heart during Indian summers with practical tips."
 date: 2026-04-21
 author: "Dr. Kamalakar Kosaraju"
 tags: ["summer heat heart health", "heart care summer tips", "heat stroke heart risk", "dehydration heart", "cardiologist guntur", "cardiac care summer", "heart health tips"]
@@ -17,7 +17,7 @@ published: true
 
 Every year, Guntur crosses 45°C during the summer months — and for people with heart conditions, this isn't just uncomfortable. It's dangerous. Understanding **summer heat heart health** is essential for anyone living in Andhra Pradesh's scorching climate, where the combination of extreme temperatures and high humidity puts enormous strain on the cardiovascular system.
 
-At [Kamalakar Heart Centre](/services/) in Guntur, we see a significant rise in cardiac emergencies every summer. Patients come in with irregular heartbeats, dangerously low blood pressure, and dehydration-related complications that could have been prevented with the right precautions.
+In clinical practice, summer brings more patients with irregular heartbeats, low blood pressure, and dehydration-related complications — many of which could have been prevented with the right precautions.
 
 This guide explains exactly how heat affects your heart, who is most vulnerable, and what you can do to stay safe from April through June.
 
@@ -149,11 +149,11 @@ Eating light, frequent meals rich in fruits and vegetables also helps. Watermelo
 
 ## When Should You See a Cardiologist in Summer?
 
-Don't wait for a crisis. If you have any existing heart condition, a pre-summer cardiac evaluation is one of the smartest steps you can take.
+If you have an existing heart condition, consider asking your doctor before peak summer whether your medicines or fluid intake need adjusting for the heat.
 
-A routine [ECG, 2D Echo, and TMT](/services/ecg-echo/) can reveal how well your heart is handling the seasonal stress. Your cardiologist can review your current medications, assess your risk profile, and make preventive adjustments before the worst of the heat arrives.
+Your cardiologist can review your current medications and risk profile and, where your symptoms call for it, advise tests such as an [ECG, 2D Echo, or TMT](/services/ecg-echo/).
 
-You should also seek an urgent consultation if you experience new or worsening symptoms like breathlessness, swelling in the legs, unexplained fatigue, or episodes of chest discomfort — even if they seem mild.
+See a doctor promptly if you experience new or worsening symptoms like breathlessness, swelling in the legs, unexplained fatigue, or episodes of chest discomfort — even if they seem mild.
 
 <div class="not-prose bg-amber-50 dark:bg-amber-900/10 border-l-4 border-amber-500 rounded-r-xl p-5 my-8">
 <p class="text-sm font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2">Did You Know?</p>
@@ -184,12 +184,6 @@ Heat stroke is a medical emergency. The body's temperature regulation fails comp
 <p><strong>Medical Disclaimer:</strong> This article is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified cardiologist for personalised guidance. If you are experiencing a medical emergency, call 108 or visit your nearest emergency room immediately.</p>
 </div>
 
-<div class="not-prose bg-primary/10 dark:bg-primary/20 border border-primary/20 rounded-2xl p-6 sm:p-8 my-8 text-center">
-<p class="text-lg sm:text-xl font-bold mb-2 text-gray-900 dark:text-white">Protect Your Heart This Summer</p>
-<p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">Book a preventive cardiac check-up with Dr. Kamalakar before peak summer hits.</p>
-<a href="tel:9959423566" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:shadow-xl hover:bg-primary-dark transition-all">
-<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-99594 23566
-</a>
-<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">Kamalakar Heart Centre, Kothapet, Guntur</p>
+<div class="not-prose bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-5 my-8">
+<p class="text-sm text-gray-600 dark:text-gray-300"><strong>Kamalakar Heart Centre</strong> — Life Hospital, Old Club Road, Kothapet, Guntur – 522001. OPD: Monday to Saturday, 10:00 AM – 6:00 PM. Phone: <a href="tel:9959423566" class="text-accent dark:text-accent-light underline">99594 23566</a>.</p>
 </div>

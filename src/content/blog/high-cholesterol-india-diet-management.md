@@ -20,7 +20,7 @@ High cholesterol in India has reached epidemic proportions. The landmark [ICMR-I
 
 What makes this even more concerning is that Indians develop coronary artery disease nearly **a decade earlier** than Western populations. Genetic predisposition, combined with dietary habits and sedentary lifestyles, creates a perfect storm for heart disease in our country.
 
-At [Kamalakar Heart Centre](/services/) in Guntur, we regularly see patients in their 30s and 40s with dangerously elevated cholesterol — many of whom had no idea until a routine test revealed the problem. The good news is that early detection and the right lifestyle changes can make a significant difference.
+Many people in their 30s and 40s have elevated cholesterol without knowing it until a routine test reveals the problem. Early detection and the right lifestyle changes can make a significant difference.
 
 
 ## Why Is High Cholesterol So Common in India?
@@ -137,9 +137,9 @@ A lipid profile test is a simple blood test that measures your LDL, HDL, triglyc
 - If you are over 35, have diabetes, hypertension, a family history of heart disease, or are overweight, get tested **annually**
 - If you are already on cholesterol medication, your doctor may recommend testing every **3-6 months**
 
-At Kamalakar Heart Centre, we offer comprehensive cardiac screening including [ECG, 2D Echo, and TMT](/services/ecg-echo/) alongside lipid testing. These investigations together give a complete picture of your heart health.
+If your lipid results or risk factors call for it, your doctor may also advise heart tests such as an [ECG, 2D Echo, or TMT](/services/ecg-echo/).
 
-Do not wait for symptoms. High cholesterol is called a "silent killer" because it causes no pain or discomfort while steadily building up plaques in your arteries. By the time symptoms appear — chest pain, breathlessness, or a heart attack — significant damage may already be done, potentially requiring [angioplasty](/services/angioplasty/) or other interventions.
+High cholesterol is called a "silent killer" because it causes no pain or discomfort while steadily building up plaques in your arteries. Symptoms such as chest pain or breathlessness appear only once arteries are significantly narrowed, at which stage treatment may include medicines, [angioplasty](/services/angioplasty/) or other interventions. This is why testing is based on age and risk factors rather than on symptoms.
 
 <div class="not-prose bg-amber-50 dark:bg-amber-900/10 border-l-4 border-amber-500 rounded-r-xl p-5 my-8">
 <p class="text-sm font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2">Did You Know?</p>
@@ -172,12 +172,6 @@ For most Indians, the desirable levels are: total cholesterol below 200 mg/dL, L
 <p><strong>Medical Disclaimer:</strong> This article is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified cardiologist for personalised guidance. If you are experiencing a medical emergency, call 108 or visit your nearest emergency room immediately.</p>
 </div>
 
-<div class="not-prose bg-primary/10 dark:bg-primary/20 border border-primary/20 rounded-2xl p-6 sm:p-8 my-8 text-center">
-<p class="text-lg sm:text-xl font-bold mb-2 text-gray-900 dark:text-white">Get Your Cholesterol Checked Today</p>
-<p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">A simple lipid profile test can reveal hidden risks. Book a consultation with Dr. Kamalakar for personalised guidance.</p>
-<a href="tel:9959423566" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:shadow-xl hover:bg-primary-dark transition-all">
-<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-99594 23566
-</a>
-<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">Kamalakar Heart Centre, Kothapet, Guntur</p>
+<div class="not-prose bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-5 my-8">
+<p class="text-sm text-gray-600 dark:text-gray-300"><strong>Kamalakar Heart Centre</strong> — Life Hospital, Old Club Road, Kothapet, Guntur – 522001. OPD: Monday to Saturday, 10:00 AM – 6:00 PM. Phone: <a href="tel:9959423566" class="text-accent dark:text-accent-light underline">99594 23566</a>.</p>
 </div>
