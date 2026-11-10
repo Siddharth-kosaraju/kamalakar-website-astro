@@ -1,27 +1,27 @@
 slug: "ecg-echo"
 title: "ECG, 2D Echo & TMT Testing"
 metaTitle: "ECG, 2D Echo & TMT Cost in Guntur | Kamalakar Heart Centre"
-metaDescription: "ECG ₹200, 2D Echo ₹1000, TMT ₹1200 in Guntur. Accurate cardiac diagnostics by Dr Kamalakar Kosaraju at Kamalakar Heart Centre. Basic ECG included with consultation."
+metaDescription: "ECG ₹200, 2D Echo ₹1000, TMT ₹1200 in Guntur. Tests reported by Dr Kamalakar Kosaraju at Kamalakar Heart Centre. Basic ECG included in the ₹500 consultation fee."
 heroHeading: "ECG, 2D Echo & TMT Testing"
-heroSubheading: "Accurate and affordable heart diagnostics for early detection and better treatment"
+heroSubheading: "ECG, 2D Echo and TMT at Kamalakar Heart Centre, Guntur"
 images:
   - src: "/media/services/ecg-echo.webp"
     alt: "ECG, 2D Echo, and TMT testing equipment at Kamalakar Heart Centre, Guntur"
-    caption: "Comprehensive cardiac diagnostic services including ECG, 2D Echo, and TMT"
+    caption: "ECG, 2D Echo and TMT testing at Kamalakar Heart Centre, Guntur"
 sections:
   - paragraphs:
-      - "Understanding your heart health begins with the right diagnostic tests. At Kamalakar Heart Centre in Guntur, we provide essential non-invasive cardiac investigations including ECG, 2D Echocardiography, and Treadmill Test (TMT) to detect heart problems early and guide effective treatment."
-      - "These tests help identify heart rhythm abnormalities, structural heart conditions, valve disorders, and reduced blood flow, even before symptoms become severe."
-  - heading: "Comprehensive Cardiac Testing Under One Roof"
+      - "At Kamalakar Heart Centre in Guntur, we provide non-invasive cardiac investigations including ECG, 2D Echocardiography, and Treadmill Test (TMT) to help detect heart problems and guide treatment."
+      - "These tests can help identify heart rhythm abnormalities, structural heart conditions, valve disorders, and reduced blood flow to the heart. Which test is needed depends on your symptoms and is decided after a consultation."
+  - heading: "ECG, 2D Echo and TMT at One Centre"
     paragraphs:
-      - "At Kamalakar Heart Centre in Guntur, these diagnostic services are performed using modern equipment and expert evaluation by Dr. Kamalakar, ensuring accurate results and timely care."
+      - "At Kamalakar Heart Centre in Guntur, these tests are performed at the clinic and reported by Dr Kamalakar Kosaraju."
   - heading: "Electrocardiogram (ECG)"
     paragraphs:
       - "An ECG is a quick and simple test that records the electrical activity of your heart using small sensors placed on the chest."
     bullets:
       - "Duration: 5–10 minutes"
       - "Detects: Irregular heartbeat, heart rhythm disorders, signs of previous heart attack"
-      - "Non-invasive and painless"
+      - "Non-invasive; usually causes no discomfort"
       - "Immediate results available"
     closingText: "ECG is often the first step in evaluating symptoms such as chest pain, palpitations, or dizziness."
   - heading: "2D Echocardiography (2D Echo)"
@@ -31,7 +31,7 @@ sections:
       - "Duration: 15–30 minutes"
       - "Evaluates: Heart chambers, valves, blood flow, and pumping efficiency (ejection fraction)"
       - "Helps detect: Valve diseases, congenital defects, cardiomyopathy"
-      - "Safe, painless, and no special preparation required"
+      - "Non-invasive ultrasound; no special preparation required"
     closingText: "This test gives a detailed view of how well your heart is functioning."
   - heading: "Treadmill Test (TMT) / Stress Test"
     paragraphs:
@@ -42,9 +42,12 @@ sections:
       - "Detects: Reduced blood supply to the heart (ischemia) that may not appear at rest"
       - "Recommended for: Chest pain during activity, shortness of breath, diabetes, high cholesterol, or family history of heart disease"
     closingText: "It is an important test for diagnosing coronary artery disease and assessing exercise tolerance."
-  - heading: "Affordable and Reliable Cardiac Screening"
-    paragraphs:
-      - "At Kamalakar Heart Centre, cardiac diagnostics are designed to be both accessible and affordable, helping patients in Guntur receive early diagnosis without financial burden. A basic ECG is included as part of the initial consultation, making it easier for patients to begin their heart health evaluation."
+  - heading: "Test Fees"
+    bullets:
+      - "ECG — ₹200"
+      - "2D Echocardiography (2D Echo) — ₹1,000"
+      - "Treadmill Test (TMT) — ₹1,200"
+      - "Cardiology consultation — ₹500, which includes a basic ECG"
 steps:
   - title: "Consultation and Test Recommendation"
     description: "Dr. Kamalakar reviews your symptoms, medical history, and risk factors to suggest the most appropriate tests."
@@ -57,16 +60,16 @@ steps:
   - title: "Results and Treatment Plan"
     description: "All test results are explained clearly, and a personalized treatment or preventive plan is recommended based on findings."
 faq:
-  - question: "Where can I get the best ECG, 2D Echo and TMT test in Guntur?"
-    answer: "You can get accurate and reliable cardiac testing at Kamalakar Heart Centre, known as a top cardiac diagnostic service provider in Guntur with advanced equipment and expert evaluation."
-  - question: "Is there a budget-friendly 2D Echo test available in Guntur?"
-    answer: "Yes, Kamalakar Heart Centre offers budget-friendly 2D Echo tests in Guntur without compromising on quality, making heart diagnostics accessible to all patients."
-  - question: "Who provides the best heart checkup in Guntur?"
-    answer: "For comprehensive heart evaluation including ECG, Echo, and TMT, Kamalakar Heart Centre is recognized as one of the best heart checkup centres in Guntur, led by experienced cardiologist Dr. Kamalakar."
-  - question: "Where can I find a reliable TMT test in Guntur?"
-    answer: "Kamalakar Heart Centre is a trusted and reliable TMT test centre in Guntur, offering accurate stress testing to detect hidden heart conditions."
-  - question: "Which is the top cardiac diagnostic centre in Guntur?"
-    answer: "Kamalakar Heart Centre is considered a top cardiac diagnostic centre in Guntur, providing complete heart testing services under one roof with expert care."
+  - question: "What do ECG, 2D Echo and TMT cost at Kamalakar Heart Centre?"
+    answer: "An ECG costs ₹200, a 2D Echocardiography (2D Echo) costs ₹1,000 and a Treadmill Test (TMT) costs ₹1,200. The cardiology consultation fee is ₹500 and includes a basic ECG."
+  - question: "How long does each test take?"
+    answer: "An ECG takes about 5–10 minutes, a 2D Echo about 15–30 minutes and a TMT about 20–30 minutes."
+  - question: "Do I need to fast or prepare for these tests?"
+    answer: "No fasting is needed for an ECG or a 2D Echo. For a TMT, avoid a heavy meal for 2–3 hours beforehand, wear comfortable clothes and walking shoes, and ask your doctor whether to take your regular medicines on the day of the test, as some heart medicines can affect the result."
+  - question: "Who should not have a TMT without medical advice?"
+    answer: "A TMT is not suitable for everyone. It is generally avoided in people with a recent heart attack, unstable or worsening chest pain, uncontrolled high blood pressure, severe narrowing of the aortic valve, uncontrolled heart rhythm problems or uncontrolled heart failure, and in those who cannot walk safely on a treadmill. A doctor should assess you before the test."
+  - question: "What is the difference between an ECG, a 2D Echo and a TMT?"
+    answer: "An ECG records the heart's electrical activity at rest. A 2D Echo uses ultrasound to show the heart's chambers, valves and pumping function. A TMT records the ECG while you walk on a treadmill, to look for reduced blood supply to the heart during exertion. Your doctor recommends a test based on your symptoms."
 keywords:
   - "ecg test in guntur"
   - "2d echo test in guntur"
@@ -83,4 +86,4 @@ keywords:
 relatedPosts:
   - "ecg-vs-2d-echo-vs-tmt-heart-tests-explained"
   - "7-warning-signs-heart-attack-never-ignore"
-ctaText: "Book Your Heart Checkup"
+ctaText: "Call for an Appointment"

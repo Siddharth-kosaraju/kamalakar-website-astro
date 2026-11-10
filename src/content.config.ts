@@ -26,11 +26,9 @@ const articleItemSchema = z.object({
   publisher: z.string().optional(),
 });
 
-const testimonialItemSchema = z.object({
-  text: z.string(),
-  author: z.string(),
-  // Optional star rating 1-5. Defaults to 5 in buildBusinessSchema when omitted.
-  rating: z.number().min(1).max(5).optional(),
+const statItemSchema = z.object({
+  value: z.string(),
+  label: z.string(),
 });
 
 const galleryImageSchema = z.object({
@@ -71,22 +69,12 @@ const siteSchema = z.object({
     ctaEmergency: z.string(),
     address: z.string(),
     addressLink: z.string(),
-    experience: z.string(),
-    experienceLabel: z.string(),
-    procedures: z.string(),
-    proceduresLabel: z.string(),
-    angioplasties: z.string(),
-    angioplastiesLabel: z.string(),
     imageAlt: z.string(),
   }),
+  // "Qualifications & Practice" strip (Stats.tsx). Facts only — no ratings or superlatives.
   stats: z.object({
-    experience: z.string(),
-    experienceLabel: z.string(),
-    goldMedalist: z.string(),
-    goldMedalistLabel: z.string(),
-    fellow: z.string(),
-    fellowLabel: z.string(),
-    patientRating: z.string().optional(),
+    heading: z.string(),
+    items: z.array(statItemSchema).min(1),
   }),
   about: z.object({
     heading: z.string(),
@@ -137,14 +125,6 @@ const siteSchema = z.object({
     }),
     articles: z.array(articleItemSchema),
   }),
-  testimonials: z.object({
-    heading: z.string(),
-    successStories: z.string().optional(),
-    subtitle: z.string().optional(),
-    verifiedPatient: z.string().optional(),
-    joinedText: z.string().optional(),
-    items: z.array(testimonialItemSchema),
-  }),
   gallery: z.object({
     heading: z.string(),
     description: z.string(),
@@ -166,6 +146,7 @@ const siteSchema = z.object({
   }).optional(),
   appointment: z.object({
     heading: z.string(),
+    callBtn: z.string().optional(),
   }),
   faq: z.object({
     heading: z.string(),
@@ -317,6 +298,9 @@ const blogPostSchema = z.object({
   // for the <picture> srcset (matches the gallery-*.{jpg,webp} convention).
   heroImage: z.string().optional(),
   heroImageAlt: z.string().optional(),
+  // NMC clause 7.2 (AI source mark): set true when the hero image is
+  // AI-generated; blog/[slug].astro then renders a visible disclosure caption.
+  heroImageAi: z.boolean().optional(),
 });
 
 const site = defineCollection({

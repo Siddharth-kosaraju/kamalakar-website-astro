@@ -121,6 +121,11 @@ const schemas = [
         {video.displayTitle}
       </h1>
 
+      <p class="text-sm text-gray-600 dark:text-gray-400 -mt-3 mb-6">
+        <a href="/about/" class="font-bold text-primary dark:text-white hover:text-accent dark:hover:text-accent-light transition-colors">Dr. Kamalakar Kosaraju</a>
+        {' '}— MBBS, MD (General Medicine), DM (Cardiology), FESC — Registered with the Andhra Pradesh Medical Council, Reg. No. 57814
+      </p>
+
       <div class="aspect-video w-full rounded-2xl overflow-hidden shadow-2xl bg-black mb-8">
         <LiteYouTube client:load youtubeId={youtubeId} title={video.displayTitle} />
       </div>

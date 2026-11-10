@@ -28,6 +28,7 @@ These rules are encoded in `cloudfront-functions/redirect-www-to-non-www.js`, `s
    - `/te*` (Telugu, retired in commit `847d537`) → 301 → `/`
    - `/?page=education` (legacy SPA params) → 301 → `/education/` (and similar for `?page=about|services|contact|blog`)
    - `/?lang=*` → 301 → `/`
+   - `/blog/best-heart-specialist-in-guntur*` → 301 → `/blog/how-to-choose-a-heart-specialist-in-guntur/` (renamed 2026-10-19 — the old slug carried a superiority word, NMC cl. 8.1.ix)
 8. **Build fails if any indexable HTML in `dist/` violates rules 1–5.** The check is `scripts/verify-canonicals.mjs`, wired into `npm run build`.
 
 ## Sitemap & robots policy (must hold)
@@ -107,6 +108,7 @@ Any of these triggers the full canonical/sitemap/robots review cycle above:
 | Blog writer skill | `.claude/skills/blog-writer/SKILL.md` |
 | Blog index / article / card | `src/pages/blog/index.astro`, `src/pages/blog/[slug].astro`, `src/components/BlogCard.astro`, `src/components/LatestPosts.astro` (homepage), `getPublishedBlogPosts()` + `getRelatedBlogPosts()` in `src/utils/content.ts` |
 | Content planner skill | `.claude/skills/content-planner/SKILL.md` |
+| NMC ethical-advertising compliance review (Public Notice R-13014/01/2024-Ethics, 2026-10-06) | `.claude/skills/nmc-check/SKILL.md` (+ `reference/` clause digest, `scripts/nmc-scan.mjs` phrase scanner) |
 | GTM/SEO skills (imported) — see `.claude/skills/NOTICE.md` for the full set | `.claude/skills/{audit-content, build-backlinks, build-resource-pages, create-geo-charts, geo-content-planning, geo-content-research, improve-aeo-geo, reddit-opportunity-research, research-brand, research-keywords, write-seo-geo-content}` |
 | SEO subagents (imported, project-local) — see `.claude/agents/NOTICE.md` | `.claude/agents/{seo-cluster, seo-content, seo-dataforseo, seo-flow, seo-geo, seo-image-gen, seo-local, seo-maps, seo-schema, seo-sitemap, seo-technical}` |
 
@@ -116,18 +118,34 @@ Any of these triggers the full canonical/sitemap/robots review cycle above:
 - **Phase 2 / Phase 3 SEO work** is tracked as user stories US-13 through US-22 in `SEO optimisation/26th April Review.md`.
 - **Telugu (`/te/`)**: retired. Currently 301s to `/`. If we rebuild Telugu content (US-15), update the CF function to drop the redirect first, then ship the pages.
 
+## NMC ethical-advertising rules (must hold)
+
+The site is governed by the NMC *Guidelines on Ethical Advertising and Public Communication* (Public Notice R-13014/01/2024-Ethics, 2026-10-06). Run `/nmc-check <page|file|all>` (`.claude/skills/nmc-check/`) before publishing any content change. Decisions taken with the owner on 2026-10-19:
+
+1. **No superiority or outcome claims** anywhere — copy, titles, meta, keywords, alt text, slugs, FAQs, JSON-LD, image text: no "best / top / leading / most trusted / world-class / expert", no "painless / high success rate / safe and effective", no "affordable / budget-friendly / transparent". "Best food habits" (about food) is fine.
+2. **No patient testimonials, ratings or review markup** on the site (`aggregateRating` / `review` JSON-LD removed). Reviews are only *pointed to*: one neutral line on `/contact/` + a "Google Maps listing" footer link to `seo.gbpUrl`. Never show the score/count and never ask for reviews.
+3. **Identity disclosure on every page:** name, qualifications and "Registered with the Andhra Pradesh Medical Council, Reg. No. 57814" (footer, blog byline/author box, case-study author box, video pages).
+4. **AI images:** set `heroImageAi: true` in blog frontmatter; the post renders the caption "Illustration generated using AI…" and `BlogCard` shows an "AI illustration" badge. Inline AI images get a visible caption.
+5. **Booking prompts:** one clear, factual path per page ("Appointments" in the header, "Call for an Appointment"); no "Book now/today", "Don't wait" or booking CTAs inside educational posts or case studies.
+6. **Patient images:** blur faces of patients/visitors (cl. 6.4) even with consent; staff and the doctor may stay unblurred.
+7. **Case studies:** educational framing, anonymised, consent line, risks stated, no CTA — rules in `.claude/skills/kamalakar-case-studies/SKILL.md`.
+8. **Off-site channels count too** (cl. 3.5): the Google listing and YouTube channel follow the same rules.
+
 ## Authoritative facts about Dr Kamalakar Kosaraju
 
 These are encoded in `src/utils/schemas.ts` `buildPhysicianSchema()` and the connected JSON-LD graph. **Do not invent or change without source.**
 
 - **Specialisation:** Cardiologist (Interventional Cardiology)
-- **MBBS:** Dr. NTR University of Health Sciences, Vijayawada — 2007
-- **MD General Medicine** (Gold Medalist): Dr. NTR University of Health Sciences, Vijayawada — 2012
+- **MBBS:** Rangaraya Medical College — Dr. NTR University of Health Sciences, Vijayawada — 2007 (college confirmed by user 2026-10-19)
+- **MD General Medicine** (Gold Medalist): Katuri Medical College — Dr. NTR University of Health Sciences, Vijayawada — 2012 (college confirmed by user 2026-10-19)
 - **DM Cardiology:** **Osmania Medical College, Hyderabad — 2012–2015** (in Indian medical education, the DM is itself a 3-year super-specialty residency program; Osmania is both the college and the residency institution. Earlier framing of "DM from NTR Univ with residency at Osmania" was incorrect.)
 - **Fellowship:** FESC — Fellow of the European Society of Cardiology
 - **AP Medical Council registration:** **#57814** (2007)
 - **Years as cardiologist:** dynamically computed from `START_YEAR = 2015` in `src/utils/content.ts`
 - **Procedure volume:** 3,000+ coronary angiograms · 1,000+ angioplasty procedures (confirmed by user 2026-04-27; encoded in `Physician.description` JSON-LD)
+  - **Publication rule (NMC cl. 8.1.iii, decided 2026-10-19):** the counts may appear only as plain factual statements (About profile, `Physician` JSON-LD, `llms.txt` facts, profile blog body, the homepage "Qualifications & Practice" strip). Never beside superiority/outcome claims, never as large hero stat counters, never as headline suffixes.
+- **Peripheral & vascular interventions** (peripheral angiography/angioplasty, carotid and renal artery procedures, device closures, PBMV) are performed — confirmed by user 2026-10-19.
+- **Google Business Profile:** "Dr Kamalakar's Heart Centre", `https://maps.google.com/?cid=6689306532209290504` (`seo.gbpUrl`; the earlier cid 5826098809468149451 pointed to a wrong place).
 - **NOT an Assistant Professor.** Earlier blog content claimed this — it is incorrect and has been removed. Do not re-introduce.
 - **EECP is NOT offered by Dr Kamalakar / Kamalakar Heart Centre.** A `/services/eecp/` page existed briefly (shipped 2026-04-27 as US-07, removed the same day). The CF function 301s `/services/eecp/*` → `/services/`. Do not re-introduce EECP as a service offering, do not list it in `knowsAbout`, and do not include it in keyword targets.
 

@@ -9,7 +9,8 @@ author: "Dr. Kamalakar Kosaraju"
 tags: ["medical emergency", "heart attack first aid", "emergency heart care", "CPR steps", "aspirin for heart attack", "clopidogrel", "isosorbide dinitrate", "chest pain emergency", "cardiologist in Guntur"]
 readingTime: "7 min read"
 heroImage: "/media/blog-medical-emergency-first-aid-hero.jpg"
-heroImageAlt: "Medical Emergency — Know the right steps. Act quickly. Save lives. Recognize, Respond, Get Help."
+heroImageAlt: "AI-generated banner titled 'Medical Emergency' showing an ambulance and a hospital emergency entrance, with the text 'Know the right steps. Act quickly. Save lives.'"
+heroImageAi: true
 published: true
 ---
 
@@ -44,7 +45,7 @@ Help the person sit or lie down in a safe and comfortable position. Loosen tight
 
 ## Can Aspirin Be Taken During a Suspected Heart Attack?
 
-Aspirin, commonly available under brands such as Ecosprin, may be recommended for an alert adult experiencing suspected heart attack symptoms.
+Aspirin may be recommended for an alert adult experiencing suspected heart attack symptoms.
 
 After calling emergency services, an adult may be advised to **chew and swallow 162 to 325 mg of aspirin**, provided that the person:
 
@@ -131,12 +132,7 @@ Approximately 100 to 120 compressions per minute, pushing strongly in the centre
 <p><strong>Medical Disclaimer:</strong> This article is for general awareness and does not replace professional medical advice, diagnosis or emergency treatment. Never start, stop or change heart medication without consulting a qualified doctor. If you are experiencing a medical emergency, call 112 or 108, or visit your nearest emergency room immediately.</p>
 </div>
 
-<div class="not-prose bg-primary/10 dark:bg-primary/20 border border-primary/20 rounded-2xl p-6 sm:p-8 my-8 text-center">
-<p class="text-lg sm:text-xl font-bold mb-2 text-gray-900 dark:text-white">Worried About Heart Symptoms?</p>
-<p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">For non-emergency evaluation of chest pain, breathlessness or palpitations, consult Dr. Kamalakar Kosaraju at Kamalakar Heart Centre, Kothapet, Guntur. In an emergency, call 112 or 108 first.</p>
-<a href="tel:9959423566" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:shadow-xl hover:bg-primary-dark transition-all">
-<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-99594 23566
-</a>
-<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">Kamalakar Heart Centre &mdash; <a href="/services/emergency-cardiac-care/" class="underline">Emergency Cardiac Care</a></p>
+<div class="not-prose bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-5 my-8">
+<p class="text-sm text-gray-700 dark:text-gray-300 mb-2">In an emergency, call 112 or 108 first.</p>
+<p class="text-sm text-gray-600 dark:text-gray-300"><strong>Kamalakar Heart Centre</strong> — Life Hospital, Old Club Road, Kothapet, Guntur – 522001. OPD: Monday to Saturday, 10:00 AM – 6:00 PM. Phone: <a href="tel:9959423566" class="text-accent dark:text-accent-light underline">99594 23566</a>.</p>
 </div>

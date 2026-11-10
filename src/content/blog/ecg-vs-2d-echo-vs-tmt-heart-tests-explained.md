@@ -2,14 +2,15 @@
 title: "ECG vs 2D Echo vs TMT — Which Heart Test Do You Need?"
 category: "Heart Tests Explained"
 metaTitle: "ECG vs 2D Echo vs TMT: Which Test?"
-summary: "Learn which heart test is right for you — ECG, 2D Echo or TMT. Expert guidance from Dr. Kamalakar Kosaraju, the best cardiology doctor in Guntur, at Kamalakar Heart Centre."
-metaDescription: "ECG vs 2D Echo vs TMT — understand which heart test you need and why. Expert guidance from cardiologist Dr. Kamalakar Kosaraju in Guntur."
+summary: "ECG, 2D Echo and TMT answer different questions about the heart. This guide explains what each test shows, when it is advised, and how doctors choose between them."
+metaDescription: "ECG vs 2D Echo vs TMT — what each heart test shows, when it is advised and how doctors choose between them. Written by cardiologist Dr. Kamalakar Kosaraju, Guntur."
 date: 2026-05-19
 author: "Dr. Kamalakar Kosaraju"
-tags: ["ECG vs 2D Echo vs TMT", "heart tests in Guntur", "ECG test", "2D echocardiography", "TMT test", "cardiac diagnosis", "heart checkup", "best cardiology doctor in Guntur", "heart screening", "coronary artery disease diagnosis"]
+tags: ["ECG vs 2D Echo vs TMT", "heart tests in Guntur", "ECG test", "2D echocardiography", "TMT test", "cardiac diagnosis", "heart checkup", "heart screening", "coronary artery disease diagnosis"]
 readingTime: "6 min read"
 heroImage: "/media/blog-ecg-2decho-tmt-hero.jpg"
-heroImageAlt: "ECG vs 2D Echo vs TMT — Which Heart Test Do You Need? Banner with Dr. Kamalakar Heart Centre branding."
+heroImageAlt: "AI-generated banner titled 'ECG vs 2D Echo vs TMT — Which Heart Test Do You Need?' with Dr. Kamalakar Heart Centre branding."
+heroImageAi: true
 published: true
 ---
 
@@ -18,9 +19,9 @@ published: true
 <p class="text-base leading-relaxed text-gray-700 dark:text-gray-300">Three tests cover most heart investigations — and they answer different questions. <strong>ECG</strong> checks the heart's electrical activity (rhythm). <strong>2D Echo</strong> shows the heart's structure and pumping (valves, chambers). <strong>TMT</strong> reveals how the heart behaves under stress (blocked arteries). Doctors usually start with ECG, then add 2D Echo or TMT based on what your symptoms suggest.</p>
 </div>
 
-Heart health is one of the most important aspects of overall well-being. If you experience chest pain, fatigue, shortness of breath or palpitations, getting the right test early matters. ECG, 2D Echo and TMT each give doctors a different view of the heart — together they let us diagnose heart conditions accurately and act quickly.
+Heart health is one of the most important aspects of overall well-being. If you experience chest pain, fatigue, shortness of breath or palpitations, it helps to know which test answers which question. ECG, 2D Echo and TMT each give doctors a different view of the heart.
 
-At [Kamalakar Heart Centre](/services/) in Guntur, under the guidance of **Dr. Kamalakar Kosaraju** — interventional cardiologist and the best cardiology doctor in Guntur — we use all three tests as part of a structured diagnostic workflow. This guide explains what each test does, when it is needed, and how to choose between them.
+This guide explains what each test does, when it is needed, and how to choose between them.
 
 ## 1. ECG (Electrocardiogram)
 
@@ -30,10 +31,10 @@ An **ECG** measures the electrical activity of the heart and can quickly detect 
 
 - Detects rhythm abnormalities (arrhythmias)
 - Identifies previous heart attacks or ongoing cardiac events
-- Quick, safe, non-invasive — 10–15 minutes
+- Quick and non-invasive — 10–15 minutes
 - Useful for routine checkups and pre-surgical evaluation
 
-ECG is the best starting point for initial screening, rhythm issues, palpitations, dizziness and chest discomfort. It is part of a standard [cardiology consultation](/services/diagnostics-pricing/) at Kamalakar Heart Centre.
+ECG is the usual starting point for initial assessment of rhythm issues, palpitations, dizziness and chest discomfort.
 
 ## 2. 2D Echo (Echocardiography)
 
@@ -44,9 +45,9 @@ A **2D Echo** uses ultrasound to create real-time images of the heart. It shows 
 - Visualises heart chambers, valves and blood flow
 - Detects structural issues like valve disease or weak heart muscles
 - Assesses heart function after a heart attack
-- Non-invasive and painless
+- Non-invasive; usually causes no discomfort
 
-2D Echo is ideal for diagnosing [heart failure](/services/heart-failure/), valve problems, congenital anomalies and evaluating overall heart function — questions an ECG cannot answer because they are about structure, not electricity.
+2D Echo is used for diagnosing [heart failure](/services/heart-failure/), valve problems, congenital anomalies and evaluating overall heart function — questions an ECG cannot answer because they are about structure, not electricity.
 
 ## 3. TMT (Treadmill Test)
 
@@ -81,16 +82,11 @@ You might need one or more of these tests if you have:
 - High blood pressure or diabetes
 - A family history of heart disease
 
-Early testing helps detect heart disease before it becomes serious — and that is the single biggest factor in good outcomes.
+Having these symptoms or risk factors does not mean you need all three tests — a doctor decides which, if any, are appropriate after examining you.
 
-## Why choose Kamalakar Heart Centre?
+## Where to get these tests in Guntur
 
-Kamalakar Heart Centre provides accurate heart evaluations with modern technology and personalised care:
-
-- Complete cardiac tests including [ECG, 2D Echo and TMT](/services/ecg-echo/) under one roof
-- Expertise of **Dr. Kamalakar Kosaraju** — M.D. (Gold Medalist), D.M. Cardiology, FESC
-- Personalised diagnosis and treatment planning based on your symptoms and risk profile
-- [Transparent diagnostic pricing](/services/diagnostics-pricing/) — no surprises
+[ECG, 2D Echo and TMT](/services/ecg-echo/) are available at Kamalakar Heart Centre, Life Hospital, Kothapet, Guntur. The fees are ECG ₹200, 2D Echo ₹1,000 and TMT ₹1,200; a cardiology consultation (₹500) includes a basic ECG. See the [diagnostic pricing page](/services/diagnostics-pricing/) for the full list.
 
 ## Frequently Asked Questions
 
@@ -108,7 +104,7 @@ No. An ECG records electrical activity; a 2D Echo creates an ultrasound image of
 
 ### Is TMT safe?
 
-Yes. TMT is performed under direct supervision with continuous ECG and blood-pressure monitoring, and is stopped immediately if any concerning sign appears. It is one of the most established non-invasive cardiac stress tests worldwide.
+TMT is generally safe for most people when performed under supervision, with continuous ECG and blood-pressure monitoring; the test is stopped if any concerning sign appears. Like any stress test it carries a small risk, and it is not suitable for everyone — for example, people with unstable chest pain or certain rhythm or valve problems. Your doctor will check this before advising it.
 
 ### How much do these tests cost at Kamalakar Heart Centre?
 
@@ -118,12 +114,6 @@ ECG is ₹200, 2D Echo is ₹1,000 and TMT is ₹1,200. A cardiology consultatio
 <p><strong>Medical Disclaimer:</strong> This article is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified cardiologist for personalised guidance. If you are experiencing a medical emergency, call 108 or visit your nearest emergency room immediately.</p>
 </div>
 
-<div class="not-prose bg-primary/10 dark:bg-primary/20 border border-primary/20 rounded-2xl p-6 sm:p-8 my-8 text-center">
-<p class="text-lg sm:text-xl font-bold mb-2 text-gray-900 dark:text-white">Book Your Heart Checkup Today</p>
-<p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">Visit Kamalakar Heart Centre at Life Hospital, Old Club Road, Kothapet, Guntur &mdash; 522001.</p>
-<a href="tel:9959423566" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:shadow-xl hover:bg-primary-dark transition-all">
-<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-99594 23566
-</a>
-<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">For appointments or urgent heart care.</p>
+<div class="not-prose bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-5 my-8">
+<p class="text-sm text-gray-600 dark:text-gray-300"><strong>Kamalakar Heart Centre</strong> — Life Hospital, Old Club Road, Kothapet, Guntur – 522001. OPD: Monday to Saturday, 10:00 AM – 6:00 PM. Phone: <a href="tel:9959423566" class="text-accent dark:text-accent-light underline">99594 23566</a>.</p>
 </div>

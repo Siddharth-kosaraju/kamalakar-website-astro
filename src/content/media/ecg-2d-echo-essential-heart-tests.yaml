@@ -7,7 +7,7 @@ description: "An ECG records your heart's electrical activity and can flag irreg
 keyPoints:
   - "ECG detects irregular heart rhythms and signs of a previous heart attack"
   - "2D Echo shows heart chamber size, valve function, and pumping efficiency"
-  - "Both tests are quick, painless, and commonly done together during a heart checkup"
+  - "Both tests are quick, non-invasive, and commonly done together during a heart checkup"
 uploadDate: "2026-06-24T03:18:43+00:00"
 relatedService: "ecg-echo"
 relatedPost: "ecg-vs-2d-echo-vs-tmt-heart-tests-explained"

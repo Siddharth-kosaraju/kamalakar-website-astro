@@ -9,13 +9,14 @@ author: "Dr. Kamalakar Kosaraju"
 tags: ["what causes heart blockages", "heart blockage risk factors", "coronary artery disease", "causes of heart blockage", "heart blockage symptoms", "atherosclerosis", "heart attack prevention", "cardiologist in guntur"]
 readingTime: "10 min read"
 heroImage: "/media/blog-heart-blockages-causes-hero.jpg"
-heroImageAlt: "Dr. Kamalakar Heart Centre banner — 'What Causes Heart Blockages? Risk Factors You Should Know' — a coronary artery shown progressing from a healthy artery to fatty deposits to a blocked artery, with common risk-factor icons (high cholesterol, high blood pressure, diabetes, smoking, obesity, lack of physical activity, unhealthy diet, stress, family history) and the tagline 'Know the risks. Protect your heart.'"
+heroImageAlt: "AI-generated Dr. Kamalakar Heart Centre banner — 'What Causes Heart Blockages? Risk Factors You Should Know' — a coronary artery shown progressing from a healthy artery to fatty deposits to a blocked artery, with common risk-factor icons (high cholesterol, high blood pressure, diabetes, smoking, obesity, lack of physical activity, unhealthy diet, stress, family history) and the tagline 'Know the risks. Protect your heart.'"
+heroImageAi: true
 published: true
 ---
 
 <div class="not-prose bg-primary/5 dark:bg-primary/10 border-l-4 border-primary rounded-r-xl p-5 mb-10">
 <p class="text-sm font-bold uppercase tracking-wider text-primary dark:text-accent-light mb-2">Key Takeaway</p>
-<p class="text-base leading-relaxed text-gray-700 dark:text-gray-300">Heart blockages usually develop through <strong>atherosclerosis</strong> — a slow build-up of cholesterol, fat and calcium inside the coronary arteries. There is rarely a single cause; instead several risk factors act together over years, including <strong>high cholesterol, high blood pressure, diabetes, smoking, obesity and family history</strong>. Many of these are controllable. Knowing your numbers and addressing risk early — often before any symptoms appear — is the most reliable way to protect your heart.</p>
+<p class="text-base leading-relaxed text-gray-700 dark:text-gray-300">Heart blockages usually develop through <strong>atherosclerosis</strong> — a slow build-up of cholesterol, fat and calcium inside the coronary arteries. There is rarely a single cause; instead several risk factors act together over years, including <strong>high cholesterol, high blood pressure, diabetes, smoking, obesity and family history</strong>. Many of these are controllable. Knowing your numbers and addressing risk early — often before any symptoms appear — helps you and your doctor act in time.</p>
 </div>
 
 Heart blockages often develop silently over many years. A person may feel completely normal while fatty deposits gradually build up inside the arteries supplying blood to the heart.
@@ -246,16 +247,10 @@ No. Treatment is individualised. Some patients are managed well with lifestyle c
 
 A cardiologist may use a combination of an ECG, 2D echocardiogram, treadmill stress test and blood tests, and — when needed — CT coronary angiography or coronary angiography to directly assess the arteries. Not everyone with chest discomfort needs an angiogram; the right test depends on your individual risk.
 
-<div class="not-prose bg-primary/10 dark:bg-primary/20 border border-primary/20 rounded-2xl p-6 sm:p-8 my-8 text-center">
-<p class="text-lg sm:text-xl font-bold mb-2 text-gray-900 dark:text-white">Concerned about your heart or your risk of blockages?</p>
-<p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">Consult Dr. Kamalakar Kosaraju at Kamalakar Heart Centre, Guntur, for a proper cardiac evaluation. Depending on your condition, this may include ECG, 2D Echo and other appropriate tests — with coronary angiography and angioplasty available when clinically indicated.</p>
-<a href="tel:9959423566" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:shadow-xl hover:bg-primary-dark transition-all">
-<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-99594 23566
-</a>
-<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">Life Hospital, Old Club Road, Kothapet, Guntur &mdash; 522001</p>
-</div>
-
 <div class="not-prose text-xs text-gray-400 dark:text-gray-500 border-t border-gray-200 dark:border-gray-700 pt-4 mt-8">
 <p><strong>Medical Disclaimer:</strong> This article is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified cardiologist for personalised guidance about heart blockage, coronary artery disease and your individual risk factors. If you are experiencing a medical emergency, call 108 or visit your nearest emergency room immediately.</p>
+</div>
+
+<div class="not-prose bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-5 my-8">
+<p class="text-sm text-gray-600 dark:text-gray-300"><strong>Kamalakar Heart Centre</strong> — Life Hospital, Old Club Road, Kothapet, Guntur – 522001. OPD: Monday to Saturday, 10:00 AM – 6:00 PM. Phone: <a href="tel:9959423566" class="text-accent dark:text-accent-light underline">99594 23566</a>.</p>
 </div>

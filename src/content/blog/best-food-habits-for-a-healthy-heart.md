@@ -1,14 +1,15 @@
 ---
 title: "Best Food Habits for a Healthy Heart"
 category: "Prevention & Lifestyle"
-summary: "What to eat — and what to avoid — for a healthy heart, plus the foods that help recovery after heart surgery or stent placement. Practical guidance from Kamalakar Heart Centre, Guntur."
+summary: "What to eat — and what to avoid — for a healthy heart, plus the foods that help recovery after heart surgery or stent placement. Practical guidance from a cardiologist in Guntur."
 metaDescription: "What to eat and avoid for a healthy heart, plus foods that aid recovery after heart surgery or a stent. Cardiologist guidance from Guntur."
 date: 2026-05-19
 author: "Dr. Kamalakar Kosaraju"
 tags: ["heart healthy diet", "best foods for heart health", "diet after heart surgery", "diet after stent placement", "low cholesterol diet", "heart disease prevention", "Indian heart diet", "cardiologist diet advice Guntur"]
 readingTime: "7 min read"
 heroImage: "/media/blog-best-food-habits-healthy-heart-hero.jpg"
-heroImageAlt: "Best Food Habits for a Healthy Heart — banner from Dr. Kamalakar Heart Centre with whole foods, fish, nuts and greens."
+heroImageAlt: "AI-generated banner titled 'Best Food Habits for a Healthy Heart' with Dr. Kamalakar Heart Centre branding, showing whole foods, fish, nuts and greens."
+heroImageAi: true
 published: true
 ---
 
@@ -21,7 +22,7 @@ published: true
 
 Your heart beats over 100,000 times every day to pump blood and oxygen to every part of your body. Giving it the right nourishment through simple food choices is one of the most powerful ways to prevent heart disease, maintain healthy blood pressure and reduce cholesterol. Nutrition plays a key role in heart health, and adopting good food habits can help you live a longer, healthier life.
 
-At [Kamalakar Heart Centre](/services/) in Guntur, we see every day how diet and lifestyle changes improve cardiac outcomes — both for patients managing risk factors and for patients recovering after [angioplasty or stent placement](/services/angioplasty/). This guide will help you make heart-healthy eating simple and effective.
+Diet and lifestyle changes matter both for people managing risk factors and for patients recovering after [angioplasty or stent placement](/services/angioplasty/). This guide will help you make heart-healthy eating simple and effective.
 
 ## 1. Focus on whole, natural foods
 
@@ -91,7 +92,7 @@ A few easy additions, sustained over months, make a measurable difference:
 
 Heart-healthy eating is a lifestyle, not a strict diet. Balanced meals, reasonable portion sizes and foods you actually enjoy make it sustainable. Combine healthy eating with regular activity and stress management for total heart wellness.
 
-For expert care or personalised advice — whether you are preventing heart disease, managing risk factors, or recovering from a cardiac procedure — the team at Kamalakar Heart Centre can guide you through both the medical and lifestyle sides of long-term heart health.
+If you have a heart condition, diabetes or kidney disease, or are recovering from a cardiac procedure, ask your own doctor for dietary advice suited to your condition and medicines.
 
 ## Frequently Asked Questions
 
@@ -119,11 +120,6 @@ Diet alone cannot reverse established blockages, but it dramatically slows progr
 <p><strong>Medical Disclaimer:</strong> This article is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified cardiologist for personalised guidance — especially if you have an existing heart condition or are recovering from a cardiac procedure.</p>
 </div>
 
-<div class="not-prose bg-primary/10 dark:bg-primary/20 border border-primary/20 rounded-2xl p-6 sm:p-8 my-8 text-center">
-<p class="text-lg sm:text-xl font-bold mb-2 text-gray-900 dark:text-white">Need a Personalised Heart Diet Plan?</p>
-<p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">Book a consultation with Dr. Kamalakar Kosaraju at Kamalakar Heart Centre, Kothapet, Guntur.</p>
-<a href="tel:9959423566" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:shadow-xl hover:bg-primary-dark transition-all">
-<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-99594 23566
-</a>
+<div class="not-prose bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-5 my-8">
+<p class="text-sm text-gray-600 dark:text-gray-300"><strong>Kamalakar Heart Centre</strong> — Life Hospital, Old Club Road, Kothapet, Guntur – 522001. OPD: Monday to Saturday, 10:00 AM – 6:00 PM. Phone: <a href="tel:9959423566" class="text-accent dark:text-accent-light underline">99594 23566</a>.</p>
 </div>

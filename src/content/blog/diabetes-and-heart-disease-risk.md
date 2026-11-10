@@ -9,7 +9,8 @@ author: "Dr. Kamalakar Kosaraju"
 tags: ["diabetes and heart disease", "diabetes and heart disease risk", "diabetes and cardiovascular disease", "diabetes and coronary artery disease", "heart disease in diabetic patients", "diabetes and heart health", "diabetes heart complications", "cardiologist for diabetes patients", "heart specialist in guntur", "cardiologist in guntur"]
 readingTime: "7 min read"
 heroImage: "/media/blog-diabetes-heart-disease-hero.jpg"
-heroImageAlt: "Dr. Kamalakar Heart Centre banner — 'Diabetes & Heart Disease: Why the Risk Is Higher' — a doctor checking an older patient's blood sugar with a glucometer"
+heroImageAlt: "AI-generated banner titled 'Diabetes & Heart Disease: Why the Risk Is Higher' with Dr. Kamalakar Heart Centre branding — an AI-generated illustration of a blood-sugar check with a glucometer"
+heroImageAi: true
 published: true
 ---
 
@@ -44,7 +45,7 @@ As these arteries become narrower, the heart may receive less oxygen-rich blood,
 
 High blood pressure puts additional strain on the heart and artery walls.
 
-When a person has both **diabetes and hypertension**, the risk of developing cardiovascular problems can increase further. Regular blood pressure checks are therefore especially important for people living with diabetes. Our [hypertension and cholesterol management](/services/hypertension-cholesterol/) service is built around exactly this combination.
+When a person has both **diabetes and hypertension**, the risk of developing cardiovascular problems can increase further. Regular blood pressure checks are therefore especially important for people living with diabetes. See [hypertension and cholesterol management](/services/hypertension-cholesterol/) for more on this combination.
 
 ### 3. Cholesterol Problems Can Increase the Risk
 
@@ -144,13 +145,7 @@ If you have diabetes, it may be useful to have your cardiovascular risk assessed
 - Chest discomfort
 - Unexplained breathlessness
 
-Depending on your symptoms and medical history, your cardiologist may recommend tests such as an [ECG, 2D Echo, TMT](/services/ecg-echo/), blood investigations, or further cardiac evaluation when clinically appropriate. Current [test prices](/services/diagnostics-pricing/) are published on our website.
-
-## About Dr. Kamalakar Kosaraju
-
-**Dr. Kamalakar Kosaraju** is an experienced **Interventional Cardiologist in Guntur** with more than a decade of clinical experience. He holds an **M.D. in General Medicine**, completed his **D.M. in Cardiology from Osmania Medical College**, and is a **Fellow of the European Society of Cardiology (FESC)**.
-
-At **Kamalakar Heart Centre**, his approach focuses on accurate diagnosis, patient education, preventive cardiac care, and personalised treatment plans. He treats conditions including coronary artery disease, chest pain, hypertension, heart failure, and other cardiovascular disorders.
+Depending on your symptoms and medical history, your cardiologist may recommend tests such as an [ECG, 2D Echo, TMT](/services/ecg-echo/), blood investigations, or further cardiac evaluation when clinically appropriate. Kamalakar Heart Centre's [test prices](/services/diagnostics-pricing/) are published on this website.
 
 For patients living with diabetes, a cardiovascular assessment can help identify important risk factors such as high blood pressure, cholesterol problems, and early signs of heart disease.
 
@@ -180,13 +175,6 @@ Some newer classes of diabetes medicines have been shown to reduce cardiovascula
 <p><strong>Medical Disclaimer:</strong> This article is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified cardiologist for personalised guidance. If you are experiencing a medical emergency, call 112 or 108 or visit your nearest emergency room immediately.</p>
 </div>
 
-<div class="not-prose bg-primary/10 dark:bg-primary/20 border border-primary/20 rounded-2xl p-6 sm:p-8 my-8 text-center">
-<p class="text-lg sm:text-xl font-bold mb-2 text-gray-900 dark:text-white">Book a Consultation with Dr. Kamalakar Kosaraju</p>
-<p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">If you have diabetes and are concerned about your heart health, do not wait for symptoms to become severe. Book a personalised cardiac evaluation at Kamalakar Heart Centre, Guntur.</p>
-<a href="tel:9959423566" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:shadow-xl hover:bg-primary-dark transition-all">
-<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-99594 23566
-</a>
-<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">Life Hospital, Old Club Road, Kothapet, Guntur &mdash; 522001 &middot; Mon&ndash;Sat 10:00 AM &ndash; 6:00 PM</p>
-<p class="text-sm font-semibold text-gray-700 dark:text-gray-200 mt-4">Take care of your blood sugar &mdash; and take care of your heart too.</p>
+<div class="not-prose bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-5 my-8">
+<p class="text-sm text-gray-600 dark:text-gray-300"><strong>Kamalakar Heart Centre</strong> — Life Hospital, Old Club Road, Kothapet, Guntur – 522001. OPD: Monday to Saturday, 10:00 AM – 6:00 PM. Phone: <a href="tel:9959423566" class="text-accent dark:text-accent-light underline">99594 23566</a>.</p>
 </div>

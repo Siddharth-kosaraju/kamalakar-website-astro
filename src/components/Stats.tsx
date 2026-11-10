@@ -1,87 +1,54 @@
-import React, { useEffect, useState } from 'react';
-import { Award, GraduationCap, Activity, Star } from 'lucide-react';
+/**
+ * "Qualifications & Practice" strip shown below the hero on the homepage.
+ *
+ * A quiet, factual banner (NMC ethical-advertising guidelines, 2026): verifiable
+ * qualifications, registration and procedure counts only — no ratings, no
+ * superlatives, no count-up animation. Text comes from en.yaml `stats`.
+ *
+ * Rendered as static HTML (no `client:*` directive needed — there is no state).
+ */
 
-interface StatsContent {
-  experience: string;
-  experienceLabel: string;
-  goldMedalist: string;
-  goldMedalistLabel: string;
-  fellow: string;
-  fellowLabel: string;
-  patientRating?: string;
+interface StatItem {
+  value: string;
+  label: string;
 }
 
 interface StatsProps {
-  content: StatsContent;
+  content: {
+    heading: string;
+    items: StatItem[];
+  };
 }
 
 export default function Stats({ content }: StatsProps) {
-  const [isVisible, setIsVisible] = useState(false);
-  const [count1, setCount1] = useState(0);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) setIsVisible(true);
-    });
-    const el = document.getElementById('stats-section');
-    if (el) observer.observe(el);
-    return () => { if (el) observer.unobserve(el); };
-  }, []);
-
-  useEffect(() => {
-    if (!isVisible) return;
-    const target = parseInt(content.experience) || 10;
-    const duration = 2000;
-    const start = Date.now();
-    const timer = setInterval(() => {
-      const progress = Math.min((Date.now() - start) / duration, 1);
-      setCount1(Math.floor(progress * target));
-      if (progress === 1) clearInterval(timer);
-    }, 30);
-    return () => clearInterval(timer);
-  }, [isVisible, content.experience]);
-
   return (
-    <section id="stats-section" className="py-12 md:py-20 bg-primary leading-relaxed text-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-mesh-gradient opacity-20 pointer-events-none"></div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
-          <div className="text-center p-4 md:p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 group">
-            <div className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-6 bg-primary-light/50 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-              <Activity className="text-accent" size={32} />
-            </div>
-            <div className="text-3xl md:text-5xl font-serif font-bold text-white mb-2">
-              {isVisible ? count1 : 0}+
-            </div>
-            <p className="text-gray-300 text-sm font-semibold uppercase tracking-widest">{content.experienceLabel}</p>
-          </div>
-
-          <div className="text-center p-4 md:p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 group">
-            <div className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-6 bg-accent/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-              <Award className="text-accent" size={32} />
-            </div>
-            <p className="text-2xl font-serif font-bold text-white mb-2 leading-tight min-h-[3rem] flex items-center justify-center">
-              {content.goldMedalist}
-            </p>
-            <p className="text-accent-light text-sm font-semibold uppercase tracking-widest">{content.goldMedalistLabel}</p>
-          </div>
-
-          <div className="text-center p-4 md:p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 group">
-            <div className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-6 bg-primary-light/50 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-              <GraduationCap className="text-sky-300" size={32} />
-            </div>
-            <p className="text-2xl md:text-4xl font-serif font-bold text-white mb-2">{content.fellow}</p>
-            <p className="text-gray-300 text-sm font-semibold uppercase tracking-widest">{content.fellowLabel}</p>
-          </div>
-
-          <div className="text-center p-4 md:p-8 rounded-2xl bg-gradient-to-br from-accent/20 to-primary-light/20 border border-accent/20 backdrop-blur-sm hover:border-accent/40 transition-all duration-300 group">
-            <div className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-6 bg-accent/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-              <Star className="text-accent" size={32} fill="currentColor" />
-            </div>
-            <p className="text-3xl font-serif font-bold text-white mb-2">4.9/5</p>
-            <p className="text-accent-light text-sm font-semibold uppercase tracking-widest">{content.patientRating || 'Patient Rating'}</p>
-          </div>
-        </div>
+    <section
+      id="stats-section"
+      aria-labelledby="stats-heading"
+      className="py-10 md:py-12 bg-primary text-white"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2
+          id="stats-heading"
+          className="text-sm font-medium text-white/70 mb-5 md:mb-6"
+        >
+          {content.heading}
+        </h2>
+        <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
+          {content.items.map((item) => (
+            <li
+              key={item.value}
+              className="rounded-xl border border-white/10 bg-white/5 p-3 sm:p-4"
+            >
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-xl font-semibold leading-tight text-white">
+                {item.value}
+              </p>
+              <p className="mt-1.5 text-xs sm:text-sm leading-snug text-white/75">
+                {item.label}
+              </p>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

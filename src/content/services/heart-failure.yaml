@@ -1,16 +1,16 @@
 slug: "heart-failure"
 title: "Heart Failure Management"
 metaTitle: "Heart Failure Treatment in Guntur | Dr Kamalakar Cardiologist"
-metaDescription: "Get expert heart failure treatment in Guntur by Dr Kamalakar Kosaraju. Advanced diagnosis, personalized care, CPR awareness, and heart-healthy lifestyle guidance."
+metaDescription: "Heart failure treatment in Guntur by Dr Kamalakar Kosaraju, Interventional Cardiologist. Symptoms, diagnosis, medicines, device therapy and lifestyle guidance."
 heroHeading: "Heart Failure Treatment"
-heroSubheading: "Heart failure management focuses on improving heart function, reducing symptoms, and helping patients live a healthier, more active life. With early diagnosis and the right treatment plan, heart failure can be effectively managed."
+heroSubheading: "Heart failure management aims to improve heart function, reduce symptoms and help patients stay active. It is a long-term condition that is managed with medicines, lifestyle changes and regular follow-up."
 images:
   - src: "/media/services/heart-failure.webp"
     alt: "Heart failure management and treatment at Kamalakar Heart Centre, Guntur"
-    caption: "Expert heart failure diagnosis and long-term management"
+    caption: "Heart failure diagnosis and long-term management at Kamalakar Heart Centre, Guntur"
 sections:
   - paragraphs:
-      - "At Kamalakar Heart Centre, Guntur, Dr. Kamalakar Kosaraju, a leading Interventional Cardiologist, provides personalized, long-term care supported by advanced diagnostics and continuous monitoring."
+      - "At Kamalakar Heart Centre, Guntur, Dr. Kamalakar Kosaraju, Interventional Cardiologist, provides long-term care for heart failure, with diagnostic testing and regular follow-up."
   - heading: "What is Heart Failure?"
     paragraphs:
       - "Heart failure is a chronic condition where the heart is unable to pump blood efficiently to meet the body's needs. It does not mean the heart has stopped working, but that it is functioning less effectively."
@@ -25,8 +25,8 @@ sections:
       - "Difficulty performing daily activities"
   - heading: "Heart Failure Treatment in Guntur"
     paragraphs:
-      - "At Kamalakar Heart Centre, treatment is comprehensive and tailored to each patient:"
-  - heading: "1. Accurate Diagnosis"
+      - "At Kamalakar Heart Centre, treatment is planned for each patient in three parts:"
+  - heading: "1. Diagnosis"
     bullets:
       - "2D Echocardiography (to assess ejection fraction)"
       - "ECG and blood tests"
@@ -36,7 +36,7 @@ sections:
       - "Medications (beta-blockers, ACE inhibitors, diuretics)"
       - "Blood pressure and fluid management"
       - "Risk factor control"
-  - heading: "3. Advanced Cardiac Care (If Required)"
+  - heading: "3. Device Therapy and Follow-up (If Required)"
     bullets:
       - "Pacemaker implantation"
       - "Cardiac Resynchronization Therapy (CRT)"
@@ -83,17 +83,18 @@ sections:
       - "Rapid swelling or sudden weight gain"
       - "Blue lips or fingertips"
       - "Severe fatigue or confusion"
-  - heading: "Benefits of Heart Failure Management"
+    closingText: "If you or your loved one has any of these symptoms, do not delay medical care. Call emergency services or go to the nearest hospital."
+  - heading: "Aims of Heart Failure Management"
+    paragraphs:
+      - "Results vary from patient to patient. Treatment aims to:"
     bullets:
-      - "Improves heart function"
-      - "Reduces symptoms and hospital visits"
-      - "Prevents complications"
-      - "Enhances quality of life"
-      - "Supports long-term heart health"
+      - "Improve or stabilise heart function"
+      - "Reduce symptoms and hospital visits"
+      - "Lower the risk of complications"
+      - "Improve quality of life"
   - heading: "Conclusion"
     paragraphs:
-      - "If you or your loved one is experiencing symptoms like breathlessness, fatigue, or swelling, do not delay medical care."
-      - "Consult Dr. Kamalakar Kosaraju at Kamalakar Heart Centre, Guntur for expert diagnosis, advanced treatment, and long-term heart failure management."
+      - "Heart failure diagnosis, treatment and long-term follow-up are provided by Dr. Kamalakar Kosaraju at Kamalakar Heart Centre, Guntur."
 steps:
   - title: "Comprehensive Evaluation"
     description: "Detailed clinical assessment with Echo and diagnostic tests."
@@ -105,7 +106,7 @@ steps:
     description: "Ongoing follow-ups to track improvement and adjust treatment."
 faq:
   - question: "Can heart failure be cured?"
-    answer: "Heart failure is a long-term condition, but it can be effectively managed with proper treatment."
+    answer: "Heart failure is usually a long-term condition. It cannot always be cured, but in most patients it can be managed with medicines, lifestyle changes and regular follow-up."
   - question: "What causes heart failure?"
     answer: "Common causes include coronary artery disease, high blood pressure, and heart muscle damage."
   - question: "Can I exercise with heart failure?"

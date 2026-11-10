@@ -21,13 +21,6 @@ interface VideoItem {
   uploadDate?: string;
 }
 
-interface TestimonialItem {
-  text: string;
-  author: string;
-  /** Star rating 1-5. Defaults to 5 when omitted. */
-  rating?: number;
-}
-
 interface ServiceStep {
   title: string;
   description: string;
@@ -40,14 +33,14 @@ function durationToISO(duration: string): string {
   return `PT${duration}`;
 }
 
-export function buildBusinessSchema(testimonials?: TestimonialItem[], gbpUrl?: string) {
+export function buildBusinessSchema(gbpUrl?: string) {
   const schema: Record<string, any> = {
     '@context': 'https://schema.org',
     '@type': ['MedicalOrganization', 'LocalBusiness'],
     '@id': `${CANONICAL_BASE}/#organization`,
     name: 'Kamalakar Heart Centre',
     alternateName: 'Kamalakar Heart Centre at Life Hospital',
-    description: 'Advanced cardiac care in Guntur by Dr. Kamalakar Kosaraju. Angioplasty, Pacemaker, ECG, 2D Echo and Heart Failure management.',
+    description: 'Cardiac care in Guntur by Dr. Kamalakar Kosaraju. Angioplasty, Pacemaker, ECG, 2D Echo and Heart Failure management.',
     url: `${CANONICAL_BASE}/`,
     logo: `${CANONICAL_BASE}/images/logo.svg`,
     image: `${CANONICAL_BASE}/media/dr-kamalakar.jpg`,
@@ -91,27 +84,9 @@ export function buildBusinessSchema(testimonials?: TestimonialItem[], gbpUrl?: s
     },
   };
 
-  // Merge reviews/ratings directly into the business schema.
-  // Compliance: aggregateRating MUST be derived from the reviews actually displayed on the page
-  // where this schema appears (Google Rich Results policy). The testimonials passed in here are
-  // rendered visibly via <Testimonials /> on the homepage and contact page.
-  if (testimonials && testimonials.length > 0) {
-    const ratings = testimonials.map(t => t.rating ?? 5);
-    const avg = ratings.reduce((a, b) => a + b, 0) / ratings.length;
-    schema.aggregateRating = {
-      '@type': 'AggregateRating',
-      ratingValue: avg.toFixed(1),
-      bestRating: '5',
-      worstRating: '1',
-      reviewCount: String(testimonials.length),
-    };
-    schema.review = testimonials.map(t => ({
-      '@type': 'Review',
-      reviewRating: { '@type': 'Rating', ratingValue: String(t.rating ?? 5), bestRating: '5' },
-      author: { '@type': 'Person', name: t.author },
-      reviewBody: t.text,
-    }));
-  }
+  // Deliberately no rating or review properties on this entity (NMC Guidelines 2026,
+  // cl. 3.2 Explanation V). Patient feedback stays on the Google Business Profile,
+  // which is linked via gbpUrl in sameAs.
 
   return schema;
 }
@@ -220,9 +195,9 @@ export function buildWebPageSchema(page: 'home' | 'education') {
     '@context': 'https://schema.org',
     '@type': 'MedicalWebPage',
     url,
-    name: isHome ? 'Kamalakar Heart Centre - Best Cardiologist in Guntur' : 'Heart Health Education - Kamalakar Heart Centre',
+    name: isHome ? 'Kamalakar Heart Centre - Cardiologist in Guntur' : 'Heart Health Education - Kamalakar Heart Centre',
     description: isHome
-      ? 'Expert cardiac care in Guntur by Dr. Kamalakar Kosaraju.'
+      ? 'Cardiac care in Guntur by Dr. Kamalakar Kosaraju, interventional cardiologist.'
       : 'Heart health education resources from Kamalakar Heart Centre.',
     inLanguage: 'en',
     isPartOf: { '@type': 'WebSite', url: `${CANONICAL_BASE}/`, name: 'Kamalakar Heart Centre' },
@@ -321,14 +296,14 @@ export function buildVideoListSchema(videos: VideoItem[]) {
 
 /**
  * One connected JSON-LD graph for the homepage that ties together:
- *   WebSite  →  MedicalClinic (#organization, with aggregateRating from reviews)
+ *   WebSite  →  MedicalClinic (#organization)
  *            →  Physician     (#physician — worksFor → #organization)
  *
  * Use this on the homepage instead of inlining a parallel graph with different
  * @ids — every page that references #organization or #physician then resolves
  * to the same entity in Google's knowledge graph.
  */
-export function buildHomepageSchemaGraph(testimonials?: TestimonialItem[], gbpUrl?: string) {
+export function buildHomepageSchemaGraph(gbpUrl?: string) {
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -340,7 +315,7 @@ export function buildHomepageSchemaGraph(testimonials?: TestimonialItem[], gbpUr
         publisher: { '@id': `${CANONICAL_BASE}/#organization` },
         inLanguage: 'en-IN',
       },
-      buildBusinessSchema(testimonials, gbpUrl),
+      buildBusinessSchema(gbpUrl),
       buildPhysicianSchema(),
     ],
   };

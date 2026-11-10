@@ -2,20 +2,21 @@
 title: "Cardiac Rehab Exercises After Open Heart Surgery"
 category: "Prevention & Lifestyle"
 metaTitle: "Cardiac Rehab Exercises After Open Heart Surgery"
-summary: "Safe, gentle cardiac rehabilitation exercises after open heart surgery — walking, ankle pumps, seated marching, deep breathing, sit-to-stand and stationary cycling — plus the safety rules and warning signs every patient should know."
-metaDescription: "Learn safe cardiac rehab exercises after open heart surgery, including walking, ankle pumps, seated marching, breathing exercises and more."
+summary: "Gentle cardiac rehabilitation exercises after open heart surgery — walking, ankle pumps, seated marching, deep breathing, sit-to-stand and stationary cycling — plus the safety rules and warning signs every patient should know."
+metaDescription: "Learn about cardiac rehab exercises after open heart surgery, including walking, ankle pumps, seated marching, breathing exercises and more."
 date: 2026-08-23
 author: "Dr. Kamalakar Kosaraju"
 tags: ["cardiac rehab exercises after open heart surgery", "cardiac rehabilitation exercises", "exercises after heart surgery", "heart surgery recovery exercises", "walking after open heart surgery", "cardiac rehab exercises at home", "cardiologist guntur"]
 readingTime: "6 min read"
 heroImage: "/media/blog-cardiac-rehab-exercises-hero.jpg"
-heroImageAlt: "Gentle walking exercise after open heart surgery — an older man walking slowly along a garden path outside a hospital"
+heroImageAlt: "AI-generated illustration of gentle walking exercise — an older man walking along a garden path"
+heroImageAi: true
 published: true
 ---
 
 <div class="not-prose bg-primary/5 dark:bg-primary/10 border-l-4 border-primary rounded-r-xl p-5 mb-10">
 <p class="text-sm font-bold uppercase tracking-wider text-primary dark:text-accent-light mb-2">Key Takeaway</p>
-<p class="text-base leading-relaxed text-gray-700 dark:text-gray-300">Cardiac rehabilitation after open heart surgery is about <strong>gradual, supervised progress</strong> — not effort. Six simple movements (gentle walking, ankle pumps, seated marching, deep breathing, sit-to-stand and stationary cycling) rebuild <strong>circulation, stamina and confidence</strong> safely. Start every exercise only with your <strong>cardiologist's approval</strong>, and stop immediately if you notice chest pain, unusual breathlessness or dizziness.</p>
+<p class="text-base leading-relaxed text-gray-700 dark:text-gray-300">Cardiac rehabilitation after open heart surgery is about <strong>gradual, supervised progress</strong> — not effort. Six simple movements (gentle walking, ankle pumps, seated marching, deep breathing, sit-to-stand and stationary cycling) help rebuild <strong>circulation, stamina and confidence</strong>. Start every exercise only with your <strong>cardiologist's approval</strong>, and stop immediately if you notice chest pain, unusual breathlessness or dizziness.</p>
 </div>
 
 Recovering from open heart surgery takes time, patience, and the right guidance. **Cardiac rehabilitation exercises** can help improve strength, stamina, circulation, and confidence as you gradually return to your normal routine.
@@ -51,8 +52,9 @@ Start with short, comfortable walks around your home, hospital corridor, or outd
 <figure class="not-prose my-6">
 <picture>
 <source srcset="/media/blog-cardiac-rehab-ankle-pumps.webp" type="image/webp" />
-<img src="/media/blog-cardiac-rehab-ankle-pumps.jpg" alt="Ankle pump exercise during cardiac rehabilitation — feet pointed away and then flexed back while lying down" width="1200" height="750" loading="lazy" decoding="async" class="w-full h-auto rounded-2xl shadow-md" />
+<img src="/media/blog-cardiac-rehab-ankle-pumps.jpg" alt="AI-generated illustration of the ankle pump exercise during cardiac rehabilitation — feet pointed away and then flexed back while lying down" width="1200" height="750" loading="lazy" decoding="async" class="w-full h-auto rounded-2xl shadow-md" />
 </picture>
+<figcaption class="mt-2 text-xs text-gray-500 dark:text-gray-400 italic">Illustration generated using AI.</figcaption>
 </figure>
 
 Sit comfortably or lie down with your legs relaxed.
@@ -66,8 +68,9 @@ This simple movement helps keep your legs active and supports healthy circulatio
 <figure class="not-prose my-6">
 <picture>
 <source srcset="/media/blog-cardiac-rehab-seated-marching.webp" type="image/webp" />
-<img src="/media/blog-cardiac-rehab-seated-marching.jpg" alt="Seated marching exercise after heart surgery — a man seated on a stable chair lifting one knee at a time" width="1200" height="750" loading="lazy" decoding="async" class="w-full h-auto rounded-2xl shadow-md" />
+<img src="/media/blog-cardiac-rehab-seated-marching.jpg" alt="AI-generated illustration of the seated marching exercise — a man seated on a stable chair lifting one knee at a time" width="1200" height="750" loading="lazy" decoding="async" class="w-full h-auto rounded-2xl shadow-md" />
 </picture>
+<figcaption class="mt-2 text-xs text-gray-500 dark:text-gray-400 italic">Illustration generated using AI.</figcaption>
 </figure>
 
 Sit upright on a stable chair with both feet on the floor.
@@ -81,8 +84,9 @@ Seated marching can help improve leg strength, mobility, and endurance.
 <figure class="not-prose my-6">
 <picture>
 <source srcset="/media/blog-cardiac-rehab-deep-breathing.webp" type="image/webp" />
-<img src="/media/blog-cardiac-rehab-deep-breathing.jpg" alt="Deep breathing exercise after open heart surgery — a man seated in an armchair with one hand on his chest and one on his abdomen" width="1200" height="750" loading="lazy" decoding="async" class="w-full h-auto rounded-2xl shadow-md" />
+<img src="/media/blog-cardiac-rehab-deep-breathing.jpg" alt="AI-generated illustration of the deep breathing exercise — a man seated in an armchair with one hand on his chest and one on his abdomen" width="1200" height="750" loading="lazy" decoding="async" class="w-full h-auto rounded-2xl shadow-md" />
 </picture>
+<figcaption class="mt-2 text-xs text-gray-500 dark:text-gray-400 italic">Illustration generated using AI.</figcaption>
 </figure>
 
 Sit comfortably and relax your shoulders.
@@ -96,8 +100,9 @@ Deep breathing exercises can support lung function and help you relax during the
 <figure class="not-prose my-6">
 <picture>
 <source srcset="/media/blog-cardiac-rehab-sit-to-stand.webp" type="image/webp" />
-<img src="/media/blog-cardiac-rehab-sit-to-stand.jpg" alt="Sit-to-stand cardiac rehabilitation exercise — a man rising slowly from a sturdy chair with feet flat on the floor" width="1200" height="750" loading="lazy" decoding="async" class="w-full h-auto rounded-2xl shadow-md" />
+<img src="/media/blog-cardiac-rehab-sit-to-stand.jpg" alt="AI-generated illustration of the sit-to-stand exercise — a man rising slowly from a sturdy chair with feet flat on the floor" width="1200" height="750" loading="lazy" decoding="async" class="w-full h-auto rounded-2xl shadow-md" />
 </picture>
+<figcaption class="mt-2 text-xs text-gray-500 dark:text-gray-400 italic">Illustration generated using AI.</figcaption>
 </figure>
 
 When your doctor says it is safe, sit on a stable chair with your feet firmly on the floor.
@@ -113,8 +118,9 @@ Patients whose breastbone was opened during surgery should follow their surgeon'
 <figure class="not-prose my-6">
 <picture>
 <source srcset="/media/blog-cardiac-rehab-stationary-cycling.webp" type="image/webp" />
-<img src="/media/blog-cardiac-rehab-stationary-cycling.jpg" alt="Stationary cycling during cardiac rehabilitation — a patient on an exercise bike with heart-rate monitoring, supervised by a nurse" width="1200" height="750" loading="lazy" decoding="async" class="w-full h-auto rounded-2xl shadow-md" />
+<img src="/media/blog-cardiac-rehab-stationary-cycling.jpg" alt="AI-generated illustration of stationary cycling during cardiac rehabilitation — a person on an exercise bike with a nurse alongside" width="1200" height="750" loading="lazy" decoding="async" class="w-full h-auto rounded-2xl shadow-md" />
 </picture>
+<figcaption class="mt-2 text-xs text-gray-500 dark:text-gray-400 italic">Illustration generated using AI.</figcaption>
 </figure>
 
 As your recovery progresses, your cardiac rehabilitation team may recommend gentle stationary cycling.
@@ -151,7 +157,7 @@ Cardiac rehabilitation is not about exercising harder. It is about **helping you
 
 With the right medical guidance, regular activity, and patience, many patients can steadily regain their strength and return to a more active lifestyle after open heart surgery. Pair your exercise plan with [heart-healthy eating](/blog/best-food-habits-for-a-healthy-heart/) and good control of [blood pressure and cholesterol](/services/hypertension-cholesterol/) for the best long-term results.
 
-For personalised advice about recovery and cardiac rehabilitation after heart surgery, consult the cardiac care team at **Kamalakar Heart Centre**.
+For advice about your own recovery and rehabilitation plan, speak to your surgeon, cardiologist or cardiac rehabilitation team.
 
 ## Frequently Asked Questions
 
@@ -165,7 +171,7 @@ Start with a few minutes at a time on a flat surface and increase the duration g
 
 ### Can I do cardiac rehab exercises at home?
 
-Yes — walking, ankle pumps, seated marching, deep breathing and sit-to-stand can all be done safely at home once your doctor clears them. Stationary cycling and any resistance work should be introduced only on your team's advice. Periodic follow-up tests such as an [ECG, 2D Echo or TMT](/services/ecg-echo/) help your cardiologist track how your heart is responding.
+Yes — walking, ankle pumps, seated marching, deep breathing and sit-to-stand can usually be done at home once your doctor clears them. Stationary cycling and any resistance work should be introduced only on your team's advice. Periodic follow-up tests such as an [ECG, 2D Echo or TMT](/services/ecg-echo/) help your cardiologist track how your heart is responding.
 
 ### What should I avoid after open heart surgery?
 
@@ -179,12 +185,6 @@ Mild tiredness after activity is common in the early weeks and usually improves 
 <p><strong>Medical Disclaimer:</strong> This article is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Exercise after heart surgery must be started and progressed only under the guidance of your cardiologist, surgeon or cardiac rehabilitation team. If you are experiencing a medical emergency, call 112 or 108 or visit your nearest emergency room immediately.</p>
 </div>
 
-<div class="not-prose bg-primary/10 dark:bg-primary/20 border border-primary/20 rounded-2xl p-6 sm:p-8 my-8 text-center">
-<p class="text-lg sm:text-xl font-bold mb-2 text-gray-900 dark:text-white">Recovering From Heart Surgery?</p>
-<p class="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">Get a personalised cardiac rehabilitation plan from Dr. Kamalakar Kosaraju at Kamalakar Heart Centre, Guntur.</p>
-<a href="tel:9959423566" class="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:shadow-xl hover:bg-primary-dark transition-all">
-<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-99594 23566
-</a>
-<p class="text-xs text-gray-500 dark:text-gray-400 mt-3">Life Hospital, Old Club Road, Kothapet, Guntur &mdash; 522001</p>
+<div class="not-prose bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-5 my-8">
+<p class="text-sm text-gray-600 dark:text-gray-300"><strong>Kamalakar Heart Centre</strong> — Life Hospital, Old Club Road, Kothapet, Guntur – 522001. OPD: Monday to Saturday, 10:00 AM – 6:00 PM. Phone: <a href="tel:9959423566" class="text-accent dark:text-accent-light underline">99594 23566</a>.</p>
 </div>

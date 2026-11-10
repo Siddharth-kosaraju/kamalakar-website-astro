@@ -103,12 +103,13 @@ const schemas = [
       <MediaGallery client:visible items={items} categories={MEDIA_CATEGORIES} />
     </div>
 
-    <!-- CTA -->
+    <!-- Contact (factual only) -->
     <section class="bg-primary dark:bg-primary-light py-8 md:py-12">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-2xl md:text-3xl font-bold font-serif text-white mb-6">
-          Have Questions About Your Heart Health?
+        <h2 class="text-2xl md:text-3xl font-bold font-serif text-white mb-3">
+          Appointments and Enquiries
         </h2>
+        <p class="text-white/80 mb-6 max-w-2xl mx-auto">These videos are general health education and do not replace a consultation. In an emergency call 108.</p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
             href={`tel:${content.contact.appointmentPhone}`}

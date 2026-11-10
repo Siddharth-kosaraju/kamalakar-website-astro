@@ -7,7 +7,7 @@ nav:
   caseStudies: "Case Studies"
   media: "Media"
   contact: "Contact"
-  bookBtn: "Book Appointment"
+  bookBtn: "Appointments"
   emergencyLabel: "Emergency"
   location: "Kothapet, Guntur"
   hours: "Mon-Sat: 10:00 AM - 6:00 PM"
@@ -15,40 +15,43 @@ nav:
   darkMode: "Dark Mode"
 
 hero:
-  headline: "Best Cardiologist in Guntur for Advanced Heart Care"
-  subHeadline: "Expert cardiac care in Guntur from Dr. Kamalakar Kosaraju — interventional cardiologist (FESC) at Kamalakar Heart Centre."
-  bodyText: "Accurate diagnosis and modern treatment for chest pain, high blood pressure and other heart conditions — with timely, personal care."
+  headline: "Interventional Cardiology and Heart Care in Guntur"
+  subHeadline: "Dr. Kamalakar Kosaraju, MD, DM (Cardiology), FESC — Kamalakar Heart Centre, Life Hospital."
+  bodyText: "Diagnosis and treatment for chest pain, high blood pressure and other heart conditions."
   brandLine: "Kamalakar Heart Centre – Cardiac Care at Life Hospital, Guntur"
-  trustBadge: "Gold Medalist &bull; FESC Certified"
-  ctaBook: "Book Consultation"
+  trustBadge: "MD, DM (Cardiology) &bull; FESC"
+  ctaBook: "Call for an Appointment"
   ctaEmergency: "Emergency: 99594 23566"
   address: "Life Hospital, Old Club Road, Kothapet, Guntur - 522001"
   addressLink: "https://www.google.com/maps/search/Kamalakar+Heart+Centre+Life+Hospital+Old+Club+Road+Kothapeta+Guntur+Andhra+Pradesh"
-  # Hero stat row — verifiable figures only (match schemas.ts / CLAUDE.md).
-  # Do NOT use success-rate percentages or "5k+" procedure counts (unverified).
-  experience: "11+"
-  experienceLabel: "Years Exp."
-  procedures: "3,000+"
-  proceduresLabel: "Angiograms"
-  angioplasties: "1,000+"
-  angioplastiesLabel: "Angioplasties"
   imageAlt: "Dr. Kamalakar Kosaraju, Interventional Cardiologist at Kamalakar Heart Centre, Guntur"
 
+# "Qualifications & Practice" strip below the hero (Stats.tsx), rendered in order.
+# Verifiable facts only — must match CLAUDE.md "Authoritative facts" and
+# buildPhysicianSchema() in src/utils/schemas.ts. Plain verifiable facts only —
+# no outcome claims, superlatives or unverified counts (NMC Guidelines 2026).
 stats:
-  experience: "10+" # Note: The dynamic calculation is handled in code, but this serves as a fallback or override base
-  experienceLabel: "Years Experience"
-  goldMedalist: "Gold Medalist"
-  goldMedalistLabel: "General Medicine"
-  fellow: "FESC"
-  fellowLabel: "Fellow of ESC"
-  patientRating: "Patient Rating"
+  heading: "Qualifications & Practice"
+  items:
+    - value: "Since 2015"
+      label: "Practising interventional cardiology in Guntur"
+    - value: "3,000+"
+      label: "Coronary angiograms performed"
+    - value: "1,000+"
+      label: "Angioplasty procedures performed"
+    - value: "MD, DM"
+      label: "General Medicine (Gold Medal, 2012) · Cardiology, Osmania Medical College"
+    - value: "FESC"
+      label: "Fellow of the European Society of Cardiology"
+    - value: "Reg. No. 57814"
+      label: "Andhra Pradesh Medical Council"
 
 about:
-  heading: "Experienced Heart Specialist in Guntur"
-  p1: "Dr. Kamalakar Kosaraju is a qualified cardiologist with M.D. in General Medicine and D.M. in Cardiology. With years of clinical experience, he has treated many patients with heart conditions using modern cardiology practices."
-  p2: "His approach focuses on accurate diagnosis, patient education, and personalized treatment plans. Every patient receives clear guidance and appropriate care to manage heart disease, improve heart function, and reduce future risks."
+  heading: "Interventional Cardiologist in Guntur"
+  p1: "Dr. Kamalakar Kosaraju is a cardiologist with an M.D. in General Medicine and a D.M. in Cardiology. He has practised as an interventional cardiologist in Guntur since 2015."
+  p2: "Consultations cover diagnosis, patient education and a treatment plan for conditions such as coronary artery disease, high blood pressure and heart failure."
   experienceBadge: "10+ Years Experience"
-  servicesLinkText: "Explore our comprehensive heart care services in Guntur"
+  servicesLinkText: "View heart care services in Guntur"
   learnMoreBtn: "Learn More About Dr. Kamalakar"
   sectionChip: "About The Doctor"
   subtitle: "Cardiac Specialist"
@@ -59,7 +62,7 @@ about:
 services:
   heading: "Comprehensive Heart Care Services"
   expertiseChip: "Our Expertise"
-  description: "Advanced cardiac diagnosis, treatment, and preventive heart care delivered with modern medical technology and a patient-focused approach."
+  description: "Cardiac diagnosis, treatment and preventive heart care in Guntur."
   learnMore: "Learn more"
   viewAllBtn: "View All Services"
   items:
@@ -120,7 +123,7 @@ education:
       uploadDate: "2024-02-10T00:00:00+05:30"
       transcript: "Dr. Kamalakar discusses non-surgical alternatives for managing heart blockages, focusing on lifestyle changes and medical advancements."
       tags: ["Heart Block", "Non-Surgical", "Cardiac Care"]
-      keywords: "nonsurgical heart treatment, heart block management, stent alternatives, bypass alternatives"
+      keywords: "nonsurgical heart treatment, heart block management"
     - id: "v4"
       title: "Understanding the Treadmill Test (TMT)"
       youtubeId: "evSr7SzkkP0"
@@ -215,32 +218,9 @@ education:
       url: "https://www.mayoclinic.org/first-aid/first-aid-heart-attack/basics/art-20056679"
       publisher: "Mayo Clinic"
 
-testimonials:
-  heading: "Stories from Happy Hearts"
-  successStories: "Patient Success Stories"
-  subtitle: "Real experiences from patients who entrusted their hearts to Dr. Kamalakar."
-  verifiedPatient: "Verified Patient"
-  joinedText: "Joined by 1000+ happy hearts"
-  items:
-    - text: "Dr. Kamalakar offers top-notch supervision. The team provides quick and extremely supportive care."
-      author: "Sambasivarao"
-      rating: 5
-    - text: "One of the best interventional cardiologists in Guntur. He has done complex cases successfully."
-      author: "Sarath"
-      rating: 5
-    - text: "Reasonably priced treatment with speedy recovery. Excellent care by doctors and staff."
-      author: "Sugguna Sampurna"
-      rating: 5
-    - text: "Very experienced doctor. My father had a heart attack and Dr. Kamalakar performed emergency angioplasty within an hour. Saved his life. Forever grateful."
-      author: "Ravi Kumar"
-      rating: 5
-    - text: "Best cardiologist in Guntur. Very transparent about treatment options and costs. No unnecessary procedures. Highly recommend for heart problems."
-      author: "Lakshmi Devi"
-      rating: 5
-
 gallery:
-  heading: "Modern Cardiology Facility in Guntur"
-  description: "Modern diagnostic technology supports accurate cardiac evaluation treatment and routine heart checkups."
+  heading: "Cardiology Facility in Guntur"
+  description: "Diagnostic equipment available for cardiac evaluation, treatment and routine heart checkups."
   close: "Close"
   imageCounter: "of"
   images:
@@ -248,10 +228,10 @@ gallery:
       alt: "Angioplasty & Angiogram Cath Lab at Kamalakar Heart Centre Guntur"
       aspectRatio: "landscape"
     - src: "/media/gallery-2-patient-care.jpg"
-      alt: "Patient Care at Best Cardiologist Clinic in Guntur, Kothapet"
+      alt: "Reception and waiting area, Life Hospital, Kothapet, Guntur"
       aspectRatio: "portrait"
     - src: "/media/gallery-3-equipment.jpg"
-      alt: "ECG Machine & Advanced Cardiac Equipment at Heart Specialist Guntur"
+      alt: "ECG machine and cardiac equipment at Kamalakar Heart Centre, Guntur"
       aspectRatio: "square"
     - src: "/media/gallery-4-clinic-interior.jpg"
       alt: "Kamalakar Heart Centre Clinic Interior in Guntur, Andhra Pradesh"
@@ -276,39 +256,40 @@ preventive:
   closingText: "Managing these conditions early helps reduce the risk of heart attacks and other cardiovascular complications."
 
 whyChoose:
-  heading: "Reliable Heart Care in Guntur"
-  subheading: "Patients trust Kamalakar Heart Centre for its patient focused approach and professional cardiac care."
+  heading: "Heart Care at Kamalakar Heart Centre, Guntur"
+  subheading: "Cardiac consultation, diagnostics and interventional cardiology at Life Hospital, Kothapet, Guntur."
   points:
-    - "Experienced interventional cardiologist in Guntur"
-    - "Modern cardiac diagnostic facilities"
-    - "Personalized treatment approach"
-    - "Clear consultation and treatment guidance"
-    - "Support for preventive and emergency cardiac care"
-  closingText: "The clinic focuses on providing safe effective and compassionate treatment for every patient."
+    - "Interventional cardiologist on site"
+    - "ECG, 2D Echo and TMT available"
+    - "Cath lab at Life Hospital"
+    - "Preventive cardiology consultation"
+    - "Emergency cardiac care"
+  closingText: "Appointments are available Monday to Saturday, 10:00 AM to 6:00 PM."
 
 appointment:
-  heading: "Book a Consultation with a Heart Specialist in Guntur"
+  heading: "Appointments and Location"
+  callBtn: "Call for an Appointment"
 
 faq:
   heading: "Frequently Asked Questions"
   commonQuestions: "Common Questions"
   subtitle: "Get clarity on cardiac care, consultation, and treatment at Kamalakar Heart Centre."
   stillHaveQuestions: "Still have questions?"
-  contactSupport: "Contact Our Support Team"
+  contactSupport: "Contact the Clinic"
   items:
-    - question: "Who is the best cardiologist in Guntur, Andhra Pradesh near me?"
-      answer: "If you are searching for the best cardiologist in Guntur, Andhra Pradesh near me, Dr. Kamalakar is widely trusted for advanced cardiac diagnosis, ethical treatment, and successful heart procedures with personalized care."
-    - question: "Where can I find an experienced heart specialist in Guntur?"
-      answer: "Dr. Kamalakar is an experienced heart specialist in Guntur, providing expert treatment for chest pain, coronary artery disease, high blood pressure, and other heart-related conditions."
-    - question: "Do you provide affordable cardiologist consultation in Guntur?"
-      answer: "Yes, we offer affordable cardiologist consultation in Guntur, including complete heart checkup, ECG test, Echo test, and detailed cardiac consultation."
+    - question: "Where does Dr Kamalakar Kosaraju consult in Guntur?"
+      answer: "Dr Kamalakar Kosaraju, interventional cardiologist, consults at Kamalakar Heart Centre, Life Hospital, Old Club Road, Kothapet, Guntur – 522001. He treats chest pain, coronary artery disease, high blood pressure and other heart conditions."
+    - question: "What is the consultation fee?"
+      answer: "A cardiology consultation with Dr Kamalakar Kosaraju costs ₹500 and includes a basic ECG."
     - question: "Is angioplasty treatment available with an interventional cardiologist in Guntur?"
-      answer: "Yes, as a skilled interventional cardiologist in Guntur, Dr. Kamalakar performs angiogram and angioplasty treatment using advanced and minimally invasive cardiac techniques."
+      answer: "Yes. Dr Kamalakar Kosaraju performs coronary angiography and angioplasty at Life Hospital, Kothapet, Guntur."
     - question: "Where can I get heart checkup and heart disease treatment in Guntur, AP?"
-      answer: "For comprehensive heart checkup in Guntur, AP and specialized heart disease treatment, consult Dr. Kamalakar for accurate diagnosis and long-term heart care management."
+      answer: "Heart checkups (consultation, ECG, 2D Echo and TMT) and treatment for heart disease are available at Kamalakar Heart Centre, Life Hospital, Kothapet, Guntur."
+    - question: "What are the OPD hours and how do I book an appointment?"
+      answer: "OPD hours are Monday to Saturday, 10:00 AM to 6:00 PM. Call 99594 23566 for appointments."
 
 contact:
-  heading: "Book a Consultation with a Heart Specialist in Guntur"
+  heading: "Appointments and Location"
   addressLabel: "Address"
   hoursLabel: "OPD Hours"
   contactLabel: "Phone"
@@ -322,10 +303,10 @@ contact:
   viewLocationBtn: "View Location & Directions"
 
 seo:
-  title: "Best Cardiologist in Guntur | Dr Kamalakar Kosaraju, MD DM"
-  description: "Interventional Cardiologist in Guntur. Dr Kamalakar Kosaraju (MD, DM Cardiology, FESC) — angioplasty, angiogram, ECG, 2D Echo, TMT. Book today."
-  homeTitle: "Best Cardiologist in Guntur | Dr Kamalakar Kosaraju, MD DM"
-  homeDescription: "Interventional Cardiologist in Guntur. Dr Kamalakar Kosaraju (MD, DM Cardiology, FESC) — angioplasty, angiogram, ECG, 2D Echo, TMT. Book today."
+  title: "Interventional Cardiologist in Guntur | Dr Kamalakar Kosaraju, MD, DM"
+  description: "Interventional Cardiologist in Guntur. Dr Kamalakar Kosaraju (MD, DM, FESC) — angioplasty, angiogram, ECG, 2D Echo, TMT. Call 99594 23566 for appointments."
+  homeTitle: "Interventional Cardiologist in Guntur | Dr Kamalakar Kosaraju, MD, DM"
+  homeDescription: "Interventional Cardiologist in Guntur. Dr Kamalakar Kosaraju (MD, DM, FESC) — angioplasty, angiogram, ECG, 2D Echo, TMT. Call 99594 23566 for appointments."
   educationTitle: "Education and Medical Training | Dr Kamalakar Kosaraju"
   educationDescription: "Learn about the medical education training and cardiology qualifications of Dr Kamalakar Kosaraju including MD General Medicine and DM Cardiology."
   keywords:
@@ -342,10 +323,10 @@ seo:
     - "heart disease treatment guntur"
   ogImage: "https://kamalakarheartcentre.com/media/dr-kamalakar.jpg"
   canonicalBase: "https://kamalakarheartcentre.com"
-  gbpUrl: "https://maps.google.com/?cid=5826098809468149451"  # Google Business Profile CID (confirmed by owner); added to schema sameAs
+  gbpUrl: "https://maps.google.com/?cid=6689306532209290504"  # Google Business Profile CID (corrected by owner 2026-10-19); used in schema sameAs, /contact/ and footer
 
 footer:
-  brandDescription: "Advanced cardiac care in Guntur. We combine world-class expertise with compassionate patient service."
+  brandDescription: "Cardiac consultation, diagnostics and interventional cardiology in Guntur."
   quickLinksTitle: "Quick Links"
   servicesTitle: "Our Services"
   contactTitle: "Contact Us"
